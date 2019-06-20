@@ -1,0 +1,6 @@
+module DJIUXSDKCore {
+  umbrella header "DJIUXSDKCore.h"
+
+  export *
+  module * { export * }
+}

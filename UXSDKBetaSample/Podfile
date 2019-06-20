@@ -1,0 +1,9 @@
+platform :ios, '11.0'
+
+target 'UXSDKBetaSample' do
+  use_frameworks!
+  pod 'DJI-SDK-iOS', '~> 4.10'
+  pod 'DJI-UXSDK-iOS', '~> 4.10'
+  pod 'DJIWidget', '~> 1.5'
+  pod 'DJI-UXSDK-iOS-Beta', '~> 0.1.0'
+end
