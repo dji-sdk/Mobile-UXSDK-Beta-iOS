@@ -27,7 +27,7 @@ import UIKit
 import DJIUXSDKBeta
 
 protocol WidgetSelectionDelegate: class {
-    func widgetSelected(_ widget: DUXBetaBaseWidget?)
+    func widgetSelected(_ newWidget: DUXBetaBaseWidget?, shouldShowCustomizationView:Bool)
 }
 
 class WidgetsListViewController: UITableViewController {
@@ -42,16 +42,46 @@ class WidgetsListViewController: UITableViewController {
                                                     "Vision Widget" : "Widget to display the vision status/collision avodance status, of the aircraft. It's state depends on sensors availability, flight mode, and aircraft type.",
     ]
     
-    static let widgets:[DUXBetaBaseWidget] = [DUXBetaMapWidget(),
-                                          DUXBetaBatteryWidget(),
-                                          DUXBetaCompassWidget(),
-                                          DUXBetaDashboardWidget(),
-                                          DUXBetaVisionWidget()]
-    static let widgetTitles:[String] = ["Map Widget",
-                                        "Battery Widget",
-                                        "Compass Widget",
-                                        "Dashboard Widget",
-                                        "Vision Widget"]
+    static var widgetClosures: [() -> DUXBetaBaseWidget] {
+        let mapWidgetClosure: () -> DUXBetaBaseWidget = {
+            let mapWidget = DUXBetaMapWidget()
+            mapWidget.showFlyZoneLegend = false
+            return mapWidget
+        }
+        
+        let batteryWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaBatteryWidget()
+        }
+        
+        let compassWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaCompassWidget()
+        }
+        
+        let dashboardWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaDashboardWidget()
+        }
+        
+        let visionWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaVisionWidget()
+        }
+        
+        return [
+            mapWidgetClosure,
+            batteryWidgetClosure,
+            compassWidgetClosure,
+            dashboardWidgetClosure,
+            visionWidgetClosure
+        ]
+    }
+    
+    static let widgetMetadata:[(String, Bool)] = [
+        ("Map Widget", true),
+        ("Battery Widget", false),
+        ("Compass Widget", false),
+        ("Dashboard Widget", false),
+        ("Vision Widget", false)
+    ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +93,13 @@ class WidgetsListViewController: UITableViewController {
     
     // MARK: UITableViewDelegate
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let widget = WidgetsListViewController.widgets[indexPath.row]
-        delegate?.widgetSelected(widget)
+        let widgetClosure = WidgetsListViewController.widgetClosures[indexPath.row]
+        let widget = widgetClosure()
+        let shouldShowCustomizationView = WidgetsListViewController.widgetMetadata[indexPath.row].1
+        delegate?.widgetSelected(widget, shouldShowCustomizationView: shouldShowCustomizationView)
         if let singleWidgetViewController = delegate as? SingleWidgetViewController {
-            let title = WidgetsListViewController.widgetTitles[indexPath.row]
+            let title = WidgetsListViewController.widgetMetadata[indexPath.row].0
+            singleWidgetViewController.shouldShowCustomizationView = shouldShowCustomizationView
             singleWidgetViewController.title = title
             singleWidgetViewController.widgetDescriptionLabel.text = WidgetsListViewController.widgetDescriptions[title]
             splitViewController?.showDetailViewController(singleWidgetViewController, sender: nil)
@@ -76,12 +109,13 @@ class WidgetsListViewController: UITableViewController {
     
     // MARK: UITableViewDataSource
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WidgetsListViewController.widgets.count
+        return WidgetsListViewController.widgetClosures.count
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetsListCellIdentifier", for: indexPath)
-        cell.textLabel?.text = WidgetsListViewController.widgetTitles[indexPath.row]
+        let title = WidgetsListViewController.widgetMetadata[indexPath.row].0
+        cell.textLabel?.text = title
         return cell
     }
     

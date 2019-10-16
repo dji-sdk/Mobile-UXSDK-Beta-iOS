@@ -44,7 +44,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(productCommunicationDidChange), name: Notification.Name(rawValue: "ProductCommunicationManagerStateDidChange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(productCommunicationDidChange), name: Notification.Name(rawValue: "ProductCommunicationServiceStateDidChange"), object: nil)
         self.bridgeIDField.delegate = self
         LogCenter.default.add(listener: self)
     }
@@ -52,21 +52,21 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.version.text = "\(DUXBetaSDKAttributes.sdkVersion())-\(DUXBetaSDKAttributes.sdkBuildNumber())"
-        self.bridgeIDField.text = self.appDelegate.productCommManager.bridgeAppIP
-        self.useBridgeSwitch.isOn = self.appDelegate.productCommManager.useBridge
+        self.bridgeIDField.text = ProductCommunicationService.shared.bridgeAppIP
+        self.useBridgeSwitch.isOn = ProductCommunicationService.shared.useBridge
     }
 
     @IBAction func registerAction() {
-        self.appDelegate.productCommManager.registerWithProduct()
+        ProductCommunicationService.shared.registerWithProduct()
     }
     
     @IBAction func connectAction() {
-        self.appDelegate.productCommManager.connectToProduct()
+        ProductCommunicationService.shared.connectToProduct()
     }
     
     @IBAction func useBridgeAction(_ sender: UISwitch) {
-        self.appDelegate.productCommManager.useBridge = sender.isOn
-        self.appDelegate.productCommManager.disconnectProduct()
+        ProductCommunicationService.shared.useBridge = sender.isOn
+        ProductCommunicationService.shared.productDisconnected()
     }
     
     @IBAction func pushWidgetList() {
@@ -86,7 +86,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     }
     
     @objc func productCommunicationDidChange() {
-        if self.appDelegate.productCommManager.registered {
+        if ProductCommunicationService.shared.registered {
             self.registered.text = "YES"
             self.register.isHidden = true
         } else {
@@ -94,7 +94,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
             self.register.isHidden = false
         }
         
-        if self.appDelegate.productCommManager.connected {
+        if ProductCommunicationService.shared.connected {
             self.connected.text = "YES"
             self.connect.isHidden = true
             
@@ -132,7 +132,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.bridgeIDField {
-            self.appDelegate.productCommManager.bridgeAppIP = textField.text!
+            ProductCommunicationService.shared.bridgeAppIP = textField.text!
         }
     }
     

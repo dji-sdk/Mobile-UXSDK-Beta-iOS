@@ -29,10 +29,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    public var productCommManager = ProductCommunicationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.productCommManager.registerWithProduct()
+        ProductCommunicationService.shared.registerWithProduct()
         return true
     }
 
