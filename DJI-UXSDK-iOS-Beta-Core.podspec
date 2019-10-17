@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DJI-UXSDK-iOS-Beta-Core'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.license = 'MIT'
   s.summary = 'Core utilities for DJI iOS UX SDK.'
   s.homepage = 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS'
@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.7.1'
   s.source_files = 'DJIUXSDKCore/**/*.{h,m}'
   s.public_header_files = 'DJIUXSDKCore/**/*.h'
-  s.dependency 'DJI-SDK-iOS', '4.10'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.1.0'
+  s.dependency 'DJI-SDK-iOS', '4.11'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.1.1'
 end
