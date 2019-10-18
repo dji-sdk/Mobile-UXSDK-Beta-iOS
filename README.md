@@ -24,14 +24,7 @@ As always, the DJI Dev Team is committed to improving your developer experience.
 
 ## Future Plans
 
-This Beta 1 release only contains a small subset of UX SDK elements. We are eager to give you a sneak peek, and are very interested in receiving your feedback and suggestions. Please refer to the release notes for the full list of elements that Beta 1 version makes available.
-
-Our long-term plan is for this framework to reach feature parity with the UX SDK 4.10 release. The core team is currently working on porting the remaining widgets and other APIs to the new architecture. We will then open source them in additional future Beta releases, in phases, as they are completed. We welcome your feedback on the architecture and your ideas for addional widgets(including those not included in prior UX SDK releases), as well as your contributions and PRs for any ***currently open-sourced features***.
-
-We are also very excited about the new SwiftUI and Combine frameworks announced at WWDC 2019. Our long-term plans are:
-* Fully support both ***Swift and Objective-C*** users by providing Swift-friendly and Swift-native APIs where applicable in UX SDK
-* Ensure compatibility with SwiftUI via our use of UIKit as the foundation of UX SDK
-* Transition to a reactive approach, similar to the DJI Android UX SDK, while maintaining iOS-centric API design conventions and development-style
+This Beta 1.1 release only contains a small subset of UX SDK elements. We are eager to give you a sneak peek, and are very interested in receiving your feedback and suggestions. Please refer to the release notes for the full list of elements that Beta 1.1 version makes available.
 
 ## License
 
