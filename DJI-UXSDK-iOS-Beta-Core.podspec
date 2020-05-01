@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.7.1'
   s.source_files = 'DJIUXSDKCore/**/*.{h,m}'
   s.public_header_files = 'DJIUXSDKCore/**/*.h'
-  s.dependency 'DJI-SDK-iOS', '4.11'
+  s.dependency 'DJI-SDK-iOS', '~> 4.11'
   s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.1.1'
 end
