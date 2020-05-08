@@ -6,6 +6,8 @@ With the UX SDK 5.0 version we are introducing an easy way to customize all the 
 
 Check out our [sample app](https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS/tree/master/UXSDKBetaSample) to get started. 
 
+**NOTE:** UX SDK 5.0 Beta 2 is coming this month, May 2020, with more updates and support for MSDK 4.12.
+
 ## Installation
 
 Read the [documentation for installation](https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS/wiki/Installation) to learn more about including this library in your applications. 
