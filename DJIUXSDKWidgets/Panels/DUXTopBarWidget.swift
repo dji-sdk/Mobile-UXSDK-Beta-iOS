@@ -1,0 +1,105 @@
+//
+//  DUXTopBarWidget.swift
+//  DJIUXSDKWidgets
+//
+//  Copyright © 2018-2020 DJI
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+import Foundation
+
+/**
+ * DUXTopBarWidget is the container for the top bar widgets.
+ *
+ * - DUXBetaSystemStatusWidget
+ * - DUXBetaFlightModeWidget
+ * - DUXBetaSimulatorIndicatorWidget
+ * - DUXBetaAirSenseWidget
+ * - DUXBetaGPSSignalWidget
+ * - DUXBetaVisionWidget
+ * - DUXBetaRemoteControllerSignalWidget
+ * - DUXBetaVideoSignalWidget
+ * - DUXBetaBatteryWidget
+ * - DUXBetaConnectionWidget
+ *
+*/
+@objcMembers public class DUXTopBarWidget: DUXBarPanelWidget {
+    
+    let systemStatusWidget = DUXBetaSystemStatusWidget()
+    let flightModeWidget = DUXBetaFlightModeWidget()
+    let simulatorIndicatorWidget = DUXBetaSimulatorIndicatorWidget()
+    let airSenseWidget = DUXBetaAirSenseWidget()
+    let gpsSignalWidget = DUXBetaGPSSignalWidget()
+    let visionWidget = DUXBetaVisionWidget()
+    let remoteControllerSignalWidget = DUXBetaRemoteControllerSignalWidget()
+    let videoSignalWidget = DUXBetaVideoSignalWidget()
+    let batteryWidget = DUXBetaBatteryWidget()
+    let connectionWidget = DUXBetaConnectionWidget()
+    
+    /**
+     * Override of the standard viewdDidLoad method.
+     * Adds the default rigtht and left side widgets.
+     */
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Add default left-side widget
+        addLeftWidgetArray([systemStatusWidget])
+        
+        // Add default right-side widgets
+        addWidgetArray([flightModeWidget,
+                        simulatorIndicatorWidget,
+                        airSenseWidget,
+                        gpsSignalWidget,
+                        visionWidget,
+                        remoteControllerSignalWidget,
+                        videoSignalWidget,
+                        batteryWidget,
+                        connectionWidget])
+    }
+    
+    /**
+     * Override of the parent method because we always want to have
+     * the panel working with this configuration.
+     */
+    public override func defaultConfigurationSetup() {
+        // Enforce default configuration as an horizontal bar
+        let config = DUXPanelWidgetConfiguration(type:.bar, variant:.horizontal)
+        let _ = configure(config)
+    }
+    
+    /**
+     * Override of the parent method where we create
+     * a specific constraint for the leftbar stackview.
+     */
+    public override func spacingConstraint(forOrientation orientation: DUXPanelVariant,
+                                           andWorkBar workBar: UIView,
+                                           withSize size: CGSize,
+                                           andConstant constant: CGFloat) -> NSLayoutConstraint {
+        if (orientation == .horizontal) && (workBar == leftBar) {
+            return workBar.trailingAnchor.constraint(equalTo: rightBar.leadingAnchor)
+        }
+
+        return super.spacingConstraint(forOrientation: orientation,
+                                       andWorkBar: workBar,
+                                       withSize: size,
+                                       andConstant: constant)
+    }
+}

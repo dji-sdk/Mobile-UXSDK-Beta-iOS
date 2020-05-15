@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,23 +26,18 @@
 //  
 
 #import "UIImage+DUXBetaAssets.h"
+#import "NSBundle+DUXBetaAssets.h"
 #import "DUXBetaBaseWidget.h"
 
 @implementation UIImage (DUXBetaAssets)
 
 + (UIImage *)duxbeta_imageWithAssetNamed:(NSString *)assetName {
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:[DUXBetaBaseWidget class]];
-    NSURL *assetBundleURL = [frameworkBundle.resourceURL URLByAppendingPathComponent:@"/DUXBetaAssets.bundle"];
-    NSBundle *assetBundle = [NSBundle bundleWithURL:assetBundleURL];
-    
-    UIImage *assetImage = [UIImage imageNamed:assetName
-                                     inBundle:assetBundle
-                compatibleWithTraitCollection:nil];
+    NSBundle *currentBundle = [NSBundle duxbeta_currentBundle];
+    UIImage *assetImage = [UIImage imageNamed:assetName inBundle:currentBundle compatibleWithTraitCollection:nil];
     
     if (assetImage == nil)  {
         NSLog(@"*** Invalid Asset: %@ ***", assetName);
-        NSLog(@"Please make sure that the asset your are refering is available with the same file name in DJIUXSDK.frameworks/Assets");
-        NSLog(@"A placeholder image (orange square) will be return in the mean time.");
+        NSLog(@"Please make sure that the asset you are referring to is available with the same file name in the framework");
         
         CGSize size = CGSizeMake(20.0, 20.0);
         UIGraphicsBeginImageContextWithOptions(size, YES, 0);
@@ -52,5 +47,19 @@
         UIGraphicsEndImageContext();
     }
     return assetImage;
+}
+
++ (UIImage *)duxbeta_colorizeImage:(UIImage*)image withColor:(UIColor*)tintColor {
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [tintColor setFill];
+    CGContextTranslateCTM(context, 0, image.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextClipToMask(context, CGRectMake(0, 0, image.size.width, image.size.height), [image CGImage]);
+    CGContextFillRect(context, CGRectMake(0, 0, image.size.width, image.size.height));
+
+    UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return tintedImage;
 }
 @end

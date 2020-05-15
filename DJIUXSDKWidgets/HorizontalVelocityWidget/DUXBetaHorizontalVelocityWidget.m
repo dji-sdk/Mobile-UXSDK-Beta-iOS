@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -54,19 +54,26 @@ static const CGFloat kValueFontSize = 14.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.widgetModel = [[DUXBetaHorizontalVelocityWidgetModel alloc] init];
+    [self.widgetModel setup];
+    
     [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.widgetModel setup];
+    
     BindRKVOModel(self.widgetModel, @selector(updateUI), horizontalVelocity);
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.widgetModel duxbeta_removeCustomObserver:self];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    UnBindRKVOModel(self.widgetModel);
+}
+
+- (void)dealloc {
     [self.widgetModel cleanup];
 }
 

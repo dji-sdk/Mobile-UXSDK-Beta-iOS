@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -246,7 +246,7 @@ static CGSize const kDesignSize = {255.0, 50.0};
     self.bottomStackBackgroundView.layer.mask = bottomShapeLayer;
 }
 
--(void)setLocationManagerAccuracy:(CLLocationAccuracy)locationManagerAccuracy {
+- (void)setLocationManagerAccuracy:(CLLocationAccuracy)locationManagerAccuracy {
     _locationManagerAccuracy = locationManagerAccuracy;
     if (self.compassWidget) {
         self.compassWidget.widgetModel.locationManagerAccuracy = _locationManagerAccuracy;

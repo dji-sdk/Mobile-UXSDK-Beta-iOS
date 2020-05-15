@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,17 @@
 #import "DUXBetaBatteryWidget.h"
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
+#import "DUXBetaBatteryWidgetModel.h"
+#import "DUXStateChangeBroadcaster.h"
 @import DJIUXSDKCore;
 
-static CGSize const kDesignSizeOneBattery = {44.0, 18.0};
-static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
+static CGFloat const kVoltageAndPercentFontSize = 110.0;
+static CGFloat const kSingleBatteryPercentFontSize = 70.0;
+static CGFloat const kWidgetIconDualToWidgetWidthRatio = (1.0 / 3);
+static CGFloat const kSingleIconWidthToWidgetWidthRatio = 0.4;
+static CGFloat const kDualAspectRatio = 0.7;
+static CGFloat const kBoxWidthToWidgetHeightRatio = 0.02;
+static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 
 @interface DUXBetaBatteryWidget ()
 
@@ -41,6 +48,8 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
 @property (nonatomic) UIView *singleBatteryView;
 @property (nonatomic) UIImageView *singleBatteryImageView;
 @property (nonatomic) UILabel *singleBatteryPercentageLabel;
+
+@property (nonatomic) CGSize minWidgetSizeSingleBattery;
 
 //dual battery
 @property (nonatomic) UIView *dualBatteryView;
@@ -57,7 +66,41 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
 
 @property (nonatomic) NSMutableDictionary <NSNumber *, UIImage *> *singleBatteryImageMapping;
 @property (nonatomic) NSMutableDictionary <NSNumber *, UIImage *> *dualBatteryImageMapping;
-@property (nonatomic) NSMutableDictionary <NSNumber *, UIColor *> *statusToColorMapping;
+@property (nonatomic) NSMutableDictionary <NSNumber *, UIColor *> *imageTintMapping;
+@property (nonatomic) NSMutableDictionary <NSNumber *, UIColor *> *statusToVoltageColorMapping;
+@property (nonatomic) NSMutableDictionary <NSNumber *, UIColor *> *statusToPercentageColorMapping;
+
+@property (nonatomic) CGSize minWidgetSizeDualBattery;
+
+@property (strong, nonatomic) NSLayoutConstraint *singleBatteryViewAspectRatioConstraint;
+
+@end
+
+/**
+ * DUXBatteryWidgetUIState contains the hooks for UI changes in the widget class DUXBatteryWidget.
+ * It implements the hook:
+ *
+ * Key: widgetTapped    Type: NSNumber - Sends a boolean YES value as an NSNumber indicating the widget was tapped.
+*/
+@interface DUXBatteryWidgetUIState : DUXStateChangeBaseData
+
++ (instancetype)widgetTap;
+
+@end
+
+/**
+ * DUXBatteryWidgetModelState contains the hooks for model changes for the DUXBatteryWidget.
+ * It implements the hooks:
+ *
+ * Key: productConnected    Type: NSNumber - Sends a boolean value as an NSNumber when the product connects or disconnects.
+ *                                            YES means connected, NO means disconnected.
+ *
+ * Key: batteryStateUpdate   Type: id  - Sends a DUXBateryState object when the battery state changes.
+*/
+@interface DUXBatteryWidgetModelState : DUXStateChangeBaseData
+
++ (instancetype)productConnected:(BOOL)isConnected;
++ (instancetype)batteryStateUpdate:(DUXBetaBatteryState *)batteryState;
 
 @end
 
@@ -66,49 +109,110 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _singleBatteryImageMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
-                                                                                           @(DUXBetaBatteryStatusNormal) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryNormal"],
-                                                                                           @(DUXBetaBatteryStatusError) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryError"],
-                                                                                           @(DUXBetaBatteryStatusWarningLevel1) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryDangerous"],
-                                                                                           @(DUXBetaBatteryStatusWarningLevel2) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryThunder"],
-                                                                                           @(DUXBetaBatteryStatusOverheating) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryOverheating"],
-                                                                                           @(DUXBetaBatteryStatusUnknown) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryNormal"]
-                                                                                           }];
-        _dualBatteryImageMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
-                                                                                         @(DUXBetaBatteryStatusNormal) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"],
-                                                                                         @(DUXBetaBatteryStatusError) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"],
-                                                                                         @(DUXBetaBatteryStatusWarningLevel1) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryDangerous"],
-                                                                                         @(DUXBetaBatteryStatusWarningLevel2) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryDangerous"],
-                                                                                         @(DUXBetaBatteryStatusOverheating) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryOverheating"],
-                                                                                         @(DUXBetaBatteryStatusUnknown) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"]
-                                                                                         }];
-        _statusToColorMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
-                                                                                      @(DUXBetaBatteryStatusNormal) : [UIColor whiteColor],
-                                                                                      @(DUXBetaBatteryStatusError) : [UIColor duxbeta_dangerColor],
-                                                                                      @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_dangerColor],
-                                                                                      @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_dangerColor],
-                                                                                      @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_dangerColor]
-                                                                                      }];
-        _voltageFont = [UIFont boldSystemFontOfSize:20.0];
-        _percentageFont = [UIFont boldSystemFontOfSize:20.0];
-        _widgetDisplayState = DUXBetaBatteryWidgetDisplayStateSingleBattery;
+        [self setupInstanceVariables];
     }
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setupInstanceVariables];
+    }
+    return self;
+}
+
+- (void)setupInstanceVariables {
+    _singleBatteryImageMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @(DUXBetaBatteryStatusNormal) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryNormal"],
+        @(DUXBetaBatteryStatusError) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryError"],
+        @(DUXBetaBatteryStatusWarningLevel1) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryNormal"],
+        @(DUXBetaBatteryStatusWarningLevel2) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryThunder"],
+        @(DUXBetaBatteryStatusOverheating) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryOverheating"],
+        @(DUXBetaBatteryStatusUnknown) : [UIImage duxbeta_imageWithAssetNamed:@"BatteryNormal"]
+    }];
+    _dualBatteryImageMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @(DUXBetaBatteryStatusNormal) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"],
+        @(DUXBetaBatteryStatusError) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"],//Never used, error state only phantom3
+        @(DUXBetaBatteryStatusWarningLevel1) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"],
+        @(DUXBetaBatteryStatusWarningLevel2) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryThunder"],
+        @(DUXBetaBatteryStatusOverheating) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryOverheating"],
+        @(DUXBetaBatteryStatusUnknown) : [UIImage duxbeta_imageWithAssetNamed:@"DoubleBatteryNormal"]
+    }];
+    _imageTintMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @(DUXBetaBatteryStatusNormal) : [UIColor duxbeta_whiteColor],
+        @(DUXBetaBatteryStatusError) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_batteryOverheatingYellowColor],
+        @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_disabledGrayColor]
+    }];
+    _statusToVoltageColorMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @(DUXBetaBatteryStatusNormal) : [UIColor duxbeta_batteryNormalGreen],
+        @(DUXBetaBatteryStatusError) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_batteryOverheatingYellowColor],
+        @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_disabledGrayColor]
+    }];
+    _statusToPercentageColorMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
+        @(DUXBetaBatteryStatusNormal) : [UIColor duxbeta_batteryNormalGreen],
+        @(DUXBetaBatteryStatusError) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_redColor],
+        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_batteryOverheatingYellowColor],
+        @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_disabledGrayColor]
+    }];
+    _voltageFontDual = [UIFont boldSystemFontOfSize:kVoltageAndPercentFontSize];
+    _percentageFontDual = [UIFont boldSystemFontOfSize:kVoltageAndPercentFontSize];
+    _percentageFontSingle = [UIFont systemFontOfSize:kSingleBatteryPercentFontSize];
+    _widgetDisplayState = DUXBetaBatteryWidgetDisplayStateSingleBattery;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.widgetModel = [[DUXBetaBatteryWidgetModel alloc] init];
+    [self.widgetModel setup];
+    
     [self setupUI];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self updateUI];
+    if ([self.widgetModel.batteryState isMemberOfClass:[DUXDualBatteryState class]]) {
+        [self updateUI];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    BindRKVOModel(self.widgetModel, @selector(updateUI), batteryState);
+    BindRKVOModel(self, @selector(updateMinImageDimensions), singleBatteryImageMapping, dualBatteryImageMapping);
+    
+    BindRKVOModel(self.widgetModel, @selector(sendIsProductConnected), isProductConnected);
+    BindRKVOModel(self.widgetModel, @selector(sendBatteryStateUpdate), batteryState);
+    BindRKVOModel(self, @selector(updateCurrentBatteryView), view.bounds);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    UnBindRKVOModel(self);
+    UnBindRKVOModel(self.widgetModel);
+}
+
+- (void)dealloc {
+    [self.widgetModel cleanup];
 }
 
 - (void)setupUI {
+    [self updateMinImageDimensions];
     [self drawSingleBatteryView];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(widgetTapped)];
+    [self.view addGestureRecognizer:singleTap];
 }
 
 - (void)drawSingleBatteryView {
@@ -119,16 +223,21 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     [self.singleBatteryView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.singleBatteryView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
     [self.singleBatteryView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-    
-    self.singleBatteryImageView = [[UIImageView alloc] initWithImage:[self currentIndicatorImageForSingleBattery:[self.widgetModel.batteryInformation objectForKey:kDUXBetaBattery1Key]]];
+    UIImage *currentBatteryImage = [self currentIndicatorImageForSingleBattery:self.widgetModel.batteryState];
+    self.singleBatteryImageView = [[UIImageView alloc] initWithImage:currentBatteryImage];
     
     [self.singleBatteryView addSubview:self.singleBatteryImageView];
+    
+    CGFloat iconAspectRatio = currentBatteryImage.size.width / currentBatteryImage.size.height;
+    self.singleBatteryViewAspectRatioConstraint = [self.singleBatteryView.widthAnchor constraintEqualToAnchor:self.singleBatteryView.heightAnchor multiplier:iconAspectRatio * 2];
+    
+    self.singleBatteryViewAspectRatioConstraint.active = YES;
     
     self.singleBatteryImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.singleBatteryImageView.leadingAnchor constraintEqualToAnchor:self.singleBatteryView.leadingAnchor].active = YES;
     [self.singleBatteryImageView.topAnchor constraintEqualToAnchor:self.singleBatteryView.topAnchor].active = YES;
     [self.singleBatteryImageView.bottomAnchor constraintEqualToAnchor:self.singleBatteryView.bottomAnchor].active = YES;
-    [self.singleBatteryImageView.trailingAnchor constraintEqualToAnchor:self.singleBatteryView.centerXAnchor].active = YES;
+    [self.singleBatteryImageView.widthAnchor constraintEqualToAnchor:self.singleBatteryView.widthAnchor multiplier:kSingleIconWidthToWidgetWidthRatio].active = YES;
     
     self.singleBatteryImageView.contentMode = UIViewContentModeScaleAspectFit;
 
@@ -137,61 +246,38 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     self.singleBatteryPercentageLabel = [[UILabel alloc] init];
     [self.singleBatteryView addSubview:self.singleBatteryPercentageLabel];
     self.singleBatteryPercentageLabel.translatesAutoresizingMaskIntoConstraints = NO;
+
+    CGFloat labelWidthAsPercentOfView = 1.0 - kSingleIconWidthToWidgetWidthRatio;
+    [self.singleBatteryPercentageLabel.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:labelWidthAsPercentOfView].active = YES;
     [self.singleBatteryPercentageLabel.leadingAnchor constraintEqualToAnchor:self.singleBatteryImageView.trailingAnchor].active = YES;
     [self.singleBatteryPercentageLabel.trailingAnchor constraintEqualToAnchor:self.singleBatteryView.trailingAnchor].active = YES;
-    [self.singleBatteryPercentageLabel.topAnchor constraintEqualToAnchor:self.singleBatteryView.topAnchor].active = YES;
-    [self.singleBatteryPercentageLabel.bottomAnchor constraintEqualToAnchor:self.singleBatteryView.bottomAnchor].active = YES;
-    self.singleBatteryPercentageLabel.textColor = [UIColor whiteColor];
-    self.singleBatteryPercentageLabel.font = self.percentageFont;
+    [self.singleBatteryPercentageLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+    [self.singleBatteryPercentageLabel.heightAnchor constraintEqualToAnchor:self.view.heightAnchor].active = YES;
+        
+    self.singleBatteryPercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
+    self.singleBatteryPercentageLabel.font = self.percentageFontSingle;
     self.singleBatteryPercentageLabel.textAlignment = NSTextAlignmentLeft;
     self.singleBatteryPercentageLabel.minimumScaleFactor = 0.1;
     self.singleBatteryPercentageLabel.adjustsFontSizeToFitWidth = YES;
+    self.singleBatteryPercentageLabel.numberOfLines = 0;
+    self.singleBatteryPercentageLabel.lineBreakMode = NSLineBreakByClipping;
 }
 
 - (void)updateSingleBatteryView {
-    DUXBetaBatteryState *battery1State = [self.widgetModel.batteryInformation objectForKey:kDUXBetaBattery1Key];
-    if (battery1State) {
-        self.singleBatteryImageView.image = [self currentIndicatorImageForSingleBattery:battery1State];
+    if ([self.widgetModel.batteryState isKindOfClass:[DUXBetaBatteryState class]] || [self.widgetModel.batteryState isKindOfClass:[DUXAggregateBatteryState class]]) {
+        self.singleBatteryImageView.image = [self currentIndicatorImageForSingleBattery:self.widgetModel.batteryState];
+        [self.singleBatteryImageView setTintColor:[self.imageTintMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)]];
+        self.singleBatteryPercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
         
-        if (battery1State.state == DUXBetaBatteryStatusUnknown) {
+        CGFloat scaledFontSize = self.percentageFontSingle.pointSize * (self.singleBatteryPercentageLabel.frame.size.height / self.widgetSizeHint.minimumHeight);
+        self.singleBatteryPercentageLabel.font = [self.percentageFontSingle fontWithSize:scaledFontSize];
+        
+        if (self.widgetModel.batteryState.warningStatus == DUXBetaBatteryStatusUnknown) {
             self.singleBatteryPercentageLabel.text =  NSLocalizedString(@"N/A", @"Battery Icon Label");
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusUnknown)];
-            self.singleBatteryPercentageLabel.font = [self.percentageFont fontWithSize:self.singleBatteryPercentageLabel.frame.size.height * self.percentageFont.pointSize/self.widgetSizeHint.minimumHeight];
             return;
-        } else if (battery1State.state == DUXBetaBatteryStatusNormal) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusNormal)];
-        } else if (battery1State.state == DUXBetaBatteryStatusError) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusError)];
-        } else if (battery1State.state == DUXBetaBatteryStatusWarningLevel1) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusWarningLevel1)];
-        } else if (battery1State.state == DUXBetaBatteryStatusWarningLevel2) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusWarningLevel2)];
         }
-        
-        self.singleBatteryPercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", battery1State.batteryPercentage];
-    }
-    
-    DUXBetaBatteryState *batteryAggregationState = [self.widgetModel.batteryInformation objectForKey:kDUXBetaBatteryAggregationKey];
-    if (batteryAggregationState) {
-        self.singleBatteryImageView.image = [self currentIndicatorImageForSingleBattery:batteryAggregationState];
-        
-        if (batteryAggregationState.state == DUXBetaBatteryStatusUnknown) {
-            self.singleBatteryPercentageLabel.text =  NSLocalizedString(@"N/A", @"Battery Icon Label");
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusUnknown)];
-            self.singleBatteryPercentageLabel.font = [self.percentageFont fontWithSize:self.singleBatteryPercentageLabel.frame.size.height * self.percentageFont.pointSize/self.widgetSizeHint.minimumHeight];
-            return;
-        } else if (batteryAggregationState.state == DUXBetaBatteryStatusNormal) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusNormal)];
-        } else if (batteryAggregationState.state == DUXBetaBatteryStatusError) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusError)];
-        } else if (batteryAggregationState.state == DUXBetaBatteryStatusWarningLevel1) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusWarningLevel1)];
-        } else if (batteryAggregationState.state == DUXBetaBatteryStatusWarningLevel2) {
-            self.singleBatteryPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(DUXBetaBatteryStatusWarningLevel2)];
-        }
-        
-        self.singleBatteryPercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", batteryAggregationState.batteryPercentage];
-        self.singleBatteryPercentageLabel.font = [self.percentageFont fontWithSize:self.singleBatteryPercentageLabel.frame.size.height * self.percentageFont.pointSize/self.widgetSizeHint.minimumHeight];
+
+        self.singleBatteryPercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", self.widgetModel.batteryState.batteryPercentage];
     }
 }
 
@@ -206,17 +292,22 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     [self.dualBatteryView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.dualBatteryView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
     [self.dualBatteryView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+
+    UIImage *currentBatteryImage = [self currentIndicatorImageForDualBattery:self.widgetModel.batteryState];
     
-    self.dualBatteryImageView = [[UIImageView alloc] initWithImage:[self.dualBatteryImageMapping objectForKey:@(DUXBetaBatteryStatusUnknown)]];
+    self.dualBatteryImageView = [[UIImageView alloc] initWithImage:currentBatteryImage];
+    self.dualBatteryImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.dualBatteryImageView setTintColor:[self.imageTintMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)]];
+    
+    CGFloat iconAspectRatio = currentBatteryImage.size.width / currentBatteryImage.size.height;
+    [self.dualBatteryImageView.widthAnchor constraintLessThanOrEqualToAnchor:self.dualBatteryImageView.heightAnchor multiplier:iconAspectRatio].active = YES;
     
     [self.dualBatteryView addSubview:self.dualBatteryImageView];
 
-    self.dualBatteryImageView.translatesAutoresizingMaskIntoConstraints = NO;
-
     [self.dualBatteryImageView.leadingAnchor constraintEqualToAnchor:self.dualBatteryView.leadingAnchor].active = YES;
-    [self.dualBatteryImageView.topAnchor constraintEqualToAnchor:self.dualBatteryView.topAnchor].active = YES;
-    [self.dualBatteryImageView.bottomAnchor constraintEqualToAnchor:self.dualBatteryView.bottomAnchor].active = YES;
-    [self.dualBatteryImageView.widthAnchor constraintEqualToAnchor:self.dualBatteryView.widthAnchor multiplier:.33].active = YES;
+    [self.dualBatteryImageView.heightAnchor constraintLessThanOrEqualToAnchor:self.dualBatteryView.heightAnchor].active = YES;
+    [self.dualBatteryImageView.centerYAnchor constraintEqualToAnchor:self.dualBatteryView.centerYAnchor].active = YES;
+    [self.dualBatteryImageView.widthAnchor constraintEqualToAnchor:self.dualBatteryView.widthAnchor multiplier:kWidgetIconDualToWidgetWidthRatio].active = YES;
 
     self.dualBatteryImageView.contentMode = UIViewContentModeScaleAspectFit;
 
@@ -227,11 +318,11 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     [self.dualBatteryBatteryOnePercentageLabel.leadingAnchor constraintEqualToAnchor:self.dualBatteryImageView.trailingAnchor].active = YES;
     [self.dualBatteryBatteryOnePercentageLabel.topAnchor constraintEqualToAnchor:self.dualBatteryView.topAnchor].active = YES;
     [self.dualBatteryBatteryOnePercentageLabel.bottomAnchor constraintEqualToAnchor:self.dualBatteryView.centerYAnchor].active = YES;
-    [self.dualBatteryBatteryOnePercentageLabel.widthAnchor constraintEqualToAnchor:self.dualBatteryView.widthAnchor multiplier:.33].active = YES;
+    [self.dualBatteryBatteryOnePercentageLabel.widthAnchor constraintEqualToAnchor:self.dualBatteryView.widthAnchor multiplier:kWidgetIconDualToWidgetWidthRatio].active = YES;
 
-    self.dualBatteryBatteryOnePercentageLabel.textColor = [UIColor whiteColor];
-    self.dualBatteryBatteryOnePercentageLabel.font = self.percentageFont;
-    self.dualBatteryBatteryOnePercentageLabel.textAlignment = NSTextAlignmentLeft;
+    self.dualBatteryBatteryOnePercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
+    self.dualBatteryBatteryOnePercentageLabel.font = self.percentageFontDual;
+    self.dualBatteryBatteryOnePercentageLabel.textAlignment = NSTextAlignmentCenter;
     self.dualBatteryBatteryOnePercentageLabel.minimumScaleFactor = 0.1;
     self.dualBatteryBatteryOnePercentageLabel.adjustsFontSizeToFitWidth = YES;
     self.dualBatteryBatteryOnePercentageLabel.numberOfLines = 0;
@@ -243,11 +334,11 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     [self.dualBatteryBatteryTwoPercentageLabel.topAnchor constraintEqualToAnchor:self.dualBatteryView.centerYAnchor].active = YES;
     [self.dualBatteryBatteryTwoPercentageLabel.leadingAnchor constraintEqualToAnchor:self.dualBatteryImageView.trailingAnchor].active = YES;
     [self.dualBatteryBatteryTwoPercentageLabel.bottomAnchor constraintEqualToAnchor:self.dualBatteryView.bottomAnchor].active = YES;
-    [self.dualBatteryBatteryTwoPercentageLabel.widthAnchor constraintEqualToAnchor:self.dualBatteryView.widthAnchor multiplier:.33].active = YES;
+    [self.dualBatteryBatteryTwoPercentageLabel.widthAnchor constraintEqualToAnchor:self.dualBatteryView.widthAnchor multiplier:kWidgetIconDualToWidgetWidthRatio].active = YES;
 
-    self.dualBatteryBatteryTwoPercentageLabel.textColor = [UIColor whiteColor];
-    self.dualBatteryBatteryTwoPercentageLabel.font = self.percentageFont;
-    self.dualBatteryBatteryTwoPercentageLabel.textAlignment = NSTextAlignmentLeft;
+    self.dualBatteryBatteryTwoPercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
+    self.dualBatteryBatteryTwoPercentageLabel.font = self.percentageFontDual;
+    self.dualBatteryBatteryTwoPercentageLabel.textAlignment = NSTextAlignmentCenter;
     self.dualBatteryBatteryTwoPercentageLabel.minimumScaleFactor = 0.1;
     self.dualBatteryBatteryTwoPercentageLabel.adjustsFontSizeToFitWidth = YES;
     self.dualBatteryBatteryTwoPercentageLabel.numberOfLines = 0;
@@ -264,8 +355,8 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     [self.dualBatteryBatteryOneBorderRectangle.trailingAnchor constraintEqualToAnchor:self.dualBatteryView.trailingAnchor].active = YES;
 
     self.dualBatteryBatteryOneBorderRectangle.backgroundColor = [UIColor clearColor];
-    self.dualBatteryBatteryOneBorderRectangle.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.dualBatteryBatteryOneBorderRectangle.layer.borderWidth = 2.0f;
+    self.dualBatteryBatteryOneBorderRectangle.layer.borderColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)].CGColor;
+    self.dualBatteryBatteryOneBorderRectangle.layer.borderWidth = self.view.frame.size.height * kBoxWidthToWidgetHeightRatio;
 
     self.dualBatteryBatteryTwoBorderRectangle = [[UIView alloc] init];
     [self.dualBatteryView addSubview:self.dualBatteryBatteryTwoBorderRectangle];
@@ -277,19 +368,19 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     [self.dualBatteryBatteryTwoBorderRectangle.trailingAnchor constraintEqualToAnchor:self.dualBatteryView.trailingAnchor].active = YES;
 
     self.dualBatteryBatteryTwoBorderRectangle.backgroundColor = [UIColor clearColor];
-    self.dualBatteryBatteryTwoBorderRectangle.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.dualBatteryBatteryTwoBorderRectangle.layer.borderWidth = 2.0f;
+    self.dualBatteryBatteryTwoBorderRectangle.layer.borderColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)].CGColor;
+    self.dualBatteryBatteryTwoBorderRectangle.layer.borderWidth = self.view.frame.size.height * kBoxWidthToWidgetHeightRatio;
 
     self.dualBatteryBatteryOneVoltageLabel = [[UILabel alloc] init];
     [self.dualBatteryView insertSubview:self.dualBatteryBatteryOneVoltageLabel aboveSubview:self.dualBatteryBatteryOneBorderRectangle];
     self.dualBatteryBatteryOneVoltageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.dualBatteryBatteryOneVoltageLabel.leadingAnchor constraintEqualToAnchor:self.dualBatteryBatteryOneBorderRectangle.leadingAnchor constant:1].active = YES;
-    [self.dualBatteryBatteryOneVoltageLabel.trailingAnchor constraintEqualToAnchor:self.dualBatteryBatteryOneBorderRectangle.trailingAnchor constant:-1].active = YES;
+    [self.dualBatteryBatteryOneVoltageLabel.widthAnchor constraintEqualToAnchor:self.dualBatteryBatteryOneBorderRectangle.widthAnchor multiplier:kVoltageLabelToBoxWidthRatio].active = YES;
+    [self.dualBatteryBatteryOneVoltageLabel.centerXAnchor constraintEqualToAnchor:self.dualBatteryBatteryOneBorderRectangle.centerXAnchor].active = YES;
     [self.dualBatteryBatteryOneVoltageLabel.topAnchor constraintEqualToAnchor:self.dualBatteryBatteryOneBorderRectangle.topAnchor constant:1].active = YES;
     [self.dualBatteryBatteryOneVoltageLabel.bottomAnchor constraintEqualToAnchor:self.dualBatteryBatteryOneBorderRectangle.bottomAnchor constant:-1].active = YES;
 
-    self.dualBatteryBatteryOneVoltageLabel.textColor = [UIColor whiteColor];
-    self.dualBatteryBatteryOneVoltageLabel.font = self.voltageFont;
+    self.dualBatteryBatteryOneVoltageLabel.textColor = [self.statusToVoltageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
+    self.dualBatteryBatteryOneVoltageLabel.font = self.voltageFontDual;
     self.dualBatteryBatteryOneVoltageLabel.textAlignment = NSTextAlignmentCenter;
     self.dualBatteryBatteryOneVoltageLabel.minimumScaleFactor = 0.1;
     self.dualBatteryBatteryOneVoltageLabel.adjustsFontSizeToFitWidth = YES;
@@ -299,13 +390,13 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     self.dualBatteryBatteryTwoVoltageLabel = [[UILabel alloc] init];
     [self.dualBatteryView insertSubview:self.dualBatteryBatteryTwoVoltageLabel aboveSubview:self.dualBatteryBatteryTwoBorderRectangle];
     self.dualBatteryBatteryTwoVoltageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.dualBatteryBatteryTwoVoltageLabel.leadingAnchor constraintEqualToAnchor:self.dualBatteryBatteryTwoBorderRectangle.leadingAnchor constant:1].active = YES;
-    [self.dualBatteryBatteryTwoVoltageLabel.trailingAnchor constraintEqualToAnchor:self.dualBatteryBatteryTwoBorderRectangle.trailingAnchor constant:-1].active = YES;
+    [self.dualBatteryBatteryTwoVoltageLabel.widthAnchor constraintEqualToAnchor:self.dualBatteryBatteryTwoBorderRectangle.widthAnchor multiplier:kVoltageLabelToBoxWidthRatio].active = YES;
+    [self.dualBatteryBatteryTwoVoltageLabel.centerXAnchor constraintEqualToAnchor:self.dualBatteryBatteryTwoBorderRectangle.centerXAnchor].active = YES;
     [self.dualBatteryBatteryTwoVoltageLabel.bottomAnchor constraintEqualToAnchor:self.dualBatteryBatteryTwoBorderRectangle.bottomAnchor constant:-1].active = YES;
     [self.dualBatteryBatteryTwoVoltageLabel.topAnchor constraintEqualToAnchor:self.dualBatteryBatteryTwoBorderRectangle.topAnchor constant:1].active = YES;
 
-    self.dualBatteryBatteryTwoVoltageLabel.textColor = [UIColor whiteColor];
-    self.dualBatteryBatteryTwoVoltageLabel.font = self.voltageFont;
+    self.dualBatteryBatteryTwoVoltageLabel.textColor = [self.statusToVoltageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
+    self.dualBatteryBatteryTwoVoltageLabel.font = self.voltageFontDual;
     self.dualBatteryBatteryTwoVoltageLabel.textAlignment = NSTextAlignmentCenter;
     self.dualBatteryBatteryTwoVoltageLabel.minimumScaleFactor = 0.1;
     self.dualBatteryBatteryTwoVoltageLabel.adjustsFontSizeToFitWidth = YES;
@@ -313,57 +404,42 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     self.dualBatteryBatteryTwoVoltageLabel.lineBreakMode = NSLineBreakByClipping;
 }
 
-- (void)updateDualBatteryView {
-    DUXBetaBatteryState *battery1State = [self.widgetModel.batteryInformation objectForKey:kDUXBetaBattery1Key];
-    DUXBetaBatteryState *battery2State = [self.widgetModel.batteryInformation objectForKey:kDUXBetaBattery2Key];
+- (void)updateDualBatteryView:(DUXDualBatteryState *)dualBatteryState {
+    self.dualBatteryImageView.image = [self currentIndicatorImageForDualBattery:dualBatteryState];
+    [self.dualBatteryImageView setTintColor:[self.imageTintMapping objectForKey:@(dualBatteryState.warningStatus)]];
+
+    self.dualBatteryBatteryOnePercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(dualBatteryState.warningStatus)];
+    self.dualBatteryBatteryTwoPercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(dualBatteryState.warningStatus)];
+    self.dualBatteryBatteryOneVoltageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(dualBatteryState.warningStatus)];
+    self.dualBatteryBatteryTwoVoltageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(dualBatteryState.warningStatus)];
+    self.dualBatteryBatteryOneBorderRectangle.layer.borderColor = [self.statusToVoltageColorMapping objectForKey:@(dualBatteryState.warningStatus)].CGColor;
+    self.dualBatteryBatteryTwoBorderRectangle.layer.borderColor = [self.statusToVoltageColorMapping objectForKey:@(dualBatteryState.warningStatus)].CGColor;
     
-    DUXBetaBatteryStatus worstStatus = [self worstBatteryStatusForBatteryStates:@[battery1State, battery2State]];
-    self.dualBatteryImageView.image = [self currentIndicatorImageForBatteryStates:@[battery1State,battery2State]];
-    
-    self.dualBatteryBatteryOnePercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(worstStatus)];
-    self.dualBatteryBatteryTwoPercentageLabel.textColor = [self.statusToColorMapping objectForKey:@(worstStatus)];
-    self.dualBatteryBatteryOneVoltageLabel.textColor = [self.statusToColorMapping objectForKey:@(worstStatus)];
-    self.dualBatteryBatteryTwoVoltageLabel.textColor = [self.statusToColorMapping objectForKey:@(worstStatus)];
-    self.dualBatteryBatteryOneBorderRectangle.layer.borderColor = [self.statusToColorMapping objectForKey:@(worstStatus)].CGColor;
-    self.dualBatteryBatteryTwoBorderRectangle.layer.borderColor = [self.statusToColorMapping objectForKey:@(worstStatus)].CGColor;
-    
-    if (worstStatus == DUXBetaBatteryStatusUnknown) {
+    if (dualBatteryState.warningStatus == DUXBetaBatteryStatusUnknown) {
         self.dualBatteryBatteryOnePercentageLabel.text = NSLocalizedString(@"N/A", @"Battery Icon Label");
         self.dualBatteryBatteryTwoPercentageLabel.text = NSLocalizedString(@"N/A", @"Battery Icon Label");
         self.dualBatteryBatteryOneVoltageLabel.text = NSLocalizedString(@"N/A", @"Battery Icon Label");
         self.dualBatteryBatteryTwoVoltageLabel.text = NSLocalizedString(@"N/A", @"Battery Icon Label");
     } else {
-        self.dualBatteryBatteryOnePercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", battery1State.batteryPercentage];
-        self.dualBatteryBatteryTwoPercentageLabel.text = [NSString stringWithFormat:@"%.0f%%",battery2State.batteryPercentage];
-        self.dualBatteryBatteryOneVoltageLabel.text = [NSString stringWithFormat:@"%.2fV",battery1State.voltage.doubleValue];
-        self.dualBatteryBatteryTwoVoltageLabel.text = [NSString stringWithFormat:@"%.2fV",battery2State.voltage.doubleValue];
+        self.dualBatteryBatteryOnePercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", dualBatteryState.batteryPercentage];
+        self.dualBatteryBatteryTwoPercentageLabel.text = [NSString stringWithFormat:@"%.0f%%", dualBatteryState.battery2Percentage];
+        self.dualBatteryBatteryOneVoltageLabel.text = [NSString stringWithFormat:@"%.2fV", dualBatteryState.voltage.doubleValue];
+        self.dualBatteryBatteryTwoVoltageLabel.text = [NSString stringWithFormat:@"%.2fV", dualBatteryState.battery2Voltage.doubleValue];
     }
     
-    self.dualBatteryBatteryOnePercentageLabel.font = [self.percentageFont fontWithSize:self.dualBatteryBatteryOnePercentageLabel.frame.size.height * self.percentageFont.pointSize/self.widgetSizeHint.minimumHeight];
-    self.dualBatteryBatteryTwoPercentageLabel.font = [self.percentageFont fontWithSize:self.dualBatteryBatteryTwoPercentageLabel.frame.size.height * self.percentageFont.pointSize/self.widgetSizeHint.minimumHeight];
+    self.dualBatteryBatteryOnePercentageLabel.font = [self.percentageFontDual fontWithSize:self.dualBatteryBatteryOnePercentageLabel.frame.size.height * self.percentageFontDual.pointSize/self.widgetSizeHint.minimumHeight];
+    self.dualBatteryBatteryTwoPercentageLabel.font = [self.percentageFontDual fontWithSize:self.dualBatteryBatteryTwoPercentageLabel.frame.size.height * self.percentageFontDual.pointSize/self.widgetSizeHint.minimumHeight];
     
-    self.dualBatteryBatteryOneVoltageLabel.font = [self.voltageFont fontWithSize:self.dualBatteryBatteryOneVoltageLabel.frame.size.height * self.voltageFont.pointSize/self.widgetSizeHint.minimumHeight];
-    self.dualBatteryBatteryTwoVoltageLabel.font = [self.voltageFont fontWithSize:self.dualBatteryBatteryTwoVoltageLabel.frame.size.height * self.voltageFont.pointSize/self.widgetSizeHint.minimumHeight];
+    self.dualBatteryBatteryOneVoltageLabel.font = [self.voltageFontDual fontWithSize:self.dualBatteryBatteryOneVoltageLabel.frame.size.height * self.voltageFontDual.pointSize/self.widgetSizeHint.minimumHeight];
+    self.dualBatteryBatteryTwoVoltageLabel.font = [self.voltageFontDual fontWithSize:self.dualBatteryBatteryTwoVoltageLabel.frame.size.height * self.voltageFontDual.pointSize/self.widgetSizeHint.minimumHeight];
     
-    self.dualBatteryBatteryOneBorderRectangle.layer.borderWidth = self.dualBatteryBatteryOneBorderRectangle.frame.size.height * 2.0f / self.widgetSizeHint.minimumHeight;
-    self.dualBatteryBatteryTwoBorderRectangle.layer.borderWidth = self.dualBatteryBatteryTwoBorderRectangle.frame.size.height * 2.0f / self.widgetSizeHint.minimumHeight;
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.widgetModel setup];    
-    BindRKVOModel(self.widgetModel, @selector(updateUI), batteryInformation);
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.widgetModel duxbeta_removeCustomObserver:self];
-    [self.widgetModel cleanup];
+    self.dualBatteryBatteryOneBorderRectangle.layer.borderWidth = self.view.frame.size.height * kBoxWidthToWidgetHeightRatio;
+    self.dualBatteryBatteryTwoBorderRectangle.layer.borderWidth = self.view.frame.size.height * kBoxWidthToWidgetHeightRatio;
 }
 
 - (void)updateUI {
-    if (self.widgetModel.batteryInformation.count == 2) {
+    if ([self.widgetModel.batteryState isMemberOfClass:[DUXDualBatteryState class]]) {
+        self.singleBatteryViewAspectRatioConstraint.active = NO;
         if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateSingleBattery) {
             self.widgetDisplayState = DUXBetaBatteryWidgetDisplayStateDualBattery;
             if ([self.delegate respondsToSelector:@selector(batteryWidgetChangedDisplayState:)]) {
@@ -375,8 +451,9 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
         }
         self.singleBatteryView.hidden = YES;
         self.dualBatteryView.hidden = NO;
-        [self updateDualBatteryView];
-    } else if (self.widgetModel.batteryInformation.count == 1 || self.widgetModel.batteryInformation.count == 0) {
+        [self updateDualBatteryView:(DUXDualBatteryState *)self.widgetModel.batteryState];
+    } else if ([self.widgetModel.batteryState isMemberOfClass:[DUXBetaBatteryState class]] || [self.widgetModel.batteryState isMemberOfClass:[DUXAggregateBatteryState class]]) {
+        self.singleBatteryViewAspectRatioConstraint.active = YES;
         if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
             self.widgetDisplayState = DUXBetaBatteryWidgetDisplayStateSingleBattery;
             if ([self.delegate respondsToSelector:@selector(batteryWidgetChangedDisplayState:)]) {
@@ -389,71 +466,85 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     }
 }
 
+- (void)widgetTapped {
+    [[DUXStateChangeBroadcaster instance] send:[DUXBatteryWidgetUIState widgetTap]];
+}
+
+- (void)sendIsProductConnected {
+    [[DUXStateChangeBroadcaster instance] send:[DUXBatteryWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+}
+
+- (void)sendBatteryStateUpdate {
+    [[DUXStateChangeBroadcaster instance] send:[DUXBatteryWidgetModelState batteryStateUpdate:self.widgetModel.batteryState]];
+}
+
 - (UIImage *)currentIndicatorImageForSingleBattery:(DUXBetaBatteryState *)state {
-    return [self.singleBatteryImageMapping objectForKey:@(state.state)];
+    UIImage* indicatorImage = [self.singleBatteryImageMapping objectForKey:@(state.warningStatus)];
+    return [indicatorImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
-- (UIImage *)currentIndicatorImageForBatteryStates:(NSArray <DUXBetaBatteryState *> *)states {
-    return [self.dualBatteryImageMapping objectForKey:@([self worstBatteryStatusForBatteryStates:states])];
-}
-
-- (DUXBetaBatteryStatus)worstBatteryStatusForBatteryStates:(NSArray <DUXBetaBatteryState *> *)states {
-    DUXBetaBatteryStatus worstStatusFound = DUXBetaBatteryStatusNormal;
-    for (DUXBetaBatteryState *state in states) {
-        if (state.state > worstStatusFound) {
-            worstStatusFound = state.state;
-        }
-    }
-    return worstStatusFound;
+- (UIImage *)currentIndicatorImageForDualBattery:(DUXBetaBatteryState *)state {
+    UIImage* indicatorImage = [self.dualBatteryImageMapping objectForKey:@(state.warningStatus)];
+    return [indicatorImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 - (void)setImage:(UIImage *)image forSingleBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
     [self.singleBatteryImageMapping setObject:image forKey:@(batteryStatus)];
-    if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
-        [self updateDualBatteryView];
-    } else {
-        [self updateSingleBatteryView];
-    }
+    [self updateCurrentBatteryView];
 }
 
 - (void)setImage:(UIImage *)image forDualBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
     [self.dualBatteryImageMapping setObject:image forKey:@(batteryStatus)];
+    [self updateCurrentBatteryView];
+}
+
+- (void)setVoltageColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
+    [self.statusToVoltageColorMapping setObject:color forKey:@(batteryStatus)];
+    [self updateCurrentBatteryView];
+}
+
+- (void)setPercentageColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
+    [self.statusToPercentageColorMapping setObject:color forKey:@(batteryStatus)];
+    [self updateCurrentBatteryView];
+}
+
+- (void)setPercentageFontSingle:(UIFont *)percentageFontSingle {
+    _percentageFontSingle = percentageFontSingle;
+    [self updateCurrentBatteryView];
+}
+
+- (void)setPercentageFontDual:(UIFont *)percentageFontDual {
+    _percentageFontDual = percentageFontDual;
+    [self updateCurrentBatteryView];
+}
+
+- (void)setVoltageFontDual:(UIFont *)voltageFontDual {
+    _voltageFontDual = voltageFontDual;
+    [self updateCurrentBatteryView];
+}
+
+- (void)setTintColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
+    [self.imageTintMapping setObject:color forKey:@(batteryStatus)];
+}
+
+- (UIColor *)getTintColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
+    return [self.imageTintMapping objectForKey:@(batteryStatus)];
+}
+
+- (void)updateCurrentBatteryView {
     if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
-        [self updateDualBatteryView];
+        [self updateDualBatteryView:(DUXDualBatteryState *)self.widgetModel.batteryState];
     } else {
         [self updateSingleBatteryView];
     }
 }
 
-- (void)setColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
-    [self.statusToColorMapping setObject:color forKey:@(batteryStatus)];
-    if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
-        [self updateDualBatteryView];
-    } else {
-        [self updateSingleBatteryView];
-    }
+- (UIColor *)getVoltageColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
+    return [self.statusToVoltageColorMapping objectForKey:@(batteryStatus)];
 }
 
-- (void)setPercentageFont:(UIFont *)percentageFont {
-    _percentageFont = percentageFont;
-    if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
-        [self updateDualBatteryView];
-    } else {
-        [self updateSingleBatteryView];
-    }
-}
-
-- (void)setVoltageFont:(UIFont *)voltageFont {
-    _voltageFont = voltageFont;
-    if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
-        [self updateDualBatteryView];
-    } else {
-        [self updateSingleBatteryView];
-    }
-}
-
-- (UIColor *)getColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
-    return [self.statusToColorMapping objectForKey:@(batteryStatus)];
+- (UIColor *)getPercentageColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
+    return [self.statusToPercentageColorMapping objectForKey:@(batteryStatus)];
 }
 
 - (UIImage *)getImageForSingleBatteryStatus:(DUXBetaBatteryStatus)batteryStatus {
@@ -464,14 +555,44 @@ static CGSize const kDesignSizeTwoBatteries = {88.0, 30.0};
     return [self.dualBatteryImageMapping objectForKey:@(batteryStatus)];
 }
 
+- (void)updateMinImageDimensions {
+    CGSize iconMaxSizeSingle = [self maxSizeInImageArray:[self.singleBatteryImageMapping allValues]];
+    CGFloat widgetWidthSingle = iconMaxSizeSingle.width / kSingleIconWidthToWidgetWidthRatio;
+    _minWidgetSizeSingleBattery = CGSizeMake(widgetWidthSingle, iconMaxSizeSingle.height);
+    
+    CGSize iconMaxSizeDual = [self maxSizeInImageArray:[self.dualBatteryImageMapping allValues]];
+    CGFloat widgetWidthDual = iconMaxSizeDual.width / kWidgetIconDualToWidgetWidthRatio;
+    _minWidgetSizeDualBattery = CGSizeMake(widgetWidthDual, iconMaxSizeDual.height / kDualAspectRatio);
+}
+
 - (DUXBetaWidgetSizeHint)widgetSizeHint {
     if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateSingleBattery) {
-        DUXBetaWidgetSizeHint hint = {kDesignSizeOneBattery.width / kDesignSizeOneBattery.height, kDesignSizeOneBattery.width, kDesignSizeOneBattery.height};
+        DUXBetaWidgetSizeHint hint = {self.minWidgetSizeSingleBattery.width / self.minWidgetSizeSingleBattery.height, self.minWidgetSizeSingleBattery.width, self.minWidgetSizeSingleBattery.height};
         return hint;
     } else {
-        DUXBetaWidgetSizeHint hint = {kDesignSizeTwoBatteries.width / kDesignSizeTwoBatteries.height, kDesignSizeTwoBatteries.width, kDesignSizeTwoBatteries.height};
+        DUXBetaWidgetSizeHint hint = {self.minWidgetSizeDualBattery.width / self.minWidgetSizeDualBattery.height, self.minWidgetSizeDualBattery.width, self.minWidgetSizeDualBattery.height};
         return hint;
     }
+}
+
+@end
+
+@implementation DUXBatteryWidgetUIState
+
++ (instancetype)widgetTap {
+    return [[DUXBatteryWidgetUIState alloc] initWithKey:@"widgetTap" number:@(0)];
+}
+
+@end
+
+@implementation DUXBatteryWidgetModelState
+
++ (instancetype)productConnected:(BOOL)isConnected {
+    return [[DUXBatteryWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+}
+
++ (instancetype)batteryStateUpdate:(DUXBetaBatteryState *)batteryState {
+    return [[DUXBatteryWidgetModelState alloc] initWithKey:@"batteryStateUpdate" object:batteryState];
 }
 
 @end

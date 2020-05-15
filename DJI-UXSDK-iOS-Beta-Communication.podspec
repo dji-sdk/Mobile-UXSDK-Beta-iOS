@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DJI-UXSDK-iOS-Beta-Communication'
-  s.version = '0.1.1'
+  s.version = '0.2'
   s.license = 'MIT'
   s.summary = 'Intra-framework, and system communication infrastructure for DJI iOS UX SDK.'
   s.homepage = 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS'
@@ -15,5 +15,4 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO', 'DEFINES_MODULE' => 'YES'}
   s.cocoapods_version = '>= 1.7.1'
   s.source_files = 'DJIUXSDKCommunication/**/*.{h,swift}'
-  s.public_header_files = 'DJIUXSDKCommunication/**/*.h'
 end

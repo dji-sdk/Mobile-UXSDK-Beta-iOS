@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -37,14 +37,25 @@
 
 @implementation DUXBetaBatteryState
 
-- (instancetype)initWithVoltage:(NSMeasurement *)voltage andBatteryPercentage:(float)batteryPercentage withWarningLevel:(DUXBetaBatteryStatus)state {
+- (instancetype)initWithVoltage:(NSMeasurement *)voltage andBatteryPercentage:(float)batteryPercentage withWarningLevel:(DUXBetaBatteryStatus)warningStatus {
     self = [super init];
     if (self) {
         _voltage = voltage;
         _batteryPercentage = batteryPercentage;
-        _state = state;
+        _warningStatus = warningStatus;
     }
     return self;
 }
+
+@end
+
+@implementation DUXDualBatteryState
+
+@synthesize battery2Voltage;
+@synthesize battery2Percentage;
+
+@end
+
+@implementation DUXAggregateBatteryState
 
 @end

@@ -3,9 +3,9 @@
 //  DJIUXSDK
 //
 //  MIT License
-//  
-//  Copyright © 2018-2019 DJI
-//  
+//
+//  Copyright © 2018-2020 DJI
+//
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -23,15 +23,23 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//  
+//
 
 #import "DUXBetaBaseWidget.h"
 
 @interface DUXBetaBaseWidget ()
 
+@property (nonatomic, strong) NSString *widgetID;
+
 @end
 
 @implementation DUXBetaBaseWidget
+
+- (instancetype) init {
+    self = [super init];
+    [self setIdentifier:NSStringFromClass([self class])]; // Dispatch in case somebody overrides the setWidgetIdentifier in a subclass
+    return self;
+}
 
 - (DUXBetaWidgetSizeHint)widgetSizeHint {
     DUXBetaWidgetSizeHint hint = {CGFLOAT_MAX, CGFLOAT_MIN, CGFLOAT_MIN};
@@ -52,7 +60,7 @@
     [self willMoveToParentViewController:viewController];
     if (viewController && subview) {
         [viewController addChildViewController:self];
-        [viewController.view addSubview:self.view];
+        [subview addSubview:self.view];
     } else {
         [self removeFromParentViewController];
         [self.view removeFromSuperview];
@@ -61,7 +69,40 @@
 }
 
 - (void)layoutWidgetInView:(UIView *)view {
-    // To be
+    // TODO 
+}
+
+- (NSString*)widgetTitle {
+    return nil;
+}
+
+- (UIImage*)widgetIcon {
+    return nil;
+}
+
+#pragma mark - Identification Methods
+
+- (void)setIdentifier:(NSString*) identifier {
+    _widgetID = identifier;
+}
+
+- (NSString*)identifier {
+    return _widgetID;
+}
+
+#pragma mark - Utility Methods
+
+- (CGSize)maxSizeInImageArray:(NSArray *)inputArray{
+    CGSize containingSize = CGSizeZero;
+    for (UIImage *anImage in inputArray) {
+        if (anImage.size.width > containingSize.width) {
+            containingSize.width = anImage.size.width;
+        }
+        if (anImage.size.height > containingSize.height) {
+            containingSize.height = anImage.size.height;
+        }
+    }
+    return containingSize;
 }
 
 @end

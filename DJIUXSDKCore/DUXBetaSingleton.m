@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,7 @@
 
 + (nonnull instancetype)sharedSingleton;
 
+@property (nonatomic, strong, nonnull, readonly) id <ObservableKeyedStore> observableInMemoryKeyedStore;
 @property (nonatomic, strong, nonnull, readwrite) id <GlobalPreferences> globalPreferences;
 
 @end
@@ -53,10 +54,15 @@
     self = [super init];
     
     if (self) {
+        _observableInMemoryKeyedStore = [[ObservableInMemoryKeyedStore alloc] init];
         _globalPreferences = [[DefaultGlobalPreferences alloc] init];
     }
     
     return self;
+}
+
++ (id <ObservableKeyedStore>)sharedObservableInMemoryKeyedStore {
+    return [[self sharedSingleton] observableInMemoryKeyedStore];
 }
 
 + (id <GlobalPreferences>)sharedGlobalPreferences {

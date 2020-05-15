@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -80,21 +80,27 @@ static CGSize const kDesignSize = {200.0, 200.0};
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.widgetModel = [[DUXBetaMapWidgetModel alloc] init];
+    [self.widgetModel setup];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.widgetModel setup];
+    
     BindRKVOModel(self.widgetModel, @selector(updateHomeLocation), homeLocation);
     BindRKVOModel(self.widgetModel, @selector(updateAircraftLocation), aircraftLocation);
     BindRKVOModel(self.widgetModel, @selector(updateAircraftHeading), attitude);
     BindRKVOModel(self.widgetModel, @selector(updateIsHomeLocationSet), isHomeLocationSet);
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.widgetModel duxbeta_removeCustomObserver:self];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    UnBindRKVOModel(self.widgetModel);
+}
+
+- (void)dealloc {
     [self.widgetModel cleanup];
 }
 
@@ -829,7 +835,7 @@ static CGSize const kDesignSize = {200.0, 200.0};
 }
 
 /*********************************************************************************/
-#pragma mark - DUXBetaFlyZoneDataProviderDelegate
+#pragma mark - DUXFlyZoneDataProviderDelegate
 /*********************************************************************************/
 
 - (void)flyZoneDataProvider:(nonnull DUXBetaFlyZoneDataProvider *)flyZoneDataProvider didUpdateFlyZones:(nonnull NSDictionary <NSString *, DJIFlyZoneInformation *> *)flyZones {

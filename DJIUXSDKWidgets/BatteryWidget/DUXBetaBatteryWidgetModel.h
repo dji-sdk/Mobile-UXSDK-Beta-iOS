@@ -1,10 +1,10 @@
 //
-//  DUXBetaBatteryWidgetModel.h
+//  DUXBatteryWidgetModel.h
 //  DJIUXSDK
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,17 +26,13 @@
 //  
 
 #import <DJIUXSDKWidgets/DUXBetaBaseWidgetModel.h>
-#import "DUXBetaBatteryState.h"
-
-extern NSString * _Nonnull const kDUXBetaBattery1Key;
-extern NSString * _Nonnull const kDUXBetaBattery2Key;
-extern NSString * _Nonnull const kDUXBetaBatteryAggregationKey;
+@class DUXBetaBatteryState;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DUXBetaBatteryWidgetModel : DUXBetaBaseWidgetModel
 
-@property (strong, nonatomic, readonly)  NSDictionary <NSString *, DUXBetaBatteryState *> *batteryInformation;
+@property (strong, nonatomic, readonly) DUXBetaBatteryState *batteryState;
 
 @end
 

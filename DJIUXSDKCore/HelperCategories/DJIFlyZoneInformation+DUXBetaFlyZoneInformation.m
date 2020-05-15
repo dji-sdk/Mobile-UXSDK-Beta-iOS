@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -35,9 +35,9 @@
         return NO;
     } else {
         // Test server vs production server have different date formats, so we try both!
-        NSDate *unlockEndDateTime = [[NSDateFormatter dji_utcDateFormatter] dateFromString:self.unlockEndTime];
+        NSDate *unlockEndDateTime = [[NSDateFormatter duxbeta_utcDateFormatter] dateFromString:self.unlockEndTime];
         if (!unlockEndDateTime) {
-            unlockEndDateTime = [[NSDateFormatter dji_utcAlternateDateFormatter] dateFromString:self.unlockEndTime];
+            unlockEndDateTime = [[NSDateFormatter duxbeta_utcAlternateDateFormatter] dateFromString:self.unlockEndTime];
         }
         
         if ([[NSDate date] compare:unlockEndDateTime] == NSOrderedDescending) {

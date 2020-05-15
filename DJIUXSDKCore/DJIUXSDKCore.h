@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -50,3 +50,12 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKCoreVersionString[];
 #import <DJIUXSDKCore/NSObject+DUXBetaCommand.h>
 #import <DJIUXSDKCore/NSObject+DUXBetaMapping.h>
 #import <DJIUXSDKCore/NSObject+DUXBetaRKVOExtension.h>
+
+#import <DJIUXSDKCore/NSDateFormatter+DUXBetaDateFormatter.h>
+
+#import <DJIUXSDKCore/DUXBetaWarningMessage.h>
+#import <DJIUXSDKCore/DUXBetaVoiceNotification.h>
+
+#import <DJIUXSDKCore/DUXStateChangeBroadcaster.h>
+
+#import <DJIUXSDKCore/NSObject+BetaSwiftHelpers.h>

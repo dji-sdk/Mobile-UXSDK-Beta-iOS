@@ -1,10 +1,10 @@
 //
-//  DUXBetaBaseWidgetViewModel.h
+//  DUXBetaBaseWidgetModel.h
 //  DJIUXSDK
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -40,11 +40,13 @@ typedef NS_ENUM(NSUInteger, DUXBetaUnitSystem) {
 // Changes how the widget model returns values.
 @property (assign, nonatomic) DUXBetaUnitSystem unitSystem;
 
-@property (assign, nonatomic, readonly) BOOL isFlightControllerConnected;
+@property (assign, nonatomic, readonly) BOOL isProductConnected;
 
 - (void)setup;
+- (void)inSetup;
 
 - (void)cleanup;
+- (void)inCleanup;
 
 @end
 

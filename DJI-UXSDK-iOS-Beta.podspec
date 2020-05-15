@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DJI-UXSDK-iOS-Beta'
-  s.version = '0.1.1'
+  s.version = '0.2'
   s.license = 'MIT'
   s.summary = 'DJI iOS UX SDK'
   s.homepage = 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS'
@@ -11,10 +11,10 @@ Pod::Spec.new do |s|
   s.module_name = 'DJIUXSDKBeta'
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC -all_load' } 
   s.source = { :git => 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS.git', :tag => s.version.to_s }
-  s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO', 'DEFINES_MODULE' => 'YES', 'SWIFT_OBJC_BRIDGING_HEADER' => '$(PODS_TARGET_SRCROOT)/'}
+  s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO', 'DEFINES_MODULE' => 'YES'}
   s.cocoapods_version = '>= 1.7.1'
-  s.source_files = 'DJIUXSDKBeta/**/*.{h,m}'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Core', '0.1.1'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.1.1'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Widgets', '0.1.1'
+  s.source_files = 'DJIUXSDKBeta/**/*.{h,m,swift}'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Core', '0.2'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Communication', '0.2'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Widgets', '0.2'
 end

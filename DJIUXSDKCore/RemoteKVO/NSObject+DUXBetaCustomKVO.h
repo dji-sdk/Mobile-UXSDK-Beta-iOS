@@ -3,7 +3,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 #import <DJIUXSDKCore/DUXBetaCustomValueConfirmation.h>
 
 /**
- *  Those KVO method would be release automatic, no need to warry about that.
+ *  Those KVO method would be release automatic, no need to worry about that.
  */
 @interface NSObject (DUXBetaCustomKVO)
 

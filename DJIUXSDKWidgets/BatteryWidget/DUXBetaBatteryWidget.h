@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,8 @@
 //  
 
 #import <DJIUXSDKWidgets/DUXBetaBaseWidget.h>
-#import "DUXBetaBatteryWidgetModel.h"
+#import "DUXBetaBatteryState.h"
+@class DUXBetaBatteryWidgetModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -67,7 +68,7 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryWidgetDisplayState) {
 @interface DUXBetaBatteryWidget : DUXBetaBaseWidget
 
 /**
- *  The widget model that the battery widget receives it's information from.
+ *  The widget model that the battery widget receives its information from.
  */
 @property (nonatomic, strong) DUXBetaBatteryWidgetModel *widgetModel;
 
@@ -77,27 +78,42 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryWidgetDisplayState) {
 @property (nonatomic, weak) id<DUXBetaBatteryWidgetDelegate> delegate;
 
 /**
- *  The current state of the widget.  This will either be `DUXBetaBatteryWidgetDisplayStateSingleBattery` or `DUXBetaBatteryWidgetDisplayStateDualBattery`
+ *  The current state of the widget.  This will either be `DUXBetaBatteryWidgetDisplayStateSingleBattery` or `DUXBetaBatteryWidgetDisplayStateDualBattery`.
  */
 @property (nonatomic, readonly) DUXBetaBatteryWidgetDisplayState widgetDisplayState;
 
 /**
- *  Updates the color of the battery widget for the desired battery status.
+ *  Set the color of the battery widget voltage text for the desired battery status.
+ *
+ *  @param color The desired color.
+ *  @param batteryStatus The battery status to set the color for.
+ */
+- (void)setVoltageColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
+
+/**
+ *  Set the color of the battery widget percentage text for the desired battery status.
  *
  *  @param color The desired color.
  *  @param batteryStatus The battery status to change the color for.
  */
-- (void)setColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
+- (void)setPercentageColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
+
+/**
+ *  Get the color of the battery widget percentage text for the desired battery status.
+ *
+ *  @param batteryStatus The battery status to get the color of the percentage text for.
+*/
+- (UIColor *)getPercentageColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
 
 /**
  *  Get the current color for the desired battery status.
  *
  *  @param batteryStatus The battery status to get the color for.
  */
-- (UIColor *)getColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
+- (UIColor *)getVoltageColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
 
 /**
- *  Updates the image of the battery widget when it is displaying a single battery's information.
+ *  Set the image of the battery widget when it is displaying a single battery's information.
  *
  *  @param image The desired image.
  *  @param batteryStatus The battery status to change the color for.
@@ -112,7 +128,7 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryWidgetDisplayState) {
 - (UIImage *)getImageForSingleBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
 
 /**
- *  Updates the image of the battery widget when it is displaying dual battery information.
+ *  Set the image of the battery widget when it is displaying dual battery information.
  *
  *  @param image The desired image.
  *  @param batteryStatus The battery status to change the color for.
@@ -127,14 +143,33 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryWidgetDisplayState) {
 - (UIImage *)getImageForDualBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
 
 /**
- *  The font for the battery percentage.
- */
-@property (nonatomic, strong) UIFont *percentageFont;
+ *  Set the tint color for the widget icon for a particular battery status.
+ *
+ *  @param batteryStatus The battery status to set the  color for.
+*/
+- (void)setTintColor:(UIColor *)color forBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
 
 /**
- *  The font for the battery voltage.
+ *  Get the tint color for the widget icon for a particular battery status.
+ *
+ *  @param batteryStatus The battery status to get the color for.
+*/
+- (UIColor *)getTintColorForBatteryStatus:(DUXBetaBatteryStatus)batteryStatus;
+
+/**
+ *  The font for the battery percentage in single battery state.
  */
-@property (nonatomic, strong) UIFont *voltageFont;
+@property (nonatomic, strong) UIFont *percentageFontSingle;
+
+/**
+ *  The font for the battery percentage in dual battery state.
+ */
+@property (nonatomic, strong) UIFont *percentageFontDual;
+
+/**
+ *  The font for the battery voltage in dual battery state.
+ */
+@property (nonatomic, strong) UIFont *voltageFontDual;
 
 @end
 

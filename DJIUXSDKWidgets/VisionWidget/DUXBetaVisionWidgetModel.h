@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -33,18 +33,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef NS_ENUM(NSUInteger, DUXBetaVisionStatus) {
     //Collision avoidance is enabled
-    DUXBetaVisionStatusEnabled = 0,
+    DUXBetaVisionStatusNormal = 0,
     //Collision avoidance is enabled, but flight mode does not support vision system
     DUXBetaVisionStatusDisabled,
-    //Left, right, nose, and tail sensors are all enabled for Mavic 2
-    DUXBetaVisionStatusObstacleAvoidanceAllSensorsEnabled,
-    //Left and right sensors are disabled for Mavic 2
-    DUXBetaVisionStatusObstacleAvoidanceLeftRightSensorsDisabled,
-    //All sensors are disabled for Mavic 2
-    DUXBetaVisionStatusObstacleAvoidanceAllSensorsDisabled,
-    //Collision avoidance is disabled
+    //Collision avoidance is disabled by user
     DUXBetaVisionStatusClosed,
-    //Vision Status is enabled with no errors or warnings
+    //Left, right, nose, and tail sensors are all enabled for Mavic 2, M300
+    DUXBetaVisionStatusOmniAll,
+    //Left and right sensors are disabled for Mavic 2
+    DUXBetaVisionStatusOmniFrontBack,
+    //Collision avoidance is only active upwards and downwards for M300
+    DUXBetaVisionStatusOmniVertical,
+    //Collision avoidance is only active forwards, backwards, left and right for M300
+    DUXBetaVisionStatusOmniHorizontal,
+    //All sensors are disabled for Mavic 2, M300
+    DUXBetaVisionStatusOmniDisabled,
+    //Collision avoidance is disabled by user for Mavic 2, M300
+    DUXBetaVisionStatusOmniClosed,
+    //Vision Status is unknown
     DUXBetaVisionStatusUnknown
 };
 
@@ -53,7 +59,11 @@ typedef NS_ENUM(NSUInteger, DUXBetaVisionStatus) {
 /**
  *  The current vision status of the aircraft
  */
-@property (assign, nonatomic, readonly) DUXBetaVisionStatus visionStatus;
+@property (nonatomic, readonly) DUXBetaVisionStatus visionSystemStatus;
+@property (nonatomic, readonly) BOOL currentAircraftSupportVision;
+@property (nonatomic, readonly) BOOL isCollisionAvoidanceEnabled;
+
+- (void)sendWarningMessageWithReason:(NSString *)reason andSolution:(NSString *)solution;
 
 @end
 

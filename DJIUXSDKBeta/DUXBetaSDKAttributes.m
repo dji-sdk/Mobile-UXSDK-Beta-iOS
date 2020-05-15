@@ -1,11 +1,11 @@
 //
-//  DUXBetaSample.m
+//  DUXBetaSDKAttributes.m
 //  DJIUXSDK
 //
 //  MIT License
-//  
+//
 //  Copyright © 2018-2019 DJI
-//  
+//
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -39,17 +39,24 @@
 
 + (nonnull NSArray <NSString *> *)availableWidgets {
     return @[
+        @"AirSense Widget",
         @"Altitude Widget",
         @"Battery Widget",
         @"Compass Widget",
+        @"Connection Widget",
         @"Dashboard Widget",
-        @"Home Distance Widget",
-        @"Horizontal Velocity Widget",
+        @"Flight Mode Widget",
+        @"FPV Widget",
+        @"GPS Signal Widget",
         @"Map Widget",
-        @"RC Distance Widget",
-        @"Vertical Velocity Widget",
+        @"Remaining Flight Time Widget",
+        @"Remote Control Signal Widget",
+        @"Simulator Indicator Widget",
+        @"System Status Widget",
+        @"System Status List Widget",
+        @"Video Signal Widget",
         @"Vision Widget",
-        @"VPS Widget",
+        @"Top Bar Panel Widget"
     ];
 }
 

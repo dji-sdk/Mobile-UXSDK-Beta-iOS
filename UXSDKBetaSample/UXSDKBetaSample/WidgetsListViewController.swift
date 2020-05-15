@@ -2,7 +2,7 @@
 //  WidgetsListViewController.swift
 //  DJIUXSDK
 //
-// Copyright © 2018-2019 DJI
+// Copyright © 2018-2020 DJI
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,18 +35,33 @@ class WidgetsListViewController: UITableViewController {
     weak var delegate: WidgetSelectionDelegate?
     
     static let widgetDescriptions:[String:String] = [
-                                                    "Map Widget":"Widget that displays the aircraft's state and information on the map this includes aircraft location, home location, aircraft trail path, aircraft heading, and No Fly Zones.",
+                                                    "AirSense Widget" : "Widget that indicates danger level posed by manned aircraft according to ADSB signals received.",
+                                                    "Altitude Widget" : "Widget that shows the current altitude of the aircraft.",
                                                     "Battery Widget" : "Widget that displays aircraft battery level.",
-                                                    "Compass Widget" : "Displays the position of the aircraft in relation to the home point and pilot location.",
+                                                    "Compass Widget" : "Widget that displays the position of the aircraft in relation to the home point and pilot location.",
+                                                    "Connection Widget" : "Widget that reflects the connected to aircraft state.",
                                                     "Dashboard Widget" : "Compound widget that aggregates important information about the aircraft into a dashboard.",
-                                                    "Vision Widget" : "Widget to display the vision status/collision avodance status, of the aircraft. It's state depends on sensors availability, flight mode, and aircraft type.",
+                                                    "Flight Mode Widget" : "Widget to show the current flight mode of the aircraft.",
+                                                    "FPV Widget" : "Widget that shows the video feed from the camera.",
+                                                    "GPS Signal Widget" : "Widget that displays the drone's connection strength to GPS.",
+                                                    "Map Widget" : "Widget that displays the aircraft's state and information on the map this includes aircraft location, home location, aircraft trail path, aircraft heading, and No Fly Zones.",
+                                                    "Remaining Flight Time Widget" : "Widget that shows the remaining flight time information for the aircraft.",
+                                                    "Remote Control Signal Widget" : "Widget that displays the drone's connection strength with the remote controller.",
+                                                    "Simulator Indicator Widget" : "Widget that displays the state of the simulator indicator.",
+                                                    "System Status Widget" : "Widget that displays a string message indicating the system status of the aircraft.",
+                                                    "System Status List Widget" : "Composed widget used to construct and display a standardized system status list.",
+                                                    "Video Signal Widget" : "Widget that displays the incoming video strength from the aircraft",
+                                                    "Vision Widget" : "Widget to display the vision status/collision avoidance status of the aircraft. Its state depends on sensors availability, flight mode, and aircraft type.",
+                                                    "Top Bar Panel" : "Composed widget that acts as the container for the top bar widgets."
     ]
     
     static var widgetClosures: [() -> DUXBetaBaseWidget] {
-        let mapWidgetClosure: () -> DUXBetaBaseWidget = {
-            let mapWidget = DUXBetaMapWidget()
-            mapWidget.showFlyZoneLegend = false
-            return mapWidget
+        let airSenseWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaAirSenseWidget()
+        }
+        
+        let altitudeWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaAltitudeWidget()
         }
         
         let batteryWidgetClosure: () -> DUXBetaBaseWidget = {
@@ -57,31 +72,106 @@ class WidgetsListViewController: UITableViewController {
             return DUXBetaCompassWidget()
         }
         
+        let connectionWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaConnectionWidget()
+        }
+        
         let dashboardWidgetClosure: () -> DUXBetaBaseWidget = {
             return DUXBetaDashboardWidget()
+        }
+        
+        let flightModeWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaFlightModeWidget()
+        }
+        
+        let fpvWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaFPVWidget()
+        }
+        
+        let gpsSignalWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaGPSSignalWidget()
+        }
+        
+        let mapWidgetClosure: () -> DUXBetaBaseWidget = {
+            let mapWidget = DUXBetaMapWidget()
+            mapWidget.showFlyZoneLegend = false
+            return mapWidget
+        }
+        
+        let remainingFlightTimeWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaRemainingFlightTimeWidget()
+        }
+        
+        let remoteControlSignalWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaRemoteControllerSignalWidget()
+        }
+        
+        let simulatorIndicatorWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaSimulatorIndicatorWidget()
+        }
+        
+        let systemStatusWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaSystemStatusWidget()
+        }
+        
+        let systemStatusPanelWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXSystemStatusListWidget()
+        }
+        
+        let videoSignalWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaVideoSignalWidget()
         }
         
         let visionWidgetClosure: () -> DUXBetaBaseWidget = {
             return DUXBetaVisionWidget()
         }
         
+        let topBarWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXTopBarWidget()
+        }
+        
         return [
-            mapWidgetClosure,
+            airSenseWidgetClosure,
+            altitudeWidgetClosure,
             batteryWidgetClosure,
             compassWidgetClosure,
+            connectionWidgetClosure,
             dashboardWidgetClosure,
-            visionWidgetClosure
+            flightModeWidgetClosure,
+            fpvWidgetClosure,
+            gpsSignalWidgetClosure,
+            mapWidgetClosure,
+            remainingFlightTimeWidgetClosure,
+            remoteControlSignalWidgetClosure,
+            simulatorIndicatorWidgetClosure,
+            systemStatusWidgetClosure,
+            systemStatusPanelWidgetClosure,
+            videoSignalWidgetClosure,
+            visionWidgetClosure,
+            topBarWidgetClosure
         ]
     }
     
     static let widgetMetadata:[(String, Bool)] = [
-        ("Map Widget", true),
+        ("AirSense Widget", false),
+        ("Altitude Widget", false),
         ("Battery Widget", false),
         ("Compass Widget", false),
+        ("Connection Widget", false),
         ("Dashboard Widget", false),
-        ("Vision Widget", false)
+        ("Flight Mode Widget", false),
+        ("FPV Widget", false),
+        ("GPS Signal Widget", false),
+        ("Map Widget", true),
+        ("Remaining Flight Time Widget", false),
+        ("Remote Control Signal Widget", false),
+        ("Simulator Indicator Widget", false),
+        ("System Status Widget", false),
+        ("System Status List Widget", false),
+        ("Video Signal Widget", false),
+        ("Vision Widget", false),
+        ("Top Bar Panel Widget", false)
     ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +193,6 @@ class WidgetsListViewController: UITableViewController {
             singleWidgetViewController.title = title
             singleWidgetViewController.widgetDescriptionLabel.text = WidgetsListViewController.widgetDescriptions[title]
             splitViewController?.showDetailViewController(singleWidgetViewController, sender: nil)
-            
         }
     }
     
@@ -118,5 +207,4 @@ class WidgetsListViewController: UITableViewController {
         cell.textLabel?.text = title
         return cell
     }
-    
 }

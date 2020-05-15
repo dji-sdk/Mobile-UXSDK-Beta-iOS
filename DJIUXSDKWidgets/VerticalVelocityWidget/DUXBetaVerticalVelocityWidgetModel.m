@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -64,7 +64,7 @@
     UnBindRKVOModel(self);
 }
 
-- (void) updateVelocityVector {
+- (void)updateVelocityVector {
     if (self.velocityVector == nil) { return; }
     NSMeasurement *verticalVelocity = [[NSMeasurement alloc] initWithDoubleValue:self.velocityVector.z * -1 unit: NSUnitLength.meters];
     self.verticalVelocity = [verticalVelocity measurementByConvertingToUnit: self.verticalVelocityUnits];

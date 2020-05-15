@@ -2,9 +2,7 @@
 //  NSObject+DUXBetaRKVOExtension.h
 //  DJIUXSDK
 //
-//  MIT License
-//
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +22,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-
 
 #import <Foundation/Foundation.h>
 
@@ -79,6 +76,11 @@ typeof(__target__) __id_temp_target__ = __target__; \
  */
 
 @interface NSObject (DUXBetaRKVOExtension)
+
+/**
+ *  Bind a target and its 'property' keyPaths to a selector. This property updates the selector  will be called.
+*/
+- (void)duxbeta_bindRKVOWithTarget:(id)target selector:(SEL)selector property:(NSString *)property;
 
 /**
  *  Bind a target and it's properties' keyPaths to a selector.  Anytime one of the properties updates the selector

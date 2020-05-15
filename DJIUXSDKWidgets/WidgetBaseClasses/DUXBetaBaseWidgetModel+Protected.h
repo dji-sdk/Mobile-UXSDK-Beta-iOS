@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -38,15 +38,14 @@ typedef NS_ENUM(NSUInteger, DUXBetaVMState) {
     DUXBetaVMStateCleanedUp,
 }; 
 
-
 @interface DUXBetaBaseWidgetModel ()
 
 @property (nonatomic, weak) id<DUXBetaKeyInterfaces> handler;
 @property (nonatomic) DUXBetaVMState vmState;
 
 // Methods to be overriden
--(void)inSetup;
--(void)inCleanup;
+- (void)inSetup;
+- (void)inCleanup;
 
 @end
 

@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@
 
 @interface DUXBetaBaseWidgetModel ()
 
-@property (assign, nonatomic, readwrite) BOOL isFlightControllerConnected;
+@property (assign, nonatomic, readwrite) BOOL isProductConnected;
 
 @end
 
@@ -43,17 +43,17 @@
     if (self = [super init]) {
         _unitSystem = [[self class] preferredUnitSystem];
         _vmState = DUXBetaVMStateCreated;
-        _isFlightControllerConnected = NO;
+        _isProductConnected = NO;
     }
     return self;
 }
 
 + (DUXBetaUnitSystem)preferredUnitSystem {
-    DUXBetaMeasureUnitType measureUnitType = [[DUXBetaSingleton sharedGlobalPreferences] measureUnitType];
-    if (measureUnitType == DUXBetaMeasureUnitTypeUnknown) {
+    DUXMeasureUnitType measureUnitType = [[DUXBetaSingleton sharedGlobalPreferences] measureUnitType];
+    if (measureUnitType == DUXMeasureUnitTypeUnknown) {
         return DUXBetaUnitSystemMetric;
     } else {
-        if (measureUnitType == DUXBetaMeasureUnitTypeImperial) {
+        if (measureUnitType == DUXMeasureUnitTypeImperial) {
             return DUXBetaUnitSystemImperial;
         } else {
             return DUXBetaUnitSystemMetric;
@@ -71,8 +71,8 @@
 
     self.vmState = DUXBetaVMStateSettingUp;
     _handler = [[DUXBetaKeyInterfaceAdapter sharedInstance] getHandler];
+    BindSDKKey([DJIFlightControllerKey keyWithParam:DJIParamConnection], isProductConnected);
     [self inSetup];
-    BindSDKKey([DJIFlightControllerKey keyWithParam:DJIParamConnection], isFlightControllerConnected);
     self.vmState = DUXBetaVMStateSetUp;
     [self postSetup];
 }
