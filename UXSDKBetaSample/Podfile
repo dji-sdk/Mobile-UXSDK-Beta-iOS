@@ -1,7 +1,3 @@
-source 'ssh://git@us003.fly-access.com:7999/msdk/ios-internal-cocoapods-specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
-
-
 platform :ios, '11.0'
 
 target 'UXSDKBetaSample' do
