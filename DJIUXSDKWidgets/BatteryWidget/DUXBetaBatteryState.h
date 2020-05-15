@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  An enum describing the different possible states of the battery.  They are ordered from least important to most important.
  */
+
 typedef NS_ENUM(NSUInteger, DUXBetaBatteryStatus) {
     /**
      *  The battery state is normal
@@ -86,7 +87,18 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryStatus) {
 /**
  *  The battery's state.
  */
-@property (nonatomic, readonly) DUXBetaBatteryStatus state;
+@property (nonatomic, readonly) DUXBetaBatteryStatus warningStatus;
+
+@end
+
+@interface DUXDualBatteryState : DUXBetaBatteryState
+
+@property (nonatomic) float battery2Percentage;
+@property (strong, nonatomic) NSMeasurement *battery2Voltage;
+
+@end
+
+@interface DUXAggregateBatteryState : DUXBetaBatteryState
 
 @end
 

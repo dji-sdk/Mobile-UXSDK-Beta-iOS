@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 /**
- * Shows the current altitude of the aircraft.
+ * Widget to show the current altitude of the aircraft.
  * Uses the unit set in the global preferences and defaults to meters.
  */
 @interface DUXBetaAltitudeWidget : DUXBetaBaseWidget

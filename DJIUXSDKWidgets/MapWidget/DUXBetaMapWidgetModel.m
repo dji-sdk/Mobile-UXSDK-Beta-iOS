@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -56,13 +56,10 @@
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamAircraftLocation],aircraftLocation);
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamHomeLocation],homeLocation);
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamIsHomeLocationSet],isHomeLocationSet);
-    //TODO Add this once we figure out our communication system for UXSDK
-    //[DUXBetaKey keyWithParam:DUXBetaParamUserAccountState]
 }
 
 - (void)inCleanup {
     UnBindSDK;
-    UnBindRKVOModel(self);
 }
 
 @end

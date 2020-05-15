@@ -2,7 +2,7 @@
 //  ProductCommunicationService.swift
 //  DJIUXSDK
 //
-// Copyright © 2018-2019 DJI
+// Copyright © 2018-2020 DJI
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,7 @@
 
 import UIKit
 import DJISDK
-
-//
-//  ProductCommunicationService.swift
-//  UXSDK Sample
-//
-//  Copyright © 2016 DJI. All rights reserved.
-//
-
-import UIKit
-import DJISDK
+import DJIUXSDKBeta
 
 let ProductCommunicationServiceStateDidChange = "ProductCommunicationServiceStateDidChange"
 

@@ -2,9 +2,7 @@
 //  NSObject+DUXBetaRKVOExtension.m
 //  DJIUXSDK
 //
-//  MIT License
-//
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -46,6 +44,33 @@ typedef void(^DUXBetaObjectRKVOBindUpdateBlock)(id target , id _Nullable oldValu
         block(target,oldValue,newValue);
     }];
     block(target,[self valueForKeyPath:key],[self valueForKeyPath:key]);
+}
+
+- (void)duxbeta_bindRKVOWithTarget:(id)target selector:(SEL)selector property:(NSString *)property {
+    if (property) {
+        [self setupRKVOKey:property target:target updateBlock:^(id target, id  _Nullable oldValue, id  _Nullable newValue) {
+            if ([target respondsToSelector:selector]) {
+                NSMethodSignature* methodSignature = [[target class] instanceMethodSignatureForSelector:selector];
+                NSUInteger argumentNum = [methodSignature numberOfArguments];
+                if (argumentNum == 2) {
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [target performSelector:selector];
+    #pragma clang diagnostic pop
+                }
+                else {
+                    DUXBetaRKVOTransform* transform = [[DUXBetaRKVOTransform alloc] init];
+                    transform.keyPath = property;
+                    transform.oldValue = oldValue;
+                    transform.updatedValue = newValue;
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [target performSelector:selector withObject:transform];
+    #pragma clang diagnostic pop
+                }
+            }
+        }];
+    }
 }
 
 - (void)duxbeta_bindRKVOWithTarget:(id)target selector:(SEL)selector properties:(NSString *)properties, ... NS_REQUIRES_NIL_TERMINATION {

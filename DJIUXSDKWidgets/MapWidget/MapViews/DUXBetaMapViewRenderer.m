@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -270,7 +270,7 @@ static NSString * const DUXBetaMapViewRendererGeoZoneAnnotationReuseIdentifier =
     if ([annotation isKindOfClass: [DUXBetaMapNoFlyZoneAnnotation class]]) {
         MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:DUXBetaMapViewRendererNFZAnnotationReuseIdentifier];
         // Need to account for potential changed status of the custom annotation image
-        // If custom image is set, then class should be DUXBetaFlyZoneAnnotationView, otherwise if the custom image is nil it is MKPinAnnotationView
+        // If custom image is set, then class should be DUXFlyZoneAnnotationView, otherwise if the custom image is nil it is MKPinAnnotationView
         
         DUXBetaMapNoFlyZoneAnnotation *noFlyZoneAnnotation = (DUXBetaMapNoFlyZoneAnnotation *)annotation;
         if (noFlyZoneAnnotation.isUnlocked) {
@@ -391,9 +391,9 @@ static NSString * const DUXBetaMapViewRendererGeoZoneAnnotationReuseIdentifier =
     // Setup properties for sub fly zone polygon
     if ([overlay isKindOfClass:[DUXBetaMapSubFlyZonePolygonOverlay class]]) {
         DUXBetaMapSubFlyZonePolygonOverlay *polygonFlyZone = (DUXBetaMapSubFlyZonePolygonOverlay *)overlay;
+        UIColor *flyZoneColor = (polygonFlyZone.maxFlightHeight == 0) ? self.flyZoneColorByCategory[@(polygonFlyZone.category)] : self.maximumHeightFlyZoneOverlayColor;
         MKPolygonRenderer *polygonRenderer = [[MKPolygonRenderer alloc] initWithPolygon:overlay];
-        CGFloat alphaComponent = [self.flyZoneAlphaByCategory[@(DJIFlyZoneCategoryRestricted)] floatValue];
-        UIColor *flyZoneColor = (polygonFlyZone.maxFlightHeight == 0) ? self.flyZoneColorByCategory[@(DJIFlyZoneCategoryRestricted)] : self.maximumHeightFlyZoneOverlayColor;
+        CGFloat alphaComponent = [self.flyZoneAlphaByCategory[@(polygonFlyZone.category)] floatValue];
         polygonRenderer.fillColor = [flyZoneColor colorWithAlphaComponent:alphaComponent];
         polygonRenderer.lineWidth = self.flyZoneOverlayBorderWidth;
         polygonRenderer.strokeColor = flyZoneColor;
@@ -419,8 +419,6 @@ static NSString * const DUXBetaMapViewRendererGeoZoneAnnotationReuseIdentifier =
                 }
             }
         } else if (noFlyZoneAnnotation.isCustomUnlockZone && noFlyZoneAnnotation.isCustomUnlockZoneSentToAircraft) {
-            
-            
             if (noFlyZoneAnnotation.isCustomUnlockZoneEnabled) {
                 [self.mapView.mapWidget presentConfirmationAlertForDisablingCustomUnlockZone:self.mapView.mapWidget.customUnlockedFlyZones[noFlyZoneAnnotation.noFlyZoneID]];
             } else {

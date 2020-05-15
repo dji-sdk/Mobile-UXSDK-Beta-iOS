@@ -3,7 +3,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@
     pthread_mutex_t _asyncMethodMutex;
 }
 
-@property (assign, nonatomic) NSObject *observedObject;
+@property (assign, nonatomic) NSObject * _Nullable observedObject;
 
 @property (strong, nonatomic) NSMutableDictionary<NSString *,NSMutableArray<DUXBetaCustomKVOObserver *> *> *customObserverMap;
 @property (strong, nonatomic) NSMutableDictionary<NSString *,DUXBetaCustomAsyncCache *> *customAsyncCacheMap;

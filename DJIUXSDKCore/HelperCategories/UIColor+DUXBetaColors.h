@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -37,41 +37,57 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)duxbeta_selectedColor;
 
++ (UIColor *)duxbeta_clearColor;
 + (UIColor *)duxbeta_whiteColor;
 + (UIColor *)duxbeta_blackColor;
 + (UIColor *)duxbeta_grayColor;
++ (UIColor *)duxbeta_redColor;
 + (UIColor *)duxbeta_lightGrayColor;
 + (UIColor *)duxbeta_darkGrayColor;
++ (UIColor *)duxbeta_disabledGrayColor;
++ (UIColor *)duxbeta_blueColor;
++ (UIColor *)duxbeta_linkBlueColor;
++ (UIColor *)duxbeta_lightGrayTransparentColor;
 
 // Remaining Flight Time Widget Colors
 + (UIColor *)duxbeta_remainingFlightTimeWidgetRemainingBatteryColor;
 + (UIColor *)duxbeta_remainingFlightTimeWidgetLowBatteryColor;
 + (UIColor *)duxbeta_remainingFlightTimeWidgetSeriouslyLowBatteryColor;
 
-// Manual Focus Widget Colors
-+ (UIColor *)duxbeta_manualFocusWidgetBackgroundColor;
-+ (UIColor *)duxbeta_manualFocusWidgetButtonBackgroundColor;
+// System Status Widget Colors
++ (UIColor *)duxbeta_systemStatusWidgetGreenColor;
++ (UIColor *)duxbeta_systemStatusWidgetYellowColor;
++ (UIColor *)duxbeta_systemStatusWidgetRedColor;
 
-//Histogram Widget Colors
-+ (UIColor *)duxbeta_histogramWidgetBackgroundColor;
-+ (UIColor *)duxbeta_histogramWidgetLineColor;
-+ (UIColor *)duxbeta_histogramWidgetFillColor;
-+ (UIColor *)duxbeta_histogramWidgetGridColor;
-
-//Preflight Widget Colors
-+ (UIColor *)duxbeta_preflightStatusWidgetGreenColor;
-+ (UIColor *)duxbeta_preflightStatusWidgetYellowColor;
-+ (UIColor *)duxbeta_preflightStatusWidgetRedColor;
-+ (UIColor *)duxbeta_preflightStatusWidgetGrayColor;
-
-//Compass Widget Colors
+// Compass Widget Colors
 + (UIColor *)duxbeta_compassWidgetBackgroundColor;
 + (UIColor *)duxbeta_compassWidgetBorderColor;
 + (UIColor *)duxbeta_compassWidgetStrokeColor;
 + (UIColor *)duxbeta_compassWidgetHorizonColor;
 
-//Auto Exposure Switch Widget Colors
-+ (UIColor *)duxbeta_autoExposureSwitchWidgetWhiteColor;
+// Battery Widget Colors
++ (UIColor *)duxbeta_batteryNormalGreen;
++ (UIColor *)duxbeta_batteryOverheatingYellowColor;
+
+// AirSense Widget Colors
++ (UIColor *)duxbeta_airSenseYellowColor;
+
+// Simulator Indicator Widget Color
++ (UIColor *)duxbeta_simulatorIndicatorWidgetGreenColor;
+
+//  FPV camera name & side background color
++ (UIColor *)duxbeta_fpvBackgroundColor;
++ (UIColor *)duxbeta_fpvGridLineColor;
++ (UIColor *)duxbeta_fpvGridLineShadowColor;
++ (UIColor *)duxbeta_fpvTextBackgroundColor;
++ (UIColor *)duxbeta_fpvCenterPointYellowColor;
++ (UIColor *)duxbeta_fpvCenterPointRedColor;
++ (UIColor *)duxbeta_fpvCenterPointBlueColor;
++ (UIColor *)duxbeta_fpvCenterPointGreenColor;
+
+// ListPanel Default Colors
++ (UIColor *)duxbeta_listPanelBackgroundColor;
++ (UIColor *)duxbeta_listPanelSeparatorColor;
 
 @end
 

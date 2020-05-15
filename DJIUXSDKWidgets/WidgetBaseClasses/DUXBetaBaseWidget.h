@@ -3,9 +3,9 @@
 //  DJIUXSDK
 //
 //  MIT License
-//  
-//  Copyright © 2018-2019 DJI
-//  
+//
+//  Copyright © 2018-2020 DJI
+//
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -23,7 +23,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//  
+//
 
 #import <UIKit/UIKit.h>
 #import <DJISDK/DJISDK.h>
@@ -43,6 +43,7 @@ typedef struct {
 // on your widgets specific sizing needs
 // This is NOT used by the widget's internal implementation, but is instead offered as an aid to developers who want to ensure acceptable appearance
 // We may decide to include an assert to force developers, both internal and external to DJI, to provide a proper implementation for this method
+// This property is now now required to be implemented properly for use of widgets in a Panel
 @property (assign, nonatomic) DUXBetaWidgetSizeHint widgetSizeHint;
 
 - (void)installInViewController:(nullable UIViewController *)viewController;
@@ -53,6 +54,18 @@ typedef struct {
 
 - (void)installInViewController:(nullable UIViewController *)viewController
                   insideSubview:(nullable UIView *)subview;
+
+// Two methods which are used for Panels. If the widget is used in a HorizontalNamedBar or a VerticalNameBar,
+// one of these MUST return a non-nil result. DUXBetaBaseWidget implements a nil result for both.
+- (NSString* _Nullable)widgetTitle;
+- (UIImage* _Nullable)widgetIcon;
+
+// Identification methods for widgets. Default value is the class name
+- (void)setIdentifier:(NSString*) identifier;
+- (NSString*)identifier;
+
+// Utility methods for widgets
+- (CGSize)maxSizeInImageArray:(NSArray *)inputArray;
 
 @end
 

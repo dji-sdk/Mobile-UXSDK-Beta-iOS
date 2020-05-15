@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ObservableKeyedStore;
 @protocol GlobalPreferences;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -35,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 // All sigleton classes used here can be created in a deterministic order.
 // Please create and reference your singleton object here instead of creating another singleton to avoid bugs.
 @interface DUXBetaSingleton : NSObject
+
++ (id <ObservableKeyedStore>)sharedObservableInMemoryKeyedStore;
 
 + (id <GlobalPreferences>)sharedGlobalPreferences;
 

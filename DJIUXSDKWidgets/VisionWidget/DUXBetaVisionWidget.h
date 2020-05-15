@@ -2,9 +2,7 @@
 //  DUXBetaVisionWidget.h
 //  DJIUXSDK
 //
-//  MIT License
-//
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -31,21 +29,33 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  Widget to display the vision status/collision avodance status, of the aircraft.
+ *  Widget to display the vision status/collision avoidance status, of the aircraft.
  *  Depending on sensors availability, flight mode, and aircraft type.
  */
-
 @interface DUXBetaVisionWidget : DUXBetaBaseWidget
 
+/**
+ *  The widget model that the vision widget receives its information from.
+*/
 @property (nonatomic, strong) DUXBetaVisionWidgetModel *widgetModel;
 
 /**
- *  Set image for given vision status
+ * The color of the background of the icon.
+*/
+@property (nonatomic, strong) UIColor *iconBackgroundColor;
+
+/**
+ *  The color of the vision icon when the product is disconnected.
+*/
+@property (nonatomic, strong) UIColor *disconnectedIconColor;
+
+/**
+ *  Set image for given vision status.
  */
 - (void)setImage:(UIImage *)image forVisionStatus:(DUXBetaVisionStatus)status;
 
 /**
- *  Get image for given vision status
+ *  Get image for given vision status.
  */
 - (UIImage *)imageForVisionStatus:(DUXBetaVisionStatus)status;
 

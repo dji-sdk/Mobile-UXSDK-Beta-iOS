@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		536C4BAE22652AAA008E370B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536C4BAD22652AAA008E370B /* Assets.xcassets */; };
-		536C4BBE22652AAA008E370B /* DJIUXSDKSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 536C4BBD22652AAA008E370B /* DJIUXSDKSampleTests.m */; };
 		5379933A22AB1434006FEE71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5379933622AB1434006FEE71 /* LaunchScreen.storyboard */; };
 		5379933B22AB1434006FEE71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5379933822AB1434006FEE71 /* Main.storyboard */; };
 		5379933D22AB14A5006FEE71 /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379933C22AB14A5006FEE71 /* CustomSplitViewController.swift */; };
@@ -21,7 +20,8 @@
 		537AA996226534AA00905FCC /* WidgetsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537AA990226534AA00905FCC /* WidgetsListViewController.swift */; };
 		53A5E36D2344013700313B15 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A5E36C2344013700313B15 /* Helpers.swift */; };
 		53A5E37223441CC800313B15 /* CustomMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A5E37123441CC800313B15 /* CustomMapViewController.swift */; };
-		C97EF7DCF3F3C81B3B3AB4D9 /* Pods_UXSDKBetaSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A026F0CA3230C6AC37EB63EE /* Pods_UXSDKBetaSample.framework */; };
+		B6829565246C6FAC00BDA4A3 /* DefaultLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6829564246C6FAC00BDA4A3 /* DefaultLayoutViewController.swift */; };
+		B6829568246C724E00BDA4A3 /* FPVCustomizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6829567246C724E00BDA4A3 /* FPVCustomizations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,6 @@
 		536C4BAD22652AAA008E370B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		536C4BB222652AAA008E370B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		536C4BB922652AAA008E370B /* UXSDKBetaSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UXSDKBetaSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		536C4BBD22652AAA008E370B /* DJIUXSDKSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DJIUXSDKSampleTests.m; sourceTree = "<group>"; };
-		536C4BBF22652AAA008E370B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		536C4BEF22652B49008E370B /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5379933722AB1434006FEE71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5379933922AB1434006FEE71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -55,9 +53,10 @@
 		537AA990226534AA00905FCC /* WidgetsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetsListViewController.swift; sourceTree = "<group>"; };
 		53A5E36C2344013700313B15 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		53A5E37123441CC800313B15 /* CustomMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapViewController.swift; sourceTree = "<group>"; };
-		7D71737CF97A8704C6281A3B /* Pods-UXSDKBetaSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKBetaSample.release.xcconfig"; path = "Target Support Files/Pods-UXSDKBetaSample/Pods-UXSDKBetaSample.release.xcconfig"; sourceTree = "<group>"; };
-		A026F0CA3230C6AC37EB63EE /* Pods_UXSDKBetaSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UXSDKBetaSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7D7223DB74FFB59D2B7B25A /* Pods-UXSDKBetaSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKBetaSample.debug.xcconfig"; path = "Target Support Files/Pods-UXSDKBetaSample/Pods-UXSDKBetaSample.debug.xcconfig"; sourceTree = "<group>"; };
+		B6829564246C6FAC00BDA4A3 /* DefaultLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLayoutViewController.swift; sourceTree = "<group>"; };
+		B6829567246C724E00BDA4A3 /* FPVCustomizations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPVCustomizations.swift; sourceTree = "<group>"; };
+		B6CE64C824637C9600484E23 /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6CE64CA24637C9D00484E23 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97EF7DCF3F3C81B3B3AB4D9 /* Pods_UXSDKBetaSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,19 +77,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		32A8964571722FADB1A813A3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A026F0CA3230C6AC37EB63EE /* Pods_UXSDKBetaSample.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3A5F261302AC9ED5A40BF4DA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B7D7223DB74FFB59D2B7B25A /* Pods-UXSDKBetaSample.debug.xcconfig */,
-				7D71737CF97A8704C6281A3B /* Pods-UXSDKBetaSample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -101,10 +89,9 @@
 			children = (
 				536C4BEF22652B49008E370B /* DJISDK.framework */,
 				536C4BA322652AA8008E370B /* UXSDKBetaSample */,
-				536C4BBC22652AAA008E370B /* UXSDKSampleTests */,
 				536C4BA222652AA8008E370B /* Products */,
 				3A5F261302AC9ED5A40BF4DA /* Pods */,
-				32A8964571722FADB1A813A3 /* Frameworks */,
+				B6CE645C246375B900484E23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,11 +107,13 @@
 		536C4BA322652AA8008E370B /* UXSDKBetaSample */ = {
 			isa = PBXGroup;
 			children = (
+				B6829566246C724E00BDA4A3 /* Customizations */,
 				5379933522AB1434006FEE71 /* Base.lproj */,
+				537AA98B226534AA00905FCC /* Services */,
 				537AA97C2265344200905FCC /* AppDelegate.swift */,
 				5379933C22AB14A5006FEE71 /* CustomSplitViewController.swift */,
 				537AA98F226534AA00905FCC /* MainViewController.swift */,
-				537AA98B226534AA00905FCC /* Services */,
+				B6829564246C6FAC00BDA4A3 /* DefaultLayoutViewController.swift */,
 				537AA98A226534AA00905FCC /* SingleWidgetViewController.swift */,
 				53A5E36C2344013700313B15 /* Helpers.swift */,
 				53A5E37123441CC800313B15 /* CustomMapViewController.swift */,
@@ -134,15 +123,6 @@
 				537AA97B2265344100905FCC /* UXSDKBetaSample-Bridging-Header.h */,
 			);
 			path = UXSDKBetaSample;
-			sourceTree = "<group>";
-		};
-		536C4BBC22652AAA008E370B /* UXSDKSampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				536C4BBD22652AAA008E370B /* DJIUXSDKSampleTests.m */,
-				536C4BBF22652AAA008E370B /* Info.plist */,
-			);
-			path = UXSDKSampleTests;
 			sourceTree = "<group>";
 		};
 		5379933522AB1434006FEE71 /* Base.lproj */ = {
@@ -164,6 +144,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		B6829566246C724E00BDA4A3 /* Customizations */ = {
+			isa = PBXGroup;
+			children = (
+				B6829567246C724E00BDA4A3 /* FPVCustomizations.swift */,
+			);
+			path = Customizations;
+			sourceTree = "<group>";
+		};
+		B6CE645C246375B900484E23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6CE64CA24637C9D00484E23 /* DJISDK.framework */,
+				B6CE64C824637C9600484E23 /* DJIWidget.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,11 +168,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 536C4BC222652AAA008E370B /* Build configuration list for PBXNativeTarget "UXSDKBetaSample" */;
 			buildPhases = (
-				7B767114A4EE26EDA22879A5 /* [CP] Check Pods Manifest.lock */,
 				536C4B9D22652AA8008E370B /* Sources */,
 				536C4B9E22652AA8008E370B /* Frameworks */,
 				536C4B9F22652AA8008E370B /* Resources */,
-				C20598BE7C6A4A45B8CB1407 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,48 +257,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		7B767114A4EE26EDA22879A5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-UXSDKBetaSample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C20598BE7C6A4A45B8CB1407 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UXSDKBetaSample/Pods-UXSDKBetaSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-UXSDKBetaSample/Pods-UXSDKBetaSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UXSDKBetaSample/Pods-UXSDKBetaSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		536C4B9D22652AA8008E370B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -311,6 +264,7 @@
 			files = (
 				5379933D22AB14A5006FEE71 /* CustomSplitViewController.swift in Sources */,
 				537AA995226534AA00905FCC /* MainViewController.swift in Sources */,
+				B6829565246C6FAC00BDA4A3 /* DefaultLayoutViewController.swift in Sources */,
 				537AA993226534AA00905FCC /* ProductCommunicationService.swift in Sources */,
 				537AA991226534AA00905FCC /* SingleWidgetViewController.swift in Sources */,
 				53A5E37223441CC800313B15 /* CustomMapViewController.swift in Sources */,
@@ -318,6 +272,7 @@
 				537AA992226534AA00905FCC /* LogCenter.swift in Sources */,
 				537AA996226534AA00905FCC /* WidgetsListViewController.swift in Sources */,
 				537AA97D2265344300905FCC /* AppDelegate.swift in Sources */,
+				B6829568246C724E00BDA4A3 /* FPVCustomizations.swift in Sources */,
 				537AA994226534AA00905FCC /* LogEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				536C4BBE22652AAA008E370B /* DJIUXSDKSampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +434,6 @@
 		};
 		536C4BC322652AAA008E370B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7D7223DB74FFB59D2B7B25A /* Pods-UXSDKBetaSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -509,7 +462,6 @@
 		};
 		536C4BC422652AAA008E370B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D71737CF97A8704C6281A3B /* Pods-UXSDKBetaSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

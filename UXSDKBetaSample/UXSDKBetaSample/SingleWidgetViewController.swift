@@ -2,7 +2,7 @@
 //  SingleWidgetViewController.swift
 //  DJIUXSDK
 //
-// Copyright © 2018-2019 DJI
+// Copyright © 2018-2020 DJI
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -133,8 +133,7 @@ class SingleWidgetViewController: UIViewController {
     func configureControlViews() {
         let doubleSizeButton = UIButton(type: .system)
         doubleSizeButton.translatesAutoresizingMaskIntoConstraints = false
-        doubleSizeButton.setTitle("Double Size",
-                                  for: .normal)
+        doubleSizeButton.setTitle("Double Size", for: .normal)
         doubleSizeButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 25.0).isActive = true
         self.doubleSizeControlAction = doubleSizeButton.connect(action: {
             if let hc = self.heightConstraint {
@@ -145,8 +144,7 @@ class SingleWidgetViewController: UIViewController {
         
         let showCustomizationViewButton = UIButton(type: .system)
         showCustomizationViewButton.translatesAutoresizingMaskIntoConstraints = false
-        showCustomizationViewButton.setTitle("Show Customization",
-                                             for: .normal)
+        showCustomizationViewButton.setTitle("Show Customization", for: .normal)
         showCustomizationViewButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 25.0).isActive = true
         self.showCustomizationViewAction = showCustomizationViewButton.connect(action: {
             self.showMapCustomizationView()
@@ -197,7 +195,7 @@ class SingleWidgetViewController: UIViewController {
         self.setupEmptyViewHierarchy()
     }
     
-    func configureConstraints () {
+    func configureConstraints() {
         if let widget = self.widget {
             
             widget.view.translatesAutoresizingMaskIntoConstraints = false
@@ -205,11 +203,7 @@ class SingleWidgetViewController: UIViewController {
             widget.view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
             widget.view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
             
-            var constraint = widget.view.widthAnchor.constraint(equalTo: widget.view.heightAnchor, multiplier: widget.widgetSizeHint.preferredAspectRatio)
-            constraint.priority = .required
-            constraint.isActive = true
-            
-            constraint = widget.view.widthAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.95)
+            var constraint = widget.view.widthAnchor.constraint(lessThanOrEqualTo: self.view.widthAnchor, multiplier: 0.95)
             constraint.priority = .required
             constraint.isActive = true
 
@@ -224,6 +218,19 @@ class SingleWidgetViewController: UIViewController {
             constraint = widget.view.heightAnchor.constraint(greaterThanOrEqualToConstant: widget.widgetSizeHint.minimumHeight)
             constraint.priority = .required
             constraint.isActive = true
+            
+            if widget.isKind(of: DUXBetaAltitudeWidget.self) ||
+               widget.isKind(of: DUXBetaCompassWidget.self) ||
+               widget.isKind(of: DUXBetaDashboardWidget.self) ||
+               widget.isKind(of: DUXBetaHomeDistanceWidget.self) ||
+               widget.isKind(of: DUXBetaMapWidget.self) ||
+               widget.isKind(of: DUXBetaRCDistanceWidget.self) ||
+               widget.isKind(of: DUXBetaRemainingFlightTimeWidget.self) ||
+               widget.isKind(of: DUXBetaVPSWidget.self) {
+                constraint = widget.view.widthAnchor.constraint(equalTo: widget.view.heightAnchor, multiplier: widget.widgetSizeHint.preferredAspectRatio)
+                constraint.priority = .required
+                constraint.isActive = true
+            }
             
             let heightConstraintConstant = widget.widgetSizeHint.minimumHeight
             

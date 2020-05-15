@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,6 @@
 @property (nonatomic, strong) NSMutableDictionary *mutableRemovedCustomUnlockedOverlays;
 @property (nonatomic, strong) NSMutableDictionary *mutableAllCustomUnlockedOverlays;
 
-
 @end
 
 @implementation DUXBetaOverlayProvider
@@ -74,6 +73,7 @@
 }
 
 #pragma mark - Update Methods
+
 - (void)beginLockedFlyZoneUpdates {
     self.mutableAddedLockedOverlays = [NSMutableDictionary dictionary];
 }
@@ -259,6 +259,7 @@
     DUXBetaMapSubFlyZonePolygonOverlay *subFlyZonePolygonOverlay = [DUXBetaMapSubFlyZonePolygonOverlay polygonWithCoordinates:coordinates
                                                                                                                 count:vertices.count];
     subFlyZonePolygonOverlay.maxFlightHeight = subFlyZonePolygon.maximumFlightHeight;
+    subFlyZonePolygonOverlay.category = flyZone.category;
     return subFlyZonePolygonOverlay;
 }
 

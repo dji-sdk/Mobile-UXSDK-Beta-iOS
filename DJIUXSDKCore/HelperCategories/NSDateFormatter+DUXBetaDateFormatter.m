@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 
 @implementation NSDateFormatter (DUXBetaDateFormatter)
 
-+ (instancetype)dji_utcDateFormatter {
++ (instancetype)duxbeta_utcDateFormatter {
     static NSDateFormatter *_utcDateFormatter = nil;
     static dispatch_once_t onceToken;
     
@@ -42,7 +42,7 @@
     return _utcDateFormatter;
 }
 
-+ (instancetype)dji_utcAlternateDateFormatter {
++ (instancetype)duxbeta_utcAlternateDateFormatter {
     static NSDateFormatter *_utcAlternateDateFormatter = nil;
     static dispatch_once_t onceToken;
     

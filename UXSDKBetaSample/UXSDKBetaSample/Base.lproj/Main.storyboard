@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3Q-ch-oG4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3Q-ch-oG4">
     <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -258,7 +258,7 @@
                                 <rect key="frame" x="20" y="337" width="286" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3eJ-Qn-eG1">
-                                        <rect key="frame" x="10" y="272.5" width="266" height="92"/>
+                                        <rect key="frame" x="10" y="242.5" width="266" height="152"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showcase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9i-su-djC">
                                                 <rect key="frame" x="0.0" y="0.0" width="266" height="32"/>
@@ -274,11 +274,33 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 </variation>
                                             </label>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zj-v5-tII" userLabel="Widgets">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zj-v5-tII" userLabel="Default Layout">
                                                 <rect key="frame" x="0.0" y="52" width="266" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="GvT-kD-nzE">
+                                                        <variation key="heightClass=compact-widthClass=compact" constant="30"/>
+                                                    </constraint>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <state key="normal" title="Default Layout"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=compact">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                </variation>
+                                                <connections>
+                                                    <segue destination="Lqj-U4-wjN" kind="presentation" modalPresentationStyle="fullScreen" id="f1c-Cr-WUA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ug-Ut-8hV" userLabel="Widgets">
+                                                <rect key="frame" x="0.0" y="112" width="266" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="fNh-rj-att">
                                                         <variation key="heightClass=compact-widthClass=compact" constant="30"/>
                                                     </constraint>
                                                 </constraints>
@@ -293,7 +315,7 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="pushWidgetList" destination="DjH-3G-9Bj" eventType="touchUpInside" id="856-F8-9A4"/>
+                                                    <action selector="pushWidgetList" destination="DjH-3G-9Bj" eventType="touchUpInside" id="MEv-2O-IKC"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1006,8 +1028,27 @@
             </objects>
             <point key="canvasLocation" x="757.24743777452409" y="-662.6953125"/>
         </scene>
+        <!--Default Layout View Controller-->
+        <scene sceneID="rvv-nA-wBi">
+            <objects>
+                <viewController id="Lqj-U4-wjN" userLabel="Default Layout View Controller" customClass="DefaultLayoutViewController" customModule="UXSDKBetaSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vu5-Rb-gaM">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Lnr-aL-ABa"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="qII-uL-hSb"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uCq-J4-ynj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2765" y="-41"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Aircraft" width="16" height="16"/>
+        <image name="Aircraft" width="45" height="45"/>
     </resources>
 </document>

@@ -2,7 +2,7 @@
 //  WidgetsListViewController.swift
 //  DJIUXSDK
 //
-// Copyright © 2018-2019 DJI
+// Copyright © 2018-2020 DJI
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import iOS_Color_Picker
 
 class CustomMapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, FCColorPickerViewControllerDelegate {
     
-    var mapWidget:DUXBetaMapWidget?
+    var mapWidget: DUXBetaMapWidget?
     
     @IBOutlet weak var mainStackView: UIStackView?
     
@@ -89,7 +89,8 @@ class CustomMapViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         if let selectedVisibleFlyZonesSelectionPickerViewRow = self.visibleFlyZoneSelectionPickerView?.selectedRow(inComponent: 0) {
             self.visibleFlyZonesPickerCurrentlySelectedRow = selectedVisibleFlyZonesSelectionPickerViewRow
         }
-        self.replaceIconImageView.image = #imageLiteral(resourceName: "Aircraft")
+        
+        self.mapWidget!.changeAnnotation(of: .eligibleFlyZones, toCustomImage: #imageLiteral(resourceName: "Lock"), withCenterOffset: CGPoint(x: 8, y: -15));
     }
     
     override func viewWillAppear(_ animated: Bool) {

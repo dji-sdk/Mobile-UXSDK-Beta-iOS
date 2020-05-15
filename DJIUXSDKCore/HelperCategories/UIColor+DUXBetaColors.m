@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -47,8 +47,16 @@
     return RGBA(31.0, 163.0, 246.0, 1.0);
 }
 
++ (UIColor *)duxbeta_clearColor {
+    return [UIColor clearColor];
+}
+
 + (UIColor *)duxbeta_whiteColor {
     return [UIColor whiteColor];
+}
+
++ (UIColor *)duxbeta_redColor {
+    return [UIColor redColor];
 }
 
 + (UIColor *)duxbeta_blackColor {
@@ -67,6 +75,18 @@
     return [UIColor darkGrayColor];
 }
 
++ (UIColor *)duxbeta_lightGrayTransparentColor {
+    return RGBA(100.0, 100.0, 100.0, 0.25);
+}
+
++ (UIColor *)duxbeta_disabledGrayColor {
+    return RGBA(149.0, 149.0, 149.0, 1.0);
+}
+
++ (UIColor *)duxbeta_blueColor {
+    return [UIColor blueColor];
+}
+
 + (UIColor *)duxbeta_remainingFlightTimeWidgetRemainingBatteryColor {
     return RGBA(73.0, 214.0, 99.0, 1.0);
 }
@@ -79,44 +99,20 @@
     return RGBA(238.0, 43.0, 42.0, 1.0);
 }
 
-+ (UIColor *)duxbeta_manualFocusWidgetBackgroundColor {
-    return RGBA(0.0, 0.0, 0.0, 0.6);
-}
-
-+ (UIColor *)duxbeta_manualFocusWidgetButtonBackgroundColor {
-    return RGBA(0.0, 0.0, 0.0, 0.2);
-}
-
-+ (UIColor *)duxbeta_histogramWidgetBackgroundColor {
-    return RGBA(0.0, 0.0, 0.0, 0.47);
-}
-
-+ (UIColor *)duxbeta_histogramWidgetLineColor {
-    return RGBA(255.0, 255.0, 255.0, 0.2);
-}
-
-+ (UIColor *)duxbeta_histogramWidgetFillColor {
-    return RGBA(255.0, 255.0, 255.0, 0.7);
-}
-
-+ (UIColor *)duxbeta_histogramWidgetGridColor {
-    return RGBA(255.0, 255.0, 255.0, 0.4);
-}
-
-+ (UIColor *)duxbeta_preflightStatusWidgetGreenColor {
++ (UIColor *)duxbeta_systemStatusWidgetGreenColor {
     return RGBA(97.0, 189.0, 23.0, 1.0);
 }
 
-+ (UIColor *)duxbeta_preflightStatusWidgetYellowColor {
++ (UIColor *)duxbeta_systemStatusWidgetYellowColor {
     return RGBA(255.0, 192.0, 10.0, 1.0);
 }
 
-+ (UIColor *)duxbeta_preflightStatusWidgetRedColor {
-    return RGBA(203.0, 26.0, 26.0, 1.0);
++ (UIColor *)duxbeta_batteryOverheatingYellowColor {
+    return RGBA(255.0, 192.0, 0.0, 1.0);
 }
 
-+ (UIColor *)duxbeta_preflightStatusWidgetGrayColor {
-    return RGBA(71.0, 71.0, 71.0, 1.0);
++ (UIColor *)duxbeta_systemStatusWidgetRedColor {
+    return RGBA(203.0, 26.0, 26.0, 1.0);
 }
 
 + (UIColor *)duxbeta_compassWidgetBackgroundColor {
@@ -135,8 +131,60 @@
     return RGBA(32.0, 163.0, 246.0, 0.4);
 }
 
-+ (UIColor *)duxbeta_autoExposureSwitchWidgetWhiteColor {
-    return RGBA(140.0, 140.0, 140.0, 1.0);
++ (UIColor *)duxbeta_linkBlueColor {
+    return RGBA(61.0, 133.0, 199.0, 1.0);
+}
+
++ (UIColor *)duxbeta_airSenseYellowColor {
+    return RGBA(251, 207, 4, 1.0);
+}
+
++ (UIColor *)duxbeta_simulatorIndicatorWidgetGreenColor {
+    return RGBA(94, 240, 112, 1.0);
+}
+
++ (UIColor *)duxbeta_batteryNormalGreen {
+    return RGBA(63, 193, 77, 1.0);
+}
+
++ (UIColor *)duxbeta_fpvBackgroundColor {
+    return [UIColor colorWithWhite:0.15 alpha:1];
+}
+
++ (UIColor *)duxbeta_fpvGridLineColor {
+    return [UIColor colorWithWhite:0.95 alpha:1];
+}
+
++ (UIColor *)duxbeta_fpvGridLineShadowColor {
+    return [UIColor colorWithWhite:0 alpha:0.4];
+}
+
++ (UIColor *)duxbeta_fpvTextBackgroundColor {
+    return RGBA(204, 27, 15, 0.6);
+}
+
++ (UIColor *)duxbeta_fpvCenterPointYellowColor {
+    return RGBA(251, 197, 2, 1);
+}
+
++ (UIColor *)duxbeta_fpvCenterPointRedColor {
+    return RGBA(241, 69, 67, 1);
+}
+
++ (UIColor *)duxbeta_fpvCenterPointBlueColor {
+    return RGBA(61, 162, 247, 1);
+}
+
++ (UIColor *)duxbeta_fpvCenterPointGreenColor {
+    return RGBA(87, 213, 92, 1);
+}
+
++ (UIColor *)duxbeta_listPanelBackgroundColor {
+    return RGBA(0, 0, 0, .9);
+}
+
++ (UIColor *)duxbeta_listPanelSeparatorColor {
+    return RGBA(255, 255, 255, .8);
 }
 
 @end

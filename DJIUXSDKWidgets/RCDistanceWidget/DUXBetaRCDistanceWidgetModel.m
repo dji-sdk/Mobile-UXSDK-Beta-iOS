@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -78,7 +78,7 @@
     UnBindRKVOModel(self);
 }
 
-- (void) updateDistanceInMeters {
+- (void)updateDistanceInMeters {
     CLLocationCoordinate2D coordinate;
     if (CLLocationCoordinate2DIsValid(self.rcGPSData.location)) {
         coordinate = self.rcGPSData.location;
@@ -102,11 +102,11 @@
     self.distance = [distance measurementByConvertingToUnit: self.distanceUnits];
 }
 
--(void)dealloc {
+- (void)dealloc {
     [self.locationManager stopUpdatingLocation];
 }
 
--(void)setLocationManagerAccuracy:(CLLocationAccuracy)locationManagerAccuracy {
+- (void)setLocationManagerAccuracy:(CLLocationAccuracy)locationManagerAccuracy {
     _locationManagerAccuracy = locationManagerAccuracy;
     if (self.locationManager) {
         [self.locationManager stopUpdatingLocation];

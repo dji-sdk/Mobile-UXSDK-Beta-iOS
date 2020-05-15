@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2019 DJI
+//  Copyright © 2018-2020 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,3 +32,7 @@ FOUNDATION_EXPORT double DJIUXSDKCommunicationVersionNumber;
 
 //! Project version string for DJIUXSDKCommunication.
 FOUNDATION_EXPORT const unsigned char DJIUXSDKCommunicationVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <DJIUXSDKCommunication/PublicHeader.h>
+
+
