@@ -96,7 +96,7 @@
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0
                                        subComponent:DJIFlightControllerFlightAssistantSubComponent
                                   subComponentIndex:0
-                                           andParam:DJIFlightControllerParamLandingConfirmEnable], isDownwardAvoidanceEnabled);
+                                           andParam:DJIFlightControllerParamConfirmLanding], isDownwardAvoidanceEnabled);
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0
                                        subComponent:DJIFlightControllerFlightAssistantSubComponent
                                   subComponentIndex:0
