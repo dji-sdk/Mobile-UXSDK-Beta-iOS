@@ -49,8 +49,8 @@
 - (void)dealloc
 {
     //通知所有回调操作被取消。
-    [self cacheDidSetCustomValue:nil withError:[NSError errorForDUXBetaCustomKVO:DUXBetaCustomKVOError_Cancel]];
-    [self callbackGettingBlock:nil withError:[NSError errorForDUXBetaCustomKVO:DUXBetaCustomKVOError_Cancel]];
+    [self cacheDidSetCustomValue:nil withError:[NSError errorForDUXCustomKVO:DUXBetaCustomKVOError_Cancel]];
+    [self callbackGettingBlock:nil withError:[NSError errorForDUXCustomKVO:DUXBetaCustomKVOError_Cancel]];
     pthread_mutex_destroy(&_getmutex);
     pthread_mutex_destroy(&_setmutex);
 }
@@ -97,7 +97,7 @@
         pthread_mutex_unlock(&_setmutex);
         if (lastBlock)
         {
-            lastBlock([NSError errorForDUXBetaCustomKVO:DUXBetaCustomKVOError_Cancel]);
+            lastBlock([NSError errorForDUXCustomKVO:DUXBetaCustomKVOError_Cancel]);
         }
     }
     else

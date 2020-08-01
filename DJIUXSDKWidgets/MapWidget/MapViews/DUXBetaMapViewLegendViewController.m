@@ -218,7 +218,7 @@ static NSString *const DUXBetaMapViewLegendCollectionViewCellReuseIdentifier = @
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DUXBetaMapViewLegendCollectionViewCell *cell = (DUXBetaMapViewLegendCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:DUXBetaMapViewLegendCollectionViewCellReuseIdentifier
-                                                                                                                               forIndexPath:indexPath];
+                                                                                                                                       forIndexPath:indexPath];
     cell.titleLabel.text = [self titleForIndexPath:indexPath];
     cell.color = [self colorForIndexPath:indexPath];
     cell.alpha = [self alphaForIndexPath:indexPath];

@@ -28,9 +28,9 @@
 #import <Foundation/Foundation.h>
 #import <DJIUXSDKCore/DUXBetaKeyManager.h>
 
-#define DUXKeypath(OBJ, PATH) \
+#define DUXBetaKeypath(OBJ, PATH) \
 (((void)(NO && ((void)OBJ.PATH, NO)), # PATH))
-#define DUXBetaVMProperty(PATH) DUXKeypath(self, PATH)
+#define DUXBetaVMProperty(PATH) DUXBetaKeypath(self, PATH)
 
 /**
  * If you are working in Objective C these macros are avaliable to use rather than the method calls.
@@ -54,7 +54,7 @@ if(__strong##__TARGET__==nil)return;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DUXKey;
+@class DUXBetaKey;
 
 /**
  *  Use these methods to manage the binding of DJI SDK Keys to an associated property's keypath.

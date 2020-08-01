@@ -1,5 +1,5 @@
 //
-//  DUXCompassGyroHorizonLayer.h
+//  DUXBetaCompassGyroHorizonLayer.h
 //  DJIUXSDK
 //
 //  MIT License

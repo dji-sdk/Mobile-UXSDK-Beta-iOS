@@ -26,10 +26,11 @@
 //  
 
 #import "DUXBetaConnectionWidget.h"
-#import "UIImage+DUXBetaAssets.h"
-#import "DUXStateChangeBroadcaster.h"
-#import "NSLayoutConstraint+DUXBetaMultiplier.h"
 @import DJIUXSDKCore;
+#import "UIImage+DUXBetaAssets.h"
+#import "DUXBetaStateChangeBroadcaster.h"
+#import "NSLayoutConstraint+DUXBetaMultiplier.h"
+
 
 @interface DUXBetaConnectionWidget ()
 
@@ -51,12 +52,12 @@
 @end
 
 /**
- * DUXConnectionWidgetModelState contains the model hooks for the DUXConnectionWidget.
+ * DUXBetaConnectionWidgetModelState contains the model hooks for the DUXBetaConnectionWidget.
  * It implements the hook:
  *
  * Key: productConnected    Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft is connected.
 */
-@interface DUXConnectionWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaConnectionWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 
@@ -149,8 +150,8 @@
 }
 
 - (void)updateUI {
-    // Forward isProductConnected change detected to custom DUXConnectionWidgetState implementation
-    [[DUXStateChangeBroadcaster instance] send:[DUXConnectionWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    // Forward isProductConnected change detected to custom DUXBetaConnectionWidgetState implementation
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaConnectionWidgetModelState productConnected:self.widgetModel.isProductConnected]];
     
     UIImage *image = self.widgetModel.isProductConnected ? self.connectedImage : self.disconnectedImage;
     [self.connectionImageView setImage:image];
@@ -172,12 +173,12 @@
 @end
 
 /**
-* Implementation of the custom class used by DUXStateChangeBroadcaster
+* Implementation of the custom class used by DUXBetaStateChangeBroadcaster
 */
-@implementation DUXConnectionWidgetModelState: DUXStateChangeBaseData
+@implementation DUXBetaConnectionWidgetModelState: DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected {
-    return [[DUXConnectionWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+    return [[DUXBetaConnectionWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
 @end

@@ -32,6 +32,7 @@
 @interface DUXBetaRCDistanceWidgetModel() <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic) BOOL locationAccessGranted;
 
 @property (assign, nonatomic) double distanceInMeters;
 @property (nonatomic) NSMeasurement *distance;
@@ -49,16 +50,16 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
         _distanceInMeters = 0;
         _aircraftLocation = nil;
         _deviceLocation = nil;
+        _locationAccessGranted = NO;
         if (self.unitSystem == DUXBetaUnitSystemMetric) {
             _distance = [[NSMeasurement alloc] initWithDoubleValue:0 unit: NSUnitLength.meters];
         } else {
             _distance = [[NSMeasurement alloc] initWithDoubleValue:0 unit: NSUnitLength.feet];
         }
+        [self setupLocationManager];
     }
     return self;
 }
@@ -69,7 +70,7 @@
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamAircraftLocation], aircraftLocation);
     BindSDKKey([DJIRemoteControllerKey keyWithParam:DJIRemoteControllerParamGPSData], rcGPSData);
     
-    BindRKVOModel(self, @selector(updateDistanceInMeters), rcGPSData, aircraftLocation);
+    BindRKVOModel(self, @selector(updateDistanceInMeters), rcGPSData, aircraftLocation, deviceLocation);
     BindRKVOModel(self, @selector(updateDistance), distanceInMeters);
 }
 
@@ -78,17 +79,39 @@
     UnBindRKVOModel(self);
 }
 
+- (void)setupLocationManager {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    CLAuthorizationStatus authStatus = [CLLocationManager authorizationStatus];
+    
+    if (!(authStatus == kCLAuthorizationStatusRestricted ||
+          authStatus == kCLAuthorizationStatusDenied)) {
+        
+        if (authStatus == kCLAuthorizationStatusNotDetermined) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+    }
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [self.locationManager startUpdatingLocation];
+}
+
 - (void)updateDistanceInMeters {
     CLLocationCoordinate2D coordinate;
-    if (CLLocationCoordinate2DIsValid(self.rcGPSData.location)) {
+    if (CLLocationCoordinate2DIsValid(self.rcGPSData.location) && self.rcGPSData.location.latitude != 0.0 && self.rcGPSData.location.longitude != 0.0) {
         coordinate = self.rcGPSData.location;
     } else {
         coordinate = self.deviceLocation.coordinate;
     }
-    
+ 
     if (self.aircraftLocation == nil ||
         !CLLocationCoordinate2DIsValid(self.aircraftLocation.coordinate) ||
         !CLLocationCoordinate2DIsValid(coordinate)) {
+        self.distanceInMeters = 0;
+        return;
+    }
+    
+    if (self.locationAccessGranted == NO && self.rcGPSData.location.latitude == 0.0 && self.rcGPSData.location.longitude == 0.0) {
         self.distanceInMeters = 0;
         return;
     }
@@ -137,7 +160,14 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if ([locations count] > 0) {
         self.deviceLocation = [locations lastObject];
+    } else {
+        self.deviceLocation = manager.location;
     }
+    self.locationAccessGranted = YES;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    self.locationAccessGranted = NO;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  DUXVisionWidgetModel.m
+//  DUXBetaVisionWidgetModel.m
 //  DJIUXSDK
 //
 //  MIT License
@@ -49,7 +49,6 @@
 @property (strong, nonatomic) DJIActiveTrackMissionOperator *activeTrackOperator;
 @property (strong, nonatomic) DJIFlightAssistantObstacleAvoidanceSensorState *avoidanceStateM300;
 @property (nonatomic) BOOL isUpwardAvoidanceEnabled;
-@property (nonatomic) BOOL isDownwardAvoidanceEnabled;
 
 @end
 
@@ -69,7 +68,6 @@
         _activeTrackOperator = [[DJISDKManager missionControl] activeTrackMissionOperator];
         _tapFlyOperator = [[DJISDKManager missionControl] tapFlyMissionOperator];
         _isUpwardAvoidanceEnabled = NO;
-        _isDownwardAvoidanceEnabled = NO;
     }
     return self;
 }
@@ -96,17 +94,13 @@
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0
                                        subComponent:DJIFlightControllerFlightAssistantSubComponent
                                   subComponentIndex:0
-                                           andParam:DJIFlightControllerParamLandingConfirmEnable], isDownwardAvoidanceEnabled);
-    BindSDKKey([DJIFlightControllerKey keyWithIndex:0
-                                       subComponent:DJIFlightControllerFlightAssistantSubComponent
-                                  subComponentIndex:0
                                            andParam:DJIFlightAssistantParamUpwardsAvoidanceEnabled], isUpwardAvoidanceEnabled);
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0
                                        subComponent:DJIFlightControllerFlightAssistantSubComponent
                                   subComponentIndex:0
                                            andParam:DJIFlightAssistantParamAvoidanceState], avoidanceStateM300);
 
-    BindRKVOModel(self, @selector(updateStates), isSensorWorking, aircraftModel, isCollisionAvoidanceEnabled, flightMode, isNoseTailSensorEnabled, isLeftRightSensorEnabled, isDownwardAvoidanceEnabled, isUpwardAvoidanceEnabled, avoidanceStateM300);
+    BindRKVOModel(self, @selector(updateStates), isSensorWorking, aircraftModel, isCollisionAvoidanceEnabled, flightMode, isNoseTailSensorEnabled, isLeftRightSensorEnabled, isUpwardAvoidanceEnabled, avoidanceStateM300);
     BindRKVOModel(self, @selector(updateAircraftSupport), aircraftModel);
 }
 
@@ -141,8 +135,10 @@
     if (self.avoidanceStateM300 && [self.aircraftModel isEqualToString:DJIAircraftModelNameMatrice300RTK]) {
         DUXBetaVisionStatus verticalStatus = DUXBetaVisionStatusUnknown;
         DUXBetaVisionStatus horizontalStatus = DUXBetaVisionStatusUnknown;
-        if (self.avoidanceStateM300.isObstacleAvoidanceSensorInVerticalDirectionEnabled && self.avoidanceStateM300.isObstacleAvoidanceSensorsInVerticalDirectionWorking &&
-           self.isDownwardAvoidanceEnabled && self.isUpwardAvoidanceEnabled) {
+        //TODO: fix interface names before release
+        if (self.avoidanceStateM300.isObstacleAvoidanceSensorInVerticalDirectionEnabled &&
+            self.avoidanceStateM300.isObstacleAvoidanceSensorsInVerticalDirectionWorking &&
+            self.isUpwardAvoidanceEnabled) {
            verticalStatus = DUXBetaVisionStatusNormal;
         } else {
            verticalStatus = DUXBetaVisionStatusClosed;
@@ -251,7 +247,7 @@
 
 - (void)sendWarningMessageWithReason:(NSString *)reason andSolution:(NSString *)solution {
     DUXBetaWarningMessageKey *warningMessageKey = [[DUXBetaWarningMessageKey alloc] initWithIndex:0
-                                                                                parameter:DUXBetaWarningMessageParameterSendWarningMessage];
+                                                                                        parameter:DUXBetaWarningMessageParameterSendWarningMessage];
     DUXBetaWarningMessage *warningMessage = [[DUXBetaWarningMessage alloc] init];
     warningMessage.reason = reason;
     warningMessage.solution = solution;

@@ -26,11 +26,11 @@
 
 #import "NSError+DUXBetaCustomKVO.h"
 
-NSString * const DUXBetaCustomKVOErrorDomain = @"DUXBetaCustomKVOErrorDomain";
+NSString * const DUXBetaCustomKVOErrorDomain = @"DUXCustomKVOErrorDomain";
 
 @implementation NSError (DUXBetaCustomKVOError)
 
-+ (nullable instancetype)errorForDUXBetaCustomKVO:(DUXBetaCustomKVOError)errorCode
++ (nullable instancetype)errorForDUXCustomKVO:(DUXBetaCustomKVOError)errorCode
 {
     return errorCode == 0 ? nil : [NSError errorWithDomain:DUXBetaCustomKVOErrorDomain code:errorCode userInfo:nil];
 }

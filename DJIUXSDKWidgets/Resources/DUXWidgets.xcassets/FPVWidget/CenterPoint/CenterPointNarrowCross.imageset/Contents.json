@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_fpv_centerpoint_narrowcross.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

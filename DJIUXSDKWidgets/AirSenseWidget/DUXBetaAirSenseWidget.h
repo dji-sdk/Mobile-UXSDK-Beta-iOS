@@ -3,9 +3,9 @@
 //  DJIUXSDK
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -105,6 +105,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  The warning dialog message(clickable message: "make sure you have read and understood...") text font.
 */
 @property (nonatomic, strong) UIFont *dialogMessageTextFont;
+
+/**
+ *  The property determining if the user has opted to not show the "Another Aircraft is Nearby..." dialog again.
+*/
+@property (nonatomic) BOOL hasOptedOutDialog;
 
 /**
  *  Set tint color for given warning level.

@@ -1,5 +1,5 @@
 //
-//  DUXBatteryWidgetModel.h
+//  DUXBetaBatteryWidgetModel.h
 //  DJIUXSDK
 //
 //  MIT License

@@ -1,9 +1,11 @@
 //
 //  DUXBetaVideoSignalWidget.m
 //  DJIUXSDK
-//
+//  
+//  MIT License
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -28,7 +30,7 @@
 #import "UIFont+DUXBetaFonts.h"
 #import "UIColor+DUXBetaColors.h"
 @import DJIUXSDKCore;
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 
 static NSString * const kVideoFeedLevel0ImageName = @"SignalLevel0";
 static NSString * const kVideoFeedLevel1ImageName = @"SignalLevel1";
@@ -38,7 +40,7 @@ static NSString * const kVideoFeedLevel4ImageName = @"SignalLevel4";
 static NSString * const kVideoFeedLevel5ImageName = @"SignalLevel5";
 static NSString * const kRemoteIconImageName = @"VideoSignal";
 
-static const CGFloat kFrequencyBandToWidgetWidthRatio = 0.38;
+static const CGFloat kFrequencyBandToWidgetWidthRatio = 0.41;
 static const CGFloat kFrequencyBandToWidgetHeightRatio = 0.33;
 static const CGFloat kFrequencyBandFontSize = 30.0;
 
@@ -60,13 +62,13 @@ static const CGFloat kFrequencyBandFontSize = 30.0;
 @end
 
 /**
- * DUXVideoSignalWidgetModelState contains the model hooks for the DUXVideoSignalWidget.
+ * DUXBetaVideoSignalWidgetModelState contains the model hooks for the DUXBetaVideoSignalWidget.
  * It implements the hooks:
  *
  * Key: productConnected                Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft
  *                                                       is connected.
  *
- * Key: videoSignalQualityUpdate        Type: NSNumber - Sends the DUXVideoSignalStrength as an NSNumber whenever the
+ * Key: videoSignalQualityUpdate        Type: NSNumber - Sends the DUXBetaVideoSignalStrength as an NSNumber whenever the
  *                                                       video signal quality changes.
  *
  * Key: lightbridgeFrequncyBandUpdae    Type: NSNumber - Sends the DJILightbridgeFrequencyBand enum value as an NSNumber whenever
@@ -78,7 +80,7 @@ static const CGFloat kFrequencyBandFontSize = 30.0;
  * Key: ocusyncFrequencyBandUpdate      Type: NSNumber - Sends the DJIOcuSyncFrequencyBand enum value as an NSNumber whenever
  *                                                       the frequency band changes when using an OcuSync connected aircraft.
 */
-@interface DUXVideoSignalWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaVideoSignalWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)videoSignalQualityUpdate:(DUXBetaVideoSignalStrength)videoSignalQuality;
@@ -258,28 +260,28 @@ static const CGFloat kFrequencyBandFontSize = 30.0;
 // Widget Model Hooks
 
 - (void)sendProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[DUXVideoSignalWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVideoSignalWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendVideoSignalQualityUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[DUXVideoSignalWidgetModelState videoSignalQualityUpdate:self.widgetModel.barsLevel]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVideoSignalWidgetModelState videoSignalQualityUpdate:self.widgetModel.barsLevel]];
 }
 
 - (void)handleFrequencyBandUpdateLightbridge {
     self.frequencyBandLabel.text = self.lightbridgeBandToText[@(self.widgetModel.lightBridgeFrequencyBand)];
-    [[DUXStateChangeBroadcaster instance] send:[DUXVideoSignalWidgetModelState lightbridgeFrequencyBandUpdate:self.widgetModel.lightBridgeFrequencyBand]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVideoSignalWidgetModelState lightbridgeFrequencyBandUpdate:self.widgetModel.lightBridgeFrequencyBand]];
     self.currentAirLinkType = DUXBetaAirLinkTypeLightbridge;
 }
 
 - (void)handleFrequencyBandUpdateOcuSync {
     self.frequencyBandLabel.text = self.ocusyncBandToText[@(self.widgetModel.ocuSyncFrequencyBand)];
-    [[DUXStateChangeBroadcaster instance] send:[DUXVideoSignalWidgetModelState ocusyncFrequencyBandUpdate:self.widgetModel.ocuSyncFrequencyBand]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVideoSignalWidgetModelState ocusyncFrequencyBandUpdate:self.widgetModel.ocuSyncFrequencyBand]];
     self.currentAirLinkType = DUXBetaAirLinkTypeOcuSync;
 }
 
 - (void)handleFrequencyBandUpdateWiFi {
     self.frequencyBandLabel.text = self.wifiBandToText[@(self.widgetModel.wifiFrequencyBand)];
-    [[DUXStateChangeBroadcaster instance] send:[DUXVideoSignalWidgetModelState wifiFrequencyBandUpdate:self.widgetModel.wifiFrequencyBand]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVideoSignalWidgetModelState wifiFrequencyBandUpdate:self.widgetModel.wifiFrequencyBand]];
     self.currentAirLinkType = DUXBetaAirLinkTypeWiFi;
 }
 
@@ -338,26 +340,26 @@ static const CGFloat kFrequencyBandFontSize = 30.0;
 
 @end
 
-@implementation DUXVideoSignalWidgetModelState
+@implementation DUXBetaVideoSignalWidgetModelState
 
 + (instancetype)productConnected:(BOOL)isConnected {
-    return [[DUXVideoSignalWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+    return [[DUXBetaVideoSignalWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
 + (instancetype)videoSignalQualityUpdate:(DUXBetaVideoSignalStrength)videoSignalQuality {
-    return [[DUXVideoSignalWidgetModelState alloc] initWithKey:@"videoSignalQualityUpdate" number:@(videoSignalQuality)];
+    return [[DUXBetaVideoSignalWidgetModelState alloc] initWithKey:@"videoSignalQualityUpdate" number:@(videoSignalQuality)];
 }
 
 + (instancetype)lightbridgeFrequencyBandUpdate:(DJILightbridgeFrequencyBand)frequencyBand {
-    return [[DUXVideoSignalWidgetModelState alloc] initWithKey:@"lightbridgeFrequencyBandUpdate" number:@(frequencyBand)];
+    return [[DUXBetaVideoSignalWidgetModelState alloc] initWithKey:@"lightbridgeFrequencyBandUpdate" number:@(frequencyBand)];
 }
 
 + (instancetype)wifiFrequencyBandUpdate:(DJIWiFiFrequencyBand)frequencyBand {
-    return [[DUXVideoSignalWidgetModelState alloc] initWithKey:@"wifiFrequencyBandUpdate" number:@(frequencyBand)];
+    return [[DUXBetaVideoSignalWidgetModelState alloc] initWithKey:@"wifiFrequencyBandUpdate" number:@(frequencyBand)];
 }
 
 + (instancetype)ocusyncFrequencyBandUpdate:(DJIOcuSyncFrequencyBand)frequencyBand {
-    return [[DUXVideoSignalWidgetModelState alloc] initWithKey:@"ocusyncFrequencyBandUpdate" number:@(frequencyBand)];
+    return [[DUXBetaVideoSignalWidgetModelState alloc] initWithKey:@"ocusyncFrequencyBandUpdate" number:@(frequencyBand)];
 }
 
 @end

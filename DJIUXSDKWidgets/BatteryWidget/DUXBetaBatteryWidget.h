@@ -78,7 +78,7 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryWidgetDisplayState) {
 @property (nonatomic, weak) id<DUXBetaBatteryWidgetDelegate> delegate;
 
 /**
- *  The current state of the widget.  This will either be `DUXBetaBatteryWidgetDisplayStateSingleBattery` or `DUXBetaBatteryWidgetDisplayStateDualBattery`.
+ *  The current state of the widget.  This will either be `DUXBatteryWidgetDisplayStateSingleBattery` or `DUXBatteryWidgetDisplayStateDualBattery`.
  */
 @property (nonatomic, readonly) DUXBetaBatteryWidgetDisplayState widgetDisplayState;
 

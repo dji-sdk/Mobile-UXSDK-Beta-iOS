@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -27,10 +27,11 @@
 
 #import "DUXBetaAirSenseHtmlViewController.h"
 #import <WebKit/WebKit.h>
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 #import "DUXBetaAirSenseWidgetUIState.h"
+#import "NSBundle+DUXBetaAssets.h"
 
-static NSInteger const DUXAirSenseHTMLBackButtonSideLength = 44;
+static NSInteger const DUXBetaAirSenseHTMLBackButtonSideLength = 44;
 
 @interface DUXBetaAirSenseHtmlViewController ()
 
@@ -53,12 +54,12 @@ static NSInteger const DUXAirSenseHTMLBackButtonSideLength = 44;
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState termsDialogDismiss]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState termsDialogDismiss]];
 }
 
 - (void)setupWebviewBounds {
-    CGPoint htmlFrameOrigin = CGPointMake(self.view.frame.origin.x, self.view.frame.origin.y + DUXAirSenseHTMLBackButtonSideLength);
-    CGSize htmlFrameSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - DUXAirSenseHTMLBackButtonSideLength);
+    CGPoint htmlFrameOrigin = CGPointMake(self.view.frame.origin.x, self.view.frame.origin.y + DUXBetaAirSenseHTMLBackButtonSideLength);
+    CGSize htmlFrameSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - DUXBetaAirSenseHTMLBackButtonSideLength);
     self.htmlView.frame = (CGRect) {
         .origin = htmlFrameOrigin,
         .size = htmlFrameSize
@@ -71,11 +72,12 @@ static NSInteger const DUXAirSenseHTMLBackButtonSideLength = 44;
     NSString *language = localeComponents[NSLocaleLanguageCode];
     NSString *path;
     
+    NSBundle *currentBundle = [NSBundle duxbeta_currentBundle];
     if ([language isEqualToString:@"zh"]) {
-        path = [[NSBundle bundleForClass:[self class]] pathForResource:@"air_sense_terms_of_use_chinese"
+        path = [currentBundle pathForResource:@"air_sense_terms_of_use_chinese"
                                                                           ofType:@"html"];
     } else {
-        path = [[NSBundle bundleForClass:[self class]] pathForResource:@"air_sense_terms_of_use"
+        path = [currentBundle pathForResource:@"air_sense_terms_of_use"
                                                                           ofType:@"html"];
     }
     
@@ -96,7 +98,7 @@ static NSInteger const DUXAirSenseHTMLBackButtonSideLength = 44;
 
 - (void)addBackButton {
     UIButton *backButton = [[UIButton alloc] init];
-    CGRect backButtonFrame = CGRectMake(0, 0, DUXAirSenseHTMLBackButtonSideLength, DUXAirSenseHTMLBackButtonSideLength);
+    CGRect backButtonFrame = CGRectMake(0, 0, DUXBetaAirSenseHTMLBackButtonSideLength, DUXBetaAirSenseHTMLBackButtonSideLength);
     backButton.frame = backButtonFrame;
     [backButton setTitle:@"<" forState:UIControlStateNormal];
     [backButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:18]];

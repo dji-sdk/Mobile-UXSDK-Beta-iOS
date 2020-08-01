@@ -2,6 +2,8 @@
 //  DUXBetaRemainingFlightTimeData.h
 //  DJIUXSDKWidgets
 //
+//  MIT License
+//
 //  Copyright © 2018-2020 DJI
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DUXBetaRemainingFlightTimeData : NSObject
 
 /**
- *  Create a new DUXRemainingFlightTimeData object.
+ *  Create a new DUXBetaRemainingFlightTimeData object.
  *
  *  @param charge  Battery charge remaining in percent.
  *  @param batteryToLand  Battery charge required to land.

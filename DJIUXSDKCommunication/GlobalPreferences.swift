@@ -27,20 +27,20 @@
 
 import Foundation
 
-@objc(DUXMeasureUnitType) public enum MeasureUnitType: Int {
+@objc(DUXBetaMeasureUnitType) public enum MeasureUnitType: Int {
     case Metric = 1, Imperial = 2, Unknown = 3
 }
 
-@objc(DUXFPVCenterViewType) public enum FPVCenterViewType: Int {
-    case Standard = 1, Cross, NarrowCross, Frame, FrameAndCross, Square, SquareAndCross, Unknown
+@objc(DUXBetaFPVCenterViewType) public enum FPVCenterViewType: Int {
+    case None = 0, Standard, Cross, NarrowCross, Frame, FrameAndCross, Square, SquareAndCross, Unknown
 }
 
-@objc(DUXFPVCenterViewColor) public enum FPVCenterViewColor: Int {
-    case White = 1, Yellow, Red, Green, Blue, Black, Unknown
+@objc(DUXBetaFPVCenterViewColor) public enum FPVCenterViewColor: Int {
+    case None = 0, White, Yellow, Red, Green, Blue, Black, Unknown
 }
 
-@objc(DUXFPVGridViewType) public enum FPVGridViewType: Int {
-    case Parallel = 1, ParallelDiagonal, Unknown
+@objc(DUXBetaFPVGridViewType) public enum FPVGridViewType: Int {
+    case None = 0, Parallel, ParallelDiagonal, Unknown
 }
 
 enum GlobalPreference: RawRepresentable {
@@ -48,7 +48,7 @@ enum GlobalPreference: RawRepresentable {
 
     case MeasureUnitType, AFCEnabled, FPVCenterViewType, FPVCenterViewColor, FPVGridViewType, Unknown
     
-    static let Prefix = "DUXGlobalPreference"
+    static let Prefix = "DUXBetaGlobalPreference"
     
     var rawValue: GlobalPreference.RawValue {
         switch self {
@@ -86,7 +86,7 @@ enum GlobalPreference: RawRepresentable {
 }
 
 // To create a custom storage mechanism, implement this protocol then call setSharedGlobalPreferences:
-// on DUXSingleton to replace the default implementation with a custom one
+// on DUXBetaSingleton to replace the default implementation with a custom one
 @objc public protocol GlobalPreferences {
     func set(measureUnitType:MeasureUnitType)
     func measureUnitType() -> MeasureUnitType

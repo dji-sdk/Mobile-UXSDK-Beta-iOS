@@ -30,8 +30,8 @@
 #import <objc/runtime.h>
 #import <objc/objc.h>
 
-#define DUXBetaCustomObserverKey "__DUXBetaCustomObserver" //If conflict, fix it.
-#define GetDUXBetaCustomObserverRuntime(__name__) objc_getAssociatedObject(self, DUXBetaCustomObserverKey); \
+#define DUXBetaCustomObserverKey "__DUXCustomObserver" //If conflict, fix it.
+#define GetDUXCustomObserverRuntime(__name__) objc_getAssociatedObject(self, DUXBetaCustomObserverKey); \
 if(__name__ == nil){ \
     __name__ = [[DUXBetaCustomObserverRuntime alloc] initWithObject:self]; \
     objc_setAssociatedObject(self, DUXBetaCustomObserverKey, __name__, OBJC_ASSOCIATION_RETAIN_NONATOMIC); \
@@ -40,18 +40,18 @@ if(__name__ == nil){ \
 @implementation NSObject (DUXBetaCustomKVO)
 
 - (void)duxbeta_addCustomObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath block:(void(^)(id oldValue,id newValue))block{
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime registerCustomObserver:observer forKeyPath:keyPath block:block];
 }
 
 - (void)duxbeta_addCustomObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath selector:(SEL)selector{
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime registerCustomObserver:observer forKeyPath:keyPath selector:selector];
 }
 
 - (void)duxbeta_addCustomObserver:(nonnull NSObject *)observer forKeyPaths:(nonnull NSArray *)keyPaths block:(nonnull void(^)(NSString *_Nullable keypath,id _Nullable oldValue,id _Nullable newValue))block
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     for (int i = 0; i < keyPaths.count; i++) {
         [runtime registerCustomObserver:observer forKeyPath:keyPaths[i] block:^(id  _Nullable oldValue, id  _Nullable newValue) {
 			if (block)
@@ -63,26 +63,26 @@ if(__name__ == nil){ \
 }
 
 - (void)duxbeta_removeCustomObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath{
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime unregisterCustomObserver:observer forKeyPath:keyPath];
 }
 
 - (void)duxbeta_removeCustomObserver:(nonnull NSObject *)observer
                  forKeyPaths:(nonnull NSArray<NSString *> *)keyPaths
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     for (int i = 0; i < keyPaths.count; i++) {
         [runtime unregisterCustomObserver:observer forKeyPath:keyPaths[i]];
     }
 }
 
 - (void)duxbeta_removeCustomObserver:(NSObject *)observer{
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime unregisterCustomObserver:observer];
 }
 
 - (void)duxbeta_removeAllCustomObservers{
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime unregisterAllCustomObservers];
 }
 
@@ -122,61 +122,61 @@ if(__name__ == nil){ \
 
 - (void)duxbeta_setCustomValue:(nullable id)value forKeyPath:(nonnull NSString *)keyPath completion:(nullable DUXBetaCustomValueSetCompletionBlock)block
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeSetCustomValue:value forKeyPath:keyPath completion:block];
 }
 
 - (void)duxbeta_getCustomValueForKeyPath:(nonnull NSString *)keyPath completion:(nullable DUXBetaCustomValueGetCompletionBlock)block
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeGetCustomValueForKeyPath:keyPath completion:block];
 }
 
 - (DUXBetaCustomValueConfirmation *)duxbeta_willSetCustomValue:(nullable id)value forKeyPath:(nonnull NSString *)keyPath completion:(nullable DUXBetaCustomValueSetCompletionBlock)block
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     return [runtime runtimeWillSetCustomValue:value forKeyPath:keyPath completion:block];
 }
 
 - (nullable id)duxbeta_settingCustomValueForKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     return [runtime runtimeSettingCustomValueForKeyPath:keyPath];
 }
 
 - (DUXBetaCustomValueConfirmation *)duxbeta_willGetCustomValueForKeyPath:(NSString *)keyPath completion:(nullable DUXBetaCustomValueGetCompletionBlock)block
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     return [runtime runtimeWillGetCustomValueForKeyPath:keyPath completion:block];
 }
 
 - (void)duxbeta_updateCustomValue:(nullable id)value forKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeUpdateCustomValue:value forKeyPath:keyPath];
 }
 
 - (BOOL)duxbeta_isSettingCustomValueForKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     return [runtime runtimeIsSettingCustomValueForkeyPath:keyPath];
 }
 
 - (BOOL)duxbeta_isInitCustomValueForKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     return [runtime runtimeIsInitCustomValueForKeyPath:keyPath];
 }
 
 - (void)duxbeta_initCustomValue:(nullable id)value forKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeInitCustomValue:value forKeyPath:keyPath];
 }
 
 - (void)duxbeta_deinitCustomValueForKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeDeinitCustomValueForKeyPath:keyPath];
 }
 
@@ -186,25 +186,25 @@ if(__name__ == nil){ \
 
 - (void)duxbeta_replaceSetCustomValueBlock:(nonnull void(^)(id _Nullable value,DUXBetaCustomValueSetCompletionBlock _Nullable completion))method forKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeReplaceSetCustomValueBlock:method forKeyPath:keyPath];
 }
 
 - (void)duxbeta_replaceGetCustomValueBlock:(nonnull void(^)(DUXBetaCustomValueGetCompletionBlock _Nullable completion))method forKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeReplaceGetCustomValueBlock:method forKeyPath:keyPath];
 }
 
 - (void)duxbeta_replaceSetCustomValueMethod:(nonnull SEL)method forKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeReplaceSetCustomValueMethod:method forKeyPath:keyPath];
 }
 
 - (void)duxbeta_replaceGetCustomValueMethod:(nonnull SEL)method forKeyPath:(nonnull NSString *)keyPath
 {
-    DUXBetaCustomObserverRuntime *runtime = GetDUXBetaCustomObserverRuntime(runtime);
+    DUXBetaCustomObserverRuntime *runtime = GetDUXCustomObserverRuntime(runtime);
     [runtime runtimeReplaceGetCustomValueMethod:method forKeyPath:keyPath];
 }
 

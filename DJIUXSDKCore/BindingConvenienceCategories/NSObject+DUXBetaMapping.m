@@ -112,7 +112,7 @@ static inline const char* DUXBetaObjCTypeEncodingFromProperty(objc_property_t pr
 @implementation DUXBetaBaseWidgetModelProperty
 @end
 
-static void* kDUXBetaBaseWidgetModelMappingKey = &kDUXBetaBaseWidgetModelMappingKey;
+static void* kDUXBaseWidgetModelMappingKey = &kDUXBaseWidgetModelMappingKey;
 
 @implementation NSObject (DUXBetaMapping)
 
@@ -339,10 +339,10 @@ static void* kDUXBetaBaseWidgetModelMappingKey = &kDUXBetaBaseWidgetModelMapping
 }
 
 - (NSMutableDictionary *)propertyTypeMap {
-    NSMutableDictionary* propertyTypeMap = objc_getAssociatedObject(self, kDUXBetaBaseWidgetModelMappingKey);
+    NSMutableDictionary* propertyTypeMap = objc_getAssociatedObject(self, kDUXBaseWidgetModelMappingKey);
     if (!propertyTypeMap) {
         propertyTypeMap = [[NSMutableDictionary alloc] init];
-        objc_setAssociatedObject(self, kDUXBetaBaseWidgetModelMappingKey, propertyTypeMap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, kDUXBaseWidgetModelMappingKey, propertyTypeMap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return propertyTypeMap;
 }
@@ -431,46 +431,46 @@ static void* kDUXBetaBaseWidgetModelMappingKey = &kDUXBetaBaseWidgetModelMapping
 
 - (NSString *)propetyTypeNameWithType:(DUXBetaPropertyType)type {
     switch (type) {
-        case DUXBetaPropertyType_Unknown:return @"DUXBetaPropertyType_Unknown";
-        case DUXBetaPropertyType_Void:return @"DUXBetaPropertyType_Void";
-        case DUXBetaPropertyType_Bool:return @"DUXBetaPropertyType_Bool";
-        case DUXBetaPropertyType_Int8:return @"DUXBetaPropertyType_Int8";
-        case DUXBetaPropertyType_UInt8:return @"DUXBetaPropertyType_UInt8";
-        case DUXBetaPropertyType_Int16:return @"DUXBetaPropertyType_Int16";
-        case DUXBetaPropertyType_UInt16:return @"DUXBetaPropertyType_UInt16";
-        case DUXBetaPropertyType_Int32:return @"DUXBetaPropertyType_Int32";
-        case DUXBetaPropertyType_UInt32:return @"DUXBetaPropertyType_UInt32";
-        case DUXBetaPropertyType_Int64:return @"DUXBetaPropertyType_Int64";
-        case DUXBetaPropertyType_UInt64:return @"DUXBetaPropertyType_UInt64";
-        case DUXBetaPropertyType_Float:return @"DUXBetaPropertyType_Float";
-        case DUXBetaPropertyType_Double:return @"DUXBetaPropertyType_Double";
-        case DUXBetaPropertyType_LongDouble:return @"DUXBetaPropertyType_LongDouble";
-        case DUXBetaPropertyType_Class:return @"DUXBetaPropertyType_Class";
-        case DUXBetaPropertyType_Pointer:return @"DUXBetaPropertyType_Pointer";
-        case DUXBetaPropertyType_Selector:return @"DUXBetaPropertyType_Selector";
-        case DUXBetaPropertyType_CFString:return @"DUXBetaPropertyType_CFString";
-        case DUXBetaPropertyType_CFArray:return @"DUXBetaPropertyType_CFArray";
-        case DUXBetaPropertyType_CFUnion:return @"DUXBetaPropertyType_CFUnion";
-        case DUXBetaPropertyType_CFStruct:return @"DUXBetaPropertyType_CFStruct";
-        case DUXBetaPropertyType_CFBitFiled:return @"DUXBetaPropertyType_CFBitFiled";
-        case DUXBetaPropertyType_Id:return @"DUXBetaPropertyType_Id";
-        case DUXBetaPropertyType_Block:return @"DUXBetaPropertyType_Block";
-        case DUXBetaPropertyType_NSString:return @"DUXBetaPropertyType_NSString";
-        case DUXBetaPropertyType_NSMutableString:return @"DUXBetaPropertyType_NSMutableString";
-        case DUXBetaPropertyType_NSValue:return @"DUXBetaPropertyType_NSValue";
-        case DUXBetaPropertyType_NSNumber:return @"DUXBetaPropertyType_NSNumber";
-        case DUXBetaPropertyType_NSDecimalNumber:return @"DUXBetaPropertyType_NSDecimalNumber";
-        case DUXBetaPropertyType_NSData:return @"DUXBetaPropertyType_NSData";
-        case DUXBetaPropertyType_NSMutableData:return @"DUXBetaPropertyType_NSMutableData";
-        case DUXBetaPropertyType_NSDate:return @"DUXBetaPropertyType_NSDate";
-        case DUXBetaPropertyType_NSURL:return @"DUXBetaPropertyType_NSURL";
-        case DUXBetaPropertyType_NSArray:return @"DUXBetaPropertyType_NSArray";
-        case DUXBetaPropertyType_NSMutableArray:return @"DUXBetaPropertyType_NSMutableArray";
-        case DUXBetaPropertyType_NSDictionary:return @"DUXBetaPropertyType_NSDictionary";
-        case DUXBetaPropertyType_NSMutableDictionary:return @"DUXBetaPropertyType_NSMutableDictionary";
-        case DUXBetaPropertyType_NSSet:return @"DUXBetaPropertyType_NSSet";
-        case DUXBetaPropertyType_NSMutableSet:return @"DUXBetaPropertyType_NSMutableSet";
-        case DUXBetaPropertyType_NSCustomObject:return @"DUXBetaPropertyType_NSCustomObject";
+        case DUXBetaPropertyType_Unknown:return @"DUXPropertyType_Unknown";
+        case DUXBetaPropertyType_Void:return @"DUXPropertyType_Void";
+        case DUXBetaPropertyType_Bool:return @"DUXPropertyType_Bool";
+        case DUXBetaPropertyType_Int8:return @"DUXPropertyType_Int8";
+        case DUXBetaPropertyType_UInt8:return @"DUXPropertyType_UInt8";
+        case DUXBetaPropertyType_Int16:return @"DUXPropertyType_Int16";
+        case DUXBetaPropertyType_UInt16:return @"DUXPropertyType_UInt16";
+        case DUXBetaPropertyType_Int32:return @"DUXPropertyType_Int32";
+        case DUXBetaPropertyType_UInt32:return @"DUXPropertyType_UInt32";
+        case DUXBetaPropertyType_Int64:return @"DUXPropertyType_Int64";
+        case DUXBetaPropertyType_UInt64:return @"DUXPropertyType_UInt64";
+        case DUXBetaPropertyType_Float:return @"DUXPropertyType_Float";
+        case DUXBetaPropertyType_Double:return @"DUXPropertyType_Double";
+        case DUXBetaPropertyType_LongDouble:return @"DUXPropertyType_LongDouble";
+        case DUXBetaPropertyType_Class:return @"DUXPropertyType_Class";
+        case DUXBetaPropertyType_Pointer:return @"DUXPropertyType_Pointer";
+        case DUXBetaPropertyType_Selector:return @"DUXPropertyType_Selector";
+        case DUXBetaPropertyType_CFString:return @"DUXPropertyType_CFString";
+        case DUXBetaPropertyType_CFArray:return @"DUXPropertyType_CFArray";
+        case DUXBetaPropertyType_CFUnion:return @"DUXPropertyType_CFUnion";
+        case DUXBetaPropertyType_CFStruct:return @"DUXPropertyType_CFStruct";
+        case DUXBetaPropertyType_CFBitFiled:return @"DUXPropertyType_CFBitFiled";
+        case DUXBetaPropertyType_Id:return @"DUXPropertyType_Id";
+        case DUXBetaPropertyType_Block:return @"DUXPropertyType_Block";
+        case DUXBetaPropertyType_NSString:return @"DUXPropertyType_NSString";
+        case DUXBetaPropertyType_NSMutableString:return @"DUXPropertyType_NSMutableString";
+        case DUXBetaPropertyType_NSValue:return @"DUXPropertyType_NSValue";
+        case DUXBetaPropertyType_NSNumber:return @"DUXPropertyType_NSNumber";
+        case DUXBetaPropertyType_NSDecimalNumber:return @"DUXPropertyType_NSDecimalNumber";
+        case DUXBetaPropertyType_NSData:return @"DUXPropertyType_NSData";
+        case DUXBetaPropertyType_NSMutableData:return @"DUXPropertyType_NSMutableData";
+        case DUXBetaPropertyType_NSDate:return @"DUXPropertyType_NSDate";
+        case DUXBetaPropertyType_NSURL:return @"DUXPropertyType_NSURL";
+        case DUXBetaPropertyType_NSArray:return @"DUXPropertyType_NSArray";
+        case DUXBetaPropertyType_NSMutableArray:return @"DUXPropertyType_NSMutableArray";
+        case DUXBetaPropertyType_NSDictionary:return @"DUXPropertyType_NSDictionary";
+        case DUXBetaPropertyType_NSMutableDictionary:return @"DUXPropertyType_NSMutableDictionary";
+        case DUXBetaPropertyType_NSSet:return @"DUXPropertyType_NSSet";
+        case DUXBetaPropertyType_NSMutableSet:return @"DUXPropertyType_NSMutableSet";
+        case DUXBetaPropertyType_NSCustomObject:return @"DUXPropertyType_NSCustomObject";
     }
 }
 

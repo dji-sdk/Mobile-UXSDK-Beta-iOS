@@ -1,11 +1,11 @@
 //
-//  DUXBetaAirSenseHtmlViewController.m
+//  DUXBetaAirSenseDialogViewController.m
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -30,8 +30,9 @@
 #import "UIImage+DUXBetaAssets.h"
 #import "UIColor+DUXBetaColors.h"
 #import <CoreGraphics/CoreGraphics.h>
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 #import "DUXBetaAirSenseWidgetUIState.h"
+#import "DUXBetaAirSenseWidget.h"
 
 @import DJIUXSDKCommunication;
 @import DJIUXSDKCore;
@@ -97,7 +98,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState warningDialogDismiss]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState warningDialogDismiss]];
 }
 
 - (void)setupUI {
@@ -204,7 +205,7 @@
 }
 
 - (void)presentTermsDialog {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState termsLinkTap]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState termsLinkTap]];
 
     UIViewController *htmlViewController = [[DUXBetaAirSenseHtmlViewController alloc] init];
     [self presentViewController:htmlViewController animated:YES completion:nil];
@@ -212,7 +213,7 @@
 
 // Function to toggle "Don't show again" checkbox
 - (void)toggleButton:(UIButton *)pressedButton {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState dontShowAgainCheckBoxTap:!pressedButton.selected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaAirSenseWidgetUIState dontShowAgainCheckBoxTap:!pressedButton.selected]];
     
     pressedButton.selected = !pressedButton.selected;
 }
@@ -220,6 +221,9 @@
 - (void)dismissViewController {
     [[NSUserDefaults standardUserDefaults] setBool:self.checkboxButton.selected forKey:@"optOutAirSense"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    if (self.presentingWidget && self.checkboxButton.selected) {
+        self.presentingWidget.hasOptedOutDialog = YES;
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -61,7 +61,7 @@
     self = [super init];
     if (self) {
         self.isRTKEnabled = NO;
-        self.isUsingExternalGPS = NO;
+        self.isUsingExternalGPS = NO;//TODO: Actually update this value...
         self.satelliteSignal = DUXBetaGPSSatelliteStrengthLevel0;
         self.isRTKAccurate = NO;
     }

@@ -2,8 +2,10 @@
 //  DUXBetaSimulatorIndicatorWidget.m
 //  DJIUXSDKWidgets
 //
+//  MIT License
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -27,7 +29,7 @@
 
 #import "DUXBetaSimulatorIndicatorWidget.h"
 #import "UIImage+DUXBetaAssets.h"
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 #import "NSLayoutConstraint+DUXBetaMultiplier.h"
 
 /**
@@ -38,7 +40,7 @@
  *
  * Key: simpulatorStateUpdated  Type: NSNumber - Sends a boolean value as an NSNumber when the simulator state changes.
 */
-@interface DUXBetaSimulatorIndicatorWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaSimulatorIndicatorWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)simulatorStateUpdated:(BOOL)isActive;
@@ -51,7 +53,7 @@
  *
  * Key: onWidgetTap    Type: NSNumber - Sends a boolean YES value as an NSNumber indicating the widget was tapped.
 */
-@interface DUXBetaSimulatorIndicatorWidgetUIState : DUXStateChangeBaseData
+@interface DUXBetaSimulatorIndicatorWidgetUIState : DUXBetaStateChangeBaseData
 
 + (instancetype)onWidgetTap;
 
@@ -90,9 +92,9 @@
 
 - (void)setupInstanceVariables {
     self.imageMapping =  [[NSMutableDictionary alloc] initWithDictionary:@{
-        @(DUXBetaSimulatorIndicatorStateActive): [UIImage duxbeta_imageWithAssetNamed:@"SimulatorActive"],
-        @(DUXBetaSimulatorIndicatorStateInactive): [UIImage duxbeta_imageWithAssetNamed:@"SimulatorInactive"],
-        @(DUXBetaSimulatorIndicatorStateDisconnected): [UIImage duxbeta_imageWithAssetNamed:@"SimulatorInactive"]
+        @(DUXBetaSimulatorIndicatorStateActive): [UIImage duxbeta_imageWithAssetNamed:@"SimulatorActiveImage"],
+        @(DUXBetaSimulatorIndicatorStateInactive): [UIImage duxbeta_imageWithAssetNamed:@"SimulatorInactiveImage"],
+        @(DUXBetaSimulatorIndicatorStateDisconnected): [UIImage duxbeta_imageWithAssetNamed:@"SimulatorInactiveImage"]
     }];
     
     self.tintColorMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
@@ -207,15 +209,15 @@
 }
 
 - (void)sendProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaSimulatorIndicatorWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaSimulatorIndicatorWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendSimulatorStatus {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaSimulatorIndicatorWidgetModelState productConnected:self.widgetModel.isSimulatorActive]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaSimulatorIndicatorWidgetModelState productConnected:self.widgetModel.isSimulatorActive]];
 }
 
 - (void)handleTap {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBetaSimulatorIndicatorWidgetUIState onWidgetTap]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaSimulatorIndicatorWidgetUIState onWidgetTap]];
 }
 
 - (void)updateMinImageDimensions {

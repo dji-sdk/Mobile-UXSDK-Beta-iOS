@@ -29,7 +29,7 @@
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
 #import "UIColor+DUXBetaColors.h"
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 
 @import DJIUXSDKCore;
 
@@ -53,7 +53,7 @@ static NSString * const kRemoteIconImageName = @"RemoteControllerIcon";
 @end
 
 /**
- * RemoteControllerSignalWidgetModelState contains the model hooks for the DUXRemoteControllerSignalWidget.
+ * RemoteControllerSignalWidgetModelState contains the model hooks for the DUXBetaRemoteControllerSignalWidget.
  * It implements the hooks:
  *
  * Key: productConnected                    Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft
@@ -61,7 +61,7 @@ static NSString * const kRemoteIconImageName = @"RemoteControllerIcon";
  *
  * Key: remoteControlSignalQualityUpdate    Type: NSNumber - Sends changes in the remote controller signal controller as an NSNumber
 */
-@interface RemoteControllerSignalWidgetModelState : DUXStateChangeBaseData
+@interface RemoteControllerSignalWidgetModelState : DUXBetaStateChangeBaseData
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)remoteControllerSignalQualityUpdate:(NSInteger)signalQuality;
 @end
@@ -166,11 +166,11 @@ static NSString * const kRemoteIconImageName = @"RemoteControllerIcon";
 
 // Model Hooks 
 - (void)sendIsProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[RemoteControllerSignalWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[RemoteControllerSignalWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendRCSignalQualityUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[RemoteControllerSignalWidgetModelState remoteControllerSignalQualityUpdate:self.widgetModel.barsLevel]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[RemoteControllerSignalWidgetModelState remoteControllerSignalQualityUpdate:self.widgetModel.barsLevel]];
 }
 
 - (UIImage *)currentSignalIndicatorImage {
@@ -222,4 +222,3 @@ static NSString * const kRemoteIconImageName = @"RemoteControllerIcon";
 }
 
 @end
-

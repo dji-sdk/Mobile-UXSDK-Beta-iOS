@@ -81,8 +81,8 @@
     }
 
     if ([self.warningStatusItem.message containsString:@"Compass Error"]) {
-        DUXVoiceNotificationKey *voiceNotificationKey = [[DUXVoiceNotificationKey alloc] initWithIndex:0
-                                                                                             parameter:DUXVoiceNotificationParameterAttitude];
+        DUXBetaVoiceNotificationKey *voiceNotificationKey = [[DUXBetaVoiceNotificationKey alloc] initWithIndex:0
+                                                                                             parameter:DUXBetaVoiceNotificationParameterAttitude];
         DUXBetaVoiceNotification *voiceNotification = [[DUXBetaVoiceNotification alloc] init];
         
         voiceNotification.audioPlayer = [self createAttiAudioPlayer];

@@ -24,28 +24,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //  
-
 #import "DUXBetaSystemStatusWidget.h"
 #import "DUXMarqueeLabel.h"
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
-#import "DUXStateChangeBroadcaster.h"
-
 @import DJIUXSDKCore;
+#import "DUXBetaStateChangeBroadcaster.h"
 
 static const CGSize kDesignSize = {297.0, 32.0};
 static const CGFloat kDesignFontSize = 27.0;
 static NSString * const kInitialText = @"Disconnected";
 
 /**
- * DUXSystemStatusWidgetModelState contains the model hooks for the DUXSystemStatusWidget.
+ * DUXBetaSystemStatusWidgetModelState contains the model hooks for the DUXBetaSystemStatusWidget.
  * It implements the hooks:
  *
  * Key: productConnected    Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft is connected.
  *
  * Key: systemStatusUpdated Type: NSString - The current system status message is sent whenever it changes.
 */
-@interface DUXSystemStatusWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaSystemStatusWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)systemStatusUpdated:(NSString *)systemStatusMessage;
@@ -53,12 +51,12 @@ static NSString * const kInitialText = @"Disconnected";
 @end
 
 /**
- * DUXStatusWidgetUIState contains the hooks for UI changes in the widget class DUXSystemStatusWidget.
+ * DUXBetaStatusWidgetUIState contains the hooks for UI changes in the widget class DUXBetaSystemStatusWidget.
  * It implements the hook:
  *
  * Key: onWidgetTap    Type: NSNumber - Sends a boolean YES value as an NSNumber indicating the widget was tapped.
 */
-@interface DUXSystemStatusWidgetUIState : DUXStateChangeBaseData
+@interface DUXBetaSystemStatusWidgetUIState : DUXBetaStateChangeBaseData
 
 + (instancetype)onWidgetTap;
 
@@ -93,6 +91,7 @@ static NSString * const kInitialText = @"Disconnected";
 
 - (void)setupInstanceVariables {
     _messageFont = [UIFont duxbeta_dinMediumFontWithSize:kDesignFontSize];
+    _isGradientEnabled = NO;
     _backgroundColorForWarningLevel = [@{
         @(DJIWarningStatusLevelOffline)    : [UIColor clearColor],
         @(DJIWarningStatusLevelNone)       : [UIColor clearColor],
@@ -105,7 +104,7 @@ static NSString * const kInitialText = @"Disconnected";
         @(DJIWarningStatusLevelOffline)    : [UIColor duxbeta_disabledGrayColor],
         @(DJIWarningStatusLevelNone)       : [UIColor duxbeta_systemStatusWidgetGreenColor],
         @(DJIWarningStatusLevelGood)       : [UIColor duxbeta_systemStatusWidgetGreenColor],
-        @(DJIWarningStatusLevelWarning)    : [UIColor duxbeta_systemStatusWidgetYellowColor],
+        @(DJIWarningStatusLevelWarning)    : [UIColor duxbeta_yellowColor],
         @(DJIWarningStatusLevelError)      : [UIColor duxbeta_systemStatusWidgetRedColor],
     } mutableCopy];
 }
@@ -129,7 +128,8 @@ static NSString * const kInitialText = @"Disconnected";
     BindRKVOModel(self.widgetModel, @selector(updateUI), systemStatusWarningLevel);
     BindRKVOModel(self.widgetModel, @selector(updateIsCriticalWarning), isCriticalWarning);
     BindRKVOModel(self, @selector(updateLabelFont), messageFont);
-    
+    BindRKVOModel(self, @selector(setGradientBackground), isGradientEnabled, view.bounds);
+        
     // Bind hooks to model updates
     BindRKVOModel(self.widgetModel, @selector(sendProductConnected), isProductConnected);
 }
@@ -143,6 +143,53 @@ static NSString * const kInitialText = @"Disconnected";
 
 - (void)dealloc {
     [self.widgetModel cleanup];
+}
+
+- (void)setGradientBackground {
+    if (self.isGradientEnabled) {
+        // Set gradient backgrounds
+        UIColor *gradientSafeColorPattern = [self gradientPatternWithBounds:self.view.bounds
+                                                                     colors:@[(__bridge id)[UIColor duxbeta_systemStatusWidgetGreenColor].CGColor,
+                                                                              (__bridge id)[UIColor duxbeta_clearColor].CGColor]];
+        UIColor *gradientWarningColorPattern = [self gradientPatternWithBounds:self.view.bounds
+                                                                        colors:@[(__bridge id)[UIColor duxbeta_yellowColor].CGColor,
+                                                                                 (__bridge id)[UIColor duxbeta_clearColor].CGColor]];
+        UIColor *gradientErrorColorPattern = [self gradientPatternWithBounds:self.view.bounds
+                                                                      colors:@[(__bridge id)[UIColor duxbeta_systemStatusWidgetRedColor].CGColor,
+                                                                               (__bridge id)[UIColor duxbeta_clearColor].CGColor]];
+        UIColor *gradientDisabledColorPattern = [self gradientPatternWithBounds:self.view.bounds
+                                                                         colors:@[(__bridge id)[UIColor duxbeta_disabledGrayColor].CGColor,
+                                                                                  (__bridge id)[UIColor duxbeta_clearColor].CGColor]];
+
+        [self setBackgroundColor:gradientSafeColorPattern forSystemStatusWarningLevel:DJIWarningStatusLevelGood];
+        [self setBackgroundColor:gradientDisabledColorPattern forSystemStatusWarningLevel:DJIWarningStatusLevelOffline];
+        [self setBackgroundColor:gradientDisabledColorPattern forSystemStatusWarningLevel:DJIWarningStatusLevelNone];
+        [self setBackgroundColor:gradientWarningColorPattern forSystemStatusWarningLevel:DJIWarningStatusLevelWarning];
+        [self setBackgroundColor:gradientErrorColorPattern forSystemStatusWarningLevel:DJIWarningStatusLevelError];
+        
+        // Set text color to white for all warning levels
+        self.textColorForWarningLevel = [@{
+            @(DJIWarningStatusLevelOffline)    : [UIColor duxbeta_whiteColor],
+            @(DJIWarningStatusLevelNone)       : [UIColor duxbeta_whiteColor],
+            @(DJIWarningStatusLevelGood)       : [UIColor duxbeta_whiteColor],
+            @(DJIWarningStatusLevelWarning)    : [UIColor duxbeta_whiteColor],
+            @(DJIWarningStatusLevelError)      : [UIColor duxbeta_whiteColor],
+        } mutableCopy];
+    }
+}
+
+- (UIColor *)gradientPatternWithBounds:(CGRect)bounds colors:(NSArray *)colors {
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = bounds;
+    gradientLayer.colors = colors;
+    gradientLayer.startPoint = CGPointMake(0.0, 0.5);
+    gradientLayer.endPoint = CGPointMake(1, 0.5);
+    
+    UIGraphicsBeginImageContext(gradientLayer.bounds.size);
+    [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return [[UIColor alloc] initWithPatternImage:image];
 }
 
 - (void)setupUI {
@@ -167,6 +214,7 @@ static NSString * const kInitialText = @"Disconnected";
 
     [self.view addSubview:self.horizontalScrollingLabel];
 
+    [self.view.heightAnchor constraintEqualToConstant:self.widgetSizeHint.minimumHeight].active = YES;
     [self.horizontalScrollingLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
     [self.horizontalScrollingLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [self.horizontalScrollingLabel.widthAnchor constraintEqualToAnchor:self.view.widthAnchor
@@ -189,7 +237,7 @@ static NSString * const kInitialText = @"Disconnected";
 /*********************************************************************************/
 - (void)handleSuggestedMessageUpdate {
     self.horizontalScrollingLabel.text = self.widgetModel.suggestedWarningMessage;
-    [[DUXStateChangeBroadcaster instance] send:[DUXSystemStatusWidgetModelState systemStatusUpdated:self.widgetModel.suggestedWarningMessage]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaSystemStatusWidgetModelState systemStatusUpdated:self.widgetModel.suggestedWarningMessage]];
 }
 
 - (void)updateIsCriticalWarning {
@@ -250,31 +298,31 @@ static NSString * const kInitialText = @"Disconnected";
 }
 
 - (void)sendProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[DUXSystemStatusWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaSystemStatusWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)handleTap {
-    [[DUXStateChangeBroadcaster instance] send:[DUXSystemStatusWidgetUIState onWidgetTap]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaSystemStatusWidgetUIState onWidgetTap]];
 }
 
 @end
 
-@implementation DUXSystemStatusWidgetModelState
+@implementation DUXBetaSystemStatusWidgetModelState
 
 + (instancetype)productConnected:(BOOL)isConnected {
-    return [[DUXSystemStatusWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+    return [[DUXBetaSystemStatusWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
 + (instancetype)systemStatusUpdated:(NSString *)systemStatusMessage {
-    return [[DUXSystemStatusWidgetModelState alloc] initWithKey:@"systemStatusMessage" string:systemStatusMessage];
+    return [[DUXBetaSystemStatusWidgetModelState alloc] initWithKey:@"systemStatusMessage" string:systemStatusMessage];
 }
 
 @end
 
-@implementation DUXSystemStatusWidgetUIState
+@implementation DUXBetaSystemStatusWidgetUIState
 
 + (instancetype)onWidgetTap {
-    return [[DUXSystemStatusWidgetUIState alloc] initWithKey:@"onWidgetTap" number:@(0)];
+    return [[DUXBetaSystemStatusWidgetUIState alloc] initWithKey:@"onWidgetTap" number:@(0)];
 }
 
 @end

@@ -32,11 +32,11 @@
 @import DJIUXSDKCommunication;
 @import DJIUXSDKCore;
 
-static NSString * const DUXAirSenseWidgetWarningMessageReasonForLevel2 = @"Another aircraft is nearby. Fly with caution.";
-static NSString * const DUXAirSenseWidgetWarningMessageReasonForLevels3to5 = @"Another aircraft is nearby. Fly with caution.";
+static NSString * const DUXBetaAirSenseWidgetWarningMessageReasonForLevel2 = @"Another aircraft is nearby. Fly with caution.";
+static NSString * const DUXBetaAirSenseWidgetWarningMessageReasonForLevels3to5 = @"Another aircraft is nearby. Fly with caution.";
 
-static NSString * const DUXAirSenseWidgetWarningMessageSolutionForLevel2 = @"Another aircraft is too close, please descend to a safer altitude.";
-static NSString * const DUXAirSenseWidgetWarningMessageSolutionForLevel3to5 = @"Another aircraft is dangerously close, please descend to a safer altitude.";
+static NSString * const DUXBetaAirSenseWidgetWarningMessageSolutionForLevel2 = @"Another aircraft is too close, please descend to a safer altitude.";
+static NSString * const DUXBetaAirSenseWidgetWarningMessageSolutionForLevel3to5 = @"Another aircraft is dangerously close, please descend to a safer altitude.";
 
 @interface DUXBetaAirSenseWidgetModel()
 
@@ -106,18 +106,18 @@ static NSString * const DUXAirSenseWidgetWarningMessageSolutionForLevel3to5 = @"
 
 - (void)presentWarningMessageIfAppropriate {
     if (self.airSenseWarningLevel == 2) {
-        [self sendWarningMessageWithReason:DUXAirSenseWidgetWarningMessageReasonForLevel2
-                               andSolution:DUXAirSenseWidgetWarningMessageSolutionForLevel2];
+        [self sendWarningMessageWithReason:DUXBetaAirSenseWidgetWarningMessageReasonForLevel2
+                               andSolution:DUXBetaAirSenseWidgetWarningMessageSolutionForLevel2];
     }
     if (self.airSenseWarningLevel > 2) {
-        [self sendWarningMessageWithReason:DUXAirSenseWidgetWarningMessageReasonForLevels3to5
-                               andSolution:DUXAirSenseWidgetWarningMessageSolutionForLevel3to5];
+        [self sendWarningMessageWithReason:DUXBetaAirSenseWidgetWarningMessageReasonForLevels3to5
+                               andSolution:DUXBetaAirSenseWidgetWarningMessageSolutionForLevel3to5];
     }
 }
 
 - (void)sendWarningMessageWithReason:(NSString *)reason andSolution:(NSString *)solution {
     DUXBetaWarningMessageKey *warningMessageKey = [[DUXBetaWarningMessageKey alloc] initWithIndex:0
-                                                                                parameter:DUXBetaWarningMessageParameterSendWarningMessage];
+                                                                                        parameter:DUXBetaWarningMessageParameterSendWarningMessage];
     
     DUXBetaWarningMessage *warningMessage = [[DUXBetaWarningMessage alloc] init];
     warningMessage.reason = reason;

@@ -29,6 +29,7 @@
 
 @interface DUXBetaBaseWidget ()
 
+@property (nonatomic, strong) DUXBetaTheme *perWidgetTheme;
 @property (nonatomic, strong) NSString *widgetID;
 
 @end

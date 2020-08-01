@@ -1,5 +1,5 @@
 //
-//  DUXBroadcaster.swift
+//  DUXBetaBroadcaster.swift
 //  DJIUXSDK
 //
 //  MIT License
@@ -141,7 +141,7 @@ enum Type {
 }
 
 // ExternalKey bridges to the Key / ConcreteKey types that cannot be used in obj-c
-@objc(DUXKey) public class ExternalKey : NSObject {
+@objc(DUXBetaKey) public class ExternalKey : NSObject {
     var concreteKey:ConcreteKey {
         get {
             return ConcreteKey(index:self.index, parameter:self.internalParameter)
@@ -179,12 +179,12 @@ enum Type {
 // 4. Make sure it is mapped by the appropriate conversion method back to the public type
 // 5. You're done!
 
-@objc(DUXCameraParameter) public enum CameraParameter : UInt {
+@objc(DUXBetaCameraParameter) public enum CameraParameter : UInt {
     case AFCEnabled     = 1,
          Unknown        = 2
 }
 
-@objc(DUXCameraKey) public class CameraKey : ExternalKey {
+@objc(DUXBetaCameraKey) public class CameraKey : ExternalKey {
     public var param:CameraParameter {
         return self.internalParameter.cameraParameter()
     }
@@ -195,13 +195,13 @@ enum Type {
     }
 }
 
-@objc(DUXVideoParameter) public enum VideoParameter : UInt {
+@objc(DUXBetaVideoParameter) public enum VideoParameter : UInt {
     case DecoderStatus      = 1,
          PeakingThreshold   = 2,
          Unknown            = 3
 }
 
-@objc(DUXVideoKey) public class VideoKey : ExternalKey {
+@objc(DUXBetaVideoKey) public class VideoKey : ExternalKey {
     @objc public init(index: Int, parameter: VideoParameter) {
         super.init(index: index,
                    param: Parameter(videoParameter: parameter))
@@ -228,12 +228,12 @@ enum Type {
     }
 }
 
-@objc(DUXVoiceNotificationParameter) public enum VoiceNotificationParameter : UInt {
+@objc(DUXBetaVoiceNotificationParameter) public enum VoiceNotificationParameter : UInt {
     case Attitude = 1,
          Unknown  = 3
 }
 
-@objc(DUXVoiceNotificationKey) public class VoiceNotificationKey : ExternalKey {
+@objc(DUXBetaVoiceNotificationKey) public class VoiceNotificationKey : ExternalKey {
     @objc public init(index: Int, parameter: VoiceNotificationParameter) {
         super.init(index: index,
                    param: Parameter(voiceNotificationParameter: parameter))
@@ -268,7 +268,7 @@ typealias ModelValueCompletionBlock = (ModelValue?) -> Void
 
 class FlatStore: NSObject {
     var underlyingStore:[ConcreteKey:ModelValue] = [:]
-    var queue:DispatchQueue = DispatchQueue(label: "DUXFlatStoreSerialQueue")
+    var queue:DispatchQueue = DispatchQueue(label: "DUXBetaFlatStoreSerialQueue")
     
     func update(modelValue:ModelValue?, for key:ConcreteKey) {
         self.queue.async {

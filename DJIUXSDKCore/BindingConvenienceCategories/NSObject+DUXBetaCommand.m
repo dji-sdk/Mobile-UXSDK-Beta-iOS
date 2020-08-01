@@ -41,26 +41,26 @@
 ////////////////////////
 
 
-static void* kDUXBetaObjectCommandKey = &kDUXBetaObjectCommandKey;
-static void* kDUXBetaObjectCommandTagDictKey = &kDUXBetaObjectCommandTagDictKey;
-static void* kDUXBetaObjectCommandLockKey = &kDUXBetaObjectCommandLockKey;
+static void* kDUXObjectCommandKey = &kDUXObjectCommandKey;
+static void* kDUXObjectCommandTagDictKey = &kDUXObjectCommandTagDictKey;
+static void* kDUXObjectCommandLockKey = &kDUXObjectCommandLockKey;
 
 @implementation NSObject (DUXBetaCommand)
 
 - (NSLock *)duxbeta_commandLock {
-    NSLock* lock = objc_getAssociatedObject(self, kDUXBetaObjectCommandLockKey);
+    NSLock* lock = objc_getAssociatedObject(self, kDUXObjectCommandLockKey);
     if (!lock) {
         lock = [[NSLock alloc] init];
-        objc_setAssociatedObject(self, kDUXBetaObjectCommandLockKey, lock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, kDUXObjectCommandLockKey, lock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return lock;
 }
 
 - (NSMutableDictionary *)duxbeta_commandTagDict {
-    NSMutableDictionary* dictionary = objc_getAssociatedObject(self, kDUXBetaObjectCommandKey);
+    NSMutableDictionary* dictionary = objc_getAssociatedObject(self, kDUXObjectCommandKey);
     if (!dictionary) {
         dictionary = [[NSMutableDictionary alloc] init];
-        objc_setAssociatedObject(self, kDUXBetaObjectCommandKey, dictionary, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, kDUXObjectCommandKey, dictionary, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return dictionary;
 }

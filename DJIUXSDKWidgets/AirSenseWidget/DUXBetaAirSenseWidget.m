@@ -1,5 +1,5 @@
 //
-//  DUXBetAirSenseWidget.m
+//  DUXBetaAirSenseWidget.m
 //  DJIUXSDK
 //
 //  MIT License
@@ -31,18 +31,17 @@
 #import "UIFont+DUXBetaFonts.h"
 #import "DUXBetaAirSenseHtmlViewController.h"
 #import "DUXBetaAirSenseDialogViewController.h"
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 #import "NSLayoutConstraint+DUXBetaMultiplier.h"
 
 @import DJIUXSDKCore;
 
-static NSString * const DUXAirSenseWidgetDialogTitle = @"Another aircraft is nearby. Fly with caution.";
-static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you have read and understood the DJI AirSense Warnings.";
+static NSString * const DUXBetaAirSenseWidgetDialogTitle = @"Another aircraft is nearby. Fly with caution.";
+static NSString * const DUXBetaAirSenseWidgetDialogMessage = @"Please make sure you have read and understood the DJI AirSense Warnings.";
 
 @interface DUXBetaAirSenseWidget ()
 
 @property (nonatomic) NSMutableDictionary<NSNumber *, UIColor *> *airSenseColorMapping;
-@property (nonatomic) BOOL hasOptedOutDialog;
 @property (nonatomic) BOOL hasViewAppeared;
 @property (nonatomic, strong) UIImageView *airSenseImageView;
 @property (nonatomic, strong) DUXBetaAirSenseDialogViewController *dialogViewController;
@@ -64,7 +63,7 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
  *
  * Key: airSnseWarningStateUpdate   Type: NSNumber - Sends an NSNumber containing the AirSense warning state as an integer
 */
-@interface AirSenseWidgetModelState : DUXStateChangeBaseData
+@interface AirSenseWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)airSenseConnected:(BOOL)isAirSenseConnected;
@@ -101,8 +100,8 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
     _checkboxLabelTextFont = [UIFont systemFontOfSize:18];
     _dialogMessageTextColor = [UIColor duxbeta_linkBlueColor];
     _dialogMessageTextFont = [UIFont systemFontOfSize:18];
-    _dialogTitle = DUXAirSenseWidgetDialogTitle;
-    _dialogMessage = DUXAirSenseWidgetDialogMessage;
+    _dialogTitle = DUXBetaAirSenseWidgetDialogTitle;
+    _dialogMessage = DUXBetaAirSenseWidgetDialogMessage;
     _dialogBackgroundColor = [UIColor duxbeta_whiteColor];
     _dialogTitleTextColor = [UIColor duxbeta_blackColor];
     _hasViewAppeared = NO;
@@ -145,7 +144,7 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
     BindRKVOModel(self.widgetModel, @selector(sendAirSenseWarningLevelUpdate), airSenseWarningLevel);
     BindRKVOModel(self.widgetModel, @selector(sendAirSenseWarningStateUpdate), airSenseWarningState);
 
-    BindRKVOModel(self.widgetModel, @selector(updateUI), airSenseWarningLevel, isAirSenseConnected, isProductConnected);
+    BindRKVOModel(self.widgetModel, @selector(updateUI), airSenseWarningState, airSenseWarningLevel, isAirSenseConnected, isProductConnected);
     BindRKVOModel(self, @selector(updateUI),
         iconBackgroundColor,
         checkedCheckboxImage,
@@ -201,7 +200,7 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
     // Check if product has an AirSense receiver
     if (self.widgetModel.isAirSenseConnected || !self.widgetModel.isProductConnected) {
         [self.view setHidden:NO];
-    }else{
+    } else {
         [self.view setHidden:YES];
         return;
     }
@@ -240,7 +239,10 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
     if (isPresentingDialog) {
         [self setDialogCustomizations];
     } else {
-        if (self.widgetModel.airSenseWarningLevel >= 1 && !self.hasOptedOutDialog && self.hasViewAppeared) {
+        if (self.widgetModel.airSenseWarningLevel >= 1 &&
+            !self.hasOptedOutDialog &&
+            self.hasViewAppeared &&
+            self.widgetModel.isProductConnected) {
             [self presentAlertDialog];
         }
     }
@@ -264,6 +266,7 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
                                                                             andMessage:self.dialogMessage];
     [self setDialogCustomizations];
     self.dialogViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    self.dialogViewController.presentingWidget = self;
     [self presentViewController:self.dialogViewController animated:YES completion:nil];
 }
 
@@ -277,21 +280,21 @@ static NSString * const DUXAirSenseWidgetDialogMessage = @"Please make sure you 
 }
 
 - (void)sendIsProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[AirSenseWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[AirSenseWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendIsAirSenseConnected {
-    [[DUXStateChangeBroadcaster instance] send:[AirSenseWidgetModelState airSenseConnected:self.widgetModel.isAirSenseConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[AirSenseWidgetModelState airSenseConnected:self.widgetModel.isAirSenseConnected]];
 }
 
 - (void)sendAirSenseWarningLevelUpdate {
     NSNumber *numberToSend = [[NSNumber alloc] initWithUnsignedInteger:self.widgetModel.airSenseWarningLevel];
-    [[DUXStateChangeBroadcaster instance] send:[AirSenseWidgetModelState airSenseWarningLevelUpdate:numberToSend]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[AirSenseWidgetModelState airSenseWarningLevelUpdate:numberToSend]];
 }
 
 - (void)sendAirSenseWarningStateUpdate {
     NSNumber *numberToSend = [[NSNumber alloc] initWithUnsignedInteger:self.widgetModel.airSenseWarningState];
-    [[DUXStateChangeBroadcaster instance] send:[AirSenseWidgetModelState airSenseWarningStateUpdate:numberToSend]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[AirSenseWidgetModelState airSenseWarningStateUpdate:numberToSend]];
 }
 
 - (void)updateMinImageDimensions {

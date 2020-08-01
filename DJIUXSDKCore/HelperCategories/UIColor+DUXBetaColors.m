@@ -75,6 +75,18 @@
     return [UIColor darkGrayColor];
 }
 
++ (UIColor *)duxbeta_yellowColor {
+    return RGBA(255.0, 192.0, 0.0, 1.0);
+}
+
++ (UIColor *)duxbeta_backgroundColor {
+    return RGBA(0.0, 0.0, 0.0, 0.6);
+}
+
++ (UIColor *)duxbeta_rtkTableBorderColor {
+    return RGBA(180.0, 180.0, 52.0, 0.25);
+}
+
 + (UIColor *)duxbeta_lightGrayTransparentColor {
     return RGBA(100.0, 100.0, 100.0, 0.25);
 }
@@ -99,16 +111,28 @@
     return RGBA(238.0, 43.0, 42.0, 1.0);
 }
 
++ (UIColor *)duxbeta_manualFocusWidgetButtonBackgroundColor {
+    return RGBA(0.0, 0.0, 0.0, 0.2);
+}
+
++ (UIColor *)duxbeta_histogramWidgetBackgroundColor {
+    return RGBA(0.0, 0.0, 0.0, 0.47);
+}
+
++ (UIColor *)duxbeta_histogramWidgetLineColor {
+    return RGBA(255.0, 255.0, 255.0, 0.2);
+}
+
++ (UIColor *)duxbeta_histogramWidgetFillColor {
+    return RGBA(255.0, 255.0, 255.0, 0.7);
+}
+
++ (UIColor *)duxbeta_histogramWidgetGridColor {
+    return RGBA(255.0, 255.0, 255.0, 0.4);
+}
+
 + (UIColor *)duxbeta_systemStatusWidgetGreenColor {
     return RGBA(97.0, 189.0, 23.0, 1.0);
-}
-
-+ (UIColor *)duxbeta_systemStatusWidgetYellowColor {
-    return RGBA(255.0, 192.0, 10.0, 1.0);
-}
-
-+ (UIColor *)duxbeta_batteryOverheatingYellowColor {
-    return RGBA(255.0, 192.0, 0.0, 1.0);
 }
 
 + (UIColor *)duxbeta_systemStatusWidgetRedColor {
@@ -131,6 +155,10 @@
     return RGBA(32.0, 163.0, 246.0, 0.4);
 }
 
++ (UIColor *)duxbeta_autoExposureSwitchWidgetWhiteColor {
+    return RGBA(140.0, 140.0, 140.0, 1.0);
+}
+
 + (UIColor *)duxbeta_linkBlueColor {
     return RGBA(61.0, 133.0, 199.0, 1.0);
 }
@@ -145,6 +173,18 @@
 
 + (UIColor *)duxbeta_batteryNormalGreen {
     return RGBA(63, 193, 77, 1.0);
+}
+
++ (UIColor *)duxbeta_rtkOverallStatusGreen {
+    return RGBA(126, 211, 33, 1.0);
+}
+
++ (UIColor *)duxbeta_rtkOverallStatusYellow {
+    return RGBA(248, 231, 28, 1.0);
+}
+
++ (UIColor *)duxbeta_rtkOverallStatusRed {
+    return RGBA(208, 2, 27, 1.0);
 }
 
 + (UIColor *)duxbeta_fpvBackgroundColor {
@@ -185,6 +225,34 @@
 
 + (UIColor *)duxbeta_listPanelSeparatorColor {
     return RGBA(255, 255, 255, .8);
+}
+
++ (UIColor *)duxbeta_alertViewMaskColor {
+    return RGBA(0, 0, 0, .4);
+}
+
++ (UIColor *)duxbeta_alertBackgroundColor {
+    return RGBA(66.0, 66.0, 66.0, 1.0);
+}
+
++ (UIColor *)duxbeta_alertActionBlueColor {
+    return RGBA(51.0, 156.0, 233.0, 1.0);
+}
+ 
++ (UIColor *)duxbeta_slideTextColor {
+    return RGBA(130.0, 80.0, 0.0, 1.0);
+}
+
++ (UIColor *)duxbeta_slideIconSelectedColor {
+    return RGBA(219.0, 221.0, 220.0, 1.0);
+}
+
++ (UIColor *)duxbeta_slideSeparatorColor {
+    return RGBA(91.0, 91.0, 91.0, 1.0);
+}
+
++ (UIColor *)duxbeta_alertWarningColor {
+    return RGBA(251.0, 225.0, 57.0, 1.0);
 }
 
 @end

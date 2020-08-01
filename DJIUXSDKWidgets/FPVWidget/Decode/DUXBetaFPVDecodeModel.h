@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -32,25 +32,32 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  Data model for the decoding adapter used to define
- *  the underlying logic and communication.
+ * Data model for the decoding adapter used to define
+ * the underlying logic and communication.
 */
 @interface DUXBetaFPVDecodeModel : DUXBetaBaseWidgetModel
 
 /**
-*   The frame needed by the videopreviewer to display the video feed.
+ * The frame needed by the video previewer to display the video feed.
 */
 @property (nonatomic, assign, readonly) CGRect contentClipRect;
 
 /**
-*   The encoding type needed by the videopreviewer to display the video feed.
+ * The encoding type needed by the video previewer to display the video feed.
 */
 @property (nonatomic, assign, readonly) H264EncoderType encodeType;
 
 /**
-*   Initialization method that takes a DJIVideoFeed as a parameter
+ * The camera orientation needed by the video previewer.
+ * This property gets populated only for the camera that support multiple orientations.
 */
-- (instancetype)initWithVideoFeed:(DJIVideoFeed *)videoFeed;
+@property (nonatomic, assign, readonly) DJICameraOrientation orientation;
+
+@property (nonatomic, assign, readonly, nullable) NSNumber *isEXTPortEnabled;
+
+@property (nonatomic, assign, readonly, nullable) NSNumber *LBEXTPercent;
+
+@property (nonatomic, assign, readonly, nullable) NSNumber *HDMIAVPercent;
 
 - (void)updateContentRect;
 - (void)updateEncodeType;

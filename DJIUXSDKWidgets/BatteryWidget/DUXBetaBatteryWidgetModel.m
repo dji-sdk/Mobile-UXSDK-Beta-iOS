@@ -1,5 +1,5 @@
 //
-//  DUXBatteryWidgetModel.m
+//  DUXBetaBatteryWidgetModel.m
 //  DJIUXSDK
 //
 //  MIT License
@@ -114,12 +114,12 @@ static const NSInteger kDUXBattery2Index = 1;
     return DUXBetaBatteryStatusNormal;
 }
 
-- (DUXAggregateBatteryState *)getAggregateState {
+- (DUXBetaAggregateBatteryState *)getAggregateState {
     NSMeasurement *voltage = [[NSMeasurement alloc] initWithDoubleValue:self.batteryAggregationState.voltage / 1000.0
                                                                        unit:NSUnitElectricPotentialDifference.volts];
     DUXBetaBatteryStatus status = [self getAggregateStatus];
     
-    return [[DUXAggregateBatteryState alloc] initWithVoltage:voltage
+    return [[DUXBetaAggregateBatteryState alloc] initWithVoltage:voltage
                                         andBatteryPercentage:self.batteryAggregationState.chargeRemainingInPercent
                                             withWarningLevel:status];
 }
@@ -166,7 +166,7 @@ static const NSInteger kDUXBattery2Index = 1;
             
             DUXBetaBatteryStatus overallState = [self worstBatteryStatusForBatteryStates:@[battery1State, battery2State]];
             
-            DUXDualBatteryState *dualBatteryState = [[DUXDualBatteryState alloc] initWithVoltage:battery1State.voltage andBatteryPercentage:battery1State.batteryPercentage withWarningLevel:overallState];
+            DUXBetaDualBatteryState *dualBatteryState = [[DUXBetaDualBatteryState alloc] initWithVoltage:battery1State.voltage andBatteryPercentage:battery1State.batteryPercentage withWarningLevel:overallState];
                 
             dualBatteryState.battery2Percentage = battery2State.batteryPercentage;
             dualBatteryState.battery2Voltage = battery2State.voltage;
@@ -178,6 +178,7 @@ static const NSInteger kDUXBattery2Index = 1;
         NSMeasurement *voltage = [[NSMeasurement alloc] initWithDoubleValue:0 unit:NSUnitElectricPotentialDifference.volts];
         DUXBetaBatteryState *state = [[DUXBetaBatteryState alloc] initWithVoltage:voltage andBatteryPercentage:0.0 withWarningLevel:DUXBetaBatteryStatusUnknown];
         self.batteryState = state;
+        self.batteryAggregationState = nil;
     }
 }
 

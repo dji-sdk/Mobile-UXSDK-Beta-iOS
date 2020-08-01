@@ -835,7 +835,7 @@ static CGSize const kDesignSize = {200.0, 200.0};
 }
 
 /*********************************************************************************/
-#pragma mark - DUXFlyZoneDataProviderDelegate
+#pragma mark - DUXBetaFlyZoneDataProviderDelegate
 /*********************************************************************************/
 
 - (void)flyZoneDataProvider:(nonnull DUXBetaFlyZoneDataProvider *)flyZoneDataProvider didUpdateFlyZones:(nonnull NSDictionary <NSString *, DJIFlyZoneInformation *> *)flyZones {

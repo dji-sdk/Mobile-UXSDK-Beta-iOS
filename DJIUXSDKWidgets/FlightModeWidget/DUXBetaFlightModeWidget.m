@@ -3,9 +3,9 @@
 //  DJIUXSDK
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -29,7 +29,7 @@
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
 #import "UIColor+DUXBetaColors.h"
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 @import DJIUXSDKCore;
 
 static const CGFloat kDesignFontSize = 70.0;
@@ -52,14 +52,14 @@ static NSString const *kLongestPossibleFlightMode = @"TerrainFollowing";
 @end
 
 /**
- * FlightModeWidgetModelState contains the model hooks for the DUXFlightModeWidget.
+ * FlightModeWidgetModelState contains the model hooks for the DUXBetaFlightModeWidget.
  * It implements the hooks:
  *
  * Key: productConnected        Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft is connected.
  *
  * Key: flightModeTextUpdate:   Type: NSString - Sends the flight mode string whenever is is updated.
 */
-@interface FlightModeWidgetModelState : DUXStateChangeBaseData
+@interface FlightModeWidgetModelState : DUXBetaStateChangeBaseData
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)flightModeTextUpdate:(NSString *)flightModeText;
 @end
@@ -226,11 +226,11 @@ static NSString const *kLongestPossibleFlightMode = @"TerrainFollowing";
 }
 
 - (void)sendIsProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[FlightModeWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[FlightModeWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendFlightModeString {
-    [[DUXStateChangeBroadcaster instance] send:[FlightModeWidgetModelState flightModeTextUpdate:self.widgetModel.flightModeString]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[FlightModeWidgetModelState flightModeTextUpdate:self.widgetModel.flightModeString]];
 }
 
 - (void)updateMinWidgetSize {

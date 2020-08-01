@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -33,10 +33,8 @@ import DJIUXSDKCommunication
 */
 @objc public class DUXBetaFPVCenterView: UIImageView {
 
-    /**
-     *  The image view type enum value that is read and stored into DefaultGlobalPreferences.
-     *  Default value .unkwnown
-    */
+    /// The image view type enum value that is read and stored into DefaultGlobalPreferences.
+    /// Default value .unkwnown
     @objc public var imageType: FPVCenterViewType = DUXBetaSingleton.sharedGlobalPreferences().centerViewType() {
         didSet {
             //Save the current image type to DefaultGlobalPreferences
@@ -45,10 +43,8 @@ import DJIUXSDKCommunication
         }
     }
     
-    /**
-     *  The color view type enum value that is read and stored into DefaultGlobalPreferences.
-     *  Default value .unkwnown
-    */
+    /// The color view type enum value that is read and stored into DefaultGlobalPreferences.
+    /// Default value .unkwnown
     @objc public var colorType: FPVCenterViewColor = DUXBetaSingleton.sharedGlobalPreferences().centerViewColor() {
         didSet {
             //Save the current color type to DefaultGlobalPreferences
@@ -57,9 +53,7 @@ import DJIUXSDKCommunication
         }
     }
     
-    /**
-     *  The color of the center view image.
-    */
+    /// The color of the center view image.
     @objc public var color: UIColor? = nil {
         didSet {
             if let c = color {
@@ -99,7 +93,7 @@ extension FPVCenterViewType {
         switch self {
             case .Standard:         imageName = "CenterPointCircle"
             case .Cross:            imageName = "CenterPointCross"
-            case .NarrowCross:      imageName = "CenterPointNarrowedCross"
+            case .NarrowCross:      imageName = "CenterPointNarrowCross"
             case .Frame:            imageName = "CenterPointFrame"
             case .FrameAndCross:    imageName = "CenterPointFrameAndCross"
             case .Square:           imageName = "CenterPointSquare"

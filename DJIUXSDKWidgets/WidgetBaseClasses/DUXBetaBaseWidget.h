@@ -29,6 +29,7 @@
 #import <DJISDK/DJISDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class DUXBetaTheme;
 
 typedef struct {
 // Use this aspect ratio for best appearance, we plan on images being resizable

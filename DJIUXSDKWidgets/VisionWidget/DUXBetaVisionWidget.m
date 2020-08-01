@@ -2,8 +2,10 @@
 //  DUXBetaVisionWidget.m
 //  DJIUXSDK
 //
+//  MIT License
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -27,13 +29,13 @@
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
 #import "UIColor+DUXBetaColors.h"
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 #import "NSLayoutConstraint+DUXBetaMultiplier.h"
 
 @import DJIUXSDKCore;
 
-static NSString * const DUXVisionWidgetWarningMessageReason = @"Obstacle Avoidance Disabled.";
-static NSString * const DUXVisionWidgetWarningMessageSolution = @"Fly with caution.";
+static NSString * const DUXBetaVisionWidgetWarningMessageReason = @"Obstacle Avoidance Disabled.";
+static NSString * const DUXBetaVisionWidgetWarningMessageSolution = @"Fly with caution.";
 
 @interface DUXBetaVisionWidget ()
 
@@ -45,19 +47,19 @@ static NSString * const DUXVisionWidgetWarningMessageSolution = @"Fly with cauti
 @end
 
 /**
- * DUXVisionSignalWidgetUIState contains the hooks for UI changes in the widget class DUXVisionWidget.
+ * DUXBetaVisionSignalWidgetUIState contains the hooks for UI changes in the widget class DUXBetaVisionWidget.
  * It implements the hook:
  *
  * Key: widgetTapp    Type: NSNumber - Sends a boolean YES value as an NSNumber indicating the widget was tapped.
 */
-@interface DUXVisionSignalWidgetUIState : DUXStateChangeBaseData
+@interface DUXBetaVisionSignalWidgetUIState : DUXBetaStateChangeBaseData
 
 + (instancetype)widgetTap;
 
 @end
 
 /**
- * DUXVisionWidgetModelState contains the model hooks for the DUXVisionWidget.
+ * DUXBetaVisionWidgetModelState contains the model hooks for the DUXBetaVisionWidget.
  * It implements the hooks:
  *
  * Key: productConnected            Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft is connected.
@@ -70,7 +72,7 @@ static NSString * const DUXVisionWidgetWarningMessageSolution = @"Fly with cauti
  * Key: visibilityUpdate            Type: NSNumber - Sends a boolean value as an NSNumber when the aircraft model changes (during
  *                                                   connection/disconnection) to indicate if aircraft supports vision.
 */
-@interface DUXVisionWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaVisionWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)visionSystemStatusUpdate:(DUXBetaVisionStatus)visionStatus;
@@ -190,22 +192,22 @@ static NSString * const DUXVisionWidgetWarningMessageSolution = @"Fly with cauti
 }
 
 - (void)sendIsProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[DUXVisionWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVisionWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendVisionSystemStatusUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[DUXVisionWidgetModelState visionSystemStatusUpdate:self.widgetModel.visionSystemStatus]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVisionWidgetModelState visionSystemStatusUpdate:self.widgetModel.visionSystemStatus]];
 }
 
 - (void)sendVisibilityUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[DUXVisionWidgetModelState visibilityUpdate:self.widgetModel.currentAircraftSupportVision]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVisionWidgetModelState visibilityUpdate:self.widgetModel.currentAircraftSupportVision]];
 }
 
 - (void)sendVisionDisabledWarning {
     // Send Hook
-    [[DUXStateChangeBroadcaster instance] send:[DUXVisionWidgetModelState userAvoidanceEnabledUpdate:self.widgetModel.isCollisionAvoidanceEnabled]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVisionWidgetModelState userAvoidanceEnabledUpdate:self.widgetModel.isCollisionAvoidanceEnabled]];
     // Send Warning Message
-    [self.widgetModel sendWarningMessageWithReason:DUXVisionWidgetWarningMessageReason andSolution:DUXVisionWidgetWarningMessageSolution];
+    [self.widgetModel sendWarningMessageWithReason:DUXBetaVisionWidgetWarningMessageReason andSolution:DUXBetaVisionWidgetWarningMessageSolution];
 }
 
 - (void)setImage:(UIImage *)image forVisionStatus:(DUXBetaVisionStatus)status {
@@ -219,7 +221,7 @@ static NSString * const DUXVisionWidgetWarningMessageSolution = @"Fly with cauti
 }
 
 - (void)widgetTapped {
-    [[DUXStateChangeBroadcaster instance] send:[DUXVisionSignalWidgetUIState widgetTap]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaVisionSignalWidgetUIState widgetTap]];
 }
 
 - (void)updateMinImageDimensions {
@@ -234,30 +236,30 @@ static NSString * const DUXVisionWidgetWarningMessageSolution = @"Fly with cauti
 
 @end
 
-@implementation DUXVisionSignalWidgetUIState
+@implementation DUXBetaVisionSignalWidgetUIState
 
 + (instancetype)widgetTap {
-    return [[DUXVisionSignalWidgetUIState alloc] initWithKey:@"widgetTap" number:@(0)];
+    return [[DUXBetaVisionSignalWidgetUIState alloc] initWithKey:@"widgetTap" number:@(0)];
 }
 
 @end
 
-@implementation DUXVisionWidgetModelState
+@implementation DUXBetaVisionWidgetModelState
 
 + (instancetype)productConnected:(BOOL)isConnected {
-    return [[DUXVisionWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+    return [[DUXBetaVisionWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
 + (instancetype)visionSystemStatusUpdate:(DUXBetaVisionStatus)visionStatus {
-    return [[DUXVisionWidgetModelState alloc] initWithKey:@"visionSystemStatusUpdate" number:@(visionStatus)];
+    return [[DUXBetaVisionWidgetModelState alloc] initWithKey:@"visionSystemStatusUpdate" number:@(visionStatus)];
 }
 
 + (instancetype)userAvoidanceEnabledUpdate:(BOOL)isUserAvoidanceEnabled {
-    return [[DUXVisionWidgetModelState alloc] initWithKey:@"userAvoidanceEnabledUpdate" number:@(isUserAvoidanceEnabled)];
+    return [[DUXBetaVisionWidgetModelState alloc] initWithKey:@"userAvoidanceEnabledUpdate" number:@(isUserAvoidanceEnabled)];
 }
 
 + (instancetype)visibilityUpdate:(BOOL)isVisible {
-    return [[DUXVisionWidgetModelState alloc] initWithKey:@"visibilityUpdate" number:@(isVisible)];
+    return [[DUXBetaVisionWidgetModelState alloc] initWithKey:@"visibilityUpdate" number:@(isVisible)];
 }
 
 @end

@@ -29,7 +29,7 @@
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
 @import DJIUXSDKCore;
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 
 // image names used for various strength levels of the signal indicator
 static NSString * const kGPSLevel0ImageName = @"SignalLevel0";
@@ -43,7 +43,7 @@ static NSString * const kGPSLevel5ImageName = @"SignalLevel5";
 static NSString * const kGPSIconImageName = @"GPSSignalIcon";
 
 static CGFloat const kRTKIndicatorFontSize = 30.0;
-static CGFloat const kCountFontSize = 60.0;
+static CGFloat const kCountFontSize = 30.0;
 static CGFloat const kCountLeadingGuideProportionOfIcon = 1.1;
 static CGFloat const kRTKIndicatorProportionOfIcon = 0.45;
 static CGFloat const kSatelliteCountProportionOfHeight = 0.4;
@@ -67,19 +67,19 @@ static CGFloat const kInterItemGapToIconRatio = 0.05;
 @end
 
 /**
- * GPSSignalWidgetUIState contains the hooks for UI changes in the widget class DUXGPSSignalWidget.
+ * GPSSignalWidgetUIState contains the hooks for UI changes in the widget class DUXBetaGPSSignalWidget.
  * It implements the hook:
  *
  * Key: widgetTap    Type: NSNumber - Sends a boolean YES value as an NSNumber indicating the widget was tapped.
 */
-@interface GPSSignalWidgetUIState : DUXStateChangeBaseData
+@interface GPSSignalWidgetUIState : DUXBetaStateChangeBaseData
 
 + (instancetype)widgetTap;
 
 @end
 
 /**
- * GPSSignalWidgetModelState contains the model hooks for the DUXGPSSignalWidget.
+ * GPSSignalWidgetModelState contains the model hooks for the DUXBetaGPSSignalWidget.
  * It implements the hook:
  *
  * Key: productConnected        Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft is connected.
@@ -94,7 +94,7 @@ static CGFloat const kInterItemGapToIconRatio = 0.05;
  * Key: isRTKAccurateUpdate     Type: NSNumber - Sends a boolean as an NSNumber indicating that RTK mode is accurate whenever the
  *                                               status changes.
 */
-@interface GPSSignalWidgetModelState : DUXStateChangeBaseData
+@interface GPSSignalWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)gpsSignalQualityUpdate:(NSInteger)signalQuality;
@@ -243,27 +243,27 @@ static CGFloat const kInterItemGapToIconRatio = 0.05;
 }
 
 - (void)widgetTapped {
-    [[DUXStateChangeBroadcaster instance] send:[GPSSignalWidgetUIState widgetTap]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[GPSSignalWidgetUIState widgetTap]];
 }
 
 - (void)sendIsProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendGPSSignalQualityUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState gpsSignalQualityUpdate:self.widgetModel.satelliteSignal]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState gpsSignalQualityUpdate:self.widgetModel.satelliteSignal]];
 }
 
 - (void)sendSatelliteCountUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState satelliteCountUpdate:self.widgetModel.satelliteCount]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState satelliteCountUpdate:self.widgetModel.satelliteCount]];
 }
 
 - (void)sendRTKEnabledUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState isRTKEnabledUpdate:self.widgetModel.isRTKEnabled]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState isRTKEnabledUpdate:self.widgetModel.isRTKEnabled]];
 }
 
 - (void)sendRTKAccurateUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState isRTKAccurateUpdate:self.widgetModel.isRTKAccurate]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[GPSSignalWidgetModelState isRTKAccurateUpdate:self.widgetModel.isRTKAccurate]];
 }
 
 - (void)updateWidgetBackground {
@@ -310,7 +310,7 @@ static CGFloat const kInterItemGapToIconRatio = 0.05;
     self.satelliteCountLabel.backgroundColor = self.satelliteCountBackgroundColor;
     self.satelliteCountLabel.textColor = self.satelliteCountNumberColor;
     self.satelliteCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.widgetModel.satelliteCount];
-    CGFloat pointSize = self.satelliteCountNumberFont.pointSize * (self.satelliteCountLabel.frame.size.height / self.widgetSizeHint.minimumHeight);
+    CGFloat pointSize = self.satelliteCountNumberFont.pointSize * (self.view.frame.size.height / self.minWidgetSize.height);
     self.satelliteCountLabel.font = [self.satelliteCountNumberFont fontWithSize:pointSize];
     
     if (self.widgetModel.isProductConnected) {
