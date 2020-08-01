@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryStatus) {
  *
  *  @param voltage An voltage value using `NSMeasurement`.
  *  @param batteryPercentage numerical value to represent the current percentage of the battery.
- *  @param state An enum value of `DUXBetaBatteryStatus`.
+ *  @param state An enum value of `DUXBatteryStatus`.
  */
 
 - (instancetype)initWithVoltage:(NSMeasurement *)voltage andBatteryPercentage:(float)batteryPercentage withWarningLevel:(DUXBetaBatteryStatus)state;
@@ -91,14 +91,14 @@ typedef NS_ENUM(NSUInteger, DUXBetaBatteryStatus) {
 
 @end
 
-@interface DUXDualBatteryState : DUXBetaBatteryState
+@interface DUXBetaDualBatteryState : DUXBetaBatteryState
 
 @property (nonatomic) float battery2Percentage;
 @property (strong, nonatomic) NSMeasurement *battery2Voltage;
 
 @end
 
-@interface DUXAggregateBatteryState : DUXBetaBatteryState
+@interface DUXBetaAggregateBatteryState : DUXBetaBatteryState
 
 @end
 

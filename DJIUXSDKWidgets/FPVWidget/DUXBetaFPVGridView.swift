@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -29,14 +29,12 @@ import UIKit
 import DJIUXSDKCommunication
 
 /**
- *  Displays a grid centered in the view.
+* Displays a grid centered in the view.
 */
 @objc public class DUXBetaFPVGridView: UIView {
     
-    /**
-     *  The grid view type enum value that is read and stored into the DefaultGlobalPreferences.
-     *  Default value .unkwnown
-    */
+    /// The grid view type enum value that is read and stored into the DefaultGlobalPreferences.
+    /// Default value .unkwnown
     @objc public var gridViewType = DUXBetaSingleton.sharedGlobalPreferences().gridViewType() {
         didSet {
             DUXBetaSingleton.sharedGlobalPreferences().set(gridViewType: gridViewType)
@@ -44,10 +42,8 @@ import DJIUXSDKCommunication
         }
     }
     
-    /**
-     *  The number of rows displayed by the grid view.
-     *  Default value 3
-    */
+    /// The number of rows displayed by the grid view.
+    /// Default value 3
     @objc public var rowCount: Int = 3 {
         didSet {
             if rowCount < 1 { rowCount = 1 }
@@ -55,10 +51,8 @@ import DJIUXSDKCommunication
         }
     }
     
-    /**
-     *  The number of columns displayed by the grid view.
-     *  Default value 3
-    */
+    /// The number of columns displayed by the grid view.
+    /// Default value 3
     @objc public var columnCount: Int = 3 {
         didSet {
             if columnCount < 1 { columnCount = 1 }
@@ -66,59 +60,48 @@ import DJIUXSDKCommunication
         }
     }
     
-    /**
-     *  The line thickness used for drawing the lines.
-     *  Default value 0.5.
-    */
+    /// The line thickness used for drawing the lines.
+    /// Default value 0.5.
     @objc public var lineWidth: CGFloat = 0.5 {
         didSet {
             redraw()
         }
     }
     
-    /**
-     *  The line color used for drawing the lines.
-     *  Default value 0.5
-    */
+
+    /// The line color used for drawing the lines.
+    /// Default value 0.5
     @objc public var lineColor: UIColor = UIColor.duxbeta_fpvGridLine() {
         didSet {
             redraw()
         }
     }
     
-    /**
-     *  The line shadow's visibility.
-     *  Visible by default
-    */
+    /// The line shadow's visibility.
+    /// Visible by default
     @objc public var isShadowVisible = true {
         didSet {
             redraw()
         }
     }
     
-    /**
-     *  The line shadow's blue value.
-     *  Default value 1.0
-    */
+    /// The line shadow's blue value.
+    /// Default value 1.0
     @objc public var shadowBlur: CGFloat = 1.0 {
         didSet {
             redraw()
         }
     }
     
-    /**
-     *  The line shadow's color value.
-    */
+    /// The line shadow's color value.
     @objc public var shadowColor: UIColor = UIColor.duxbeta_fpvGridLineShadow() {
         didSet {
             redraw()
         }
     }
     
-    /**
-     *  The line shadow's offset as a translation in the rendering context.
-     *  Default value (0.0, 0.0) size
-    */
+    /// The line shadow's offset as a translation in the rendering context.
+    /// Default value (0.0, 0.0) size.
     @objc public var shadowOffset: CGSize = CGSize(width: 0.0, height: 0.0) {
         didSet {
             redraw()

@@ -1,9 +1,11 @@
 //
 //  DUXBetaVisionWidget.h
 //  DJIUXSDK
-//
+//  
+//  MIT License
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -32,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Widget to display the vision status/collision avoidance status, of the aircraft.
  *  Depending on sensors availability, flight mode, and aircraft type.
  */
+
 @interface DUXBetaVisionWidget : DUXBetaBaseWidget
 
 /**

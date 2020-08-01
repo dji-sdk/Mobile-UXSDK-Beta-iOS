@@ -48,6 +48,11 @@ typedef NS_ENUM(NSUInteger, DUXBetaUnitSystem) {
 - (void)cleanup;
 - (void)inCleanup;
 
+- (double)metersToMeasurementSystem:(double)metersIn;
+- (NSString *)measurementUnitString;
+- (NSString *)metersToUnitString:(double)metersIn;
+- (double)measurementToMeters:(double)measureIn;    // This assumes the measureIn is in the unitSystem of the model
+
 @end
 
 NS_ASSUME_NONNULL_END

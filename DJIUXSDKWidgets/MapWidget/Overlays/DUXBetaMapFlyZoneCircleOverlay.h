@@ -1,5 +1,5 @@
 //
-//  DUXBetaMapFlyZoneCircleOverlay.h
+//  DUXBetaNoFlyZoneCircle.h
 //  DJIUXSDK
 //
 //  MIT License

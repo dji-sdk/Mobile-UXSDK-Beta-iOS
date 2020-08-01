@@ -27,6 +27,7 @@
 
 #import "UIFont+DUXBetaFonts.h"
 #import <CoreText/CoreText.h>
+#import "NSBundle+DUXBetaAssets.h"
 
 @implementation UIFont (DUXBetaFonts)
 
@@ -49,7 +50,8 @@
 }
 
 + (BOOL)duxbeta_loadFontWithName:(NSString *)fontName ofType:(NSString *)type {
-    NSString *fontPath = [[NSBundle bundleForClass:[self class]] pathForResource:fontName ofType:type];
+    NSBundle *currentBundle = [NSBundle duxbeta_currentBundle];
+    NSString *fontPath = [currentBundle pathForResource:fontName ofType:type];
     NSData *fontData = [NSData dataWithContentsOfFile:fontPath];
 
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)fontData);

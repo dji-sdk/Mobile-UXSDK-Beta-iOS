@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -28,36 +28,43 @@
 #import "DUXBetaFPVDecodeModel.h"
 #import "DUXBetaBaseWidgetModel+Protected.h"
 
+#import <DJISDK/DJISDK.h>
+
 @interface DUXBetaFPVDecodeModel()
 
-@property (nonatomic, weak) DJIVideoFeed *videoFeed;
-
 @property (nonatomic, strong) NSString *cameraName;
+@property (nonatomic, strong) NSString *aircraftModel;
 @property (nonatomic, assign) DJICameraMode cameraMode;
+@property (nonatomic, assign) DJICameraOrientation orientation;
 @property (nonatomic, assign) DJICameraPhotoAspectRatio photoRatio;
 
 @property (nonatomic, assign, readwrite) CGRect contentClipRect;
 @property (nonatomic, assign, readwrite) H264EncoderType encodeType;
 
+@property (nonatomic, assign, readwrite, nullable) NSNumber *isEXTPortEnabled;
+@property (nonatomic, assign, readwrite, nullable) NSNumber *LBEXTPercent;
+@property (nonatomic, assign, readwrite, nullable) NSNumber *HDMIAVPercent;
+
 @end
 
 @implementation DUXBetaFPVDecodeModel
 
-- (instancetype)initWithVideoFeed:(DJIVideoFeed *)videoFeed {
-    self = [super init];
-    if (self) {
-        self.videoFeed = videoFeed;
-    }
-    return self;
-}
-
 - (void)inSetup {
     BindSDKKey([DJICameraKey keyWithParam:DJICameraParamMode], cameraMode);
+    BindSDKKey([DJIProductKey keyWithParam: DJIProductParamModelName], aircraftModel);
     BindSDKKey([DJICameraKey keyWithParam:DJICameraParamDisplayName], cameraName);
     BindSDKKey([DJICameraKey keyWithParam:DJICameraParamPhotoAspectRatio], photoRatio);
     
+    // Bind to DJICameraParamOrientation key only if the model supports multiple orientations
+    DJIAircraft *product = (DJIAircraft *)[DJISDKManager product];
+    DJICamera *camera = product.camera;
+    if (camera.capabilities.orientationRange.count > 1) {
+        BindSDKKey([DJICameraKey keyWithParam:DJICameraParamOrientation], orientation);
+    }
+    
     BindRKVOModel(self, @selector(updateEncodeType), cameraName)
     BindRKVOModel(self, @selector(updateContentRect), cameraMode, cameraName, photoRatio);
+    BindRKVOModel(self, @selector(updateAircraftModel), aircraftModel);
 }
 
 - (void)inCleanup {
@@ -76,6 +83,27 @@
 
 - (void)updateEncodeType {
     self.encodeType = self.computedEncodeType;
+}
+
+- (void)updateAircraftModel {
+    if ([self.aircraftModel isEqualToString:DJIAircraftModelNameMatrice600] ||
+        [self.aircraftModel isEqualToString:DJIAircraftModelNameMatrice600Pro] ||
+        [self.aircraftModel isEqualToString:DJIAircraftModelNameA3] ||
+        [self.aircraftModel isEqualToString:DJIAircraftModelNameN3]) {
+
+        BindSDKKey([DJIAirLinkKey keyWithIndex:0
+                                  subComponent:DJIAirLinkLightbridgeLinkSubComponent
+                             subComponentIndex:0
+                                      andParam:DJILightbridgeLinkParamEXTVideoInputPortEnabled], isEXTPortEnabled);
+        BindSDKKey([DJIAirLinkKey keyWithIndex:0
+                                  subComponent:DJIAirLinkLightbridgeLinkSubComponent
+                             subComponentIndex:0
+                                      andParam:DJILightbridgeLinkParamBandwidthAllocationForLBVideoInputPort], LBEXTPercent);
+        BindSDKKey([DJIAirLinkKey keyWithIndex:0
+                                  subComponent:DJIAirLinkLightbridgeLinkSubComponent
+                             subComponentIndex:0
+                                      andParam:DJILightbridgeLinkParamBandwidthAllocationForHDMIVideoInputPort], HDMIAVPercent);
+    }
 }
 
 #pragma mark - Private Methods
@@ -118,19 +146,32 @@
 }
 
 - (H264EncoderType)computedEncodeType {
+    DJIAircraft *product = (DJIAircraft *)[DJISDKManager product];
+    DJICamera *camera = product.camera;
+    NSString *productName = product.model;
+    BOOL isAircraft = [product isKindOfClass:[DJIAircraft class]];
     
-    if ([self.cameraName isEqualToString:DJICameraDisplayNameX3]) {
-        DJIAircraft *product = (DJIAircraft *)[DJISDKManager product];
-        DJICamera *camera = product.camera;
-        BOOL isAircraft = [product isKindOfClass:[DJIAircraft class]];
+    if (isAircraft &&
+        ([productName isEqual:DJIAircraftModelNameA3] ||
+         [productName isEqual:DJIAircraftModelNameN3] ||
+         [productName isEqual:DJIAircraftModelNameMatrice600] ||
+         [productName isEqual:DJIAircraftModelNameMatrice600Pro])) {
+        return H264EncoderType_LightBridge2;
+    }
+    
+    //Special case: can be stand-alone Lightbridge 2
+    if (isAircraft &&
+        [productName isEqual:DJIAircraftModelNameUnknownAircraft] &&
+        camera.displayName == nil) {
+        return H264EncoderType_LightBridge2;
+    }
+    
+    if ([self.cameraName isEqualToString:DJICameraDisplayNameX3] ||
+        [self.cameraName isEqualToString:DJICameraDisplayNameZ3]) {
         if (!isAircraft && [camera isDigitalZoomSupported]) {
             return H264EncoderType_A9_OSMO_NO_368;
         }
         return H264EncoderType_DM368_inspire;
-    }
-    
-    if ([self.cameraName isEqualToString:DJICameraDisplayNameZ3]) {
-        return H264EncoderType_A9_OSMO_NO_368;
     }
     
     if ([self.cameraName isEqualToString:DJICameraDisplayNameX5] ||
@@ -181,6 +222,10 @@
     
     if ([self.cameraName isEqualToString:DJICameraDisplayNameMavicAirCamera]) {
         return H264EncoderType_MavicAir;
+    }
+    
+    if ([self.cameraName isEqualToString:DJICameraDisplayNameMavicMiniCamera]) {
+        return H264EncoderType_MavicMini;
     }
 
     return H264EncoderType_unknown;

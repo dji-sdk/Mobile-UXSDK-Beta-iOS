@@ -31,7 +31,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
-* Widget that reflects the connected to aircraft state
+* Widget that reflects the connected to aircraft state.
 */
 @interface DUXBetaConnectionWidget : DUXBetaBaseWidget
 

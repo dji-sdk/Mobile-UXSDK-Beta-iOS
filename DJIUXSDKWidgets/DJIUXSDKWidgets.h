@@ -36,6 +36,7 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKWidgetsVersionString[];
 /*********************************************************************************/
 // Helpers
 /*********************************************************************************/
+#import <DJIUXSDKWidgets/DUXBetaUIImageView.h>
 #import <DJIUXSDKWidgets/UIImage+DUXBetaAssets.h>
 #import <DJIUXSDKWidgets/NSData+DUXBetaAssets.h>
 #import <DJIUXSDKWidgets/UIFont+DUXBetaFonts.h>
@@ -52,14 +53,13 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKWidgetsVersionString[];
 /*********************************************************************************/
 // Panel Widgets
 /*********************************************************************************/
-#import <DJIUXSDKWidgets/DUXPanelWidgetSupport.h>
+#import <DJIUXSDKWidgets/DUXBetaPanelWidgetSupport.h>
 
-#import <DJIUXSDKWidgets/DUXListItemTitleWidget.h>
-#import <DJIUXSDKWidgets/DUXListItemLabelButtonWidget.h>
-#import <DJIUXSDKWidgets/DUXListItemEditTextButtonWidget.h>
-#import <DJIUXSDKWidgets/DUXListItemRadioButtonWidget.h>
-#import <DJIUXSDKWidgets/DUXListItemSwitchWidget.h>
-
+#import <DJIUXSDKWidgets/DUXBetaListItemTitleWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaListItemLabelButtonWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaListItemEditTextButtonWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaListItemRadioButtonWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaListItemSwitchWidget.h>
 
 /*********************************************************************************/
 // AirSense Widget
@@ -160,6 +160,22 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKWidgetsVersionString[];
 #import <DJIUXSDKWidgets/DUXBetaRemoteControllerSignalWidgetModel.h>
 
 /*********************************************************************************/
+// RTK Enabled Widget
+/*********************************************************************************/
+#import <DJIUXSDKWidgets/DUXBetaRTKEnabledWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaRTKEnabledWidgetModel.h>
+
+/*********************************************************************************/
+// RTK Satellite Status Widget
+/*********************************************************************************/
+#import <DJIUXSDKWidgets/DUXBetaRTKSatelliteStatusWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaRTKSatelliteStatusWidgetModel.h>
+
+/*********************************************************************************/
+// RTK Widget
+/*********************************************************************************/
+#import <DJIUXSDKWidgets/DUXBetaRTKWidget.h>
+
 // Simulator Indicator Widget
 /*********************************************************************************/
 #import <DJIUXSDKWidgets/DUXBetaSimulatorIndicatorWidget.h>
@@ -174,26 +190,39 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKWidgetsVersionString[];
 /*********************************************************************************/
 // SystemStatusList - MaxAltitudeListItem Widget
 /*********************************************************************************/
-#import <DJIUXSDKWidgets/DUXMaxAltitudeListItemWidget.h>
-#import <DJIUXSDKWidgets/DUXMaxAltitudeListItemWidgetModel.h>
+#import <DJIUXSDKWidgets/DUXBetaMaxAltitudeListItemWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaMaxAltitudeListItemWidgetModel.h>
 
 /*********************************************************************************/
 // SystemStatusList - SDCardRemainingCapacityListItem Widget
 /*********************************************************************************/
-#import <DJIUXSDKWidgets/DUXSDCardRemainingCapacityListItemWidget.h>
-#import <DJIUXSDKWidgets/DUXSDCardRemainingCapacityListItemWidgetModel.h>
+#import <DJIUXSDKWidgets/DUXBetaSDCardStatusListItemWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaSDCardStatusListItemWidgetModel.h>
 
 /*********************************************************************************/
 // SystemStatusList - RCStickModeListItem Widget
 /*********************************************************************************/
-#import <DJIUXSDKWidgets/DUXRCStickModeListItemWidget.h>
-#import <DJIUXSDKWidgets/DUXRCStickModeListItemWidgetModel.h>
+#import <DJIUXSDKWidgets/DUXBetaRCStickModeListItemWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaRCStickModeListItemWidgetModel.h>
 
 /*********************************************************************************/
 // SystemStatusList - FlightModeListItem Widget
 /*********************************************************************************/
-#import <DJIUXSDKWidgets/DUXFlightModeListItemWidget.h>
-#import <DJIUXSDKWidgets/DUXFlightModeListItemWidgetModel.h>
+#import <DJIUXSDKWidgets/DUXBetaFlightModeListItemWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaFlightModeListItemWidgetModel.h>
+
+/*********************************************************************************/
+
+// SystemStatusList - DUXBetaMaxFlightDistanceListItemWidget Widget
+/*********************************************************************************/
+#import <DJIUXSDKWidgets/DUXBetaMaxFlightDistanceListItemWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaMaxFlightDistanceListItemWidgetModel.h>
+
+/*********************************************************************************/
+// SystemStatusList - DUXBetaReturnToHomeAltitudeListItemWidget Widget
+/*********************************************************************************/
+#import <DJIUXSDKWidgets/DUXBetaReturnToHomeAltitudeListItemWidget.h>
+#import <DJIUXSDKWidgets/DUXBetaReturnToHomeAltitudeListItemWidgetModel.h>
 
 /*********************************************************************************/
 // Vertical Velocity Widget

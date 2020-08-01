@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -29,14 +29,19 @@ import Foundation
 import DJISDK
 
 /**
- *  Data model for the DUXFPVWidgetModel used to define
- *  the underlying logic and communication.
+ * Data model for the DUXBetaFPVWidgetModel used to define
+ * the underlying logic and communication.
 */
-@objc public class DUXBetaFPVWidgetModel: DUXBetaBaseWidgetModel {
-
-    @objc public var displayedCameraName: String = ""
-    @objc public var displayedCameraSide: String?
-    @objc public var preferredCameraIndex = 0 {
+@objcMembers public class DUXBetaFPVWidgetModel: DUXBetaBaseWidgetModel {
+    
+    /// The camera name displayed in the fpv widget.
+    dynamic public var displayedCameraName: String = ""
+    
+    /// The camera side displayed in the fpv widget.
+    dynamic public var displayedCameraSide: String?
+    
+    /// The current camera index displayed in the fpv widget.
+    dynamic public var preferredCameraIndex = 0 {
         didSet {
             cleanup()
             setup()
@@ -44,58 +49,48 @@ import DJISDK
         }
     }
     
-    /**
-    *   The camera name value needed to compute the displayed camera name.
-    */
-    @objc public var cameraName: String = ""
+    /// The model name of the aircraft.
+    dynamic public var aircraftModel: String?
     
-    /**
-    *   The camera mode value needed to compute the displayed camera side.
-    */
-    @objc public var cameraMode: DJICameraMode = .unknown
+    /// The camera name value needed to compute the displayed camera name.
+    dynamic public var cameraName: String = ""
     
-    /**
-    *   The camera photo aspect ratio needed to compute the gridline frame.
-    */
-    @objc public var photoAspectRatio: DJICameraPhotoAspectRatio = .ratioUnknown
+    /// The camera mode value needed to compute the displayed camera side.
+    dynamic public var cameraMode: DJICameraMode = .unknown
     
-    /**
-    *   The video resolution and frame information needed to compute the gridline frame.
-    */
-    @objc public var videoResolutionAndFrameRate: DJICameraVideoResolutionAndFrameRate?
+    /// The camera photo aspect ratio needed to compute the gridline frame.
+    dynamic public var photoAspectRatio: DJICameraPhotoAspectRatio = .ratioUnknown
     
-    /**
-    *   The percentage allocation for left camera needed to compute the current camera index.
-    */
-    @objc public var bandwidthAllocationForLeftCamera: CGFloat = 0.0
+    /// The video resolution and frame information needed to compute the gridline frame.
+    dynamic public var videoResolutionAndFrameRate: DJICameraVideoResolutionAndFrameRate?
     
-    /**
-    *   The index of the current camera.
-    */
-    @objc public var currentCameraIndex: DUXFPVWidgetCameraIndex = .unknown
+    /// The percentage allocation for left camera needed to compute the current camera index.
+    dynamic public var bandwidthAllocationForLeftCamera: CGFloat = 0.0
     
-    /**
-    *   The frame used to draw the gridlines.
-    */
-    @objc public var gridFrame: CGRect = .zero
+    /// The index of the current camera.
+    dynamic public var currentCameraIndex: DUXBetaFPVWidgetCameraIndex = .unknown
     
-    /**
-    *   The frame needed to compute the gridline frame.
-    */
-    @objc public var containerFrame =  CGRect.zero {
+    /// The frame used to draw the gridlines.
+    dynamic public var gridFrame: CGRect = .zero
+    
+    /// The frame needed to compute the gridline frame.
+    dynamic public var containerFrame =  CGRect.zero {
         didSet {
             updateDrawingRect()
         }
     }
     
-        fileprivate var videoFeed: DJIVideoFeed!
-    
-    @objc convenience public init(withVideoFeed videoFeed: DJIVideoFeed) {
-        self.init()
-        self.videoFeed = videoFeed
+    /// The video feed currently displayed in the FPV.
+    dynamic public var videoFeed: DJIVideoFeed? {
+        didSet {
+            updateDisplayedValues()
+        }
     }
     
     override public func inSetup() {
+        if let key = DJIProductKey(param: DJIProductParamModelName) {
+            bindSDKKey(key, (\DUXBetaFPVWidgetModel.aircraftModel).toString)
+        }
         if let key = DJICameraKey(index: preferredCameraIndex, andParam: DJICameraParamDisplayName) {
             bindSDKKey(key, (\DUXBetaFPVWidgetModel.cameraName).toString)
         }
@@ -115,7 +110,7 @@ import DJISDK
             bindSDKKey(key, (\DUXBetaFPVWidgetModel.videoResolutionAndFrameRate).toString)
         }
         
-        bindRKVOModel(self, #selector(updateDisplayedValues), (\DUXBetaFPVWidgetModel.cameraName).toString)
+        bindRKVOModel(self, #selector(updateDisplayedValues), (\DUXBetaFPVWidgetModel.aircraftModel).toString)
         bindRKVOModel(self, #selector(updateCurrentCameraIndex), (\DUXBetaFPVWidgetModel.cameraName).toString)
     }
     
@@ -125,23 +120,58 @@ import DJISDK
     }
     
     @objc public func updateDisplayedValues() {
-        displayedCameraName = cameraName
-        updateCameraSide(videoFeed.physicalSource)
-    }
-    
-    @objc public func updateCameraSide(_ physicalSource: DJIVideoFeedPhysicalSource) {
-        var widgetCameraSide: DUXFPVWidgetCameraSide = .unknown
-        switch physicalSource {
-            case .leftCamera:
-                widgetCameraSide = .port
-            case .rightCamera:
-                widgetCameraSide = .starboard
-            case .fpvCamera:
-                widgetCameraSide = .fpv
-            default:
-                break
+        guard let displayName0Key = DJICameraKey(index: 0, andParam: DJICameraParamDisplayName) else { return }
+        guard let displayName1Key = DJICameraKey(index: 1, andParam: DJICameraParamDisplayName) else { return }
+        
+        let displayName0 = DJISDKManager.keyManager()?.getValueFor(displayName0Key)?.stringValue ?? ""
+        let displayName1 = DJISDKManager.keyManager()?.getValueFor(displayName1Key)?.stringValue ?? ""
+        
+        
+        var displayName = displayName0
+        var displaySide = DUXBetaFPVWidgetCameraSide.unknown
+        
+        guard let physicalSource = videoFeed?.physicalSource else { return }
+        
+        if aircraftModel == DJIAircraftModelNameA3 ||
+           aircraftModel == DJIAircraftModelNameN3 ||
+           aircraftModel == DJIAircraftModelNameMatrice600 ||
+           aircraftModel == DJIAircraftModelNameMatrice600Pro {
+            if physicalSource == .mainCamera {
+                displayName = displayName0
+            } else if physicalSource == .EXT {
+                displayName = "\(DJIVideoFeedPhysicalSource.EXT)"
+            } else if physicalSource == .HDMI {
+                displayName = "\(DJIVideoFeedPhysicalSource.HDMI)"
+            } else if physicalSource == .AV {
+                displayName = "\(DJIVideoFeedPhysicalSource.AV)"
+            }
+        } else if aircraftModel == DJIAircraftModelNameMatrice210 ||
+                  aircraftModel == DJIAircraftModelNameMatrice210RTK ||
+                  aircraftModel == DJIAircraftModelNameMatrice210V2 ||
+                  aircraftModel == DJIAircraftModelNameMatrice210RTKV2 {
+            if physicalSource == .leftCamera {
+                displayName = displayName0
+                displaySide = .port
+            } else if physicalSource == .rightCamera {
+                displayName = displayName1
+                displaySide = .starboard
+            } else if physicalSource == .fpvCamera {
+                displayName = NSLocalizedString("FPV Camera", comment: "FPV Camera")
+            } else if physicalSource == .mainCamera {
+                displayName = displayName0
+            }
+        } else if aircraftModel == DJIAircraftModelNameInspire2 ||
+                  aircraftModel == DJIAircraftModelNameMatrice200V2 {
+            if physicalSource == .mainCamera {
+                displayName = displayName0
+            } else if physicalSource == .fpvCamera {
+                displayName = NSLocalizedString("FPV Camera", comment: "FPV Camera")
+            }
         }
-        displayedCameraSide = widgetCameraSide.rawValue
+        displayName = displayName.replacingOccurrences(of: "-Visual", with: "")
+        
+        displayedCameraName = displayName
+        displayedCameraSide = displaySide.rawValue
     }
     
     @objc public func updateCurrentCameraIndex() {
@@ -163,7 +193,7 @@ import DJISDK
                     currentCameraIndex = .index_0
                 }
             }
-        } else if videoFeed.physicalSource != .fpvCamera {
+        } else if let physicalSource = videoFeed?.physicalSource, physicalSource != .fpvCamera {
             currentCameraIndex = .index_0
         } else {
             currentCameraIndex = .unknown
@@ -302,16 +332,15 @@ import DJISDK
     }
 }
 
-@objc public enum DUXFPVWidgetCameraIndex: NSInteger {
+@objc public enum DUXBetaFPVWidgetCameraIndex: NSInteger {
     case unknown = -1
     case index_0
     case index_1
     case index_2
 }
 
-enum DUXFPVWidgetCameraSide: String {
+enum DUXBetaFPVWidgetCameraSide: String {
     case unknown = ""
     case port = "Port-side"
     case starboard = "Starboard-side"
-    case fpv = "FPV Camera"
 }

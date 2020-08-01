@@ -25,6 +25,7 @@
 //  SOFTWARE.
 //
 
+
 typedef NS_ENUM(NSInteger, DUXBetaWarningMessageLevel) {
         DUXBetaWarningMessageLevelNotify,
         DUXBetaWarningMessageLevelWarning,

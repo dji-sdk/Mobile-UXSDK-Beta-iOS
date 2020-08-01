@@ -2,6 +2,8 @@
 //  DUXBetaRemainingFlightTimeData.m
 //  DJIUXSDKWidgets
 //
+//  MIT License
+//
 //  Copyright © 2018-2020 DJI
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -31,17 +31,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  Decoding adapter for the DUXFPVWidgetModel used to define
+ *  Decoding adapter for the DUXBetaFPVWidgetModel used to define
  *  the decoding and encoding logic.
 */
 @class DUXBetaFPVWidgetModel;
 @interface DUXBetaFPVDecodeAdapter : NSObject<DJIVideoPreviewerFrameControlDelegate, DJIVideoFeedListener, DJIVideoFeedSourceListener>
 
 @property (nonatomic, weak) DUXBetaFPVWidgetModel *widgetModel;
+@property (nonatomic, weak) DJIVideoFeed *videoFeed;
+@property (nonatomic) BOOL enableHardwareDecode;
 
-- (instancetype)initWithVideoFeed:(DJIVideoFeed *)videoFeed;
-
-- (void)start;
+- (void)startWithVideoFeed:(DJIVideoFeed *)videoFeed;
 - (void)stop;
 
 - (void)setRenderingView:(UIView *)view;

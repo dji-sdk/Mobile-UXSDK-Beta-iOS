@@ -270,7 +270,7 @@ static NSString * const DUXBetaMapViewRendererGeoZoneAnnotationReuseIdentifier =
     if ([annotation isKindOfClass: [DUXBetaMapNoFlyZoneAnnotation class]]) {
         MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:DUXBetaMapViewRendererNFZAnnotationReuseIdentifier];
         // Need to account for potential changed status of the custom annotation image
-        // If custom image is set, then class should be DUXFlyZoneAnnotationView, otherwise if the custom image is nil it is MKPinAnnotationView
+        // If custom image is set, then class should be DUXBetaFlyZoneAnnotationView, otherwise if the custom image is nil it is MKPinAnnotationView
         
         DUXBetaMapNoFlyZoneAnnotation *noFlyZoneAnnotation = (DUXBetaMapNoFlyZoneAnnotation *)annotation;
         if (noFlyZoneAnnotation.isUnlocked) {

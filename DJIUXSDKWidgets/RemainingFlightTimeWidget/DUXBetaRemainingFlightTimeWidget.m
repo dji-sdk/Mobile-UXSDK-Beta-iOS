@@ -62,18 +62,18 @@ static NSString * const kUninitializedFlightTime = @"--:--";
 @end
 
 /**
- * DUXRemainingFlightTimeWidgetModelState contains the model hooks for the DUXRemainingFlightTimeWidget.
+ * DUXBetaRemainingFlightTimeWidgetModelState contains the model hooks for the DUXBetaRemainingFlightTimeWidget.
  * It implements the hooks:
  *
  * Key: productConnected        Type: NSNumber - Sends a boolean value as an NSNumber indicating if an aircraft is connected.
  *
- * Key: flightTimeDataUpdate    Type: id - Sends a DUXRemainingFlightTimeData object whenever the remaining flight time updates.
+ * Key: flightTimeDataUpdate    Type: id - Sends a DUXBetaRemainingFlightTimeData object whenever the remaining flight time updates.
  *                                          This will send approximately once a second when the aircraft is active.
  *
  * Key: isAircraftFlyingUpdate  Type: NSNumber - Sends a boolean value as an NSNumber indicating if the aircraft is currrently
  *                                               flying. YES indicates in flight, no indicates landed.
 */
-@interface DUXRemainingFlightTimeWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaRemainingFlightTimeWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)flightTimeDataUpdate:(DUXBetaRemainingFlightTimeData *)flightTimeData;
@@ -456,18 +456,18 @@ static NSString * const kUninitializedFlightTime = @"--:--";
 
 @end
 
-@implementation DUXRemainingFlightTimeWidgetModelState
+@implementation DUXBetaRemainingFlightTimeWidgetModelState
 
 + (instancetype)productConnected:(BOOL)isConnected {
-    return [[DUXRemainingFlightTimeWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+    return [[DUXBetaRemainingFlightTimeWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
 + (instancetype)flightTimeDataUpdate:(DUXBetaRemainingFlightTimeData *)flightTimeData {
-    return [[DUXRemainingFlightTimeWidgetModelState alloc] initWithKey:@"flightTimeDataUpdate" object:flightTimeData];
+    return [[DUXBetaRemainingFlightTimeWidgetModelState alloc] initWithKey:@"flightTimeDataUpdate" object:flightTimeData];
 }
 
 + (instancetype)isAircraftFlyingUpdate:(BOOL)isAircraftFlying {
-    return [[DUXRemainingFlightTimeWidgetModelState alloc] initWithKey:@"isAircraftFlyingUpdate" number:@(isAircraftFlying)];
+    return [[DUXBetaRemainingFlightTimeWidgetModelState alloc] initWithKey:@"isAircraftFlyingUpdate" number:@(isAircraftFlying)];
 }
 
 @end

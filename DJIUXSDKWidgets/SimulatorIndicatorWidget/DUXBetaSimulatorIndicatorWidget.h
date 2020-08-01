@@ -2,8 +2,10 @@
 //  DUXBetaSimulatorIndicatorWidget.h
 //  DJIUXSDKWidgets
 //
+//  MIT License
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -29,7 +31,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  This widget displays the state of the simulator indicator.
+ *  The state of the simulator indicator widget
 */
 typedef NS_ENUM(NSUInteger, DUXBetaSimulatorIndicatorState) {
     DUXBetaSimulatorIndicatorStateDisconnected, // no aircraft connected

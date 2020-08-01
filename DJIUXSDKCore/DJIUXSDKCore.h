@@ -56,6 +56,6 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKCoreVersionString[];
 #import <DJIUXSDKCore/DUXBetaWarningMessage.h>
 #import <DJIUXSDKCore/DUXBetaVoiceNotification.h>
 
-#import <DJIUXSDKCore/DUXStateChangeBroadcaster.h>
+#import <DJIUXSDKCore/DUXBetaStateChangeBroadcaster.h>
 
-#import <DJIUXSDKCore/NSObject+BetaSwiftHelpers.h>
+#import <DJIUXSDKCore/NSObject+DUXBetaSwiftHelpers.h>

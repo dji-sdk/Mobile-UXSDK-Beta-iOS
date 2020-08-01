@@ -32,12 +32,8 @@
 @implementation NSData (DUXBetaAssets)
 
 + (NSData *)duxbeta_dataWithAssetNamed:(NSString *)assetName {
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:[DUXBetaBaseWidget class]];
-    
-    NSURL *assetBundleURL = [frameworkBundle.resourceURL URLByAppendingPathComponent:@"/DUXBetaAssets.bundle"];
-    NSBundle *assetBundle = [NSBundle bundleWithURL:assetBundleURL];
-    
-    NSDataAsset *asset = [[NSDataAsset alloc] initWithName:assetName bundle:assetBundle];
+    NSBundle *currentBundle = [NSBundle duxbeta_currentBundle];
+    NSDataAsset *asset = [[NSDataAsset alloc] initWithName:assetName bundle:currentBundle];
     NSData *assetData = asset.data;
     
     if (assetData == nil)  {
@@ -46,6 +42,7 @@
     }
     return assetData;
 }
+
 
 @end
 

@@ -30,7 +30,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * DUXAirSenseWidgetUIState contains the hooks for UI changes in the widget class AirSenseWidget.
+ * DUXBetaAirSenseWidgetUIState contains the hooks for UI changes in the widget class DUXBetaAirSenseWidget.
  * It implements the hooks:
  *
  * Key: warningDialogDismiss    Type: NSNumber - Sends a boolean YES as an NSNumber when the AirSense warning dialog is dismissed
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Key: dontShowAgainCheckboxTapped Type: NSNumber - Sends a boolean as an NSNumber indicating the state of the Don't Show Again
  *                                                   checkbox for the Terms dialog.
 */
-@interface DUXBetaAirSenseWidgetUIState : DUXStateChangeBaseData
+@interface DUXBetaAirSenseWidgetUIState : DUXBetaStateChangeBaseData
 
 + (instancetype)warningDialogDismiss;
 + (instancetype)termsLinkTap;

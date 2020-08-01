@@ -1,5 +1,5 @@
 //
-//  DUXBetaCompassWidget.h
+//  DUXBetaVPSWidget.h
 //  DJIUXSDK
 //
 //  MIT License

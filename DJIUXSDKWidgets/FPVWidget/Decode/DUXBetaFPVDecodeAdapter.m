@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -28,15 +28,14 @@
 #import "DUXBetaFPVDecodeModel.h"
 #import "DUXBetaFPVDecodeAdapter.h"
 #import <DJIWidget/DJIVideoPreviewer.h>
-
 #import "DUXBetaBaseWidgetModel+Protected.h"
-
 #import <DJIUXSDKWidgets/DJIUXSDKWidgets-Swift.h>
+
+#define IS_FLOAT_EQUAL(a, b) (fabs(a - b) < 0.0005)
 
 @interface DUXBetaFPVDecodeAdapter ()
 
 @property (nonatomic, weak) DJIVideoPreviewer *videoPreviewer;
-@property (nonatomic, weak) DJIVideoFeed *videoFeed;
 
 @property (nonatomic, strong) DUXBetaFPVDecodeModel *decodeModel;
 
@@ -44,20 +43,22 @@
 
 @implementation DUXBetaFPVDecodeAdapter
 
-- (instancetype)initWithVideoFeed:(DJIVideoFeed *)videoFeed {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.videoFeed = videoFeed;
-        self.videoPreviewer = [DJIVideoPreviewer instance];
+        _videoPreviewer = [DJIVideoPreviewer instance];
     }
     return self;
 }
 
-- (void)start {
+- (void)startWithVideoFeed:(DJIVideoFeed *)videoFeed {
+    _videoFeed = videoFeed;
+    
     [self modelSetup];
     
     //Start the videoPreviewer
     self.videoPreviewer.type = DJIVideoPreviewerTypeAutoAdapt;
+    self.videoPreviewer.enableHardwareDecode = YES;
     [self.videoPreviewer start];
     
     //Setup delegates
@@ -90,13 +91,27 @@
     [self.videoPreviewer adjustViewSize];
 }
 
+- (void)setVideoFeed:(DJIVideoFeed *)videoFeed {
+    [self.videoPreviewer pause];
+    [self.videoFeed removeListener:self];
+    
+    _videoFeed = videoFeed;
+    
+    [self.videoFeed addListener:self withQueue:nil];
+    [self.videoPreviewer safeResume];
+}
+
 #pragma mark - Private Methods
 
 - (void)modelSetup {
-    self.decodeModel = [[DUXBetaFPVDecodeModel alloc] initWithVideoFeed:self.videoFeed];
+    self.decodeModel = [[DUXBetaFPVDecodeModel alloc] init];
     [self.decodeModel setup];
+    
     BindRKVOModel(self, @selector(updatedDecodingRect), self.decodeModel.contentClipRect);
     BindRKVOModel(self, @selector(updateEncodeType), self.decodeModel.encodeType);
+    BindRKVOModel(self, @selector(updateHardwareDecode), self.enableHardwareDecode);
+    BindRKVOModel(self, @selector(updateOrientation), self.decodeModel.orientation);
+    BindRKVOModel(self, @selector(updateVideoFeed), self.decodeModel.isEXTPortEnabled, self.decodeModel.LBEXTPercent, self.decodeModel.HDMIAVPercent);
 }
 
 - (void)modelCleanup {
@@ -105,19 +120,94 @@
     UnBindRKVOModel(self);
 }
 
+- (void)updateHardwareDecode {
+    self.videoPreviewer.enableHardwareDecode = self.enableHardwareDecode;
+}
+
 - (void)updatedDecodingRect {
     //Update videpreviewer contentClipRect
     self.videoPreviewer.contentClipRect = self.decodeModel.contentClipRect;
     
     //Broadcast the updated contentClipRect
-    [DUXStateChangeBroadcaster send:[DUXFPVWidgetUIState contentFrameUpdate:self.decodeModel.contentClipRect]];
+    [DUXBetaStateChangeBroadcaster send:[DUXBetaFPVWidgetUIState contentFrameUpdate:self.decodeModel.contentClipRect]];
 }
 
 - (void)updateEncodeType {
     self.videoPreviewer.encoderType = self.decodeModel.encodeType;
     
     //Forward the model change
-    [DUXStateChangeBroadcaster send:[DUXFPVWidgetModelState encodeTypeUpdate:self.decodeModel.encodeType]];
+    [DUXBetaStateChangeBroadcaster send:[DUXBetaFPVWidgetModelState encodeTypeUpdate:self.decodeModel.encodeType]];
+}
+
+- (void)updateOrientation {
+    if (self.decodeModel.orientation == DJICameraOrientationLandscape) {
+        self.videoPreviewer.rotation = VideoStreamRotationDefault;
+    } else {
+        self.videoPreviewer.rotation = VideoStreamRotationCW90;
+    }
+}
+
+// MARK: Lightbridge2 support methods
+
+- (void)updateVideoFeed {
+    if (self.decodeModel.isEXTPortEnabled == nil) {
+        [self swapToPrimaryVideoFeedIfNecessary];
+        return;
+    }
+
+    if ([self.decodeModel.isEXTPortEnabled boolValue]) {
+        if (self.decodeModel.LBEXTPercent == nil) {
+            [self swapToPrimaryVideoFeedIfNecessary];
+            return;
+        }
+
+        if (IS_FLOAT_EQUAL(self.decodeModel.LBEXTPercent.floatValue, 1.0)) {
+            if (![self isUsingPrimaryVideoFeed]) {
+                [self swapVideoFeed];
+            }
+            return;
+        } else if (self.decodeModel.LBEXTPercent.floatValue < 0.95) {
+            if ([self isUsingPrimaryVideoFeed]) {
+                [self swapVideoFeed];
+            }
+            return;
+        }
+    } else {
+        if (self.decodeModel.HDMIAVPercent == nil) {
+            [self swapToPrimaryVideoFeedIfNecessary];
+            return;
+        }
+        
+        if (IS_FLOAT_EQUAL(self.decodeModel.HDMIAVPercent.floatValue, 1.0)) {
+            if (![self isUsingPrimaryVideoFeed]) {
+                [self swapVideoFeed];
+            }
+            return;
+        } else if (IS_FLOAT_EQUAL(self.decodeModel.HDMIAVPercent.floatValue, 0.0)) {
+            if ([self isUsingPrimaryVideoFeed]) {
+                [self swapVideoFeed];
+            }
+            return;
+        }
+    }
+}
+
+- (BOOL)isUsingPrimaryVideoFeed {
+    return (self.videoFeed == [DJISDKManager videoFeeder].primaryVideoFeed);
+}
+
+- (void)swapToPrimaryVideoFeedIfNecessary {
+    if (![self isUsingPrimaryVideoFeed]) {
+        [self swapVideoFeed];
+    }
+}
+
+- (void)swapVideoFeed {
+    if ([self isUsingPrimaryVideoFeed]) {
+        self.videoFeed = [DJISDKManager videoFeeder].secondaryVideoFeed;
+    } else {
+        self.videoFeed = [DJISDKManager videoFeeder].primaryVideoFeed;
+    }
 }
 
 #pragma mark - DJIVideoFeedListener Method
@@ -132,7 +222,7 @@
     if (self.videoFeed ==  videoFeed) {
         
         //Forward the user interface change
-        [DUXStateChangeBroadcaster send:[DUXFPVWidgetModelState physicalSourceUpdate:physicalSource]];
+        [DUXBetaStateChangeBroadcaster send:[DUXBetaFPVWidgetModelState physicalSourceUpdate:physicalSource]];
         
         if (physicalSource == DJIVideoFeedPhysicalSourceUnknown) {
             
@@ -140,6 +230,7 @@
             //Update models
             [self.decodeModel updateEncodeType];
             [self.decodeModel updateContentRect];
+            [self.widgetModel updateDisplayedValues];
             [self.widgetModel updateCurrentCameraIndex];
         }
     }
@@ -163,14 +254,14 @@
     [self.videoFeed decodingDidSucceedWithTimestamp:(NSUInteger)timestamp];
     
     //Forward the model change
-    [DUXStateChangeBroadcaster send:[DUXFPVWidgetModelState decodingDidSucceedWithTimestamp:timestamp]];
+    [DUXBetaStateChangeBroadcaster send:[DUXBetaFPVWidgetModelState decodingDidSucceedWithTimestamp:timestamp]];
 }
 
 - (void)decodingDidFail {
     [self.videoFeed decodingDidFail];
     
     //Forward the model change
-    [DUXStateChangeBroadcaster send:[DUXFPVWidgetModelState decodingDidFail]];
+    [DUXBetaStateChangeBroadcaster send:[DUXBetaFPVWidgetModelState decodingDidFail]];
 }
 
 @end

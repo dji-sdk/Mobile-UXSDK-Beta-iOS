@@ -1,5 +1,5 @@
 //
-//  DUXBetaSwiftBindings.swift
+//  DUXBetaBindings.swift
 //  DJIUXSDKCore
 //
 //  Copyright © 2018-2020 DJI
@@ -24,7 +24,7 @@
 //
 
 /**
- DUXSwiftBindings - This is an extension that allows the developer to bind the the SDK keys observe changes. It allows writting widgets
+ DUXBetaSwiftBindings - This is an extension that allows the developer to bind the the SDK keys observe changes. It allows writting widgets
  and models in Swift. These are the same functionality as the binding macros written in Objective-C (see
  NSObject+DUXBetaRKVOExtension.h) with one small change.
  When using bindRKVOModel to bind paths, all paths are put into a comma separated list inside a string. This list will

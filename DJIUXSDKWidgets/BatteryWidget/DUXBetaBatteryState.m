@@ -49,13 +49,13 @@
 
 @end
 
-@implementation DUXDualBatteryState
+@implementation DUXBetaDualBatteryState
 
 @synthesize battery2Voltage;
 @synthesize battery2Percentage;
 
 @end
 
-@implementation DUXAggregateBatteryState
+@implementation DUXBetaAggregateBatteryState
 
 @end

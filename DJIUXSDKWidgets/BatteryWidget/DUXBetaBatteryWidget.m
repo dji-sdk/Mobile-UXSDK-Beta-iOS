@@ -29,7 +29,7 @@
 #import "UIImage+DUXBetaAssets.h"
 #import "UIFont+DUXBetaFonts.h"
 #import "DUXBetaBatteryWidgetModel.h"
-#import "DUXStateChangeBroadcaster.h"
+#import "DUXBetaStateChangeBroadcaster.h"
 @import DJIUXSDKCore;
 
 static CGFloat const kVoltageAndPercentFontSize = 110.0;
@@ -77,27 +77,27 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 @end
 
 /**
- * DUXBatteryWidgetUIState contains the hooks for UI changes in the widget class DUXBatteryWidget.
+ * DUXBetaBatteryWidgetUIState contains the hooks for UI changes in the widget class DUXBetaBatteryWidget.
  * It implements the hook:
  *
  * Key: widgetTapped    Type: NSNumber - Sends a boolean YES value as an NSNumber indicating the widget was tapped.
 */
-@interface DUXBatteryWidgetUIState : DUXStateChangeBaseData
+@interface DUXBetaBatteryWidgetUIState : DUXBetaStateChangeBaseData
 
 + (instancetype)widgetTap;
 
 @end
 
 /**
- * DUXBatteryWidgetModelState contains the hooks for model changes for the DUXBatteryWidget.
+ * DUXBetaBatteryWidgetModelState contains the hooks for model changes for the DUXBetaBatteryWidget.
  * It implements the hooks:
  *
  * Key: productConnected    Type: NSNumber - Sends a boolean value as an NSNumber when the product connects or disconnects.
  *                                            YES means connected, NO means disconnected.
  *
- * Key: batteryStateUpdate   Type: id  - Sends a DUXBateryState object when the battery state changes.
+ * Key: batteryStateUpdate   Type: id  - Sends a DUXBetaBateryState object when the battery state changes.
 */
-@interface DUXBatteryWidgetModelState : DUXStateChangeBaseData
+@interface DUXBetaBatteryWidgetModelState : DUXBetaStateChangeBaseData
 
 + (instancetype)productConnected:(BOOL)isConnected;
 + (instancetype)batteryStateUpdate:(DUXBetaBatteryState *)batteryState;
@@ -144,7 +144,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
         @(DUXBetaBatteryStatusError) : [UIColor duxbeta_redColor],
         @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_redColor],
         @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_redColor],
-        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_batteryOverheatingYellowColor],
+        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_yellowColor],
         @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_disabledGrayColor]
     }];
     _statusToVoltageColorMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
@@ -152,7 +152,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
         @(DUXBetaBatteryStatusError) : [UIColor duxbeta_redColor],
         @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_redColor],
         @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_redColor],
-        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_batteryOverheatingYellowColor],
+        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_yellowColor],
         @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_disabledGrayColor]
     }];
     _statusToPercentageColorMapping = [[NSMutableDictionary alloc] initWithDictionary:@{
@@ -160,7 +160,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
         @(DUXBetaBatteryStatusError) : [UIColor duxbeta_redColor],
         @(DUXBetaBatteryStatusWarningLevel1) : [UIColor duxbeta_redColor],
         @(DUXBetaBatteryStatusWarningLevel2) : [UIColor duxbeta_redColor],
-        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_batteryOverheatingYellowColor],
+        @(DUXBetaBatteryStatusOverheating) : [UIColor duxbeta_yellowColor],
         @(DUXBetaBatteryStatusUnknown) : [UIColor duxbeta_disabledGrayColor]
     }];
     _voltageFontDual = [UIFont boldSystemFontOfSize:kVoltageAndPercentFontSize];
@@ -180,7 +180,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    if ([self.widgetModel.batteryState isMemberOfClass:[DUXDualBatteryState class]]) {
+    if ([self.widgetModel.batteryState isMemberOfClass:[DUXBetaDualBatteryState class]]) {
         [self updateUI];
     }
 }
@@ -246,7 +246,6 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
     self.singleBatteryPercentageLabel = [[UILabel alloc] init];
     [self.singleBatteryView addSubview:self.singleBatteryPercentageLabel];
     self.singleBatteryPercentageLabel.translatesAutoresizingMaskIntoConstraints = NO;
-
     CGFloat labelWidthAsPercentOfView = 1.0 - kSingleIconWidthToWidgetWidthRatio;
     [self.singleBatteryPercentageLabel.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:labelWidthAsPercentOfView].active = YES;
     [self.singleBatteryPercentageLabel.leadingAnchor constraintEqualToAnchor:self.singleBatteryImageView.trailingAnchor].active = YES;
@@ -264,7 +263,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 }
 
 - (void)updateSingleBatteryView {
-    if ([self.widgetModel.batteryState isKindOfClass:[DUXBetaBatteryState class]] || [self.widgetModel.batteryState isKindOfClass:[DUXAggregateBatteryState class]]) {
+    if ([self.widgetModel.batteryState isKindOfClass:[DUXBetaBatteryState class]] || [self.widgetModel.batteryState isKindOfClass:[DUXBetaAggregateBatteryState class]]) {
         self.singleBatteryImageView.image = [self currentIndicatorImageForSingleBattery:self.widgetModel.batteryState];
         [self.singleBatteryImageView setTintColor:[self.imageTintMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)]];
         self.singleBatteryPercentageLabel.textColor = [self.statusToPercentageColorMapping objectForKey:@(self.widgetModel.batteryState.warningStatus)];
@@ -404,7 +403,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
     self.dualBatteryBatteryTwoVoltageLabel.lineBreakMode = NSLineBreakByClipping;
 }
 
-- (void)updateDualBatteryView:(DUXDualBatteryState *)dualBatteryState {
+- (void)updateDualBatteryView:(DUXBetaDualBatteryState *)dualBatteryState {
     self.dualBatteryImageView.image = [self currentIndicatorImageForDualBattery:dualBatteryState];
     [self.dualBatteryImageView setTintColor:[self.imageTintMapping objectForKey:@(dualBatteryState.warningStatus)]];
 
@@ -438,7 +437,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 }
 
 - (void)updateUI {
-    if ([self.widgetModel.batteryState isMemberOfClass:[DUXDualBatteryState class]]) {
+    if ([self.widgetModel.batteryState isMemberOfClass:[DUXBetaDualBatteryState class]]) {
         self.singleBatteryViewAspectRatioConstraint.active = NO;
         if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateSingleBattery) {
             self.widgetDisplayState = DUXBetaBatteryWidgetDisplayStateDualBattery;
@@ -451,8 +450,8 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
         }
         self.singleBatteryView.hidden = YES;
         self.dualBatteryView.hidden = NO;
-        [self updateDualBatteryView:(DUXDualBatteryState *)self.widgetModel.batteryState];
-    } else if ([self.widgetModel.batteryState isMemberOfClass:[DUXBetaBatteryState class]] || [self.widgetModel.batteryState isMemberOfClass:[DUXAggregateBatteryState class]]) {
+        [self updateDualBatteryView:(DUXBetaDualBatteryState *)self.widgetModel.batteryState];
+    } else if ([self.widgetModel.batteryState isMemberOfClass:[DUXBetaBatteryState class]] || [self.widgetModel.batteryState isMemberOfClass:[DUXBetaAggregateBatteryState class]]) {
         self.singleBatteryViewAspectRatioConstraint.active = YES;
         if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
             self.widgetDisplayState = DUXBetaBatteryWidgetDisplayStateSingleBattery;
@@ -467,15 +466,15 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 }
 
 - (void)widgetTapped {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBatteryWidgetUIState widgetTap]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaBatteryWidgetUIState widgetTap]];
 }
 
 - (void)sendIsProductConnected {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBatteryWidgetModelState productConnected:self.widgetModel.isProductConnected]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaBatteryWidgetModelState productConnected:self.widgetModel.isProductConnected]];
 }
 
 - (void)sendBatteryStateUpdate {
-    [[DUXStateChangeBroadcaster instance] send:[DUXBatteryWidgetModelState batteryStateUpdate:self.widgetModel.batteryState]];
+    [[DUXBetaStateChangeBroadcaster instance] send:[DUXBetaBatteryWidgetModelState batteryStateUpdate:self.widgetModel.batteryState]];
 }
 
 - (UIImage *)currentIndicatorImageForSingleBattery:(DUXBetaBatteryState *)state {
@@ -533,7 +532,7 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 
 - (void)updateCurrentBatteryView {
     if (self.widgetDisplayState == DUXBetaBatteryWidgetDisplayStateDualBattery) {
-        [self updateDualBatteryView:(DUXDualBatteryState *)self.widgetModel.batteryState];
+        [self updateDualBatteryView:(DUXBetaDualBatteryState *)self.widgetModel.batteryState];
     } else {
         [self updateSingleBatteryView];
     }
@@ -577,22 +576,22 @@ static CGFloat const kVoltageLabelToBoxWidthRatio = 0.9;
 
 @end
 
-@implementation DUXBatteryWidgetUIState
+@implementation DUXBetaBatteryWidgetUIState
 
 + (instancetype)widgetTap {
-    return [[DUXBatteryWidgetUIState alloc] initWithKey:@"widgetTap" number:@(0)];
+    return [[DUXBetaBatteryWidgetUIState alloc] initWithKey:@"widgetTap" number:@(0)];
 }
 
 @end
 
-@implementation DUXBatteryWidgetModelState
+@implementation DUXBetaBatteryWidgetModelState
 
 + (instancetype)productConnected:(BOOL)isConnected {
-    return [[DUXBatteryWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
+    return [[DUXBetaBatteryWidgetModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
 + (instancetype)batteryStateUpdate:(DUXBetaBatteryState *)batteryState {
-    return [[DUXBatteryWidgetModelState alloc] initWithKey:@"batteryStateUpdate" object:batteryState];
+    return [[DUXBetaBatteryWidgetModelState alloc] initWithKey:@"batteryStateUpdate" object:batteryState];
 }
 
 @end

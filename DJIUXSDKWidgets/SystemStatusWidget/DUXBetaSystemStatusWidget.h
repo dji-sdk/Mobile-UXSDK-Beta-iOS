@@ -30,9 +30,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- *  This widget displays a string message indicating the system status of the aircraft.
-*/
 @interface DUXBetaSystemStatusWidget : DUXBetaBaseWidget
 
 /**
@@ -44,6 +41,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  The font of the pre-flight status message. Default point size = 28, scales with widget.
  */
 @property (nonatomic, strong) UIFont *messageFont;
+
+/**
+ *  Toggles the Red/Yellow/Green gradient backgrounds from DJI Go.
+*/
+@property (nonatomic, assign) BOOL isGradientEnabled;
 
 /**
  *  Set the background color of the widget for the warning level.
@@ -63,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Set the text color of messages with the warning level.
  *
- *  @param color Set the mesage text to this color
+ *  @param color Set the message text to this color
  *  @param systemStatusWarningLevel Set the text color for this warning level
 */
 - (void)setTextColor:(UIColor *)color forSystemStatusWarningLevel:(DJIWarningStatusLevel)systemStatusWarningLevel;

@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger,DUXBetaCustomKVOError){
 
 @interface NSError (DUXBetaCustomKVO)
 
-+ (nullable instancetype)errorForDUXBetaCustomKVO:(DUXBetaCustomKVOError)errorCode;
-- (BOOL)isDUXBetaCustomKVOError;
++ (nullable instancetype)errorForDUXCustomKVO:(DUXBetaCustomKVOError)errorCode;
+- (BOOL)isDUXCustomKVOError;
 
 @end

@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)duxbeta_redColor;
 + (UIColor *)duxbeta_lightGrayColor;
 + (UIColor *)duxbeta_darkGrayColor;
++ (UIColor *)duxbeta_yellowColor;
++ (UIColor *)duxbeta_backgroundColor;
 + (UIColor *)duxbeta_disabledGrayColor;
 + (UIColor *)duxbeta_blueColor;
 + (UIColor *)duxbeta_linkBlueColor;
@@ -54,9 +56,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)duxbeta_remainingFlightTimeWidgetLowBatteryColor;
 + (UIColor *)duxbeta_remainingFlightTimeWidgetSeriouslyLowBatteryColor;
 
+// Manual Focus Widget Colors
++ (UIColor *)duxbeta_manualFocusWidgetButtonBackgroundColor;
+
+// Histogram Widget Colors
++ (UIColor *)duxbeta_histogramWidgetBackgroundColor;
++ (UIColor *)duxbeta_histogramWidgetLineColor;
++ (UIColor *)duxbeta_histogramWidgetFillColor;
++ (UIColor *)duxbeta_histogramWidgetGridColor;
+
 // System Status Widget Colors
 + (UIColor *)duxbeta_systemStatusWidgetGreenColor;
-+ (UIColor *)duxbeta_systemStatusWidgetYellowColor;
 + (UIColor *)duxbeta_systemStatusWidgetRedColor;
 
 // Compass Widget Colors
@@ -65,9 +75,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)duxbeta_compassWidgetStrokeColor;
 + (UIColor *)duxbeta_compassWidgetHorizonColor;
 
+// Auto Exposure Switch Widget Colors
++ (UIColor *)duxbeta_autoExposureSwitchWidgetWhiteColor;
+
 // Battery Widget Colors
 + (UIColor *)duxbeta_batteryNormalGreen;
-+ (UIColor *)duxbeta_batteryOverheatingYellowColor;
+
+// RTK Satellite Status Widget Colors
++ (UIColor *)duxbeta_rtkOverallStatusGreen;
++ (UIColor *)duxbeta_rtkOverallStatusYellow;
++ (UIColor *)duxbeta_rtkOverallStatusRed;
++ (UIColor *)duxbeta_rtkTableBorderColor;
 
 // AirSense Widget Colors
 + (UIColor *)duxbeta_airSenseYellowColor;
@@ -75,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 // Simulator Indicator Widget Color
 + (UIColor *)duxbeta_simulatorIndicatorWidgetGreenColor;
 
-//  FPV camera name & side background color
+// FPV camera name & side background color
 + (UIColor *)duxbeta_fpvBackgroundColor;
 + (UIColor *)duxbeta_fpvGridLineColor;
 + (UIColor *)duxbeta_fpvGridLineShadowColor;
@@ -88,6 +106,17 @@ NS_ASSUME_NONNULL_BEGIN
 // ListPanel Default Colors
 + (UIColor *)duxbeta_listPanelBackgroundColor;
 + (UIColor *)duxbeta_listPanelSeparatorColor;
+
+// AlertView Mask Background Color
++ (UIColor *)duxbeta_alertViewMaskColor;
+
+// TakeOff and ReturnHome Dialog Colors
++ (UIColor *)duxbeta_alertBackgroundColor;
++ (UIColor *)duxbeta_alertActionBlueColor;
++ (UIColor *)duxbeta_slideTextColor;
++ (UIColor *)duxbeta_slideIconSelectedColor;
++ (UIColor *)duxbeta_slideSeparatorColor;
++ (UIColor *)duxbeta_alertWarningColor;
 
 @end
 

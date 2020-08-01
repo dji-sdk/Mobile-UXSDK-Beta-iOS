@@ -3,9 +3,9 @@
 //  DJIUXSDKWidgets
 //
 //  MIT License
-//
+//  
 //  Copyright © 2018-2020 DJI
-//
+//  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -27,7 +27,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class DUXDialogCustomizations;
+@class DUXBetaDialogCustomizations;
+@class DUXBetaAirSenseWidget;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -77,6 +78,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  The warning dialog message(clickable message: "make sure you have read and understood...") text font.
 */
 @property (nonatomic, strong) UIFont *warningMessageTextFont;
+
+/**
+ *  The widget that presented this dialog. Used to pass back the dontShowAgainCheckBoxTap data.
+*/
+@property (nonatomic, weak) DUXBetaAirSenseWidget *presentingWidget;
 
 /**
  *  Construct with title and message.

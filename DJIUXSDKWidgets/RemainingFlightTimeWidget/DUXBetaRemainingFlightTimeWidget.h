@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 *  Widget that shows the remaining flight time information for the aircraft.
 */
+
 @interface DUXBetaRemainingFlightTimeWidget : DUXBetaBaseWidget
 
 /**
