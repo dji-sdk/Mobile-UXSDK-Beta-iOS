@@ -4,7 +4,7 @@ The DJI UX SDK speeds up development time by providing UI elements for all core 
 
 With the UX SDK 5.0 version we are introducing an easy way to customize all the UI elements, as well as extend the base classes to build your own custom widgets. For more details, see the [UX SDK 5.0 overview](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/wiki).
 
-Check out our [sample app](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/UXSDKBetaSample) to get started.
+Check out our [sample app](https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS/tree/master/UXSDKBetaSampleApp) to get started.
 
 ## Installation
 
