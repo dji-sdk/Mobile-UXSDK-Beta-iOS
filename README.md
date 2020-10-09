@@ -4,7 +4,7 @@ The DJI UX SDK speeds up development time by providing UI elements for all core 
 
 With the UX SDK 5.0 version we are introducing an easy way to customize all the UI elements, as well as extend the base classes to build your own custom widgets. For more details, see the [UX SDK 5.0 overview](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/wiki).
 
-Check out our [sample app](https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS/tree/master/UXSDKBetaSampleApp) to get started.
+Check out our sample app code in this repository with instructions on how to get started [here](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/UXSDKBetaSample).
 
 ## Installation
 
@@ -14,21 +14,21 @@ Read the [documentation for installation](https://github.com/dji-sdk/Open-Source
 
 You can find the UX SDK documentation on the [wiki](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/wiki). This includes -
 * UX SDK 5.0 overview and main concepts
-* Documentation for all the individual widgets
-* Contribution guidelines
-* Where to get support
+* Documentation for all the individual widgets and panels
+* Sample app tutorial
  
 ## How to Contribute
 
-As always, the DJI Dev Team is committed to improving your developer experience. Please follow our guidelines on the [How to Contribute](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/wiki/How-to-Contribute) page on our wiki for filling out any bugs or feature requests, or contribute to the code base. If you have any other questions, please send an email to dev@dji.com. We recommend frequently checking the Github repositories for changes and new releases. 
+As always, the DJI Dev Team is committed to improving your developer experience. Please follow our guidelines on the [CONTRIBUTING.md](https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS/blob/master/CONTRIBUTING.md) file for filling out any bugs or feature requests, contributing to the code base, or how to get support. 
+If you have any other questions, please send an email to dev@dji.com. We recommend frequently checking the Github repositories for changes and new releases. 
 You can also post questions, keep up to date on DJI developer news and contribute to the community by visiting the [DJI's Developer Forum here](https://forum.dji.com/forum-139-1.html?from=developer)
 
 ## Future Plans
 
-This Beta 3 release only contains a subset of UX SDK elements. We are eager to give you a sneak peek, and are very interested in receiving your feedback and suggestions. Please refer to the release notes for the full list of elements that Beta 3 version makes available.
+We are eager to give you a sneak peek, and are very interested in receiving your feedback and suggestions. Please refer to the wiki or the release notes for the full list of elements that the Beta 3 version makes available.
 
-Our long-term plan is for this framework to reach feature parity with the UX SDK 4.13 release. The core team is currently working on porting the remaining widgets and other APIs to the new architecture and we will open source them in future Beta releases as they are completed. We welcome your feedback on the architecture and your ideas for addional widgets, including those not included in prior UX SDK releases, as well as your contributions and PRs for any ***currently open-sourced features***.
+Our long-term plan is for this framework to reach feature parity with the UX SDK 4.x release. The core team is currently working on porting the remaining widgets and other APIs to the new architecture and we will open source them in additional future Beta releases as they are completed. We welcome your feedback on the architecture and your ideas for additional widgets, including those not included in prior UX SDK releases, as well as your contributions and PRs for any ***currently open-sourced features***.
 
 ## License
 
-DJI UX SDK Beta is released under the MIT license. See [LICENSE](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/blob/master/LICENSE) for details.
+Mobile-UXSDK-Beta-iOS is released under the MIT license. See [LICENSE.txt](https://github.com/dji-sdk/Open-Source-UXSDK-iOS/blob/master/LICENSE) file for more info.
