@@ -119,11 +119,10 @@
 
 - (void)unregisterListener:(id)listener forClassName:(NSString*)analyticsClassNane {
     // Iterate in any order. We are removing unique entries.
-    NSNumber *listenerNumber = @((long long)listener);
      NSMutableArray<OwnerHandlerTuple*> *handlersList = _handlersDict[analyticsClassNane];
      NSMutableArray *removeObjects = [[NSMutableArray alloc] init];
      for (OwnerHandlerTuple *tuple in handlersList) {
-         if (tuple.owner == listenerNumber) {
+         if (tuple.owner == listener) {
              [removeObjects addObject:tuple];
          }
      }
