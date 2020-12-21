@@ -1,0 +1,114 @@
+//
+//  DUXBetaDistanceHomeWidget.swift
+//  UXSDKCore
+//
+//  MIT License
+//  
+//  Copyright © 2020 DJI
+//  
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+import Foundation
+
+/**
+ * The widget that displays the distance between the current location of the aicraft
+ * and the recorded home point.
+ */
+@objcMembers public class DUXBetaDistanceHomeWidget: DUXBetaBaseTelemetryWidget {
+    /// The underlying widget model.
+    dynamic public var widgetModel = DUXBetaDistanceHomeWidgetModel()
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Setup the widget model
+        widgetModel.setup()
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        bindRKVOModel(self, #selector(updateIsConnected), (\DUXBetaDistanceHomeWidget.widgetModel.isProductConnected).toString)
+        bindRKVOModel(self, #selector(updateUI),
+                      (\DUXBetaDistanceHomeWidget.widgetModel.distanceHomeState.isProductDisconnected).toString,
+                      (\DUXBetaDistanceHomeWidget.widgetModel.distanceHomeState.isLocationUnavailable).toString,
+                      (\DUXBetaDistanceHomeWidget.widgetModel.distanceHomeState.currentDistanceHome).toString)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        unbindRKVOModel(self)
+    }
+    
+    deinit {
+        widgetModel.cleanup()
+    }
+    
+    /**
+     * Override the parent setupUI method in order to setup the widget's specific properties
+     */
+    open override func setupUI() {
+        type = .Text
+        labelText = "D"
+        
+        super.setupUI()
+    }
+    
+    /**
+     * Override the parent updateUI to reflect widget model changes
+     */
+    open override func updateUI() {
+        if widgetModel.distanceHomeState.isProductDisconnected || widgetModel.distanceHomeState.isLocationUnavailable {
+            valueText = NSLocalizedString("N/A", comment: "N/A")
+            unitText = ""
+        } else {
+            valueText = formattedValue(value: widgetModel.distanceHomeState.currentDistanceHome.value, for: widgetModel.unitModule.unitType)
+            unitText = widgetModel.distanceHomeState.currentDistanceHome.unit.symbol
+        }
+        
+        DUXBetaStateChangeBroadcaster.send(DistanceHomeModelState.distanceHomeStateUpdated(widgetModel.distanceHomeState))
+        
+        super.updateUI()
+    }
+    
+    func updateIsConnected() {
+        DUXBetaStateChangeBroadcaster.send(DistanceHomeModelState.productConnected(widgetModel.isProductConnected))
+    }
+}
+
+/**
+ * DistanceHomeModelState contains the hooks for the model changes in the DUXBetaDistanceHomeWidget implementation.
+ *
+ * Key: productConnected            Type: NSNumber - Sends a boolean value as an NSNumber
+ *
+ * Key: distanceHomeStateUpdated    Type: DistanceHomeState - Sends the distance to home state update
+ *
+*/
+@objcMembers public class DistanceHomeModelState: DUXBetaStateChangeBaseData {
+    
+    public static func productConnected(_ isConnected: Bool) -> DistanceHomeModelState {
+        return DistanceHomeModelState(key: "productConnected", number: NSNumber(value: isConnected))
+    }
+    
+    public static func distanceHomeStateUpdated(_ distanceHomeState: DistanceHomeState) -> DistanceHomeModelState {
+        return DistanceHomeModelState(key: "distanceHomeStateUpdated", object: distanceHomeState)
+    }
+}

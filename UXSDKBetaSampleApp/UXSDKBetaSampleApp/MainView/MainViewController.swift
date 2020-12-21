@@ -39,7 +39,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     @IBOutlet weak var useBridgeSwitch: UISwitch!
     @IBOutlet weak var bridgeIDField: UITextField!
     @IBOutlet weak var debugLogView: UITextView!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +66,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     
     @IBAction func useBridgeAction(_ sender: UISwitch) {
         self.appDelegate.productCommManager.useBridge = sender.isOn
-        self.appDelegate.productCommManager.productDisconnected()
+        self.appDelegate.productCommManager.disconnectFromProduct()
     }
     
     @IBAction func pushWidgetList(_ sender: Any) {

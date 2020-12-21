@@ -40,24 +40,27 @@ class DefaultLayoutViewController : UIViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     let rootView = UIView()
     var topBar: DUXBetaBarPanelWidget?
-    var leftBar: DUXBetaBarPanelWidget?
+    var remainingFlightTimeWidget: DUXBetaRemainingFlightTimeWidget?
     var fpvWidget: DUXBetaFPVWidget?
+    var compassWidget: DUXBetaCompassWidget?
+    var telemetryPanel: DUXBetaTelemetryPanelWidget?
     var systemStatusListPanel: DUXBetaListPanelWidget?
     var fpvCustomizationPanel: DUXBetaListPanelWidget?
+    var currentMainViewWidget : DUXBetaBaseWidget?
 
     override var prefersStatusBarHidden: Bool { return true }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(rootView)
+        view.addSubview(rootView)
         
-        self.view.backgroundColor = UIColor.duxbeta_black()
+        view.backgroundColor = UIColor.uxsdk_black()
         
         rootView.translatesAutoresizingMaskIntoConstraints = false
         let statusBarInsets = UIApplication.shared.keyWindow!.safeAreaInsets
         var edgeInsets: UIEdgeInsets
         if #available(iOS 11, * ) {
-            edgeInsets = self.view.safeAreaInsets
+            edgeInsets = view.safeAreaInsets
             edgeInsets.top += statusBarInsets.top
             edgeInsets.left += statusBarInsets.left
             edgeInsets.bottom += statusBarInsets.bottom
@@ -66,15 +69,17 @@ class DefaultLayoutViewController : UIViewController {
             edgeInsets = UIEdgeInsets(top: statusBarInsets.top, left: statusBarInsets.left, bottom: statusBarInsets.bottom, right: statusBarInsets.right)
         }
         
-        rootView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:edgeInsets.top).isActive = true
-        rootView.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:edgeInsets.left).isActive = true
-        rootView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor, constant:-edgeInsets.bottom).isActive = true
-        rootView.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:-edgeInsets.right).isActive = true
+        rootView.topAnchor.constraint(equalTo:view.topAnchor, constant:edgeInsets.top).isActive = true
+        rootView.leftAnchor.constraint(equalTo:view.leftAnchor, constant:edgeInsets.left).isActive = true
+        rootView.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:-edgeInsets.bottom).isActive = true
+        rootView.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-edgeInsets.right).isActive = true
 
         setupTopBar()
         setupFPVWidget()
+        setupTelemetryPanel()
         setupRemainingFlightTimeWidget()
-        setupDashboard()
+        setupRTKWidget()
+        setupLeftPanel()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -84,7 +89,7 @@ class DefaultLayoutViewController : UIViewController {
     }
     
     @IBAction func close () {
-        self.dismiss(animated: true) {
+        dismiss(animated: true) {
             DJISDKManager.keyManager()?.stopAllListening(ofListeners: self)
         }
     }
@@ -114,27 +119,27 @@ class DefaultLayoutViewController : UIViewController {
         let margin: CGFloat = 5.0
         let height: CGFloat = 28.0
         NSLayoutConstraint.activate([
-            logoBtn.leftAnchor.constraint(equalTo: self.rootView.leftAnchor),
-            logoBtn.topAnchor.constraint(equalTo: self.rootView.topAnchor, constant: margin),
+            logoBtn.leftAnchor.constraint(equalTo: rootView.leftAnchor),
+            logoBtn.topAnchor.constraint(equalTo: rootView.topAnchor, constant: margin),
             logoBtn.heightAnchor.constraint(equalToConstant: height - 2 * margin),
           
             topBarWidget.view.trailingAnchor.constraint(equalTo: customizationsBtn.leadingAnchor),
             topBarWidget.view.leadingAnchor.constraint(equalTo: logoBtn.trailingAnchor),
-            topBarWidget.view.topAnchor.constraint(equalTo: self.rootView.topAnchor),
+            topBarWidget.view.topAnchor.constraint(equalTo: rootView.topAnchor),
             topBarWidget.view.heightAnchor.constraint(equalToConstant: height),
             
-            customizationsBtn.topAnchor.constraint(equalTo: self.rootView.topAnchor, constant: margin),
+            customizationsBtn.topAnchor.constraint(equalTo: rootView.topAnchor, constant: margin),
             customizationsBtn.heightAnchor.constraint(equalToConstant: height - 2 * margin),
             customizationsBtn.rightAnchor.constraint(equalTo: rootView.rightAnchor)
         ])
         
-        self.topBar = topBarWidget
+        topBar = topBarWidget
         topBar?.topMargin = margin
         topBar?.rightMargin = margin
         topBar?.bottomMargin = margin
         topBar?.leftMargin = margin
 
-        DUXBetaStateChangeBroadcaster.instance().registerListener(self, analyticsClassName: "DUXBetaSystemStatusWidgetUIState") { [weak self] (analyticsData) in
+        DUXBetaStateChangeBroadcaster.instance().registerListener(self, analyticsClassName: "SystemStatusUIState") { [weak self] (analyticsData) in
             DispatchQueue.main.async {
                 if let weakSelf = self {
                     if let list = weakSelf.systemStatusListPanel {
@@ -154,37 +159,33 @@ class DefaultLayoutViewController : UIViewController {
         remainingFlightTimeWidget.install(in: self)
         
         NSLayoutConstraint.activate([
-            remainingFlightTimeWidget.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            remainingFlightTimeWidget.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            remainingFlightTimeWidget.view.centerYAnchor.constraint(equalTo: self.topBar?.view.bottomAnchor ?? self.rootView.topAnchor, constant: 3.0),
-            remainingFlightTimeWidget.view.widthAnchor.constraint(equalTo: remainingFlightTimeWidget.view.widthAnchor, multiplier: (remainingFlightTimeWidget.widgetSizeHint.preferredAspectRatio))
+            remainingFlightTimeWidget.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+            remainingFlightTimeWidget.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+            remainingFlightTimeWidget.view.centerYAnchor.constraint(equalTo: topBar?.view.bottomAnchor ?? rootView.topAnchor, constant: 3.0)
         ])
+
+        self.remainingFlightTimeWidget = remainingFlightTimeWidget
     }
     
-    func setupLeftBar() {
-        let configSettings = DUXBetaPanelWidgetConfiguration(type:.bar, variant:.vertical)
-        let leftSideBarWidget = DUXBetaBarPanelWidget()
-        _ = leftSideBarWidget.configure(configSettings)
+    func setupLeftPanel() {
+        let leftBarWidget = DUXBetaFreeformPanelWidget()
+        var configuration = DUXBetaPanelWidgetConfiguration(type: .freeform, variant: .freeform)
+        configuration = configuration.configureColors(background: .uxsdk_clear())
+        _ = leftBarWidget.configure(configuration)
         
-        leftSideBarWidget.install(in: self)
+        leftBarWidget.install(in: self)
 
-        if let topBarWidget = self.topBar {
-            leftSideBarWidget.view.topAnchor.constraint(equalTo: topBarWidget.view.bottomAnchor).isActive = true
-            leftSideBarWidget.view.leftAnchor.constraint(equalTo: self.rootView.leftAnchor).isActive = true
-            leftSideBarWidget.view.bottomAnchor.constraint(equalTo: self.rootView.bottomAnchor).isActive = true
-            leftSideBarWidget.view.rightAnchor.constraint(equalTo: self.rootView.leftAnchor, constant: 64.0).isActive = true
-        } else {
-            leftSideBarWidget.view.topAnchor.constraint(equalTo: self.rootView.topAnchor).isActive = true
-            leftSideBarWidget.view.leftAnchor.constraint(equalTo: self.rootView.leftAnchor).isActive = true
-            leftSideBarWidget.view.bottomAnchor.constraint(equalTo: self.rootView.bottomAnchor).isActive = true
-            leftSideBarWidget.view.rightAnchor.constraint(equalTo: self.rootView.leftAnchor, constant: 64.0).isActive = true
-        }
-
-        let flightModeWidget = DUXBetaFlightModeWidget()
-        leftSideBarWidget.addRightWidgetArray([DUXBetaVisionWidget(), flightModeWidget, DUXBetaRemoteControllerSignalWidget(), DUXBetaVideoSignalWidget()] )
-        leftSideBarWidget.addLeftWidgetArray([DUXBetaGPSSignalWidget()] )
-        self.leftBar = leftSideBarWidget
+        NSLayoutConstraint.activate([
+            leftBarWidget.view.topAnchor.constraint(equalTo: topBar?.view.bottomAnchor ?? rootView.topAnchor),
+            leftBarWidget.view.bottomAnchor.constraint(equalTo: telemetryPanel?.view.topAnchor ?? rootView.bottomAnchor),
+            leftBarWidget.view.leftAnchor.constraint(equalTo: (compassWidget?.view ?? rootView).leftAnchor),
+            leftBarWidget.view.rightAnchor.constraint(equalTo: rootView.leftAnchor, constant: 64.0)
+        ])
         
+        let newPanes = leftBarWidget.splitPane(leftBarWidget.rootPane(), along: .vertical, proportions: [0.25, 0.25, 0.25, 0.25])
+
+        DUXBetaTakeOffWidget().install(in: leftBarWidget, pane: newPanes[1], position: .centered)
+        DUXBetaReturnHomeWidget().install(in: leftBarWidget, pane: newPanes[2], position: .centered)
     }
     
     func setupSystemStatusList() {
@@ -197,12 +198,21 @@ class DefaultLayoutViewController : UIViewController {
         })
         listPanel.install(in: self) // Very important to use this method
         
-        listPanel.view.topAnchor.constraint(equalTo: self.topBar!.view.bottomAnchor).isActive = true
-        listPanel.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant:00.0).isActive = true
-        listPanel.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier:0.6).isActive = true
-        listPanel.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30.0).isActive = true
+        listPanel.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        listPanel.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        listPanel.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier:0.6).isActive = true
+        listPanel.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         systemStatusListPanel = listPanel
+    }
+    
+    func setupMainViewConstraints(widget: DUXBetaBaseWidget) {
+        NSLayoutConstraint.activate([
+            widget.view.topAnchor.constraint(equalTo: topBar?.view.bottomAnchor ?? view.topAnchor),
+            widget.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+            widget.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+            widget.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func setupFPVWidget() {
@@ -210,49 +220,76 @@ class DefaultLayoutViewController : UIViewController {
         
         fpvWidget.install(in: self)
         
-        NSLayoutConstraint.activate([
-            fpvWidget.view.topAnchor.constraint(equalTo: topBar?.view.bottomAnchor ?? view.topAnchor),
-            fpvWidget.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-            fpvWidget.view.rightAnchor.constraint(equalTo: view.rightAnchor),
-            fpvWidget.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        setupMainViewConstraints(widget: fpvWidget)
         
         self.fpvWidget = fpvWidget
-        
+        currentMainViewWidget = fpvWidget
+
+    }
+    
+    func setupRTKWidget() {
         let rtkWidget = DUXBetaRTKWidget()
         rtkWidget.view.translatesAutoresizingMaskIntoConstraints = false
         rtkWidget.install(in: self)
         
-        NSLayoutConstraint.activate([
-            rtkWidget.view.topAnchor.constraint(equalTo: topBar?.view.bottomAnchor ?? view.topAnchor),
-            rtkWidget.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        if let topBar = topBar {
+            rtkWidget.view.topAnchor.constraint(equalTo: topBar.view.bottomAnchor).isActive = true
+        } else {
+            rtkWidget.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 44.0).isActive = true
+        }
+        if let telemetryPanel = telemetryPanel {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                rtkWidget.view.bottomAnchor.constraint(equalTo: telemetryPanel.view.bottomAnchor).isActive = true
+            } else {
+                rtkWidget.view.bottomAnchor.constraint(equalTo: telemetryPanel.view.topAnchor).isActive = true
+            }
+        } else {
+            rtkWidget.view.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        }
+        rtkWidget.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    func setupDashboard() {
-        let dashboardWidget = DUXBetaDashboardWidget()
+    func setupTelemetryPanel() {
+        let compassWidget = DUXBetaCompassWidget()
+        let telemetryPanel = DUXBetaTelemetryPanelWidget()
+        var configuration = DUXBetaPanelWidgetConfiguration(type: .freeform, variant: .freeform)
+        configuration = configuration.configureColors(background: .uxsdk_clear())
+        _ = telemetryPanel.configure(configuration)
         
         let leftMarginLayoutGuide = UILayoutGuide.init()
-        self.view.addLayoutGuide(leftMarginLayoutGuide)
+        view.addLayoutGuide(leftMarginLayoutGuide)
         
         let bottomMarginLayoutGuide = UILayoutGuide.init()
-        self.view.addLayoutGuide(bottomMarginLayoutGuide)
+        view.addLayoutGuide(bottomMarginLayoutGuide)
         
-        dashboardWidget.install(in: self)
+        compassWidget.install(in: self)
+        telemetryPanel.install(in: self)
+        
+        let backgroundView = telemetryPanel.backgroundViewForPane(0)
+        backgroundView?.backgroundColor = .uxsdk_blackAlpha50()
+        backgroundView?.layer.cornerRadius = 5.0
         
         NSLayoutConstraint.activate([
-            leftMarginLayoutGuide.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.015),
-            leftMarginLayoutGuide.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            leftMarginLayoutGuide.rightAnchor.constraint(equalTo: dashboardWidget.view.leftAnchor),
+            leftMarginLayoutGuide.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.015),
+            leftMarginLayoutGuide.leftAnchor.constraint(equalTo: view.leftAnchor),
+            leftMarginLayoutGuide.rightAnchor.constraint(equalTo: compassWidget.view.leftAnchor),
             
-            bottomMarginLayoutGuide.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.02),
-            bottomMarginLayoutGuide.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            bottomMarginLayoutGuide.topAnchor.constraint(equalTo: dashboardWidget.view.bottomAnchor),
-
-            dashboardWidget.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6),
-            dashboardWidget.view.widthAnchor.constraint(equalTo: dashboardWidget.view.heightAnchor,
-                                                     multiplier: dashboardWidget.widgetSizeHint.preferredAspectRatio)
+            bottomMarginLayoutGuide.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.04),
+            bottomMarginLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomMarginLayoutGuide.topAnchor.constraint(equalTo: compassWidget.view.bottomAnchor),
+            
+            compassWidget.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.116),
+            compassWidget.view.widthAnchor.constraint(equalTo: compassWidget.view.heightAnchor, multiplier: compassWidget.widgetSizeHint.preferredAspectRatio),
+            
+            telemetryPanel.view.leftAnchor.constraint(equalTo: compassWidget.view.rightAnchor),
+            telemetryPanel.view.centerYAnchor.constraint(equalTo: compassWidget.view.centerYAnchor),
+            telemetryPanel.view.heightAnchor.constraint(equalTo: compassWidget.view.heightAnchor, multiplier: 1.2),
+            telemetryPanel.view.widthAnchor.constraint(equalTo: telemetryPanel.view.heightAnchor,
+                                                     multiplier: telemetryPanel.widgetSizeHint.preferredAspectRatio)
         ])
+        
+        self.compassWidget = compassWidget
+        self.telemetryPanel = telemetryPanel
     }
     
     @objc func setupFPVCustomizationPanel() {
@@ -272,7 +309,7 @@ class DefaultLayoutViewController : UIViewController {
         
         NSLayoutConstraint.activate([
             listPanel.view.heightAnchor.constraint(greaterThanOrEqualToConstant: listPanel.widgetSizeHint.minimumHeight),
-            listPanel.view.heightAnchor.constraint(lessThanOrEqualTo: self.view.heightAnchor, multiplier: 0.7),
+            listPanel.view.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.7),
             listPanel.view.widthAnchor.constraint(greaterThanOrEqualToConstant: listPanel.widgetSizeHint.minimumWidth),
             listPanel.view.topAnchor.constraint(equalTo: topBar?.view.bottomAnchor ?? view.topAnchor),
             listPanel.view.rightAnchor.constraint(equalTo: rootView.rightAnchor)
@@ -308,9 +345,9 @@ class DefaultLayoutViewController : UIViewController {
         
         let hardwareDecodeWidget = DUXBetaListItemSwitchWidget()
         hardwareDecodeWidget.setTitle("Enable Hardware Decode", andIconName: nil)
-        hardwareDecodeWidget.onOffSwitch.isOn = self.fpvWidget?.enableHardwareDecode ?? false
-        hardwareDecodeWidget.setSwitchAction { (enabled) in
-            self.fpvWidget?.enableHardwareDecode = enabled
+        hardwareDecodeWidget.onOffSwitch.isOn = fpvWidget?.enableHardwareDecode ?? false
+        hardwareDecodeWidget.setSwitchAction { [weak self] (enabled) in
+            self?.fpvWidget?.enableHardwareDecode = enabled
         }
         
         let fpvFeedCustomization = FPVVideoFeedWidget().setTitle("Video Feed", andIconName: nil)

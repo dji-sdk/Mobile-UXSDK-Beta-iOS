@@ -191,7 +191,7 @@ class ProductCommunicationService: NSObject, DJISDKManagerDelegate {
             let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
             let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject>,
             let appKey = dict["DJISDKAppKey"] as? String,
-            appKey != "PASTE_YOUR_DJI_APP_KEY_HERE"
+            appKey != "YOUR DJI KEY GOES HERE"
         else {
                 print("\n<<<ERROR: Please add DJI App Key in Info.plist after registering as developer>>>\n")
                 return
@@ -217,6 +217,12 @@ class ProductCommunicationService: NSObject, DJISDKManagerDelegate {
                 LogCenter.default.add("Connecting to product failed to start!")
             }
         }
+    }
+    
+    public func disconnectFromProduct() {
+        DJISDKManager.stopConnectionToProduct()
+        
+        productDisconnected()
     }
     
     //MARK: - DJISDKManagerDelegate
@@ -245,8 +251,6 @@ class ProductCommunicationService: NSObject, DJISDKManagerDelegate {
     }
     
     func productDisconnected() {
-         DJISDKManager.stopConnectionToProduct()
-        
         self.connected = false
         NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: ProductCommunicationServiceStateDidChange)))
         LogCenter.default.add("Disconnected from product!");

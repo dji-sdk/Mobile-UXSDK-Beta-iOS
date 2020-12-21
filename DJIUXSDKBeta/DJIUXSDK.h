@@ -36,6 +36,7 @@ FOUNDATION_EXPORT const unsigned char DJIUXSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DJIUXSDK/PublicHeader.h>
 
-#import <DJIUXSDKCore/DJIUXSDKCore.h>
-#import <DJIUXSDKCommunication/DJIUXSDKCommunication.h>
-#import <DJIUXSDKWidgets/DJIUXSDKWidgets.h>
+#import <UXSDKCore/UXSDKCore.h>
+#import <UXSDKFlight/UXSDKFlight.h>
+#import <UXSDKMap/UXSDKMap.h>
+#import <UXSDKAccessory/UXSDKAccessory.h>
