@@ -56,7 +56,6 @@
 		B60B8DA42552FF9600F097D1 /* DUXBetaMapFlyZoneCircleOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D9C2552FF9600F097D1 /* DUXBetaMapFlyZoneCircleOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D19D4C24ED8ECA00737526 /* UXSDKMap.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19D4A24ED8ECA00737526 /* UXSDKMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D19D8424ED8F9C00737526 /* UXSDKMap.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D19D5324ED8F9C00737526 /* UXSDKMap.xcassets */; };
-		B6D19DB224ED8FF300737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19DB124ED8FF300737526 /* UXSDKCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,7 +110,6 @@
 		B6D19D4A24ED8ECA00737526 /* UXSDKMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKMap.h; sourceTree = "<group>"; };
 		B6D19D4B24ED8ECA00737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D19D5324ED8F9C00737526 /* UXSDKMap.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UXSDKMap.xcassets; sourceTree = "<group>"; };
-		B6D19DB124ED8FF300737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6D19DB224ED8FF300737526 /* UXSDKCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +191,6 @@
 		B6D19DB024ED8FF300737526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B6D19DB124ED8FF300737526 /* UXSDKCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -526,34 +522,9 @@
 		B6D19D5024ED8ECA00737526 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 38D4M22449;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = UXSDKMap/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKMap;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B6D19D5124ED8ECA00737526 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 38D4M22449;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -568,6 +539,35 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKMap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6D19D5124ED8ECA00737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = UXSDKMap/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKMap;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

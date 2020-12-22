@@ -270,8 +270,6 @@
 		B657A38B24E3073B009B10AA /* ObservableInMemoryKeyedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657A29A24E3073A009B10AA /* ObservableInMemoryKeyedStore.swift */; };
 		B657A3DE24E319C6009B10AA /* DUXMarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B657A3DC24E319C5009B10AA /* DUXMarqueeLabel.m */; };
 		B657A3DF24E319C6009B10AA /* DUXMarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B657A3DD24E319C6009B10AA /* DUXMarqueeLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B657A3E224E31C83009B10AA /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B657A3E124E31C83009B10AA /* DJISDK.framework */; };
-		B657A3E424E31C92009B10AA /* DJIWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B657A3E324E31C92009B10AA /* DJIWidget.framework */; };
 		B6A2FBA124E2FC9600B4700A /* UXSDKCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B6A2FB9F24E2FC9600B4700A /* UXSDKCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6A3879324E44DA1005D8391 /* UXSDKCore.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879224E44DA1005D8391 /* UXSDKCore.xcassets */; };
 		B6A3879924E45475005D8391 /* air_sense_terms_of_use_chinese.html in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879524E45474005D8391 /* air_sense_terms_of_use_chinese.html */; };
@@ -538,14 +536,14 @@
 		B60B8C652552FE3500F097D1 /* DUXBetaVisionWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaVisionWidget.m; sourceTree = "<group>"; };
 		B60B8C662552FE3500F097D1 /* DUXBetaVisionWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaVisionWidget.h; sourceTree = "<group>"; };
 		B60B8DD425548C6900F097D1 /* DUXBetaWidgetCloseButtonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaWidgetCloseButtonProtocol.h; sourceTree = "<group>"; };
+		B649D1B32592881700236ED0 /* Pods_UXSDKBetaSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_UXSDKBetaSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B649D1B92592884B00236ED0 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "../UXSDKBetaSampleApp/Pods/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework"; sourceTree = "<group>"; };
 		B657A25E24E30739009B10AA /* DUXBetaUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaUIImageView.m; sourceTree = "<group>"; };
 		B657A25F24E30739009B10AA /* DUXBetaUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaUIImageView.h; sourceTree = "<group>"; };
 		B657A29924E3073A009B10AA /* GlobalPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalPreferences.swift; sourceTree = "<group>"; };
 		B657A29A24E3073A009B10AA /* ObservableInMemoryKeyedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableInMemoryKeyedStore.swift; sourceTree = "<group>"; };
 		B657A3DC24E319C5009B10AA /* DUXMarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXMarqueeLabel.m; sourceTree = "<group>"; };
 		B657A3DD24E319C6009B10AA /* DUXMarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXMarqueeLabel.h; sourceTree = "<group>"; };
-		B657A3E124E31C83009B10AA /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B657A3E324E31C92009B10AA /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A2FB9C24E2FC9600B4700A /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A2FB9F24E2FC9600B4700A /* UXSDKCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKCore.h; sourceTree = "<group>"; };
 		B6A2FBA024E2FC9600B4700A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -561,8 +559,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B657A3E424E31C92009B10AA /* DJIWidget.framework in Frameworks */,
-				B657A3E224E31C83009B10AA /* DJISDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1253,8 +1249,8 @@
 		B657A3E024E31C83009B10AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B657A3E324E31C92009B10AA /* DJIWidget.framework */,
-				B657A3E124E31C83009B10AA /* DJISDK.framework */,
+				B649D1B32592881700236ED0 /* Pods_UXSDKBetaSampleApp.framework */,
+				B649D1B92592884B00236ED0 /* DJISDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1893,34 +1889,9 @@
 		B6A2FBA524E2FC9600B4700A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 38D4M22449;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = UXSDKCore/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.CoreModule.UXSDKCore;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B6A2FBA624E2FC9600B4700A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 38D4M22449;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1934,6 +1905,35 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.CoreModule.UXSDKCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6A2FBA624E2FC9600B4700A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = UXSDKCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.CoreModule.UXSDKCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
