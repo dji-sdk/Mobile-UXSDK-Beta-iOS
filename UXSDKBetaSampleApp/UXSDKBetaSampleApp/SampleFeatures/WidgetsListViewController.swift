@@ -36,23 +36,32 @@ class WidgetsListViewController: UITableViewController {
     
     static let widgetDescriptions:[String:String] = [
                                                     "AirSense Widget" : "Widget that indicates danger level posed by manned aircraft according to ADSB signals received.",
-                                                    "Altitude Widget" : "Widget that shows the current altitude of the aircraft.",
+                                                    "AGL Widget" : "Widget displays the above ground level altitude.",
+                                                    "AMSL Widget" : "Widget displays the above mean sea level altitude.",
                                                     "Battery Widget" : "Widget that displays aircraft battery level.",
                                                     "Compass Widget" : "Widget that displays the position of the aircraft in relation to the home point and pilot location.",
                                                     "Connection Widget" : "Widget that reflects the connected to aircraft state.",
-                                                    "Dashboard Widget" : "Compound widget that aggregates important information about the aircraft into a dashboard.",
+                                                    "Distance Home Widget" : "The widget that displays the distance between the current location of the aicraft and the recorded home point.",
+                                                    "Distance Remote Control Widget" : "The widget that displays the distance between the current location of the aicraft and the remote controller location.",
                                                     "Flight Mode Widget" : "Widget to show the current flight mode of the aircraft.",
                                                     "FPV Widget" : "Widget that shows the video feed from the camera.",
                                                     "GPS Signal Widget" : "Widget that displays the drone's connection strength to GPS.",
+                                                    "Horizontal Velocity Widget" : "Widget displays the horizontal velocity of the aircraft.",
+                                                    "Location Widget" : "The widget that displays the distance between the current location of the aicraft and the remote controller location.",
                                                     "Map Widget" : "Widget that displays the aircraft's state and information on the map this includes aircraft location, home location, aircraft trail path, aircraft heading, and No Fly Zones.",
                                                     "Remaining Flight Time Widget" : "Widget that shows the remaining flight time information for the aircraft.",
                                                     "Remote Control Signal Widget" : "Widget that displays the drone's connection strength with the remote controller.",
+                                                    "Return Home Widget" : "Widget that performs actions related to returning home.",
                                                     "RTK Widget" : "Composed widget used to display a switch that will enable or disable RTK and the state of RTK base station with a table of RTK positioning values.",
                                                     "Simulator Indicator Widget" : "Widget that displays the state of the simulator indicator.",
                                                     "System Status Widget" : "Widget that displays a string message indicating the system status of the aircraft.",
                                                     "System Status List Widget" : "Composed widget used to construct and display a standardized system status list.",
-                                                    "Video Signal Widget" : "Widget that displays the incoming video strength from the aircraft",
+                                                    "Vertical Velocity Widget" : "Widget displays the vertical velocity of the aircraft.",
+                                                    "Video Signal Widget" : "Widget that displays the incoming video strength from the aircraft.",
                                                     "Vision Widget" : "Widget to display the vision status/collision avoidance status of the aircraft. Its state depends on sensors availability, flight mode, and aircraft type.",
+                                                    "VPS Widget" : "Widget that displays the status of the vision positioning system as well as the height of the aircraft as received from the vision positioning system if available.",
+                                                    "Take Off Widget" : "Widget that performs actions related to takeoff and landing.",
+                                                    "Telemetry Panel Widget" : "Compound widget that aggregates flight telemetry information about the aircraft into a panel.",
                                                     "Top Bar Panel" : "Composed widget that acts as the container for the top bar widgets."
     ]
     
@@ -61,8 +70,12 @@ class WidgetsListViewController: UITableViewController {
             return DUXBetaAirSenseWidget()
         }
         
-        let altitudeWidgetClosure: () -> DUXBetaBaseWidget = {
-            return DUXBetaAltitudeWidget()
+        let aglWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaAGLAltitudeWidget()
+        }
+        
+        let amslSenseWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaAMSLAltitudeWidget()
         }
         
         let batteryWidgetClosure: () -> DUXBetaBaseWidget = {
@@ -77,8 +90,12 @@ class WidgetsListViewController: UITableViewController {
             return DUXBetaConnectionWidget()
         }
         
-        let dashboardWidgetClosure: () -> DUXBetaBaseWidget = {
-            return DUXBetaDashboardWidget()
+        let distanceHomeWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaDistanceHomeWidget()
+        }
+        
+        let distanceRCWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaDistanceRCWidget()
         }
         
         let flightModeWidgetClosure: () -> DUXBetaBaseWidget = {
@@ -93,6 +110,14 @@ class WidgetsListViewController: UITableViewController {
             return DUXBetaGPSSignalWidget()
         }
         
+        let horizontalVelocityWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaHorizontalVelocityWidget()
+        }
+        
+        let locationWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaLocationWidget()
+        }
+        
         let mapWidgetClosure: () -> DUXBetaBaseWidget = {
             let mapWidget = DUXBetaMapWidget()
             mapWidget.showFlyZoneLegend = false
@@ -105,6 +130,10 @@ class WidgetsListViewController: UITableViewController {
         
         let remoteControlSignalWidgetClosure: () -> DUXBetaBaseWidget = {
             return DUXBetaRemoteControllerSignalWidget()
+        }
+        
+        let returnHomeWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaReturnHomeWidget()
         }
         
         let rtkWidgetClosure: () -> DUXBetaBaseWidget = {
@@ -123,6 +152,10 @@ class WidgetsListViewController: UITableViewController {
             return DUXBetaSystemStatusListWidget()
         }
         
+        let verticalVelocityWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaVerticalVelocityWidget()
+        }
+        
         let videoSignalWidgetClosure: () -> DUXBetaBaseWidget = {
             return DUXBetaVideoSignalWidget()
         }
@@ -131,52 +164,82 @@ class WidgetsListViewController: UITableViewController {
             return DUXBetaVisionWidget()
         }
         
+        let vpsWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaVPSWidget()
+        }
+        
+        let takeoffWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaTakeOffWidget()
+        }
+        
+        let telemetryWidgetClosure: () -> DUXBetaBaseWidget = {
+            return DUXBetaTelemetryPanelWidget()
+        }
+        
         let topBarWidgetClosure: () -> DUXBetaBaseWidget = {
             return DUXBetaTopBarWidget()
         }
         
         return [
             airSenseWidgetClosure,
-            altitudeWidgetClosure,
+            aglWidgetClosure,
+            amslSenseWidgetClosure,
             batteryWidgetClosure,
             compassWidgetClosure,
             connectionWidgetClosure,
-            dashboardWidgetClosure,
+            distanceHomeWidgetClosure,
+            distanceRCWidgetClosure,
             flightModeWidgetClosure,
             fpvWidgetClosure,
             gpsSignalWidgetClosure,
+            horizontalVelocityWidgetClosure,
+            locationWidgetClosure,
             mapWidgetClosure,
             remainingFlightTimeWidgetClosure,
             remoteControlSignalWidgetClosure,
+            returnHomeWidgetClosure,
             rtkWidgetClosure,
             simulatorIndicatorWidgetClosure,
             systemStatusWidgetClosure,
             systemStatusPanelWidgetClosure,
+            verticalVelocityWidgetClosure,
             videoSignalWidgetClosure,
             visionWidgetClosure,
+            vpsWidgetClosure,
+            takeoffWidgetClosure,
+            telemetryWidgetClosure,
             topBarWidgetClosure
         ]
     }
     
     static let widgetMetadata:[(String, Bool)] = [
         ("AirSense Widget", false),
-        ("Altitude Widget", false),
+        ("AGL Widget", false),
+        ("AMSL Widget", false),
         ("Battery Widget", false),
         ("Compass Widget", false),
         ("Connection Widget", false),
-        ("Dashboard Widget", false),
+        ("Distance Home Widget", false),
+        ("Distance RC Widget", false),
         ("Flight Mode Widget", false),
         ("FPV Widget", false),
         ("GPS Signal Widget", false),
-        ("Map Widget", true),
+        ("Horizontal Velocity Widget", false),
+        ("Location Widget", false),
+        ("Map Widget", false),
         ("Remaining Flight Time Widget", false),
         ("Remote Control Signal Widget", false),
+        ("Return Home Widget", false),
         ("RTK Widget", false),
         ("Simulator Indicator Widget", false),
         ("System Status Widget", false),
         ("System Status List Widget", false),
+        ("Vertical Velocity Widget", false),
         ("Video Signal Widget", false),
         ("Vision Widget", false),
+        ("VPS Widget", false),
+        ("Take Off Widget", false),
+        ("Telemetry Panel Widget", false),
         ("Top Bar Panel Widget", false)
     ]
     
@@ -193,10 +256,9 @@ class WidgetsListViewController: UITableViewController {
         let widgetClosure = WidgetsListViewController.widgetClosures[indexPath.row]
         let widget = widgetClosure()
         let shouldShowCustomizationView = WidgetsListViewController.widgetMetadata[indexPath.row].1
-        delegate?.widgetSelected(widget, shouldShowCustomizationView: shouldShowCustomizationView)
         if let singleWidgetViewController = delegate as? SingleWidgetViewController {
             let title = WidgetsListViewController.widgetMetadata[indexPath.row].0
-            singleWidgetViewController.shouldShowCustomizationView = shouldShowCustomizationView
+            singleWidgetViewController.widgetSelected(widget, shouldShowCustomizationView: shouldShowCustomizationView)
             singleWidgetViewController.title = title
             singleWidgetViewController.widgetDescriptionLabel.text = WidgetsListViewController.widgetDescriptions[title]
             splitViewController?.showDetailViewController(singleWidgetViewController, sender: nil)

@@ -1,5 +1,5 @@
 //
-//  UIControl+DUXHelpers.swift
+//  UIControl+DUXBetaHelpers.swift
 //  UXSDKSampleApp
 //
 // Copyright © 2018-2020 DJI
@@ -44,7 +44,7 @@ extension UIControl {
         let controlAction = ControlAction(action)
         
         self.duxbeta_connect(controlAction: controlAction,
-                             for: event)
+                     for: event)
         
         return controlAction
     }
@@ -53,7 +53,7 @@ extension UIControl {
         let controlAction = ControlAction(action)
         
         self.duxbeta_connect(controlAction: controlAction,
-                             for: events)
+                     for: events)
         
         return controlAction
     }

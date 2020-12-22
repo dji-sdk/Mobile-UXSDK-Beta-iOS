@@ -8,21 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		22CEB9D0238DB9CC0040A8B4 /* DefaultLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CEB9CF238DB9CB0040A8B4 /* DefaultLayoutViewController.swift */; };
+		22F4549524E1C0130030F12E /* PictureInPicturePanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4549424E1C0130030F12E /* PictureInPicturePanelWidget.swift */; };
 		3A2E644E248EE95500BFC6E5 /* WidgetsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E644D248EE95500BFC6E5 /* WidgetsListViewController.swift */; };
 		3A2E6450248EFB8B00BFC6E5 /* SingleWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E644F248EFB8B00BFC6E5 /* SingleWidgetViewController.swift */; };
-		3A2E6452248EFC6600BFC6E5 /* UIControl+DUXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E6451248EFC6600BFC6E5 /* UIControl+DUXHelpers.swift */; };
 		3A2E6454248EFD2000BFC6E5 /* CustomMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E6453248EFD2000BFC6E5 /* CustomMapViewController.swift */; };
 		3A2E65FC24904E2300BFC6E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E65FB24904E2300BFC6E5 /* Main.storyboard */; };
 		530DAD0F21E534C200E32774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAD0E21E534C200E32774 /* AppDelegate.swift */; };
 		530DAD1621E534C400E32774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 530DAD1521E534C400E32774 /* Assets.xcassets */; };
 		530DAD1921E534C400E32774 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530DAD1721E534C400E32774 /* LaunchScreen.storyboard */; };
+		530DAD2421E534C400E32774 /* UXSDKSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAD2321E534C400E32774 /* UXSDKSampleAppTests.swift */; };
 		530DAD7B21E53AB300E32774 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAD7A21E53AB300E32774 /* MainViewController.swift */; };
 		530DADA221E574DB00E32774 /* LogCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAD9F21E574DA00E32774 /* LogCenter.swift */; };
 		530DADA321E574DB00E32774 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DADA021E574DB00E32774 /* LogEntry.swift */; };
 		530DADA421E574DB00E32774 /* ProductCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DADA121E574DB00E32774 /* ProductCommunicationService.swift */; };
-		AC60CF7821F7C6EC00825022 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC60CF7721F7C6EC00825022 /* DJISDK.framework */; };
 		AC60CF9B21F7F0F900825022 /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC60CF9A21F7F0F900825022 /* CustomSplitViewController.swift */; };
 		B69F5942244FDFF3009D101A /* FPVCustomizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F5941244FDFF3009D101A /* FPVCustomizations.swift */; };
+		B6F8A65C24C0BACB005FC695 /* UIControl+DUXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F8A65B24C0BACB005FC695 /* UIControl+DUXHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,24 +36,12 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		530DADA921E5780000E32774 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		22CEB9CF238DB9CB0040A8B4 /* DefaultLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLayoutViewController.swift; sourceTree = "<group>"; };
+		22F4549424E1C0130030F12E /* PictureInPicturePanelWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInPicturePanelWidget.swift; sourceTree = "<group>"; };
+		246B03F5220E37C30069FE8D /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2E644D248EE95500BFC6E5 /* WidgetsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsListViewController.swift; sourceTree = "<group>"; };
 		3A2E644F248EFB8B00BFC6E5 /* SingleWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWidgetViewController.swift; sourceTree = "<group>"; };
-		3A2E6451248EFC6600BFC6E5 /* UIControl+DUXHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+DUXHelpers.swift"; sourceTree = "<group>"; };
 		3A2E6453248EFD2000BFC6E5 /* CustomMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapViewController.swift; sourceTree = "<group>"; };
 		3A2E65FB24904E2300BFC6E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		530DAD0B21E534C200E32774 /* UXSDKBetaSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UXSDKBetaSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,15 +50,34 @@
 		530DAD1821E534C400E32774 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		530DAD1A21E534C400E32774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		530DAD1F21E534C400E32774 /* UXSDKBetaSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UXSDKBetaSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		530DAD2321E534C400E32774 /* UXSDKSampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXSDKSampleAppTests.swift; sourceTree = "<group>"; };
+		530DAD2521E534C400E32774 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		530DAD7A21E53AB300E32774 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		530DAD7E21E5408700E32774 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		530DAD9F21E574DA00E32774 /* LogCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCenter.swift; sourceTree = "<group>"; };
 		530DADA021E574DB00E32774 /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		530DADA121E574DB00E32774 /* ProductCommunicationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationService.swift; sourceTree = "<group>"; };
+		530DADAA21E5781500E32774 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		530DADB921E6738600E32774 /* UXSDKSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UXSDKSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC60CF7721F7C6EC00825022 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC60CF9A21F7F0F900825022 /* CustomSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
 		B69F5941244FDFF3009D101A /* FPVCustomizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVCustomizations.swift; sourceTree = "<group>"; };
+		B6A2FAD124D9FEB400B4700A /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = "../../dji-widget-i/DJIWidget/FFmpeg/FFmpeg.framework"; sourceTree = "<group>"; };
+		B6A2FAFE24DB602000B4700A /* DJIUXSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIUXSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A2FB0124DB604900B4700A /* DJIForge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIForge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A2FB4B24DDEF0300B4700A /* DJIUXSDKCommunication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIUXSDKCommunication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A2FB4D24DDEF0C00B4700A /* DJIUXSDKWidgets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIUXSDKWidgets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A2FB4F24DDEF2000B4700A /* DJIUXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIUXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A3878F24E44BBB005D8391 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19ABF24EB92D600737526 /* UXSDKFlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKFlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19BAF24EC29AA00737526 /* UXSDKMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19BB224EC2AEB00737526 /* UXSDKTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19C9F24ECA7E300737526 /* UXSDKCameraCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCameraCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19CDF24ECABEF00737526 /* UXSDKVisualCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKVisualCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19E5C24ED980500737526 /* UXSDKMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19F1924EDA68200737526 /* UXSDKAccessory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKAccessory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19F7524EDBA6000737526 /* Forge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Forge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6F8A65B24C0BACB005FC695 /* UIControl+DUXHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+DUXHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC60CF7821F7C6EC00825022 /* DJISDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,9 +115,10 @@
 				3A2E6453248EFD2000BFC6E5 /* CustomMapViewController.swift */,
 				AC60CF9A21F7F0F900825022 /* CustomSplitViewController.swift */,
 				22CEB9CF238DB9CB0040A8B4 /* DefaultLayoutViewController.swift */,
-				3A2E6451248EFC6600BFC6E5 /* UIControl+DUXHelpers.swift */,
 				3A2E644F248EFB8B00BFC6E5 /* SingleWidgetViewController.swift */,
 				3A2E644D248EE95500BFC6E5 /* WidgetsListViewController.swift */,
+				22F4549424E1C0130030F12E /* PictureInPicturePanelWidget.swift */,
+				B6F8A65B24C0BACB005FC695 /* UIControl+DUXHelpers.swift */,
 				B69F5940244FDFD2009D101A /* Customizations */,
 			);
 			path = SampleFeatures;
@@ -119,7 +127,11 @@
 		530DAD0221E534C200E32774 = {
 			isa = PBXGroup;
 			children = (
+				B6A2FAD124D9FEB400B4700A /* FFmpeg.framework */,
+				246B03F5220E37C30069FE8D /* DJIWidget.framework */,
+				530DADAA21E5781500E32774 /* DJISDK.framework */,
 				530DAD0D21E534C200E32774 /* UXSDKBetaSampleApp */,
+				530DAD2221E534C400E32774 /* UXSDKBetaSampleAppTests */,
 				530DAD0C21E534C200E32774 /* Products */,
 				530DAD7C21E5406300E32774 /* Frameworks */,
 				D9AAC44DB988F763D05D7DE7 /* Pods */,
@@ -148,9 +160,32 @@
 			path = UXSDKBetaSampleApp;
 			sourceTree = "<group>";
 		};
+		530DAD2221E534C400E32774 /* UXSDKBetaSampleAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				530DAD2321E534C400E32774 /* UXSDKSampleAppTests.swift */,
+				530DAD2521E534C400E32774 /* Info.plist */,
+			);
+			path = UXSDKBetaSampleAppTests;
+			sourceTree = "<group>";
+		};
 		530DAD7C21E5406300E32774 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6D19F7524EDBA6000737526 /* Forge.framework */,
+				B6D19F1924EDA68200737526 /* UXSDKAccessory.framework */,
+				B6D19E5C24ED980500737526 /* UXSDKMap.framework */,
+				B6D19CDF24ECABEF00737526 /* UXSDKVisualCamera.framework */,
+				B6D19C9F24ECA7E300737526 /* UXSDKCameraCore.framework */,
+				B6D19BB224EC2AEB00737526 /* UXSDKTraining.framework */,
+				B6D19BAF24EC29AA00737526 /* UXSDKMedia.framework */,
+				B6D19ABF24EB92D600737526 /* UXSDKFlight.framework */,
+				B6A3878F24E44BBB005D8391 /* UXSDKCore.framework */,
+				B6A2FB4F24DDEF2000B4700A /* DJIUXSDKCore.framework */,
+				B6A2FB4D24DDEF0C00B4700A /* DJIUXSDKWidgets.framework */,
+				B6A2FB4B24DDEF0300B4700A /* DJIUXSDKCommunication.framework */,
+				B6A2FB0124DB604900B4700A /* DJIForge.framework */,
+				B6A2FAFE24DB602000B4700A /* DJIUXSDK.framework */,
 				AC60CF7721F7C6EC00825022 /* DJISDK.framework */,
 				530DAD7E21E5408700E32774 /* DJISDK.framework */,
 			);
@@ -192,7 +227,6 @@
 				530DAD0721E534C200E32774 /* Sources */,
 				530DAD0821E534C200E32774 /* Frameworks */,
 				530DAD0921E534C200E32774 /* Resources */,
-				530DADA921E5780000E32774 /* Embed Frameworks */,
 				3A94CFDD240F192600B1DDA2 /* ShellScript */,
 			);
 			buildRules = (
@@ -308,13 +342,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A2E6450248EFB8B00BFC6E5 /* SingleWidgetViewController.swift in Sources */,
+				B6F8A65C24C0BACB005FC695 /* UIControl+DUXHelpers.swift in Sources */,
 				530DADA421E574DB00E32774 /* ProductCommunicationService.swift in Sources */,
+				22F4549524E1C0130030F12E /* PictureInPicturePanelWidget.swift in Sources */,
 				AC60CF9B21F7F0F900825022 /* CustomSplitViewController.swift in Sources */,
 				530DADA221E574DB00E32774 /* LogCenter.swift in Sources */,
 				3A2E6454248EFD2000BFC6E5 /* CustomMapViewController.swift in Sources */,
 				3A2E644E248EE95500BFC6E5 /* WidgetsListViewController.swift in Sources */,
 				530DADA321E574DB00E32774 /* LogEntry.swift in Sources */,
-				3A2E6452248EFC6600BFC6E5 /* UIControl+DUXHelpers.swift in Sources */,
 				530DAD7B21E53AB300E32774 /* MainViewController.swift in Sources */,
 				530DAD0F21E534C200E32774 /* AppDelegate.swift in Sources */,
 				B69F5942244FDFF3009D101A /* FPVCustomizations.swift in Sources */,
@@ -326,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				530DAD2421E534C400E32774 /* UXSDKSampleAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -459,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -472,7 +508,6 @@
 		530DAD2921E534C400E32774 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -489,7 +524,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDKBetaSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -503,13 +537,11 @@
 		530DAD2A21E534C400E32774 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -520,7 +552,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDKBetaSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

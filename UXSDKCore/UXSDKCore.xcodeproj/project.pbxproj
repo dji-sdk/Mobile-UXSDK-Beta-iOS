@@ -1,0 +1,1967 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B60B8A002552FB0900F097D1 /* DUXBetaAudioFilePCMParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B89FA2552FB0800F097D1 /* DUXBetaAudioFilePCMParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A012552FB0900F097D1 /* DUXBetaVoiceNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B89FB2552FB0900F097D1 /* DUXBetaVoiceNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A022552FB0900F097D1 /* DUXBetaVoiceNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B89FC2552FB0900F097D1 /* DUXBetaVoiceNotification.m */; };
+		B60B8A032552FB0900F097D1 /* DUXBetaAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B89FD2552FB0900F097D1 /* DUXBetaAudioSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A042552FB0900F097D1 /* DUXBetaAudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B89FE2552FB0900F097D1 /* DUXBetaAudioSource.m */; };
+		B60B8A052552FB0900F097D1 /* DUXBetaAudioFilePCMParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B89FF2552FB0900F097D1 /* DUXBetaAudioFilePCMParser.m */; };
+		B60B8A0A2552FB1800F097D1 /* DUXBetaBaseModule.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A082552FB1800F097D1 /* DUXBetaBaseModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A0B2552FB1800F097D1 /* DUXBetaBaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A092552FB1800F097D1 /* DUXBetaBaseModule.m */; };
+		B60B8A1A2552FB2E00F097D1 /* DUXBetaSampleListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A0D2552FB2D00F097D1 /* DUXBetaSampleListItemWidget.m */; };
+		B60B8A1B2552FB2E00F097D1 /* DUXBetaToolbarPanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A0E2552FB2D00F097D1 /* DUXBetaToolbarPanelWidget.swift */; };
+		B60B8A1C2552FB2E00F097D1 /* DUXBetaListPanelWidgetStringsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A0F2552FB2D00F097D1 /* DUXBetaListPanelWidgetStringsModel.swift */; };
+		B60B8A1D2552FB2E00F097D1 /* DUXBetaListPanelWidgetBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A102552FB2D00F097D1 /* DUXBetaListPanelWidgetBaseModel.swift */; };
+		B60B8A1E2552FB2E00F097D1 /* DUXBetaFreeformPanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A112552FB2E00F097D1 /* DUXBetaFreeformPanelWidget.swift */; };
+		B60B8A1F2552FB2E00F097D1 /* DUXBetaSmartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A122552FB2E00F097D1 /* DUXBetaSmartListModel.swift */; };
+		B60B8A202552FB2E00F097D1 /* DUXBetaPanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A132552FB2E00F097D1 /* DUXBetaPanelWidget.swift */; };
+		B60B8A212552FB2E00F097D1 /* DUXBetaPanelWidgetSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A142552FB2E00F097D1 /* DUXBetaPanelWidgetSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A222552FB2E00F097D1 /* DUXBetaBarPanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A152552FB2E00F097D1 /* DUXBetaBarPanelWidget.swift */; };
+		B60B8A232552FB2E00F097D1 /* DUXBetaToolbarPanelItemTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A162552FB2E00F097D1 /* DUXBetaToolbarPanelItemTemplate.swift */; };
+		B60B8A242552FB2E00F097D1 /* DUXBetaListPanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A172552FB2E00F097D1 /* DUXBetaListPanelWidget.swift */; };
+		B60B8A252552FB2E00F097D1 /* DUXBetaSampleListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A182552FB2E00F097D1 /* DUXBetaSampleListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A262552FB2E00F097D1 /* DUXBetaSmartListInternalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A192552FB2E00F097D1 /* DUXBetaSmartListInternalModel.swift */; };
+		B60B8A392552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A292552FB3C00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A3A2552FB3E00F097D1 /* DUXBetaListItemRadioButtonWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A2A2552FB3C00F097D1 /* DUXBetaListItemRadioButtonWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A3B2552FB3E00F097D1 /* DUXBetaListItemSwitchWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A2B2552FB3C00F097D1 /* DUXBetaListItemSwitchWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A3C2552FB3E00F097D1 /* DUXBetaListItemTitleWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A2C2552FB3D00F097D1 /* DUXBetaListItemTitleWidget.m */; };
+		B60B8A3D2552FB3E00F097D1 /* DUXBetaListItemSwitchWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A2D2552FB3D00F097D1 /* DUXBetaListItemSwitchWidget.m */; };
+		B60B8A3E2552FB3E00F097D1 /* DUXBetaListItemTrivialSwitchWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A2E2552FB3D00F097D1 /* DUXBetaListItemTrivialSwitchWidget.m */; };
+		B60B8A3F2552FB3E00F097D1 /* DUXBetaListItemRadioButtonWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A2F2552FB3D00F097D1 /* DUXBetaListItemRadioButtonWidget.m */; };
+		B60B8A402552FB3E00F097D1 /* DUXBetaListItemSwitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A302552FB3D00F097D1 /* DUXBetaListItemSwitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A412552FB3E00F097D1 /* DUXBetaListItemSwitchWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A312552FB3D00F097D1 /* DUXBetaListItemSwitchWidgetModel.m */; };
+		B60B8A422552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A322552FB3D00F097D1 /* DUXBetaListItemEditTextButtonWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A432552FB3E00F097D1 /* DUXBetaListItemLabelButtonWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A332552FB3D00F097D1 /* DUXBetaListItemLabelButtonWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A442552FB3E00F097D1 /* DUXBetaListItemTitleWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A342552FB3D00F097D1 /* DUXBetaListItemTitleWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A452552FB3E00F097D1 /* DUXBetaListItemTrivialSwitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A352552FB3D00F097D1 /* DUXBetaListItemTrivialSwitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A462552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A362552FB3D00F097D1 /* DUXBetaListItemEditTextButtonWidget.m */; };
+		B60B8A472552FB3E00F097D1 /* DUXBetaListItemLabelButtonWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A372552FB3D00F097D1 /* DUXBetaListItemLabelButtonWidget.m */; };
+		B60B8A482552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A382552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.m */; };
+		B60B8A4C2552FB4E00F097D1 /* DUXBetaBaseTelemetryWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A4B2552FB4E00F097D1 /* DUXBetaBaseTelemetryWidget.swift */; };
+		B60B8A522552FB5900F097D1 /* DUXBetaBaseWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A4E2552FB5900F097D1 /* DUXBetaBaseWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A532552FB5900F097D1 /* DUXBetaBaseWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A4F2552FB5900F097D1 /* DUXBetaBaseWidgetModel.m */; };
+		B60B8A542552FB5900F097D1 /* DUXBetaBaseWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A502552FB5900F097D1 /* DUXBetaBaseWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A552552FB5900F097D1 /* DUXBetaBaseWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A512552FB5900F097D1 /* DUXBetaBaseWidget.m */; };
+		B60B8A592552FB6300F097D1 /* DUXBetaTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A572552FB6300F097D1 /* DUXBetaTheme.m */; };
+		B60B8A5A2552FB6300F097D1 /* DUXBetaTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A582552FB6300F097D1 /* DUXBetaTheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A622552FB7500F097D1 /* DUXBetaKeyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A5C2552FB7500F097D1 /* DUXBetaKeyManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A632552FB7500F097D1 /* DUXBetaWarningMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A5D2552FB7500F097D1 /* DUXBetaWarningMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A642552FB7500F097D1 /* DUXBetaKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A5E2552FB7500F097D1 /* DUXBetaKeyManager.m */; };
+		B60B8A652552FB7500F097D1 /* DUXBetaSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A5F2552FB7500F097D1 /* DUXBetaSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A662552FB7500F097D1 /* DUXBetaSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A602552FB7500F097D1 /* DUXBetaSingleton.m */; };
+		B60B8A672552FB7500F097D1 /* DUXBetaWarningMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A612552FB7500F097D1 /* DUXBetaWarningMessage.m */; };
+		B60B8A6D2552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A692552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A6E2552FB8200F097D1 /* DUXBetaStateChangeBaseData.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A6A2552FB8200F097D1 /* DUXBetaStateChangeBaseData.m */; };
+		B60B8A6F2552FB8200F097D1 /* DUXBetaStateChangeBaseData.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A6B2552FB8200F097D1 /* DUXBetaStateChangeBaseData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A702552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A6C2552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.m */; };
+		B60B8A862552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A732552FB8F00F097D1 /* NSObject+DUXBetaCustomKVO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A872552FB9000F097D1 /* DUXBetaCustomAsyncCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A742552FB8F00F097D1 /* DUXBetaCustomAsyncCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A882552FB9000F097D1 /* DUXBetaCustomKVOObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A752552FB8F00F097D1 /* DUXBetaCustomKVOObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A892552FB9000F097D1 /* DUXBetaCustomValueConfirmation.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A762552FB8F00F097D1 /* DUXBetaCustomValueConfirmation.m */; };
+		B60B8A8A2552FB9000F097D1 /* DUXBetaCustomKVOObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A772552FB8F00F097D1 /* DUXBetaCustomKVOObserver.m */; };
+		B60B8A8B2552FB9000F097D1 /* DUXBetaCustomValueConfirmation_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A782552FB8F00F097D1 /* DUXBetaCustomValueConfirmation_Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A8C2552FB9000F097D1 /* NSError+DUXBetaCustomKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A792552FB9000F097D1 /* NSError+DUXBetaCustomKVO.m */; };
+		B60B8A8D2552FB9000F097D1 /* DUXBetaRKVOMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A7A2552FB9000F097D1 /* DUXBetaRKVOMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A8E2552FB9000F097D1 /* DUXBetaCustomAsyncCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A7B2552FB9000F097D1 /* DUXBetaCustomAsyncCache.m */; };
+		B60B8A8F2552FB9000F097D1 /* DUXBetaCustomObserverRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A7C2552FB9000F097D1 /* DUXBetaCustomObserverRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A902552FB9000F097D1 /* DUXBetaConstString.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A7D2552FB9000F097D1 /* DUXBetaConstString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A912552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A7E2552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.m */; };
+		B60B8A922552FB9000F097D1 /* DUXBetaCustomValueConfirmation.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A7F2552FB9000F097D1 /* DUXBetaCustomValueConfirmation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A932552FB9000F097D1 /* DUXBetaCustomAsyncMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A802552FB9000F097D1 /* DUXBetaCustomAsyncMethod.m */; };
+		B60B8A942552FB9000F097D1 /* NSError+DUXBetaCustomKVO.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A812552FB9000F097D1 /* NSError+DUXBetaCustomKVO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A952552FB9000F097D1 /* DUXBetaCustomObserverRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A822552FB9000F097D1 /* DUXBetaCustomObserverRuntime.m */; };
+		B60B8A962552FB9000F097D1 /* DUXBetaConstString.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8A832552FB9000F097D1 /* DUXBetaConstString.m */; };
+		B60B8A972552FB9000F097D1 /* DUXBetaCustomAsyncMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A842552FB9000F097D1 /* DUXBetaCustomAsyncMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8A982552FB9000F097D1 /* DUXBetaRKVOHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8A852552FB9000F097D1 /* DUXBetaRKVOHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AB82552FBB900F097D1 /* NSObject+DUXBetaSDKBind.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AAF2552FBB800F097D1 /* NSObject+DUXBetaSDKBind.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AB92552FBB900F097D1 /* NSObject+DUXBetaSDKBind.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AB02552FBB800F097D1 /* NSObject+DUXBetaSDKBind.m */; };
+		B60B8ABA2552FBB900F097D1 /* NSObject+DUXBetaRKVOExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AB12552FBB800F097D1 /* NSObject+DUXBetaRKVOExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8ABB2552FBB900F097D1 /* NSObject+DUXBetaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AB22552FBB800F097D1 /* NSObject+DUXBetaCommand.m */; };
+		B60B8ABC2552FBB900F097D1 /* NSObject+DUXBetaCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AB32552FBB800F097D1 /* NSObject+DUXBetaCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8ABD2552FBB900F097D1 /* NSObject+DUXBetaMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AB42552FBB800F097D1 /* NSObject+DUXBetaMapping.m */; };
+		B60B8ABE2552FBB900F097D1 /* DUXBetaBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AB52552FBB800F097D1 /* DUXBetaBindings.swift */; };
+		B60B8ABF2552FBB900F097D1 /* NSObject+DUXBetaRKVOExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AB62552FBB800F097D1 /* NSObject+DUXBetaRKVOExtension.m */; };
+		B60B8AC02552FBB900F097D1 /* NSObject+DUXBetaMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AB72552FBB800F097D1 /* NSObject+DUXBetaMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AC32552FBC200F097D1 /* DUXBetaSwiftTestBindingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AC22552FBC200F097D1 /* DUXBetaSwiftTestBindingWidget.swift */; };
+		B60B8AD12552FBD000F097D1 /* NSObject+DUXBetaSwiftHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AC62552FBCF00F097D1 /* NSObject+DUXBetaSwiftHelpers.m */; };
+		B60B8AD22552FBD000F097D1 /* UISwitch+DUXBetaBackgroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AC72552FBCF00F097D1 /* UISwitch+DUXBetaBackgroundHelper.m */; };
+		B60B8AD32552FBD000F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AC82552FBCF00F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AD42552FBD000F097D1 /* NSDateFormatter+DUXBetaDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AC92552FBCF00F097D1 /* NSDateFormatter+DUXBetaDateFormatter.m */; };
+		B60B8AD52552FBD000F097D1 /* NSObject+DUXBetaSwiftHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8ACA2552FBCF00F097D1 /* NSObject+DUXBetaSwiftHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AD62552FBD000F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8ACB2552FBCF00F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.m */; };
+		B60B8AD72552FBD000F097D1 /* UISwitch+DUXBetaBackgroundHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8ACC2552FBCF00F097D1 /* UISwitch+DUXBetaBackgroundHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AD82552FBD000F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8ACD2552FBCF00F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.m */; };
+		B60B8AD92552FBD000F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8ACE2552FBCF00F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8ADA2552FBD000F097D1 /* UIViewController+DUXBetaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8ACF2552FBCF00F097D1 /* UIViewController+DUXBetaHelper.swift */; };
+		B60B8ADB2552FBD000F097D1 /* NSDateFormatter+DUXBetaDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AD02552FBCF00F097D1 /* NSDateFormatter+DUXBetaDateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AE02552FBDB00F097D1 /* DUXBetaUnitTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8ADE2552FBDB00F097D1 /* DUXBetaUnitTypeModule.swift */; };
+		B60B8AE12552FBDB00F097D1 /* DUXBetaFlatCameraModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8ADF2552FBDB00F097D1 /* DUXBetaFlatCameraModule.swift */; };
+		B60B8AE52552FBE700F097D1 /* DUXBetaAlertView+SystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AE42552FBE700F097D1 /* DUXBetaAlertView+SystemStatus.swift */; };
+		B60B8AE92552FBF100F097D1 /* DUXBetaSystemStatusListSmartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AE72552FBF100F097D1 /* DUXBetaSystemStatusListSmartModel.swift */; };
+		B60B8AEA2552FBF100F097D1 /* DUXBetaSystemStatusListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AE82552FBF100F097D1 /* DUXBetaSystemStatusListWidget.swift */; };
+		B60B8AF12552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AED2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.m */; };
+		B60B8AF22552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AEE2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AF32552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AEF2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AF42552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AF02552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.m */; };
+		B60B8AFB2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AF72552FC1C00F097D1 /* DUXBetaFlightModeListItemWidgetModel.m */; };
+		B60B8AFC2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AF82552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AFD2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8AF92552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8AFE2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8AFA2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.m */; };
+		B60B8B052552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B012552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B062552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B022552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.m */; };
+		B60B8B072552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B032552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.m */; };
+		B60B8B082552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B042552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B0F2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B0A2552FC3100F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B102552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B0B2552FC3100F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.m */; };
+		B60B8B112552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B0C2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.m */; };
+		B60B8B122552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B0E2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B162552FC3D00F097D1 /* DUXBetaTravelModeListItemWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B142552FC3C00F097D1 /* DUXBetaTravelModeListItemWidgetModel.swift */; };
+		B60B8B172552FC3D00F097D1 /* DUXBetaTravelModeListItemWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B152552FC3C00F097D1 /* DUXBetaTravelModeListItemWidget.swift */; };
+		B60B8B1B2552FC4600F097D1 /* DUXBetaNoviceModeListItemWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B1A2552FC4600F097D1 /* DUXBetaNoviceModeListItemWidget.swift */; };
+		B60B8B212552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B1D2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B222552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B1E2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B232552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B1F2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.m */; };
+		B60B8B242552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B202552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.m */; };
+		B60B8B272552FC5E00F097D1 /* DUXBetaOverviewListItemWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B262552FC5E00F097D1 /* DUXBetaOverviewListItemWidget.swift */; };
+		B60B8B2E2552FC6800F097D1 /* DUXBetaRCStickModeListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B2A2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B2F2552FC6800F097D1 /* DUXBetaRCStickModeListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B2B2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B302552FC6800F097D1 /* DUXBetaRCStickModeListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B2C2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidget.m */; };
+		B60B8B312552FC6800F097D1 /* DUXBetaRCStickModeListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B2D2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidgetModel.m */; };
+		B60B8B382552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B332552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B392552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B342552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidget.m */; };
+		B60B8B3A2552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B352552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.m */; };
+		B60B8B3B2552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B372552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B3F2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B3D2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidgetModel.swift */; };
+		B60B8B402552FC7C00F097D1 /* DUXBetaUnitModeListItemWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B3E2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidget.swift */; };
+		B60B8B442552FC8600F097D1 /* DUXBetaRCBatteryListItemWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B422552FC8500F097D1 /* DUXBetaRCBatteryListItemWidget.swift */; };
+		B60B8B452552FC8600F097D1 /* DUXBetaRCBatteryListItemWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B432552FC8500F097D1 /* DUXBetaRCBatteryListItemWidgetModel.swift */; };
+		B60B8B4B2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B472552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.m */; };
+		B60B8B4C2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B482552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B4D2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B492552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B4E2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B4A2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.m */; };
+		B60B8B522552FC9F00F097D1 /* DUXBetaTelemetryPanelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B512552FC9F00F097D1 /* DUXBetaTelemetryPanelWidget.swift */; };
+		B60B8B552552FCA900F097D1 /* DUXBetaTopBarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B542552FCA900F097D1 /* DUXBetaTopBarWidget.swift */; };
+		B60B8B592552FCC400F097D1 /* DUXBetaSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B572552FCC400F097D1 /* DUXBetaSlideView.swift */; };
+		B60B8B5A2552FCC400F097D1 /* DUXBetaSlideAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B582552FCC400F097D1 /* DUXBetaSlideAlertView.swift */; };
+		B60B8B612552FCD000F097D1 /* DUXBetaAlertStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B5D2552FCD000F097D1 /* DUXBetaAlertStackController.swift */; };
+		B60B8B622552FCD000F097D1 /* DUXBetaAlertViewMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B5E2552FCD000F097D1 /* DUXBetaAlertViewMask.swift */; };
+		B60B8B632552FCD000F097D1 /* DUXBetaAlertLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B5F2552FCD000F097D1 /* DUXBetaAlertLayoutController.swift */; };
+		B60B8B642552FCD000F097D1 /* DUXBetaAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B602552FCD000F097D1 /* DUXBetaAlertView.swift */; };
+		B60B8B742552FD2000F097D1 /* NSBundle+DUXBetaAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B682552FD1F00F097D1 /* NSBundle+DUXBetaAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B752552FD2000F097D1 /* NSData+DUXBetaAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B692552FD1F00F097D1 /* NSData+DUXBetaAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B762552FD2000F097D1 /* UIColor+DUXBetaColors.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B6A2552FD1F00F097D1 /* UIColor+DUXBetaColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B772552FD2000F097D1 /* DUXBetaProductUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B6B2552FD1F00F097D1 /* DUXBetaProductUtil.swift */; };
+		B60B8B782552FD2000F097D1 /* UIImage+DUXBetaAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B6C2552FD1F00F097D1 /* UIImage+DUXBetaAssets.m */; };
+		B60B8B792552FD2000F097D1 /* NSBundle+DUXBetaAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B6D2552FD1F00F097D1 /* NSBundle+DUXBetaAssets.m */; };
+		B60B8B7A2552FD2000F097D1 /* UIDevice+DUXBetaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B6E2552FD1F00F097D1 /* UIDevice+DUXBetaHelper.swift */; };
+		B60B8B7B2552FD2000F097D1 /* UIFont+DUXBetaFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B6F2552FD1F00F097D1 /* UIFont+DUXBetaFonts.m */; };
+		B60B8B7C2552FD2000F097D1 /* UIColor+DUXBetaColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B702552FD2000F097D1 /* UIColor+DUXBetaColors.m */; };
+		B60B8B7D2552FD2000F097D1 /* NSData+DUXBetaAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B712552FD2000F097D1 /* NSData+DUXBetaAssets.m */; };
+		B60B8B7E2552FD2000F097D1 /* UIFont+DUXBetaFonts.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B722552FD2000F097D1 /* UIFont+DUXBetaFonts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B7F2552FD2000F097D1 /* UIImage+DUXBetaAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B732552FD2000F097D1 /* UIImage+DUXBetaAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B8A2552FD2F00F097D1 /* DUXBetaAirSenseWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B822552FD2F00F097D1 /* DUXBetaAirSenseWidget.m */; };
+		B60B8B8B2552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B832552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B8C2552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B842552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B8D2552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B852552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.m */; };
+		B60B8B8E2552FD2F00F097D1 /* DUXBetaAirSenseWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B862552FD2F00F097D1 /* DUXBetaAirSenseWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B8F2552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B872552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B902552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B882552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.m */; };
+		B60B8B912552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B892552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.m */; };
+		B60B8B9A2552FD3B00F097D1 /* DUXBetaBatteryState.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B942552FD3A00F097D1 /* DUXBetaBatteryState.m */; };
+		B60B8B9B2552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B952552FD3A00F097D1 /* DUXBetaBatteryWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B9C2552FD3B00F097D1 /* DUXBetaBatteryState.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B962552FD3A00F097D1 /* DUXBetaBatteryState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B9D2552FD3B00F097D1 /* DUXBetaBatteryWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B972552FD3B00F097D1 /* DUXBetaBatteryWidget.m */; };
+		B60B8B9E2552FD3B00F097D1 /* DUXBetaBatteryWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8B982552FD3B00F097D1 /* DUXBetaBatteryWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8B9F2552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8B992552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.m */; };
+		B60B8BA52552FD4500F097D1 /* DUXBetaCompassWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BA12552FD4500F097D1 /* DUXBetaCompassWidget.m */; };
+		B60B8BA62552FD4500F097D1 /* DUXBetaCompassWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BA22552FD4500F097D1 /* DUXBetaCompassWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BA72552FD4500F097D1 /* DUXBetaCompassWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BA32552FD4500F097D1 /* DUXBetaCompassWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BA82552FD4500F097D1 /* DUXBetaCompassWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BA42552FD4500F097D1 /* DUXBetaCompassWidgetModel.m */; };
+		B60B8BB42552FD5500F097D1 /* DUXBetaCompassLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BAC2552FD5500F097D1 /* DUXBetaCompassLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BB52552FD5500F097D1 /* DUXBetaCompassLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BAD2552FD5500F097D1 /* DUXBetaCompassLayer.m */; };
+		B60B8BB62552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BAE2552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.m */; };
+		B60B8BB72552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BAF2552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BB82552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BB02552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.m */; };
+		B60B8BB92552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BB12552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.m */; };
+		B60B8BBA2552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BB22552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BBB2552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BB32552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BC22552FD6200F097D1 /* DUXBetaConnectionWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BBE2552FD6100F097D1 /* DUXBetaConnectionWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BC32552FD6200F097D1 /* DUXBetaConnectionWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BBF2552FD6100F097D1 /* DUXBetaConnectionWidgetModel.m */; };
+		B60B8BC42552FD6200F097D1 /* DUXBetaConnectionWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BC02552FD6100F097D1 /* DUXBetaConnectionWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BC52552FD6200F097D1 /* DUXBetaConnectionWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BC12552FD6200F097D1 /* DUXBetaConnectionWidget.m */; };
+		B60B8BCC2552FD6D00F097D1 /* DUXBetaFlightModeWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BC82552FD6C00F097D1 /* DUXBetaFlightModeWidgetModel.m */; };
+		B60B8BCD2552FD6D00F097D1 /* DUXBetaFlightModeWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BC92552FD6C00F097D1 /* DUXBetaFlightModeWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BCE2552FD6D00F097D1 /* DUXBetaFlightModeWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BCA2552FD6C00F097D1 /* DUXBetaFlightModeWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BCF2552FD6D00F097D1 /* DUXBetaFlightModeWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BCB2552FD6C00F097D1 /* DUXBetaFlightModeWidget.m */; };
+		B60B8BD62552FD8000F097D1 /* DUXBetaFPVCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BD22552FD8000F097D1 /* DUXBetaFPVCenterView.swift */; };
+		B60B8BD72552FD8000F097D1 /* DUXBetaFPVWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BD32552FD8000F097D1 /* DUXBetaFPVWidgetModel.swift */; };
+		B60B8BD82552FD8000F097D1 /* DUXBetaFPVGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BD42552FD8000F097D1 /* DUXBetaFPVGridView.swift */; };
+		B60B8BD92552FD8000F097D1 /* DUXBetaFPVWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BD52552FD8000F097D1 /* DUXBetaFPVWidget.swift */; };
+		B60B8BE02552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BDC2552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BE12552FD8B00F097D1 /* DUXBetaFPVDecodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BDD2552FD8B00F097D1 /* DUXBetaFPVDecodeModel.m */; };
+		B60B8BE22552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BDE2552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.m */; };
+		B60B8BE32552FD8B00F097D1 /* DUXBetaFPVDecodeModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BDF2552FD8B00F097D1 /* DUXBetaFPVDecodeModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BEA2552FD9900F097D1 /* DUXBetaGPSSignalWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BE62552FD9900F097D1 /* DUXBetaGPSSignalWidget.m */; };
+		B60B8BEB2552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BE72552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.m */; };
+		B60B8BEC2552FD9900F097D1 /* DUXBetaGPSSignalWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BE82552FD9900F097D1 /* DUXBetaGPSSignalWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BED2552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BE92552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BF62552FDA700F097D1 /* DUXBetaMultiAngleRadarSectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BF02552FDA600F097D1 /* DUXBetaMultiAngleRadarSectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BF72552FDA700F097D1 /* DUXBetaSingleAngleRadarSectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BF12552FDA600F097D1 /* DUXBetaSingleAngleRadarSectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BF82552FDA700F097D1 /* DUXBetaSingleAngleRadarSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BF22552FDA600F097D1 /* DUXBetaSingleAngleRadarSectionView.m */; };
+		B60B8BF92552FDA700F097D1 /* DUXBetaMultiAngleRadarSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BF32552FDA600F097D1 /* DUXBetaMultiAngleRadarSectionView.m */; };
+		B60B8BFA2552FDA700F097D1 /* DUXBetaRadarSectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BF42552FDA700F097D1 /* DUXBetaRadarSectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8BFB2552FDA700F097D1 /* DUXBetaRadarSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BF52552FDA700F097D1 /* DUXBetaRadarSectionView.m */; };
+		B60B8C012552FDB300F097D1 /* DUXBetaRadarWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8BFD2552FDB200F097D1 /* DUXBetaRadarWidget.m */; };
+		B60B8C022552FDB300F097D1 /* DUXBetaRadarWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BFE2552FDB200F097D1 /* DUXBetaRadarWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C032552FDB300F097D1 /* DUXBetaRadarWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8BFF2552FDB200F097D1 /* DUXBetaRadarWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C042552FDB300F097D1 /* DUXBetaRadarWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C002552FDB200F097D1 /* DUXBetaRadarWidgetModel.m */; };
+		B60B8C0B2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C072552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.m */; };
+		B60B8C0C2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C082552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C0D2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C092552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.m */; };
+		B60B8C0E2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C0A2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C172552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C102552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.m */; };
+		B60B8C182552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C112552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.m */; };
+		B60B8C192552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C122552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C1A2552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C132552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C1B2552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C152552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.m */; };
+		B60B8C1C2552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C162552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C222552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C1E2552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C232552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C1F2552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C242552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C202552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.m */; };
+		B60B8C252552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C212552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.m */; };
+		B60B8C2B2552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C272552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.m */; };
+		B60B8C2C2552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C282552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C2D2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C292552FDDB00F097D1 /* DUXBetaSystemStatusWidget.m */; };
+		B60B8C2E2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C2A2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C342552FDE800F097D1 /* DUXBetaAMSLAltitudeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C312552FDE800F097D1 /* DUXBetaAMSLAltitudeWidget.swift */; };
+		B60B8C352552FDE800F097D1 /* DUXBetaAGLAltitudeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C322552FDE800F097D1 /* DUXBetaAGLAltitudeWidget.swift */; };
+		B60B8C362552FDE800F097D1 /* DUXBetaAltitudeWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C332552FDE800F097D1 /* DUXBetaAltitudeWidgetModel.swift */; };
+		B60B8C3B2552FDEF00F097D1 /* DUXBetaDistanceHomeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C392552FDEF00F097D1 /* DUXBetaDistanceHomeWidget.swift */; };
+		B60B8C3C2552FDEF00F097D1 /* DUXBetaDistanceHomeWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C3A2552FDEF00F097D1 /* DUXBetaDistanceHomeWidgetModel.swift */; };
+		B60B8C402552FDF700F097D1 /* DUXBetaDistanceRCWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C3E2552FDF700F097D1 /* DUXBetaDistanceRCWidgetModel.swift */; };
+		B60B8C412552FDF700F097D1 /* DUXBetaDistanceRCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C3F2552FDF700F097D1 /* DUXBetaDistanceRCWidget.swift */; };
+		B60B8C452552FE0000F097D1 /* DUXBetaHorizontalVelocityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C432552FE0000F097D1 /* DUXBetaHorizontalVelocityWidget.swift */; };
+		B60B8C462552FE0000F097D1 /* DUXBetaHorizontalVelocityWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C442552FE0000F097D1 /* DUXBetaHorizontalVelocityWidgetModel.swift */; };
+		B60B8C4B2552FE0C00F097D1 /* DUXBetaLocationWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C482552FE0C00F097D1 /* DUXBetaLocationWidgetModel.swift */; };
+		B60B8C4C2552FE0C00F097D1 /* DUXBetaLocationWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C492552FE0C00F097D1 /* DUXBetaLocationWidget.swift */; };
+		B60B8C502552FE1500F097D1 /* DUXBetaVerticalVelocityWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C4E2552FE1500F097D1 /* DUXBetaVerticalVelocityWidgetModel.swift */; };
+		B60B8C512552FE1500F097D1 /* DUXBetaVerticalVelocityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C4F2552FE1500F097D1 /* DUXBetaVerticalVelocityWidget.swift */; };
+		B60B8C562552FE1F00F097D1 /* DUXBetaVPSWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C542552FE1F00F097D1 /* DUXBetaVPSWidget.swift */; };
+		B60B8C572552FE1F00F097D1 /* DUXBetaVPSWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C552552FE1F00F097D1 /* DUXBetaVPSWidgetModel.swift */; };
+		B60B8C5D2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C592552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C5E2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C5A2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C5F2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C5B2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.m */; };
+		B60B8C602552FE2B00F097D1 /* DUXBetaVideoSignalWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C5C2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.m */; };
+		B60B8C672552FE3500F097D1 /* DUXBetaVisionWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C632552FE3500F097D1 /* DUXBetaVisionWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C682552FE3500F097D1 /* DUXBetaVisionWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C642552FE3500F097D1 /* DUXBetaVisionWidgetModel.m */; };
+		B60B8C692552FE3500F097D1 /* DUXBetaVisionWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C652552FE3500F097D1 /* DUXBetaVisionWidget.m */; };
+		B60B8C6A2552FE3500F097D1 /* DUXBetaVisionWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C662552FE3500F097D1 /* DUXBetaVisionWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8DD525548C6900F097D1 /* DUXBetaWidgetCloseButtonProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8DD425548C6900F097D1 /* DUXBetaWidgetCloseButtonProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B657A35F24E3073A009B10AA /* DUXBetaUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B657A25E24E30739009B10AA /* DUXBetaUIImageView.m */; };
+		B657A36024E3073A009B10AA /* DUXBetaUIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B657A25F24E30739009B10AA /* DUXBetaUIImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B657A38A24E3073B009B10AA /* GlobalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657A29924E3073A009B10AA /* GlobalPreferences.swift */; };
+		B657A38B24E3073B009B10AA /* ObservableInMemoryKeyedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657A29A24E3073A009B10AA /* ObservableInMemoryKeyedStore.swift */; };
+		B657A3DE24E319C6009B10AA /* DUXMarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B657A3DC24E319C5009B10AA /* DUXMarqueeLabel.m */; };
+		B657A3DF24E319C6009B10AA /* DUXMarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B657A3DD24E319C6009B10AA /* DUXMarqueeLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B657A3E224E31C83009B10AA /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B657A3E124E31C83009B10AA /* DJISDK.framework */; };
+		B657A3E424E31C92009B10AA /* DJIWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B657A3E324E31C92009B10AA /* DJIWidget.framework */; };
+		B6A2FBA124E2FC9600B4700A /* UXSDKCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B6A2FB9F24E2FC9600B4700A /* UXSDKCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6A3879324E44DA1005D8391 /* UXSDKCore.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879224E44DA1005D8391 /* UXSDKCore.xcassets */; };
+		B6A3879924E45475005D8391 /* air_sense_terms_of_use_chinese.html in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879524E45474005D8391 /* air_sense_terms_of_use_chinese.html */; };
+		B6A3879A24E45475005D8391 /* air_sense_terms_of_use.html in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879624E45474005D8391 /* air_sense_terms_of_use.html */; };
+		B6A3879F24E454E7005D8391 /* DIN-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879D24E454E7005D8391 /* DIN-Medium.otf */; };
+		B6A387A024E454E7005D8391 /* pirulen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6A3879E24E454E7005D8391 /* pirulen.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B60B89FA2552FB0800F097D1 /* DUXBetaAudioFilePCMParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAudioFilePCMParser.h; sourceTree = "<group>"; };
+		B60B89FB2552FB0900F097D1 /* DUXBetaVoiceNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaVoiceNotification.h; sourceTree = "<group>"; };
+		B60B89FC2552FB0900F097D1 /* DUXBetaVoiceNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaVoiceNotification.m; sourceTree = "<group>"; };
+		B60B89FD2552FB0900F097D1 /* DUXBetaAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAudioSource.h; sourceTree = "<group>"; };
+		B60B89FE2552FB0900F097D1 /* DUXBetaAudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAudioSource.m; sourceTree = "<group>"; };
+		B60B89FF2552FB0900F097D1 /* DUXBetaAudioFilePCMParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAudioFilePCMParser.m; sourceTree = "<group>"; };
+		B60B8A082552FB1800F097D1 /* DUXBetaBaseModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBaseModule.h; sourceTree = "<group>"; };
+		B60B8A092552FB1800F097D1 /* DUXBetaBaseModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBaseModule.m; sourceTree = "<group>"; };
+		B60B8A0D2552FB2D00F097D1 /* DUXBetaSampleListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSampleListItemWidget.m; sourceTree = "<group>"; };
+		B60B8A0E2552FB2D00F097D1 /* DUXBetaToolbarPanelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaToolbarPanelWidget.swift; sourceTree = "<group>"; };
+		B60B8A0F2552FB2D00F097D1 /* DUXBetaListPanelWidgetStringsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaListPanelWidgetStringsModel.swift; sourceTree = "<group>"; };
+		B60B8A102552FB2D00F097D1 /* DUXBetaListPanelWidgetBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaListPanelWidgetBaseModel.swift; sourceTree = "<group>"; };
+		B60B8A112552FB2E00F097D1 /* DUXBetaFreeformPanelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaFreeformPanelWidget.swift; sourceTree = "<group>"; };
+		B60B8A122552FB2E00F097D1 /* DUXBetaSmartListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSmartListModel.swift; sourceTree = "<group>"; };
+		B60B8A132552FB2E00F097D1 /* DUXBetaPanelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaPanelWidget.swift; sourceTree = "<group>"; };
+		B60B8A142552FB2E00F097D1 /* DUXBetaPanelWidgetSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaPanelWidgetSupport.h; sourceTree = "<group>"; };
+		B60B8A152552FB2E00F097D1 /* DUXBetaBarPanelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaBarPanelWidget.swift; sourceTree = "<group>"; };
+		B60B8A162552FB2E00F097D1 /* DUXBetaToolbarPanelItemTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaToolbarPanelItemTemplate.swift; sourceTree = "<group>"; };
+		B60B8A172552FB2E00F097D1 /* DUXBetaListPanelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaListPanelWidget.swift; sourceTree = "<group>"; };
+		B60B8A182552FB2E00F097D1 /* DUXBetaSampleListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSampleListItemWidget.h; sourceTree = "<group>"; };
+		B60B8A192552FB2E00F097D1 /* DUXBetaSmartListInternalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSmartListInternalModel.swift; sourceTree = "<group>"; };
+		B60B8A292552FB3C00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemEditTextButtonWidgetModel.h; sourceTree = "<group>"; };
+		B60B8A2A2552FB3C00F097D1 /* DUXBetaListItemRadioButtonWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemRadioButtonWidget.h; sourceTree = "<group>"; };
+		B60B8A2B2552FB3C00F097D1 /* DUXBetaListItemSwitchWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemSwitchWidgetModel.h; sourceTree = "<group>"; };
+		B60B8A2C2552FB3D00F097D1 /* DUXBetaListItemTitleWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemTitleWidget.m; sourceTree = "<group>"; };
+		B60B8A2D2552FB3D00F097D1 /* DUXBetaListItemSwitchWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemSwitchWidget.m; sourceTree = "<group>"; };
+		B60B8A2E2552FB3D00F097D1 /* DUXBetaListItemTrivialSwitchWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemTrivialSwitchWidget.m; sourceTree = "<group>"; };
+		B60B8A2F2552FB3D00F097D1 /* DUXBetaListItemRadioButtonWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemRadioButtonWidget.m; sourceTree = "<group>"; };
+		B60B8A302552FB3D00F097D1 /* DUXBetaListItemSwitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemSwitchWidget.h; sourceTree = "<group>"; };
+		B60B8A312552FB3D00F097D1 /* DUXBetaListItemSwitchWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemSwitchWidgetModel.m; sourceTree = "<group>"; };
+		B60B8A322552FB3D00F097D1 /* DUXBetaListItemEditTextButtonWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemEditTextButtonWidget.h; sourceTree = "<group>"; };
+		B60B8A332552FB3D00F097D1 /* DUXBetaListItemLabelButtonWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemLabelButtonWidget.h; sourceTree = "<group>"; };
+		B60B8A342552FB3D00F097D1 /* DUXBetaListItemTitleWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemTitleWidget.h; sourceTree = "<group>"; };
+		B60B8A352552FB3D00F097D1 /* DUXBetaListItemTrivialSwitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaListItemTrivialSwitchWidget.h; sourceTree = "<group>"; };
+		B60B8A362552FB3D00F097D1 /* DUXBetaListItemEditTextButtonWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemEditTextButtonWidget.m; sourceTree = "<group>"; };
+		B60B8A372552FB3D00F097D1 /* DUXBetaListItemLabelButtonWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemLabelButtonWidget.m; sourceTree = "<group>"; };
+		B60B8A382552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaListItemEditTextButtonWidgetModel.m; sourceTree = "<group>"; };
+		B60B8A4B2552FB4E00F097D1 /* DUXBetaBaseTelemetryWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaBaseTelemetryWidget.swift; sourceTree = "<group>"; };
+		B60B8A4E2552FB5900F097D1 /* DUXBetaBaseWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBaseWidget.h; sourceTree = "<group>"; };
+		B60B8A4F2552FB5900F097D1 /* DUXBetaBaseWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBaseWidgetModel.m; sourceTree = "<group>"; };
+		B60B8A502552FB5900F097D1 /* DUXBetaBaseWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBaseWidgetModel.h; sourceTree = "<group>"; };
+		B60B8A512552FB5900F097D1 /* DUXBetaBaseWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBaseWidget.m; sourceTree = "<group>"; };
+		B60B8A572552FB6300F097D1 /* DUXBetaTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaTheme.m; sourceTree = "<group>"; };
+		B60B8A582552FB6300F097D1 /* DUXBetaTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaTheme.h; sourceTree = "<group>"; };
+		B60B8A5C2552FB7500F097D1 /* DUXBetaKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaKeyManager.h; sourceTree = "<group>"; };
+		B60B8A5D2552FB7500F097D1 /* DUXBetaWarningMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaWarningMessage.h; sourceTree = "<group>"; };
+		B60B8A5E2552FB7500F097D1 /* DUXBetaKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaKeyManager.m; sourceTree = "<group>"; };
+		B60B8A5F2552FB7500F097D1 /* DUXBetaSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSingleton.h; sourceTree = "<group>"; };
+		B60B8A602552FB7500F097D1 /* DUXBetaSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSingleton.m; sourceTree = "<group>"; };
+		B60B8A612552FB7500F097D1 /* DUXBetaWarningMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaWarningMessage.m; sourceTree = "<group>"; };
+		B60B8A692552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaStateChangeBroadcaster.h; sourceTree = "<group>"; };
+		B60B8A6A2552FB8200F097D1 /* DUXBetaStateChangeBaseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaStateChangeBaseData.m; sourceTree = "<group>"; };
+		B60B8A6B2552FB8200F097D1 /* DUXBetaStateChangeBaseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaStateChangeBaseData.h; sourceTree = "<group>"; };
+		B60B8A6C2552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaStateChangeBroadcaster.m; sourceTree = "<group>"; };
+		B60B8A732552FB8F00F097D1 /* NSObject+DUXBetaCustomKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DUXBetaCustomKVO.h"; sourceTree = "<group>"; };
+		B60B8A742552FB8F00F097D1 /* DUXBetaCustomAsyncCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCustomAsyncCache.h; sourceTree = "<group>"; };
+		B60B8A752552FB8F00F097D1 /* DUXBetaCustomKVOObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCustomKVOObserver.h; sourceTree = "<group>"; };
+		B60B8A762552FB8F00F097D1 /* DUXBetaCustomValueConfirmation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCustomValueConfirmation.m; sourceTree = "<group>"; };
+		B60B8A772552FB8F00F097D1 /* DUXBetaCustomKVOObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCustomKVOObserver.m; sourceTree = "<group>"; };
+		B60B8A782552FB8F00F097D1 /* DUXBetaCustomValueConfirmation_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCustomValueConfirmation_Private.h; sourceTree = "<group>"; };
+		B60B8A792552FB9000F097D1 /* NSError+DUXBetaCustomKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+DUXBetaCustomKVO.m"; sourceTree = "<group>"; };
+		B60B8A7A2552FB9000F097D1 /* DUXBetaRKVOMetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRKVOMetamacros.h; sourceTree = "<group>"; };
+		B60B8A7B2552FB9000F097D1 /* DUXBetaCustomAsyncCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCustomAsyncCache.m; sourceTree = "<group>"; };
+		B60B8A7C2552FB9000F097D1 /* DUXBetaCustomObserverRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCustomObserverRuntime.h; sourceTree = "<group>"; };
+		B60B8A7D2552FB9000F097D1 /* DUXBetaConstString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaConstString.h; sourceTree = "<group>"; };
+		B60B8A7E2552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DUXBetaCustomKVO.m"; sourceTree = "<group>"; };
+		B60B8A7F2552FB9000F097D1 /* DUXBetaCustomValueConfirmation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCustomValueConfirmation.h; sourceTree = "<group>"; };
+		B60B8A802552FB9000F097D1 /* DUXBetaCustomAsyncMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCustomAsyncMethod.m; sourceTree = "<group>"; };
+		B60B8A812552FB9000F097D1 /* NSError+DUXBetaCustomKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+DUXBetaCustomKVO.h"; sourceTree = "<group>"; };
+		B60B8A822552FB9000F097D1 /* DUXBetaCustomObserverRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCustomObserverRuntime.m; sourceTree = "<group>"; };
+		B60B8A832552FB9000F097D1 /* DUXBetaConstString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaConstString.m; sourceTree = "<group>"; };
+		B60B8A842552FB9000F097D1 /* DUXBetaCustomAsyncMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCustomAsyncMethod.h; sourceTree = "<group>"; };
+		B60B8A852552FB9000F097D1 /* DUXBetaRKVOHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRKVOHeaders.h; sourceTree = "<group>"; };
+		B60B8AAF2552FBB800F097D1 /* NSObject+DUXBetaSDKBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DUXBetaSDKBind.h"; sourceTree = "<group>"; };
+		B60B8AB02552FBB800F097D1 /* NSObject+DUXBetaSDKBind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DUXBetaSDKBind.m"; sourceTree = "<group>"; };
+		B60B8AB12552FBB800F097D1 /* NSObject+DUXBetaRKVOExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DUXBetaRKVOExtension.h"; sourceTree = "<group>"; };
+		B60B8AB22552FBB800F097D1 /* NSObject+DUXBetaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DUXBetaCommand.m"; sourceTree = "<group>"; };
+		B60B8AB32552FBB800F097D1 /* NSObject+DUXBetaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DUXBetaCommand.h"; sourceTree = "<group>"; };
+		B60B8AB42552FBB800F097D1 /* NSObject+DUXBetaMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DUXBetaMapping.m"; sourceTree = "<group>"; };
+		B60B8AB52552FBB800F097D1 /* DUXBetaBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaBindings.swift; sourceTree = "<group>"; };
+		B60B8AB62552FBB800F097D1 /* NSObject+DUXBetaRKVOExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DUXBetaRKVOExtension.m"; sourceTree = "<group>"; };
+		B60B8AB72552FBB800F097D1 /* NSObject+DUXBetaMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DUXBetaMapping.h"; sourceTree = "<group>"; };
+		B60B8AC22552FBC200F097D1 /* DUXBetaSwiftTestBindingWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSwiftTestBindingWidget.swift; sourceTree = "<group>"; };
+		B60B8AC62552FBCF00F097D1 /* NSObject+DUXBetaSwiftHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DUXBetaSwiftHelpers.m"; sourceTree = "<group>"; };
+		B60B8AC72552FBCF00F097D1 /* UISwitch+DUXBetaBackgroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+DUXBetaBackgroundHelper.m"; sourceTree = "<group>"; };
+		B60B8AC82552FBCF00F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DJIVideoPreviewer+DUXBetaImageHelper.h"; sourceTree = "<group>"; };
+		B60B8AC92552FBCF00F097D1 /* NSDateFormatter+DUXBetaDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+DUXBetaDateFormatter.m"; sourceTree = "<group>"; };
+		B60B8ACA2552FBCF00F097D1 /* NSObject+DUXBetaSwiftHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DUXBetaSwiftHelpers.h"; sourceTree = "<group>"; };
+		B60B8ACB2552FBCF00F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DJIVideoPreviewer+DUXBetaImageHelper.m"; sourceTree = "<group>"; };
+		B60B8ACC2552FBCF00F097D1 /* UISwitch+DUXBetaBackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+DUXBetaBackgroundHelper.h"; sourceTree = "<group>"; };
+		B60B8ACD2552FBCF00F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+DUXBetaMultiplier.m"; sourceTree = "<group>"; };
+		B60B8ACE2552FBCF00F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+DUXBetaMultiplier.h"; sourceTree = "<group>"; };
+		B60B8ACF2552FBCF00F097D1 /* UIViewController+DUXBetaHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DUXBetaHelper.swift"; sourceTree = "<group>"; };
+		B60B8AD02552FBCF00F097D1 /* NSDateFormatter+DUXBetaDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+DUXBetaDateFormatter.h"; sourceTree = "<group>"; };
+		B60B8ADE2552FBDB00F097D1 /* DUXBetaUnitTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaUnitTypeModule.swift; sourceTree = "<group>"; };
+		B60B8ADF2552FBDB00F097D1 /* DUXBetaFlatCameraModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaFlatCameraModule.swift; sourceTree = "<group>"; };
+		B60B8AE42552FBE700F097D1 /* DUXBetaAlertView+SystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DUXBetaAlertView+SystemStatus.swift"; sourceTree = "<group>"; };
+		B60B8AE72552FBF100F097D1 /* DUXBetaSystemStatusListSmartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSystemStatusListSmartModel.swift; sourceTree = "<group>"; };
+		B60B8AE82552FBF100F097D1 /* DUXBetaSystemStatusListWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSystemStatusListWidget.swift; sourceTree = "<group>"; };
+		B60B8AED2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaEMMCStatusListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8AEE2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaEMMCStatusListItemWidget.h; sourceTree = "<group>"; };
+		B60B8AEF2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaEMMCStatusListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8AF02552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaEMMCStatusListItemWidget.m; sourceTree = "<group>"; };
+		B60B8AF72552FC1C00F097D1 /* DUXBetaFlightModeListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFlightModeListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8AF82552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFlightModeListItemWidget.h; sourceTree = "<group>"; };
+		B60B8AF92552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFlightModeListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8AFA2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFlightModeListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B012552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaReturnToHomeAltitudeListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B022552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaReturnToHomeAltitudeListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B032552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaReturnToHomeAltitudeListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B042552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaReturnToHomeAltitudeListItemWidget.h; sourceTree = "<group>"; };
+		B60B8B0A2552FC3100F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMaxFlightDistanceListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B0B2552FC3100F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMaxFlightDistanceListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B0C2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMaxFlightDistanceListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B0E2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMaxFlightDistanceListItemWidget.h; sourceTree = "<group>"; };
+		B60B8B142552FC3C00F097D1 /* DUXBetaTravelModeListItemWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaTravelModeListItemWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8B152552FC3C00F097D1 /* DUXBetaTravelModeListItemWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaTravelModeListItemWidget.swift; sourceTree = "<group>"; };
+		B60B8B1A2552FC4600F097D1 /* DUXBetaNoviceModeListItemWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaNoviceModeListItemWidget.swift; sourceTree = "<group>"; };
+		B60B8B1D2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSDCardStatusListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B1E2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSDCardStatusListItemWidget.h; sourceTree = "<group>"; };
+		B60B8B1F2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSDCardStatusListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B202552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSDCardStatusListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B262552FC5E00F097D1 /* DUXBetaOverviewListItemWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaOverviewListItemWidget.swift; sourceTree = "<group>"; };
+		B60B8B2A2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRCStickModeListItemWidget.h; sourceTree = "<group>"; };
+		B60B8B2B2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRCStickModeListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B2C2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRCStickModeListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B2D2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRCStickModeListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B332552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMaxAltitudeListItemWidget.h; sourceTree = "<group>"; };
+		B60B8B342552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMaxAltitudeListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B352552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMaxAltitudeListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B372552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMaxAltitudeListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B3D2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaUnitModeListItemWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8B3E2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaUnitModeListItemWidget.swift; sourceTree = "<group>"; };
+		B60B8B422552FC8500F097D1 /* DUXBetaRCBatteryListItemWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaRCBatteryListItemWidget.swift; sourceTree = "<group>"; };
+		B60B8B432552FC8500F097D1 /* DUXBetaRCBatteryListItemWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaRCBatteryListItemWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8B472552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSSDStatusListItemWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B482552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSSDStatusListItemWidget.h; sourceTree = "<group>"; };
+		B60B8B492552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSSDStatusListItemWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B4A2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSSDStatusListItemWidget.m; sourceTree = "<group>"; };
+		B60B8B512552FC9F00F097D1 /* DUXBetaTelemetryPanelWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaTelemetryPanelWidget.swift; sourceTree = "<group>"; };
+		B60B8B542552FCA900F097D1 /* DUXBetaTopBarWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaTopBarWidget.swift; sourceTree = "<group>"; };
+		B60B8B572552FCC400F097D1 /* DUXBetaSlideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSlideView.swift; sourceTree = "<group>"; };
+		B60B8B582552FCC400F097D1 /* DUXBetaSlideAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaSlideAlertView.swift; sourceTree = "<group>"; };
+		B60B8B5D2552FCD000F097D1 /* DUXBetaAlertStackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAlertStackController.swift; sourceTree = "<group>"; };
+		B60B8B5E2552FCD000F097D1 /* DUXBetaAlertViewMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAlertViewMask.swift; sourceTree = "<group>"; };
+		B60B8B5F2552FCD000F097D1 /* DUXBetaAlertLayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAlertLayoutController.swift; sourceTree = "<group>"; };
+		B60B8B602552FCD000F097D1 /* DUXBetaAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAlertView.swift; sourceTree = "<group>"; };
+		B60B8B682552FD1F00F097D1 /* NSBundle+DUXBetaAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+DUXBetaAssets.h"; sourceTree = "<group>"; };
+		B60B8B692552FD1F00F097D1 /* NSData+DUXBetaAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DUXBetaAssets.h"; sourceTree = "<group>"; };
+		B60B8B6A2552FD1F00F097D1 /* UIColor+DUXBetaColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DUXBetaColors.h"; sourceTree = "<group>"; };
+		B60B8B6B2552FD1F00F097D1 /* DUXBetaProductUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaProductUtil.swift; sourceTree = "<group>"; };
+		B60B8B6C2552FD1F00F097D1 /* UIImage+DUXBetaAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DUXBetaAssets.m"; sourceTree = "<group>"; };
+		B60B8B6D2552FD1F00F097D1 /* NSBundle+DUXBetaAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+DUXBetaAssets.m"; sourceTree = "<group>"; };
+		B60B8B6E2552FD1F00F097D1 /* UIDevice+DUXBetaHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DUXBetaHelper.swift"; sourceTree = "<group>"; };
+		B60B8B6F2552FD1F00F097D1 /* UIFont+DUXBetaFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+DUXBetaFonts.m"; sourceTree = "<group>"; };
+		B60B8B702552FD2000F097D1 /* UIColor+DUXBetaColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DUXBetaColors.m"; sourceTree = "<group>"; };
+		B60B8B712552FD2000F097D1 /* NSData+DUXBetaAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DUXBetaAssets.m"; sourceTree = "<group>"; };
+		B60B8B722552FD2000F097D1 /* UIFont+DUXBetaFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+DUXBetaFonts.h"; sourceTree = "<group>"; };
+		B60B8B732552FD2000F097D1 /* UIImage+DUXBetaAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DUXBetaAssets.h"; sourceTree = "<group>"; };
+		B60B8B822552FD2F00F097D1 /* DUXBetaAirSenseWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAirSenseWidget.m; sourceTree = "<group>"; };
+		B60B8B832552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAirSenseWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B842552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAirSenseDialogViewController.h; sourceTree = "<group>"; };
+		B60B8B852552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAirSenseWidgetModel.m; sourceTree = "<group>"; };
+		B60B8B862552FD2F00F097D1 /* DUXBetaAirSenseWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAirSenseWidget.h; sourceTree = "<group>"; };
+		B60B8B872552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAirSenseHtmlViewController.h; sourceTree = "<group>"; };
+		B60B8B882552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAirSenseHtmlViewController.m; sourceTree = "<group>"; };
+		B60B8B892552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAirSenseDialogViewController.m; sourceTree = "<group>"; };
+		B60B8B942552FD3A00F097D1 /* DUXBetaBatteryState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBatteryState.m; sourceTree = "<group>"; };
+		B60B8B952552FD3A00F097D1 /* DUXBetaBatteryWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBatteryWidgetModel.h; sourceTree = "<group>"; };
+		B60B8B962552FD3A00F097D1 /* DUXBetaBatteryState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBatteryState.h; sourceTree = "<group>"; };
+		B60B8B972552FD3B00F097D1 /* DUXBetaBatteryWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBatteryWidget.m; sourceTree = "<group>"; };
+		B60B8B982552FD3B00F097D1 /* DUXBetaBatteryWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBatteryWidget.h; sourceTree = "<group>"; };
+		B60B8B992552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBatteryWidgetModel.m; sourceTree = "<group>"; };
+		B60B8BA12552FD4500F097D1 /* DUXBetaCompassWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCompassWidget.m; sourceTree = "<group>"; };
+		B60B8BA22552FD4500F097D1 /* DUXBetaCompassWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCompassWidgetModel.h; sourceTree = "<group>"; };
+		B60B8BA32552FD4500F097D1 /* DUXBetaCompassWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCompassWidget.h; sourceTree = "<group>"; };
+		B60B8BA42552FD4500F097D1 /* DUXBetaCompassWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCompassWidgetModel.m; sourceTree = "<group>"; };
+		B60B8BAC2552FD5500F097D1 /* DUXBetaCompassLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCompassLayer.h; sourceTree = "<group>"; };
+		B60B8BAD2552FD5500F097D1 /* DUXBetaCompassLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCompassLayer.m; sourceTree = "<group>"; };
+		B60B8BAE2552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCompassAircraftVisionLayer.m; sourceTree = "<group>"; };
+		B60B8BAF2552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCompassAircraftWorldLayer.h; sourceTree = "<group>"; };
+		B60B8BB02552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCompassAircraftWorldLayer.m; sourceTree = "<group>"; };
+		B60B8BB12552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCompassGyroHorizonLayer.m; sourceTree = "<group>"; };
+		B60B8BB22552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCompassGyroHorizonLayer.h; sourceTree = "<group>"; };
+		B60B8BB32552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCompassAircraftVisionLayer.h; sourceTree = "<group>"; };
+		B60B8BBE2552FD6100F097D1 /* DUXBetaConnectionWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaConnectionWidgetModel.h; sourceTree = "<group>"; };
+		B60B8BBF2552FD6100F097D1 /* DUXBetaConnectionWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaConnectionWidgetModel.m; sourceTree = "<group>"; };
+		B60B8BC02552FD6100F097D1 /* DUXBetaConnectionWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaConnectionWidget.h; sourceTree = "<group>"; };
+		B60B8BC12552FD6200F097D1 /* DUXBetaConnectionWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaConnectionWidget.m; sourceTree = "<group>"; };
+		B60B8BC82552FD6C00F097D1 /* DUXBetaFlightModeWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFlightModeWidgetModel.m; sourceTree = "<group>"; };
+		B60B8BC92552FD6C00F097D1 /* DUXBetaFlightModeWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFlightModeWidgetModel.h; sourceTree = "<group>"; };
+		B60B8BCA2552FD6C00F097D1 /* DUXBetaFlightModeWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFlightModeWidget.h; sourceTree = "<group>"; };
+		B60B8BCB2552FD6C00F097D1 /* DUXBetaFlightModeWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFlightModeWidget.m; sourceTree = "<group>"; };
+		B60B8BD22552FD8000F097D1 /* DUXBetaFPVCenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaFPVCenterView.swift; sourceTree = "<group>"; };
+		B60B8BD32552FD8000F097D1 /* DUXBetaFPVWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaFPVWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8BD42552FD8000F097D1 /* DUXBetaFPVGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaFPVGridView.swift; sourceTree = "<group>"; };
+		B60B8BD52552FD8000F097D1 /* DUXBetaFPVWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaFPVWidget.swift; sourceTree = "<group>"; };
+		B60B8BDC2552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFPVDecodeAdapter.h; sourceTree = "<group>"; };
+		B60B8BDD2552FD8B00F097D1 /* DUXBetaFPVDecodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFPVDecodeModel.m; sourceTree = "<group>"; };
+		B60B8BDE2552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFPVDecodeAdapter.m; sourceTree = "<group>"; };
+		B60B8BDF2552FD8B00F097D1 /* DUXBetaFPVDecodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFPVDecodeModel.h; sourceTree = "<group>"; };
+		B60B8BE62552FD9900F097D1 /* DUXBetaGPSSignalWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaGPSSignalWidget.m; sourceTree = "<group>"; };
+		B60B8BE72552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaGPSSignalWidgetModel.m; sourceTree = "<group>"; };
+		B60B8BE82552FD9900F097D1 /* DUXBetaGPSSignalWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaGPSSignalWidget.h; sourceTree = "<group>"; };
+		B60B8BE92552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaGPSSignalWidgetModel.h; sourceTree = "<group>"; };
+		B60B8BF02552FDA600F097D1 /* DUXBetaMultiAngleRadarSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMultiAngleRadarSectionView.h; sourceTree = "<group>"; };
+		B60B8BF12552FDA600F097D1 /* DUXBetaSingleAngleRadarSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSingleAngleRadarSectionView.h; sourceTree = "<group>"; };
+		B60B8BF22552FDA600F097D1 /* DUXBetaSingleAngleRadarSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSingleAngleRadarSectionView.m; sourceTree = "<group>"; };
+		B60B8BF32552FDA600F097D1 /* DUXBetaMultiAngleRadarSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMultiAngleRadarSectionView.m; sourceTree = "<group>"; };
+		B60B8BF42552FDA700F097D1 /* DUXBetaRadarSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRadarSectionView.h; sourceTree = "<group>"; };
+		B60B8BF52552FDA700F097D1 /* DUXBetaRadarSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRadarSectionView.m; sourceTree = "<group>"; };
+		B60B8BFD2552FDB200F097D1 /* DUXBetaRadarWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRadarWidget.m; sourceTree = "<group>"; };
+		B60B8BFE2552FDB200F097D1 /* DUXBetaRadarWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRadarWidget.h; sourceTree = "<group>"; };
+		B60B8BFF2552FDB200F097D1 /* DUXBetaRadarWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRadarWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C002552FDB200F097D1 /* DUXBetaRadarWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRadarWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C072552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSimulatorIndicatorWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C082552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSimulatorIndicatorWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C092552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSimulatorIndicatorWidget.m; sourceTree = "<group>"; };
+		B60B8C0A2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSimulatorIndicatorWidget.h; sourceTree = "<group>"; };
+		B60B8C102552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRemainingFlightTimeWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C112552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRemainingFlightTimeWidget.m; sourceTree = "<group>"; };
+		B60B8C122552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRemainingFlightTimeData.h; sourceTree = "<group>"; };
+		B60B8C132552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRemainingFlightTimeWidget.h; sourceTree = "<group>"; };
+		B60B8C152552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRemainingFlightTimeData.m; sourceTree = "<group>"; };
+		B60B8C162552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRemainingFlightTimeWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C1E2552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRemoteControllerSignalWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C1F2552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRemoteControllerSignalWidget.h; sourceTree = "<group>"; };
+		B60B8C202552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRemoteControllerSignalWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C212552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRemoteControllerSignalWidget.m; sourceTree = "<group>"; };
+		B60B8C272552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSystemStatusWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C282552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSystemStatusWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C292552FDDB00F097D1 /* DUXBetaSystemStatusWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSystemStatusWidget.m; sourceTree = "<group>"; };
+		B60B8C2A2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSystemStatusWidget.h; sourceTree = "<group>"; };
+		B60B8C312552FDE800F097D1 /* DUXBetaAMSLAltitudeWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAMSLAltitudeWidget.swift; sourceTree = "<group>"; };
+		B60B8C322552FDE800F097D1 /* DUXBetaAGLAltitudeWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAGLAltitudeWidget.swift; sourceTree = "<group>"; };
+		B60B8C332552FDE800F097D1 /* DUXBetaAltitudeWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaAltitudeWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C392552FDEF00F097D1 /* DUXBetaDistanceHomeWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaDistanceHomeWidget.swift; sourceTree = "<group>"; };
+		B60B8C3A2552FDEF00F097D1 /* DUXBetaDistanceHomeWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaDistanceHomeWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C3E2552FDF700F097D1 /* DUXBetaDistanceRCWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaDistanceRCWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C3F2552FDF700F097D1 /* DUXBetaDistanceRCWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaDistanceRCWidget.swift; sourceTree = "<group>"; };
+		B60B8C432552FE0000F097D1 /* DUXBetaHorizontalVelocityWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaHorizontalVelocityWidget.swift; sourceTree = "<group>"; };
+		B60B8C442552FE0000F097D1 /* DUXBetaHorizontalVelocityWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaHorizontalVelocityWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C482552FE0C00F097D1 /* DUXBetaLocationWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaLocationWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C492552FE0C00F097D1 /* DUXBetaLocationWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaLocationWidget.swift; sourceTree = "<group>"; };
+		B60B8C4E2552FE1500F097D1 /* DUXBetaVerticalVelocityWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaVerticalVelocityWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C4F2552FE1500F097D1 /* DUXBetaVerticalVelocityWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaVerticalVelocityWidget.swift; sourceTree = "<group>"; };
+		B60B8C542552FE1F00F097D1 /* DUXBetaVPSWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaVPSWidget.swift; sourceTree = "<group>"; };
+		B60B8C552552FE1F00F097D1 /* DUXBetaVPSWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaVPSWidgetModel.swift; sourceTree = "<group>"; };
+		B60B8C592552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaVideoSignalWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C5A2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaVideoSignalWidget.h; sourceTree = "<group>"; };
+		B60B8C5B2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaVideoSignalWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C5C2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaVideoSignalWidget.m; sourceTree = "<group>"; };
+		B60B8C632552FE3500F097D1 /* DUXBetaVisionWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaVisionWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C642552FE3500F097D1 /* DUXBetaVisionWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaVisionWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C652552FE3500F097D1 /* DUXBetaVisionWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaVisionWidget.m; sourceTree = "<group>"; };
+		B60B8C662552FE3500F097D1 /* DUXBetaVisionWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaVisionWidget.h; sourceTree = "<group>"; };
+		B60B8DD425548C6900F097D1 /* DUXBetaWidgetCloseButtonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaWidgetCloseButtonProtocol.h; sourceTree = "<group>"; };
+		B657A25E24E30739009B10AA /* DUXBetaUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaUIImageView.m; sourceTree = "<group>"; };
+		B657A25F24E30739009B10AA /* DUXBetaUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaUIImageView.h; sourceTree = "<group>"; };
+		B657A29924E3073A009B10AA /* GlobalPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalPreferences.swift; sourceTree = "<group>"; };
+		B657A29A24E3073A009B10AA /* ObservableInMemoryKeyedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableInMemoryKeyedStore.swift; sourceTree = "<group>"; };
+		B657A3DC24E319C5009B10AA /* DUXMarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXMarqueeLabel.m; sourceTree = "<group>"; };
+		B657A3DD24E319C6009B10AA /* DUXMarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXMarqueeLabel.h; sourceTree = "<group>"; };
+		B657A3E124E31C83009B10AA /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B657A3E324E31C92009B10AA /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A2FB9C24E2FC9600B4700A /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A2FB9F24E2FC9600B4700A /* UXSDKCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKCore.h; sourceTree = "<group>"; };
+		B6A2FBA024E2FC9600B4700A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6A3879224E44DA1005D8391 /* UXSDKCore.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UXSDKCore.xcassets; sourceTree = "<group>"; };
+		B6A3879524E45474005D8391 /* air_sense_terms_of_use_chinese.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = air_sense_terms_of_use_chinese.html; sourceTree = "<group>"; };
+		B6A3879624E45474005D8391 /* air_sense_terms_of_use.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = air_sense_terms_of_use.html; sourceTree = "<group>"; };
+		B6A3879D24E454E7005D8391 /* DIN-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN-Medium.otf"; sourceTree = "<group>"; };
+		B6A3879E24E454E7005D8391 /* pirulen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pirulen.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6A2FB9924E2FC9600B4700A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B657A3E424E31C92009B10AA /* DJIWidget.framework in Frameworks */,
+				B657A3E224E31C83009B10AA /* DJISDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		222554D2252F976300963BF0 /* SSDStatus */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B482552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.h */,
+				B60B8B4A2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.m */,
+				B60B8B492552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.h */,
+				B60B8B472552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.m */,
+			);
+			path = SSDStatus;
+			sourceTree = "<group>";
+		};
+		228544FE24FC0B2E00702CFE /* RCBatteryWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B422552FC8500F097D1 /* DUXBetaRCBatteryListItemWidget.swift */,
+				B60B8B432552FC8500F097D1 /* DUXBetaRCBatteryListItemWidgetModel.swift */,
+			);
+			path = RCBatteryWidget;
+			sourceTree = "<group>";
+		};
+		22A15A91253A6B29005BBB62 /* eMMCStatus */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AEE2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.h */,
+				B60B8AF02552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.m */,
+				B60B8AEF2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.h */,
+				B60B8AED2552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.m */,
+			);
+			path = eMMCStatus;
+			sourceTree = "<group>";
+		};
+		22C08585250FE12E000145F1 /* UnitMode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B3E2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidget.swift */,
+				B60B8B3D2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidgetModel.swift */,
+			);
+			path = UnitMode;
+			sourceTree = "<group>";
+		};
+		B657A1AF24E30739009B10AA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8DD425548C6900F097D1 /* DUXBetaWidgetCloseButtonProtocol.h */,
+				B6D691F0254330FC00ABC58C /* Module */,
+				B657A1B024E30739009B10AA /* Panel */,
+				B6D19A2724E8A71B00737526 /* Telemetry */,
+				B657A1CD24E30739009B10AA /* Widget */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B657A1B024E30739009B10AA /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A152552FB2E00F097D1 /* DUXBetaBarPanelWidget.swift */,
+				B60B8A112552FB2E00F097D1 /* DUXBetaFreeformPanelWidget.swift */,
+				B60B8A172552FB2E00F097D1 /* DUXBetaListPanelWidget.swift */,
+				B60B8A102552FB2D00F097D1 /* DUXBetaListPanelWidgetBaseModel.swift */,
+				B60B8A0F2552FB2D00F097D1 /* DUXBetaListPanelWidgetStringsModel.swift */,
+				B60B8A132552FB2E00F097D1 /* DUXBetaPanelWidget.swift */,
+				B60B8A142552FB2E00F097D1 /* DUXBetaPanelWidgetSupport.h */,
+				B60B8A182552FB2E00F097D1 /* DUXBetaSampleListItemWidget.h */,
+				B60B8A0D2552FB2D00F097D1 /* DUXBetaSampleListItemWidget.m */,
+				B60B8A192552FB2E00F097D1 /* DUXBetaSmartListInternalModel.swift */,
+				B60B8A122552FB2E00F097D1 /* DUXBetaSmartListModel.swift */,
+				B60B8A162552FB2E00F097D1 /* DUXBetaToolbarPanelItemTemplate.swift */,
+				B60B8A0E2552FB2D00F097D1 /* DUXBetaToolbarPanelWidget.swift */,
+				B657A1B724E30739009B10AA /* ListItem */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		B657A1B724E30739009B10AA /* ListItem */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A322552FB3D00F097D1 /* DUXBetaListItemEditTextButtonWidget.h */,
+				B60B8A362552FB3D00F097D1 /* DUXBetaListItemEditTextButtonWidget.m */,
+				B60B8A292552FB3C00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.h */,
+				B60B8A382552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.m */,
+				B60B8A332552FB3D00F097D1 /* DUXBetaListItemLabelButtonWidget.h */,
+				B60B8A372552FB3D00F097D1 /* DUXBetaListItemLabelButtonWidget.m */,
+				B60B8A2A2552FB3C00F097D1 /* DUXBetaListItemRadioButtonWidget.h */,
+				B60B8A2F2552FB3D00F097D1 /* DUXBetaListItemRadioButtonWidget.m */,
+				B60B8A302552FB3D00F097D1 /* DUXBetaListItemSwitchWidget.h */,
+				B60B8A2D2552FB3D00F097D1 /* DUXBetaListItemSwitchWidget.m */,
+				B60B8A2B2552FB3C00F097D1 /* DUXBetaListItemSwitchWidgetModel.h */,
+				B60B8A312552FB3D00F097D1 /* DUXBetaListItemSwitchWidgetModel.m */,
+				B60B8A342552FB3D00F097D1 /* DUXBetaListItemTitleWidget.h */,
+				B60B8A2C2552FB3D00F097D1 /* DUXBetaListItemTitleWidget.m */,
+				B60B8A352552FB3D00F097D1 /* DUXBetaListItemTrivialSwitchWidget.h */,
+				B60B8A2E2552FB3D00F097D1 /* DUXBetaListItemTrivialSwitchWidget.m */,
+			);
+			path = ListItem;
+			sourceTree = "<group>";
+		};
+		B657A1CD24E30739009B10AA /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A4E2552FB5900F097D1 /* DUXBetaBaseWidget.h */,
+				B60B8A512552FB5900F097D1 /* DUXBetaBaseWidget.m */,
+				B60B8A502552FB5900F097D1 /* DUXBetaBaseWidgetModel.h */,
+				B60B8A4F2552FB5900F097D1 /* DUXBetaBaseWidgetModel.m */,
+				B657A1D224E30739009B10AA /* Theme */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		B657A1D224E30739009B10AA /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A582552FB6300F097D1 /* DUXBetaTheme.h */,
+				B60B8A572552FB6300F097D1 /* DUXBetaTheme.m */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		B657A1D624E30739009B10AA /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				B60B89FA2552FB0800F097D1 /* DUXBetaAudioFilePCMParser.h */,
+				B60B89FF2552FB0900F097D1 /* DUXBetaAudioFilePCMParser.m */,
+				B60B89FD2552FB0900F097D1 /* DUXBetaAudioSource.h */,
+				B60B89FE2552FB0900F097D1 /* DUXBetaAudioSource.m */,
+				B60B89FB2552FB0900F097D1 /* DUXBetaVoiceNotification.h */,
+				B60B89FC2552FB0900F097D1 /* DUXBetaVoiceNotification.m */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		B657A1DD24E30739009B10AA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6A3879C24E454E7005D8391 /* Fonts */,
+				B6A3879524E45474005D8391 /* air_sense_terms_of_use_chinese.html */,
+				B6A3879624E45474005D8391 /* air_sense_terms_of_use.html */,
+				B6A3879224E44DA1005D8391 /* UXSDKCore.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B657A1DE24E30739009B10AA /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B657A20C24E30739009B10AA /* AirSense */,
+				B657A24824E30739009B10AA /* Battery */,
+				B657A23A24E30739009B10AA /* Compass */,
+				B657A1EE24E30739009B10AA /* Connection */,
+				B657A1DF24E30739009B10AA /* FlightMode */,
+				B657A20224E30739009B10AA /* FPV */,
+				B657A3D324E3183A009B10AA /* GPSSignal */,
+				B657A3BD24E30CD1009B10AA /* Radar */,
+				B657A21C24E30739009B10AA /* RemainingFlightTime */,
+				B657A23024E30739009B10AA /* RemoteControlSignal */,
+				B657A1E924E30739009B10AA /* SimulatorIndicator */,
+				B657A22324E30739009B10AA /* SystemStatus */,
+				B6CC8B322502E16C00DF47B7 /* Telemetry */,
+				B657A1FD24E30739009B10AA /* VideoSignal */,
+				B657A21724E30739009B10AA /* Vision */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		B657A1DF24E30739009B10AA /* FlightMode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BCA2552FD6C00F097D1 /* DUXBetaFlightModeWidget.h */,
+				B60B8BCB2552FD6C00F097D1 /* DUXBetaFlightModeWidget.m */,
+				B60B8BC92552FD6C00F097D1 /* DUXBetaFlightModeWidgetModel.h */,
+				B60B8BC82552FD6C00F097D1 /* DUXBetaFlightModeWidgetModel.m */,
+			);
+			path = FlightMode;
+			sourceTree = "<group>";
+		};
+		B657A1E924E30739009B10AA /* SimulatorIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C0A2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.h */,
+				B60B8C092552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.m */,
+				B60B8C082552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.h */,
+				B60B8C072552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.m */,
+			);
+			path = SimulatorIndicator;
+			sourceTree = "<group>";
+		};
+		B657A1EE24E30739009B10AA /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BC02552FD6100F097D1 /* DUXBetaConnectionWidget.h */,
+				B60B8BC12552FD6200F097D1 /* DUXBetaConnectionWidget.m */,
+				B60B8BBE2552FD6100F097D1 /* DUXBetaConnectionWidgetModel.h */,
+				B60B8BBF2552FD6100F097D1 /* DUXBetaConnectionWidgetModel.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		B657A1F324E30739009B10AA /* DistanceHome */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C392552FDEF00F097D1 /* DUXBetaDistanceHomeWidget.swift */,
+				B60B8C3A2552FDEF00F097D1 /* DUXBetaDistanceHomeWidgetModel.swift */,
+			);
+			path = DistanceHome;
+			sourceTree = "<group>";
+		};
+		B657A1FD24E30739009B10AA /* VideoSignal */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C5A2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.h */,
+				B60B8C5C2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.m */,
+				B60B8C592552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.h */,
+				B60B8C5B2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.m */,
+			);
+			path = VideoSignal;
+			sourceTree = "<group>";
+		};
+		B657A20224E30739009B10AA /* FPV */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BD22552FD8000F097D1 /* DUXBetaFPVCenterView.swift */,
+				B60B8BD42552FD8000F097D1 /* DUXBetaFPVGridView.swift */,
+				B60B8BD52552FD8000F097D1 /* DUXBetaFPVWidget.swift */,
+				B60B8BD32552FD8000F097D1 /* DUXBetaFPVWidgetModel.swift */,
+				B657A20624E30739009B10AA /* Decode */,
+			);
+			path = FPV;
+			sourceTree = "<group>";
+		};
+		B657A20624E30739009B10AA /* Decode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BDC2552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.h */,
+				B60B8BDE2552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.m */,
+				B60B8BDF2552FD8B00F097D1 /* DUXBetaFPVDecodeModel.h */,
+				B60B8BDD2552FD8B00F097D1 /* DUXBetaFPVDecodeModel.m */,
+			);
+			path = Decode;
+			sourceTree = "<group>";
+		};
+		B657A20C24E30739009B10AA /* AirSense */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B842552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.h */,
+				B60B8B892552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.m */,
+				B60B8B872552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.h */,
+				B60B8B882552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.m */,
+				B60B8B862552FD2F00F097D1 /* DUXBetaAirSenseWidget.h */,
+				B60B8B822552FD2F00F097D1 /* DUXBetaAirSenseWidget.m */,
+				B60B8B832552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.h */,
+				B60B8B852552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.m */,
+			);
+			path = AirSense;
+			sourceTree = "<group>";
+		};
+		B657A21724E30739009B10AA /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C662552FE3500F097D1 /* DUXBetaVisionWidget.h */,
+				B60B8C652552FE3500F097D1 /* DUXBetaVisionWidget.m */,
+				B60B8C632552FE3500F097D1 /* DUXBetaVisionWidgetModel.h */,
+				B60B8C642552FE3500F097D1 /* DUXBetaVisionWidgetModel.m */,
+			);
+			path = Vision;
+			sourceTree = "<group>";
+		};
+		B657A21C24E30739009B10AA /* RemainingFlightTime */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C122552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.h */,
+				B60B8C152552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.m */,
+				B60B8C132552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.h */,
+				B60B8C112552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.m */,
+				B60B8C162552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.h */,
+				B60B8C102552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.m */,
+			);
+			path = RemainingFlightTime;
+			sourceTree = "<group>";
+		};
+		B657A22324E30739009B10AA /* SystemStatus */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C2A2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.h */,
+				B60B8C292552FDDB00F097D1 /* DUXBetaSystemStatusWidget.m */,
+				B60B8C282552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.h */,
+				B60B8C272552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.m */,
+			);
+			path = SystemStatus;
+			sourceTree = "<group>";
+		};
+		B657A23024E30739009B10AA /* RemoteControlSignal */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C1F2552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.h */,
+				B60B8C212552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.m */,
+				B60B8C1E2552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.h */,
+				B60B8C202552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.m */,
+			);
+			path = RemoteControlSignal;
+			sourceTree = "<group>";
+		};
+		B657A23A24E30739009B10AA /* Compass */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BA32552FD4500F097D1 /* DUXBetaCompassWidget.h */,
+				B60B8BA12552FD4500F097D1 /* DUXBetaCompassWidget.m */,
+				B60B8BA22552FD4500F097D1 /* DUXBetaCompassWidgetModel.h */,
+				B60B8BA42552FD4500F097D1 /* DUXBetaCompassWidgetModel.m */,
+				B657A23D24E30739009B10AA /* Layers */,
+			);
+			path = Compass;
+			sourceTree = "<group>";
+		};
+		B657A23D24E30739009B10AA /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BB32552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.h */,
+				B60B8BAE2552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.m */,
+				B60B8BAF2552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.h */,
+				B60B8BB02552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.m */,
+				B60B8BB22552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.h */,
+				B60B8BB12552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.m */,
+				B60B8BAC2552FD5500F097D1 /* DUXBetaCompassLayer.h */,
+				B60B8BAD2552FD5500F097D1 /* DUXBetaCompassLayer.m */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		B657A24824E30739009B10AA /* Battery */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B962552FD3A00F097D1 /* DUXBetaBatteryState.h */,
+				B60B8B942552FD3A00F097D1 /* DUXBetaBatteryState.m */,
+				B60B8B982552FD3B00F097D1 /* DUXBetaBatteryWidget.h */,
+				B60B8B972552FD3B00F097D1 /* DUXBetaBatteryWidget.m */,
+				B60B8B952552FD3A00F097D1 /* DUXBetaBatteryWidgetModel.h */,
+				B60B8B992552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.m */,
+			);
+			path = Battery;
+			sourceTree = "<group>";
+		};
+		B657A25424E30739009B10AA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B657A25524E30739009B10AA /* Alert */,
+				B657A3DD24E319C6009B10AA /* DUXMarqueeLabel.h */,
+				B657A3DC24E319C5009B10AA /* DUXMarqueeLabel.m */,
+				B657A25F24E30739009B10AA /* DUXBetaUIImageView.h */,
+				B657A25E24E30739009B10AA /* DUXBetaUIImageView.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B657A25524E30739009B10AA /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				B657A25624E30739009B10AA /* Slide */,
+				B657A25924E30739009B10AA /* Base */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		B657A25624E30739009B10AA /* Slide */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B582552FCC400F097D1 /* DUXBetaSlideAlertView.swift */,
+				B60B8B572552FCC400F097D1 /* DUXBetaSlideView.swift */,
+			);
+			path = Slide;
+			sourceTree = "<group>";
+		};
+		B657A25924E30739009B10AA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B5F2552FCD000F097D1 /* DUXBetaAlertLayoutController.swift */,
+				B60B8B5D2552FCD000F097D1 /* DUXBetaAlertStackController.swift */,
+				B60B8B602552FCD000F097D1 /* DUXBetaAlertView.swift */,
+				B60B8B5E2552FCD000F097D1 /* DUXBetaAlertViewMask.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B657A26024E3073A009B10AA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AC82552FBCF00F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.h */,
+				B60B8ACB2552FBCF00F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.m */,
+				B60B8AD02552FBCF00F097D1 /* NSDateFormatter+DUXBetaDateFormatter.h */,
+				B60B8AC92552FBCF00F097D1 /* NSDateFormatter+DUXBetaDateFormatter.m */,
+				B60B8ACE2552FBCF00F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.h */,
+				B60B8ACD2552FBCF00F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.m */,
+				B60B8ACA2552FBCF00F097D1 /* NSObject+DUXBetaSwiftHelpers.h */,
+				B60B8AC62552FBCF00F097D1 /* NSObject+DUXBetaSwiftHelpers.m */,
+				B60B8ACC2552FBCF00F097D1 /* UISwitch+DUXBetaBackgroundHelper.h */,
+				B60B8AC72552FBCF00F097D1 /* UISwitch+DUXBetaBackgroundHelper.m */,
+				B60B8ACF2552FBCF00F097D1 /* UIViewController+DUXBetaHelper.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B657A26824E3073A009B10AA /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				B657A26924E3073A009B10AA /* Util */,
+				B657A26B24E3073A009B10AA /* SystemStatus */,
+				B657A26E24E3073A009B10AA /* ListItem */,
+				B6D6A56225119EAB00A82F08 /* Telemetry */,
+				B657A29424E3073A009B10AA /* Topbar */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		B657A26924E3073A009B10AA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AE42552FBE700F097D1 /* DUXBetaAlertView+SystemStatus.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		B657A26B24E3073A009B10AA /* SystemStatus */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AE72552FBF100F097D1 /* DUXBetaSystemStatusListSmartModel.swift */,
+				B60B8AE82552FBF100F097D1 /* DUXBetaSystemStatusListWidget.swift */,
+			);
+			path = SystemStatus;
+			sourceTree = "<group>";
+		};
+		B657A26E24E3073A009B10AA /* ListItem */ = {
+			isa = PBXGroup;
+			children = (
+				22A15A91253A6B29005BBB62 /* eMMCStatus */,
+				B657A26F24E3073A009B10AA /* FlightMode */,
+				B657A27424E3073A009B10AA /* ReturnToHomeAltitude */,
+				B657A27924E3073A009B10AA /* MaxFlightDistance */,
+				B657A27E24E3073A009B10AA /* TravelMode */,
+				B657A28124E3073A009B10AA /* NoviceMode */,
+				B657A28324E3073A009B10AA /* SDCardStatus */,
+				B657A28824E3073A009B10AA /* Overview */,
+				B657A28A24E3073A009B10AA /* RCStickMode */,
+				B657A28F24E3073A009B10AA /* MaxAltitude */,
+				22C08585250FE12E000145F1 /* UnitMode */,
+				228544FE24FC0B2E00702CFE /* RCBatteryWidget */,
+				222554D2252F976300963BF0 /* SSDStatus */,
+			);
+			path = ListItem;
+			sourceTree = "<group>";
+		};
+		B657A26F24E3073A009B10AA /* FlightMode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AF82552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.h */,
+				B60B8AFA2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.m */,
+				B60B8AF92552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.h */,
+				B60B8AF72552FC1C00F097D1 /* DUXBetaFlightModeListItemWidgetModel.m */,
+			);
+			path = FlightMode;
+			sourceTree = "<group>";
+		};
+		B657A27424E3073A009B10AA /* ReturnToHomeAltitude */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B042552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.h */,
+				B60B8B022552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.m */,
+				B60B8B012552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.h */,
+				B60B8B032552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.m */,
+			);
+			path = ReturnToHomeAltitude;
+			sourceTree = "<group>";
+		};
+		B657A27924E3073A009B10AA /* MaxFlightDistance */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B0E2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.h */,
+				B60B8B0B2552FC3100F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.m */,
+				B60B8B0A2552FC3100F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.h */,
+				B60B8B0C2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.m */,
+			);
+			path = MaxFlightDistance;
+			sourceTree = "<group>";
+		};
+		B657A27E24E3073A009B10AA /* TravelMode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B152552FC3C00F097D1 /* DUXBetaTravelModeListItemWidget.swift */,
+				B60B8B142552FC3C00F097D1 /* DUXBetaTravelModeListItemWidgetModel.swift */,
+			);
+			path = TravelMode;
+			sourceTree = "<group>";
+		};
+		B657A28124E3073A009B10AA /* NoviceMode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B1A2552FC4600F097D1 /* DUXBetaNoviceModeListItemWidget.swift */,
+			);
+			path = NoviceMode;
+			sourceTree = "<group>";
+		};
+		B657A28324E3073A009B10AA /* SDCardStatus */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B1E2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.h */,
+				B60B8B202552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.m */,
+				B60B8B1D2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.h */,
+				B60B8B1F2552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.m */,
+			);
+			path = SDCardStatus;
+			sourceTree = "<group>";
+		};
+		B657A28824E3073A009B10AA /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B262552FC5E00F097D1 /* DUXBetaOverviewListItemWidget.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		B657A28A24E3073A009B10AA /* RCStickMode */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B2A2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidget.h */,
+				B60B8B2C2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidget.m */,
+				B60B8B2B2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidgetModel.h */,
+				B60B8B2D2552FC6700F097D1 /* DUXBetaRCStickModeListItemWidgetModel.m */,
+			);
+			path = RCStickMode;
+			sourceTree = "<group>";
+		};
+		B657A28F24E3073A009B10AA /* MaxAltitude */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B332552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidget.h */,
+				B60B8B342552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidget.m */,
+				B60B8B372552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.h */,
+				B60B8B352552FC7300F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.m */,
+			);
+			path = MaxAltitude;
+			sourceTree = "<group>";
+		};
+		B657A29424E3073A009B10AA /* Topbar */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B542552FCA900F097D1 /* DUXBetaTopBarWidget.swift */,
+			);
+			path = Topbar;
+			sourceTree = "<group>";
+		};
+		B657A29824E3073A009B10AA /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				B657A29924E3073A009B10AA /* GlobalPreferences.swift */,
+				B657A29A24E3073A009B10AA /* ObservableInMemoryKeyedStore.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
+		B657A29B24E3073A009B10AA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A5C2552FB7500F097D1 /* DUXBetaKeyManager.h */,
+				B60B8A5E2552FB7500F097D1 /* DUXBetaKeyManager.m */,
+				B60B8A5F2552FB7500F097D1 /* DUXBetaSingleton.h */,
+				B60B8A602552FB7500F097D1 /* DUXBetaSingleton.m */,
+				B60B8A5D2552FB7500F097D1 /* DUXBetaWarningMessage.h */,
+				B60B8A612552FB7500F097D1 /* DUXBetaWarningMessage.m */,
+				B657A2BD24E3073A009B10AA /* Hooks */,
+				B657A29C24E3073A009B10AA /* RemoteKVO */,
+				B6A387A124E455E2005D8391 /* SampleSnippets */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B657A29C24E3073A009B10AA /* RemoteKVO */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A7D2552FB9000F097D1 /* DUXBetaConstString.h */,
+				B60B8A832552FB9000F097D1 /* DUXBetaConstString.m */,
+				B60B8A742552FB8F00F097D1 /* DUXBetaCustomAsyncCache.h */,
+				B60B8A7B2552FB9000F097D1 /* DUXBetaCustomAsyncCache.m */,
+				B60B8A842552FB9000F097D1 /* DUXBetaCustomAsyncMethod.h */,
+				B60B8A802552FB9000F097D1 /* DUXBetaCustomAsyncMethod.m */,
+				B60B8A752552FB8F00F097D1 /* DUXBetaCustomKVOObserver.h */,
+				B60B8A772552FB8F00F097D1 /* DUXBetaCustomKVOObserver.m */,
+				B60B8A7C2552FB9000F097D1 /* DUXBetaCustomObserverRuntime.h */,
+				B60B8A822552FB9000F097D1 /* DUXBetaCustomObserverRuntime.m */,
+				B60B8A782552FB8F00F097D1 /* DUXBetaCustomValueConfirmation_Private.h */,
+				B60B8A7F2552FB9000F097D1 /* DUXBetaCustomValueConfirmation.h */,
+				B60B8A762552FB8F00F097D1 /* DUXBetaCustomValueConfirmation.m */,
+				B60B8A852552FB9000F097D1 /* DUXBetaRKVOHeaders.h */,
+				B60B8A7A2552FB9000F097D1 /* DUXBetaRKVOMetamacros.h */,
+				B60B8A812552FB9000F097D1 /* NSError+DUXBetaCustomKVO.h */,
+				B60B8A792552FB9000F097D1 /* NSError+DUXBetaCustomKVO.m */,
+				B60B8A732552FB8F00F097D1 /* NSObject+DUXBetaCustomKVO.h */,
+				B60B8A7E2552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.m */,
+				B657A2A824E3073A009B10AA /* BindingConvenienceCategories */,
+			);
+			path = RemoteKVO;
+			sourceTree = "<group>";
+		};
+		B657A2A824E3073A009B10AA /* BindingConvenienceCategories */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AB52552FBB800F097D1 /* DUXBetaBindings.swift */,
+				B60B8AB32552FBB800F097D1 /* NSObject+DUXBetaCommand.h */,
+				B60B8AB22552FBB800F097D1 /* NSObject+DUXBetaCommand.m */,
+				B60B8AB72552FBB800F097D1 /* NSObject+DUXBetaMapping.h */,
+				B60B8AB42552FBB800F097D1 /* NSObject+DUXBetaMapping.m */,
+				B60B8AB12552FBB800F097D1 /* NSObject+DUXBetaRKVOExtension.h */,
+				B60B8AB62552FBB800F097D1 /* NSObject+DUXBetaRKVOExtension.m */,
+				B60B8AAF2552FBB800F097D1 /* NSObject+DUXBetaSDKBind.h */,
+				B60B8AB02552FBB800F097D1 /* NSObject+DUXBetaSDKBind.m */,
+			);
+			path = BindingConvenienceCategories;
+			sourceTree = "<group>";
+		};
+		B657A2BD24E3073A009B10AA /* Hooks */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A6B2552FB8200F097D1 /* DUXBetaStateChangeBaseData.h */,
+				B60B8A6A2552FB8200F097D1 /* DUXBetaStateChangeBaseData.m */,
+				B60B8A692552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.h */,
+				B60B8A6C2552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.m */,
+			);
+			path = Hooks;
+			sourceTree = "<group>";
+		};
+		B657A2C424E3073A009B10AA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B6B2552FD1F00F097D1 /* DUXBetaProductUtil.swift */,
+				B60B8B682552FD1F00F097D1 /* NSBundle+DUXBetaAssets.h */,
+				B60B8B6D2552FD1F00F097D1 /* NSBundle+DUXBetaAssets.m */,
+				B60B8B692552FD1F00F097D1 /* NSData+DUXBetaAssets.h */,
+				B60B8B712552FD2000F097D1 /* NSData+DUXBetaAssets.m */,
+				B60B8B6A2552FD1F00F097D1 /* UIColor+DUXBetaColors.h */,
+				B60B8B702552FD2000F097D1 /* UIColor+DUXBetaColors.m */,
+				B60B8B6E2552FD1F00F097D1 /* UIDevice+DUXBetaHelper.swift */,
+				B60B8B722552FD2000F097D1 /* UIFont+DUXBetaFonts.h */,
+				B60B8B6F2552FD1F00F097D1 /* UIFont+DUXBetaFonts.m */,
+				B60B8B732552FD2000F097D1 /* UIImage+DUXBetaAssets.h */,
+				B60B8B6C2552FD1F00F097D1 /* UIImage+DUXBetaAssets.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		B657A3BD24E30CD1009B10AA /* Radar */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BFE2552FDB200F097D1 /* DUXBetaRadarWidget.h */,
+				B60B8BFD2552FDB200F097D1 /* DUXBetaRadarWidget.m */,
+				B60B8BFF2552FDB200F097D1 /* DUXBetaRadarWidgetModel.h */,
+				B60B8C002552FDB200F097D1 /* DUXBetaRadarWidgetModel.m */,
+				B657A3C024E30CD1009B10AA /* SectionViews */,
+			);
+			path = Radar;
+			sourceTree = "<group>";
+		};
+		B657A3C024E30CD1009B10AA /* SectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BF02552FDA600F097D1 /* DUXBetaMultiAngleRadarSectionView.h */,
+				B60B8BF32552FDA600F097D1 /* DUXBetaMultiAngleRadarSectionView.m */,
+				B60B8BF42552FDA700F097D1 /* DUXBetaRadarSectionView.h */,
+				B60B8BF52552FDA700F097D1 /* DUXBetaRadarSectionView.m */,
+				B60B8BF12552FDA600F097D1 /* DUXBetaSingleAngleRadarSectionView.h */,
+				B60B8BF22552FDA600F097D1 /* DUXBetaSingleAngleRadarSectionView.m */,
+			);
+			path = SectionViews;
+			sourceTree = "<group>";
+		};
+		B657A3D324E3183A009B10AA /* GPSSignal */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8BE82552FD9900F097D1 /* DUXBetaGPSSignalWidget.h */,
+				B60B8BE62552FD9900F097D1 /* DUXBetaGPSSignalWidget.m */,
+				B60B8BE92552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.h */,
+				B60B8BE72552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.m */,
+			);
+			path = GPSSignal;
+			sourceTree = "<group>";
+		};
+		B657A3E024E31C83009B10AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B657A3E324E31C92009B10AA /* DJIWidget.framework */,
+				B657A3E124E31C83009B10AA /* DJISDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6A2FB9224E2FC9600B4700A = {
+			isa = PBXGroup;
+			children = (
+				B6A2FB9E24E2FC9600B4700A /* UXSDKCore */,
+				B6A2FB9D24E2FC9600B4700A /* Products */,
+				B657A3E024E31C83009B10AA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B6A2FB9D24E2FC9600B4700A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6A2FB9C24E2FC9600B4700A /* UXSDKCore.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6A2FB9E24E2FC9600B4700A /* UXSDKCore */ = {
+			isa = PBXGroup;
+			children = (
+				B657A1D624E30739009B10AA /* Audio */,
+				B657A1AF24E30739009B10AA /* Base */,
+				B657A29824E3073A009B10AA /* Communication */,
+				B657A29B24E3073A009B10AA /* Core */,
+				B657A26024E3073A009B10AA /* Extension */,
+				B6D691F62543345100ABC58C /* Module */,
+				B657A26824E3073A009B10AA /* Panel */,
+				B657A1DD24E30739009B10AA /* Resources */,
+				B657A25424E30739009B10AA /* UI */,
+				B657A2C424E3073A009B10AA /* Util */,
+				B657A1DE24E30739009B10AA /* Widget */,
+				B6A2FB9F24E2FC9600B4700A /* UXSDKCore.h */,
+				B6A2FBA024E2FC9600B4700A /* Info.plist */,
+			);
+			path = UXSDKCore;
+			sourceTree = "<group>";
+		};
+		B6A3879C24E454E7005D8391 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B6A3879D24E454E7005D8391 /* DIN-Medium.otf */,
+				B6A3879E24E454E7005D8391 /* pirulen.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B6A387A124E455E2005D8391 /* SampleSnippets */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8AC22552FBC200F097D1 /* DUXBetaSwiftTestBindingWidget.swift */,
+			);
+			path = SampleSnippets;
+			sourceTree = "<group>";
+		};
+		B6CC8B322502E16C00DF47B7 /* Telemetry */ = {
+			isa = PBXGroup;
+			children = (
+				B6CC8B332502E18500DF47B7 /* Altitude */,
+				B657A1F324E30739009B10AA /* DistanceHome */,
+				B6CC8B622508021A00DF47B7 /* DistanceRC */,
+				B6CC8B592507BC1E00DF47B7 /* HorizontalVelocity */,
+				B6D8102F250A823800603139 /* Location */,
+				B6D8103B250BFABD00603139 /* VerticalVelocity */,
+				B6CC8B7425083E0300DF47B7 /* VPS */,
+			);
+			path = Telemetry;
+			sourceTree = "<group>";
+		};
+		B6CC8B332502E18500DF47B7 /* Altitude */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C322552FDE800F097D1 /* DUXBetaAGLAltitudeWidget.swift */,
+				B60B8C332552FDE800F097D1 /* DUXBetaAltitudeWidgetModel.swift */,
+				B60B8C312552FDE800F097D1 /* DUXBetaAMSLAltitudeWidget.swift */,
+			);
+			path = Altitude;
+			sourceTree = "<group>";
+		};
+		B6CC8B592507BC1E00DF47B7 /* HorizontalVelocity */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C432552FE0000F097D1 /* DUXBetaHorizontalVelocityWidget.swift */,
+				B60B8C442552FE0000F097D1 /* DUXBetaHorizontalVelocityWidgetModel.swift */,
+			);
+			path = HorizontalVelocity;
+			sourceTree = "<group>";
+		};
+		B6CC8B622508021A00DF47B7 /* DistanceRC */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C3F2552FDF700F097D1 /* DUXBetaDistanceRCWidget.swift */,
+				B60B8C3E2552FDF700F097D1 /* DUXBetaDistanceRCWidgetModel.swift */,
+			);
+			path = DistanceRC;
+			sourceTree = "<group>";
+		};
+		B6CC8B7425083E0300DF47B7 /* VPS */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C542552FE1F00F097D1 /* DUXBetaVPSWidget.swift */,
+				B60B8C552552FE1F00F097D1 /* DUXBetaVPSWidgetModel.swift */,
+			);
+			path = VPS;
+			sourceTree = "<group>";
+		};
+		B6D19A2724E8A71B00737526 /* Telemetry */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A4B2552FB4E00F097D1 /* DUXBetaBaseTelemetryWidget.swift */,
+			);
+			path = Telemetry;
+			sourceTree = "<group>";
+		};
+		B6D691F0254330FC00ABC58C /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8A082552FB1800F097D1 /* DUXBetaBaseModule.h */,
+				B60B8A092552FB1800F097D1 /* DUXBetaBaseModule.m */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B6D691F62543345100ABC58C /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8ADF2552FBDB00F097D1 /* DUXBetaFlatCameraModule.swift */,
+				B60B8ADE2552FBDB00F097D1 /* DUXBetaUnitTypeModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B6D6A56225119EAB00A82F08 /* Telemetry */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8B512552FC9F00F097D1 /* DUXBetaTelemetryPanelWidget.swift */,
+			);
+			path = Telemetry;
+			sourceTree = "<group>";
+		};
+		B6D8102F250A823800603139 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C492552FE0C00F097D1 /* DUXBetaLocationWidget.swift */,
+				B60B8C482552FE0C00F097D1 /* DUXBetaLocationWidgetModel.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		B6D8103B250BFABD00603139 /* VerticalVelocity */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C4F2552FE1500F097D1 /* DUXBetaVerticalVelocityWidget.swift */,
+				B60B8C4E2552FE1500F097D1 /* DUXBetaVerticalVelocityWidgetModel.swift */,
+			);
+			path = VerticalVelocity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B6A2FB9724E2FC9600B4700A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60B8C232552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.h in Headers */,
+				B60B8AD92552FBD000F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.h in Headers */,
+				B60B8A002552FB0900F097D1 /* DUXBetaAudioFilePCMParser.h in Headers */,
+				B60B8AFC2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.h in Headers */,
+				B60B8A922552FB9000F097D1 /* DUXBetaCustomValueConfirmation.h in Headers */,
+				B60B8C222552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.h in Headers */,
+				B60B8B8E2552FD2F00F097D1 /* DUXBetaAirSenseWidget.h in Headers */,
+				B60B8A862552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.h in Headers */,
+				B60B8AFD2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.h in Headers */,
+				B60B8AC02552FBB900F097D1 /* NSObject+DUXBetaMapping.h in Headers */,
+				B60B8AB82552FBB900F097D1 /* NSObject+DUXBetaSDKBind.h in Headers */,
+				B60B8AD72552FBD000F097D1 /* UISwitch+DUXBetaBackgroundHelper.h in Headers */,
+				B60B8C0C2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.h in Headers */,
+				B60B8B4C2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.h in Headers */,
+				B60B8BE32552FD8B00F097D1 /* DUXBetaFPVDecodeModel.h in Headers */,
+				B60B8A392552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.h in Headers */,
+				B60B8B8B2552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.h in Headers */,
+				B60B8A972552FB9000F097D1 /* DUXBetaCustomAsyncMethod.h in Headers */,
+				B60B8BA62552FD4500F097D1 /* DUXBetaCompassWidgetModel.h in Headers */,
+				B60B8B7F2552FD2000F097D1 /* UIImage+DUXBetaAssets.h in Headers */,
+				B657A3DF24E319C6009B10AA /* DUXMarqueeLabel.h in Headers */,
+				B60B8A0A2552FB1800F097D1 /* DUXBetaBaseModule.h in Headers */,
+				B60B8AF32552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.h in Headers */,
+				B60B8A442552FB3E00F097D1 /* DUXBetaListItemTitleWidget.h in Headers */,
+				B60B8A012552FB0900F097D1 /* DUXBetaVoiceNotification.h in Headers */,
+				B60B8B9E2552FD3B00F097D1 /* DUXBetaBatteryWidget.h in Headers */,
+				B60B8BB42552FD5500F097D1 /* DUXBetaCompassLayer.h in Headers */,
+				B60B8C2C2552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.h in Headers */,
+				B657A36024E3073A009B10AA /* DUXBetaUIImageView.h in Headers */,
+				B60B8A652552FB7500F097D1 /* DUXBetaSingleton.h in Headers */,
+				B60B8A942552FB9000F097D1 /* NSError+DUXBetaCustomKVO.h in Headers */,
+				B60B8B8F2552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.h in Headers */,
+				B60B8A872552FB9000F097D1 /* DUXBetaCustomAsyncCache.h in Headers */,
+				B60B8ABA2552FBB900F097D1 /* NSObject+DUXBetaRKVOExtension.h in Headers */,
+				B60B8A622552FB7500F097D1 /* DUXBetaKeyManager.h in Headers */,
+				B60B8BB72552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.h in Headers */,
+				B60B8BBA2552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.h in Headers */,
+				B60B8B9C2552FD3B00F097D1 /* DUXBetaBatteryState.h in Headers */,
+				B60B8BCD2552FD6D00F097D1 /* DUXBetaFlightModeWidgetModel.h in Headers */,
+				B60B8BF72552FDA700F097D1 /* DUXBetaSingleAngleRadarSectionView.h in Headers */,
+				B60B8C5D2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.h in Headers */,
+				B60B8B752552FD2000F097D1 /* NSData+DUXBetaAssets.h in Headers */,
+				B60B8ABC2552FBB900F097D1 /* NSObject+DUXBetaCommand.h in Headers */,
+				B60B8A3B2552FB3E00F097D1 /* DUXBetaListItemSwitchWidgetModel.h in Headers */,
+				B60B8A6D2552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.h in Headers */,
+				B60B8BED2552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.h in Headers */,
+				B60B8A3A2552FB3E00F097D1 /* DUXBetaListItemRadioButtonWidget.h in Headers */,
+				B60B8B4D2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.h in Headers */,
+				B60B8B082552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.h in Headers */,
+				B60B8B2E2552FC6800F097D1 /* DUXBetaRCStickModeListItemWidget.h in Headers */,
+				B60B8A5A2552FB6300F097D1 /* DUXBetaTheme.h in Headers */,
+				B60B8B7E2552FD2000F097D1 /* UIFont+DUXBetaFonts.h in Headers */,
+				B60B8C1A2552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.h in Headers */,
+				B60B8AD32552FBD000F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.h in Headers */,
+				B60B8BEC2552FD9900F097D1 /* DUXBetaGPSSignalWidget.h in Headers */,
+				B60B8A8F2552FB9000F097D1 /* DUXBetaCustomObserverRuntime.h in Headers */,
+				B60B8C192552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.h in Headers */,
+				B60B8BCE2552FD6D00F097D1 /* DUXBetaFlightModeWidget.h in Headers */,
+				B60B8A452552FB3E00F097D1 /* DUXBetaListItemTrivialSwitchWidget.h in Headers */,
+				B60B8A522552FB5900F097D1 /* DUXBetaBaseWidget.h in Headers */,
+				B60B8BFA2552FDA700F097D1 /* DUXBetaRadarSectionView.h in Headers */,
+				B60B8BA72552FD4500F097D1 /* DUXBetaCompassWidget.h in Headers */,
+				B60B8A632552FB7500F097D1 /* DUXBetaWarningMessage.h in Headers */,
+				B60B8A6F2552FB8200F097D1 /* DUXBetaStateChangeBaseData.h in Headers */,
+				B60B8B212552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.h in Headers */,
+				B60B8A212552FB2E00F097D1 /* DUXBetaPanelWidgetSupport.h in Headers */,
+				B60B8A032552FB0900F097D1 /* DUXBetaAudioSource.h in Headers */,
+				B60B8B222552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.h in Headers */,
+				B60B8A432552FB3E00F097D1 /* DUXBetaListItemLabelButtonWidget.h in Headers */,
+				B6A2FBA124E2FC9600B4700A /* UXSDKCore.h in Headers */,
+				B60B8B8C2552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.h in Headers */,
+				B60B8DD525548C6900F097D1 /* DUXBetaWidgetCloseButtonProtocol.h in Headers */,
+				B60B8A902552FB9000F097D1 /* DUXBetaConstString.h in Headers */,
+				B60B8C0E2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.h in Headers */,
+				B60B8B762552FD2000F097D1 /* UIColor+DUXBetaColors.h in Headers */,
+				B60B8B122552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.h in Headers */,
+				B60B8C672552FE3500F097D1 /* DUXBetaVisionWidgetModel.h in Headers */,
+				B60B8C022552FDB300F097D1 /* DUXBetaRadarWidget.h in Headers */,
+				B60B8AF22552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.h in Headers */,
+				B60B8BC42552FD6200F097D1 /* DUXBetaConnectionWidget.h in Headers */,
+				B60B8B3B2552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.h in Headers */,
+				B60B8A422552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidget.h in Headers */,
+				B60B8A882552FB9000F097D1 /* DUXBetaCustomKVOObserver.h in Headers */,
+				B60B8BE02552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.h in Headers */,
+				B60B8B742552FD2000F097D1 /* NSBundle+DUXBetaAssets.h in Headers */,
+				B60B8B9B2552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.h in Headers */,
+				B60B8C1C2552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.h in Headers */,
+				B60B8C2E2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.h in Headers */,
+				B60B8B382552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidget.h in Headers */,
+				B60B8ADB2552FBD000F097D1 /* NSDateFormatter+DUXBetaDateFormatter.h in Headers */,
+				B60B8AD52552FBD000F097D1 /* NSObject+DUXBetaSwiftHelpers.h in Headers */,
+				B60B8B0F2552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.h in Headers */,
+				B60B8B2F2552FC6800F097D1 /* DUXBetaRCStickModeListItemWidgetModel.h in Headers */,
+				B60B8C5E2552FE2B00F097D1 /* DUXBetaVideoSignalWidget.h in Headers */,
+				B60B8C6A2552FE3500F097D1 /* DUXBetaVisionWidget.h in Headers */,
+				B60B8A542552FB5900F097D1 /* DUXBetaBaseWidgetModel.h in Headers */,
+				B60B8BBB2552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.h in Headers */,
+				B60B8A402552FB3E00F097D1 /* DUXBetaListItemSwitchWidget.h in Headers */,
+				B60B8BC22552FD6200F097D1 /* DUXBetaConnectionWidgetModel.h in Headers */,
+				B60B8A8B2552FB9000F097D1 /* DUXBetaCustomValueConfirmation_Private.h in Headers */,
+				B60B8BF62552FDA700F097D1 /* DUXBetaMultiAngleRadarSectionView.h in Headers */,
+				B60B8A982552FB9000F097D1 /* DUXBetaRKVOHeaders.h in Headers */,
+				B60B8A8D2552FB9000F097D1 /* DUXBetaRKVOMetamacros.h in Headers */,
+				B60B8B052552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.h in Headers */,
+				B60B8C032552FDB300F097D1 /* DUXBetaRadarWidgetModel.h in Headers */,
+				B60B8A252552FB2E00F097D1 /* DUXBetaSampleListItemWidget.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B6A2FB9B24E2FC9600B4700A /* UXSDKCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6A2FBA424E2FC9600B4700A /* Build configuration list for PBXNativeTarget "UXSDKCore" */;
+			buildPhases = (
+				B6A2FB9724E2FC9600B4700A /* Headers */,
+				B6A2FB9824E2FC9600B4700A /* Sources */,
+				B6A2FB9924E2FC9600B4700A /* Frameworks */,
+				B6A2FB9A24E2FC9600B4700A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UXSDKCore;
+			productName = UXSDKCore;
+			productReference = B6A2FB9C24E2FC9600B4700A /* UXSDKCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6A2FB9324E2FC9600B4700A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Cristina Suciu";
+				TargetAttributes = {
+					B6A2FB9B24E2FC9600B4700A = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = B6A2FB9624E2FC9600B4700A /* Build configuration list for PBXProject "UXSDKCore" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B6A2FB9224E2FC9600B4700A;
+			productRefGroup = B6A2FB9D24E2FC9600B4700A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6A2FB9B24E2FC9600B4700A /* UXSDKCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6A2FB9A24E2FC9600B4700A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6A3879924E45475005D8391 /* air_sense_terms_of_use_chinese.html in Resources */,
+				B6A3879A24E45475005D8391 /* air_sense_terms_of_use.html in Resources */,
+				B6A3879F24E454E7005D8391 /* DIN-Medium.otf in Resources */,
+				B6A387A024E454E7005D8391 /* pirulen.ttf in Resources */,
+				B6A3879324E44DA1005D8391 /* UXSDKCore.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6A2FB9824E2FC9600B4700A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60B8C2B2552FDDB00F097D1 /* DUXBetaSystemStatusWidgetModel.m in Sources */,
+				B60B8B1B2552FC4600F097D1 /* DUXBetaNoviceModeListItemWidget.swift in Sources */,
+				B60B8C242552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidgetModel.m in Sources */,
+				B60B8BB92552FD5500F097D1 /* DUXBetaCompassGyroHorizonLayer.m in Sources */,
+				B60B8A1A2552FB2E00F097D1 /* DUXBetaSampleListItemWidget.m in Sources */,
+				B60B8B792552FD2000F097D1 /* NSBundle+DUXBetaAssets.m in Sources */,
+				B60B8AD12552FBD000F097D1 /* NSObject+DUXBetaSwiftHelpers.m in Sources */,
+				B60B8C562552FE1F00F097D1 /* DUXBetaVPSWidget.swift in Sources */,
+				B60B8BCF2552FD6D00F097D1 /* DUXBetaFlightModeWidget.m in Sources */,
+				B60B8BB82552FD5500F097D1 /* DUXBetaCompassAircraftWorldLayer.m in Sources */,
+				B60B8B072552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidgetModel.m in Sources */,
+				B60B8B622552FCD000F097D1 /* DUXBetaAlertViewMask.swift in Sources */,
+				B60B8A6E2552FB8200F097D1 /* DUXBetaStateChangeBaseData.m in Sources */,
+				B60B8A3E2552FB3E00F097D1 /* DUXBetaListItemTrivialSwitchWidget.m in Sources */,
+				B60B8A482552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidgetModel.m in Sources */,
+				B60B8BD62552FD8000F097D1 /* DUXBetaFPVCenterView.swift in Sources */,
+				B60B8B612552FCD000F097D1 /* DUXBetaAlertStackController.swift in Sources */,
+				B60B8B112552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidgetModel.m in Sources */,
+				B60B8B442552FC8600F097D1 /* DUXBetaRCBatteryListItemWidget.swift in Sources */,
+				B60B8B8D2552FD2F00F097D1 /* DUXBetaAirSenseWidgetModel.m in Sources */,
+				B60B8AE92552FBF100F097D1 /* DUXBetaSystemStatusListSmartModel.swift in Sources */,
+				B60B8BE22552FD8B00F097D1 /* DUXBetaFPVDecodeAdapter.m in Sources */,
+				B60B8BC32552FD6200F097D1 /* DUXBetaConnectionWidgetModel.m in Sources */,
+				B60B8C682552FE3500F097D1 /* DUXBetaVisionWidgetModel.m in Sources */,
+				B60B8C0B2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidgetModel.m in Sources */,
+				B60B8A892552FB9000F097D1 /* DUXBetaCustomValueConfirmation.m in Sources */,
+				B60B8BD92552FD8000F097D1 /* DUXBetaFPVWidget.swift in Sources */,
+				B60B8B242552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidget.m in Sources */,
+				B60B8B302552FC6800F097D1 /* DUXBetaRCStickModeListItemWidget.m in Sources */,
+				B60B8BF82552FDA700F097D1 /* DUXBetaSingleAngleRadarSectionView.m in Sources */,
+				B60B8C4B2552FE0C00F097D1 /* DUXBetaLocationWidgetModel.swift in Sources */,
+				B60B8A962552FB9000F097D1 /* DUXBetaConstString.m in Sources */,
+				B60B8C042552FDB300F097D1 /* DUXBetaRadarWidgetModel.m in Sources */,
+				B60B8B172552FC3D00F097D1 /* DUXBetaTravelModeListItemWidget.swift in Sources */,
+				B60B8A042552FB0900F097D1 /* DUXBetaAudioSource.m in Sources */,
+				B60B8B3A2552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidgetModel.m in Sources */,
+				B60B8AFB2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidgetModel.m in Sources */,
+				B60B8A932552FB9000F097D1 /* DUXBetaCustomAsyncMethod.m in Sources */,
+				B60B8AD22552FBD000F097D1 /* UISwitch+DUXBetaBackgroundHelper.m in Sources */,
+				B60B8B8A2552FD2F00F097D1 /* DUXBetaAirSenseWidget.m in Sources */,
+				B60B8A8E2552FB9000F097D1 /* DUXBetaCustomAsyncCache.m in Sources */,
+				B60B8B402552FC7C00F097D1 /* DUXBetaUnitModeListItemWidget.swift in Sources */,
+				B60B8ABF2552FBB900F097D1 /* NSObject+DUXBetaRKVOExtension.m in Sources */,
+				B60B8B312552FC6800F097D1 /* DUXBetaRCStickModeListItemWidgetModel.m in Sources */,
+				B60B8A022552FB0900F097D1 /* DUXBetaVoiceNotification.m in Sources */,
+				B60B8C412552FDF700F097D1 /* DUXBetaDistanceRCWidget.swift in Sources */,
+				B60B8C602552FE2B00F097D1 /* DUXBetaVideoSignalWidget.m in Sources */,
+				B60B8A262552FB2E00F097D1 /* DUXBetaSmartListInternalModel.swift in Sources */,
+				B60B8C2D2552FDDB00F097D1 /* DUXBetaSystemStatusWidget.m in Sources */,
+				B60B8C692552FE3500F097D1 /* DUXBetaVisionWidget.m in Sources */,
+				B60B8BD82552FD8000F097D1 /* DUXBetaFPVGridView.swift in Sources */,
+				B60B8A222552FB2E00F097D1 /* DUXBetaBarPanelWidget.swift in Sources */,
+				B60B8B912552FD2F00F097D1 /* DUXBetaAirSenseDialogViewController.m in Sources */,
+				B60B8C452552FE0000F097D1 /* DUXBetaHorizontalVelocityWidget.swift in Sources */,
+				B60B8A662552FB7500F097D1 /* DUXBetaSingleton.m in Sources */,
+				B60B8C4C2552FE0C00F097D1 /* DUXBetaLocationWidget.swift in Sources */,
+				B60B8BB52552FD5500F097D1 /* DUXBetaCompassLayer.m in Sources */,
+				B60B8BF92552FDA700F097D1 /* DUXBetaMultiAngleRadarSectionView.m in Sources */,
+				B60B8A952552FB9000F097D1 /* DUXBetaCustomObserverRuntime.m in Sources */,
+				B60B8A412552FB3E00F097D1 /* DUXBetaListItemSwitchWidgetModel.m in Sources */,
+				B60B8ABE2552FBB900F097D1 /* DUXBetaBindings.swift in Sources */,
+				B60B8B522552FC9F00F097D1 /* DUXBetaTelemetryPanelWidget.swift in Sources */,
+				B60B8A242552FB2E00F097D1 /* DUXBetaListPanelWidget.swift in Sources */,
+				B60B8C512552FE1500F097D1 /* DUXBetaVerticalVelocityWidget.swift in Sources */,
+				B60B8B232552FC5600F097D1 /* DUXBetaSDCardStatusListItemWidgetModel.m in Sources */,
+				B60B8C0D2552FDBE00F097D1 /* DUXBetaSimulatorIndicatorWidget.m in Sources */,
+				B60B8A3D2552FB3E00F097D1 /* DUXBetaListItemSwitchWidget.m in Sources */,
+				B60B8A3F2552FB3E00F097D1 /* DUXBetaListItemRadioButtonWidget.m in Sources */,
+				B60B8A672552FB7500F097D1 /* DUXBetaWarningMessage.m in Sources */,
+				B60B8A0B2552FB1800F097D1 /* DUXBetaBaseModule.m in Sources */,
+				B60B8C462552FE0000F097D1 /* DUXBetaHorizontalVelocityWidgetModel.swift in Sources */,
+				B60B8C572552FE1F00F097D1 /* DUXBetaVPSWidgetModel.swift in Sources */,
+				B60B8B7A2552FD2000F097D1 /* UIDevice+DUXBetaHelper.swift in Sources */,
+				B60B8C252552FDD200F097D1 /* DUXBetaRemoteControllerSignalWidget.m in Sources */,
+				B60B8BD72552FD8000F097D1 /* DUXBetaFPVWidgetModel.swift in Sources */,
+				B60B8A472552FB3E00F097D1 /* DUXBetaListItemLabelButtonWidget.m in Sources */,
+				B60B8A462552FB3E00F097D1 /* DUXBetaListItemEditTextButtonWidget.m in Sources */,
+				B60B8A052552FB0900F097D1 /* DUXBetaAudioFilePCMParser.m in Sources */,
+				B60B8C502552FE1500F097D1 /* DUXBetaVerticalVelocityWidgetModel.swift in Sources */,
+				B60B8A552552FB5900F097D1 /* DUXBetaBaseWidget.m in Sources */,
+				B60B8BA82552FD4500F097D1 /* DUXBetaCompassWidgetModel.m in Sources */,
+				B60B8B9A2552FD3B00F097D1 /* DUXBetaBatteryState.m in Sources */,
+				B60B8B452552FC8600F097D1 /* DUXBetaRCBatteryListItemWidgetModel.swift in Sources */,
+				B60B8B772552FD2000F097D1 /* DUXBetaProductUtil.swift in Sources */,
+				B60B8C3C2552FDEF00F097D1 /* DUXBetaDistanceHomeWidgetModel.swift in Sources */,
+				B60B8A232552FB2E00F097D1 /* DUXBetaToolbarPanelItemTemplate.swift in Sources */,
+				B60B8B7C2552FD2000F097D1 /* UIColor+DUXBetaColors.m in Sources */,
+				B60B8B9D2552FD3B00F097D1 /* DUXBetaBatteryWidget.m in Sources */,
+				B60B8A4C2552FB4E00F097D1 /* DUXBetaBaseTelemetryWidget.swift in Sources */,
+				B60B8AD82552FBD000F097D1 /* NSLayoutConstraint+DUXBetaMultiplier.m in Sources */,
+				B657A3DE24E319C6009B10AA /* DUXMarqueeLabel.m in Sources */,
+				B60B8C402552FDF700F097D1 /* DUXBetaDistanceRCWidgetModel.swift in Sources */,
+				B60B8AE02552FBDB00F097D1 /* DUXBetaUnitTypeModule.swift in Sources */,
+				B60B8C1B2552FDC800F097D1 /* DUXBetaRemainingFlightTimeData.m in Sources */,
+				B60B8BE12552FD8B00F097D1 /* DUXBetaFPVDecodeModel.m in Sources */,
+				B60B8B642552FCD000F097D1 /* DUXBetaAlertView.swift in Sources */,
+				B60B8A592552FB6300F097D1 /* DUXBetaTheme.m in Sources */,
+				B60B8B272552FC5E00F097D1 /* DUXBetaOverviewListItemWidget.swift in Sources */,
+				B60B8ABD2552FBB900F097D1 /* NSObject+DUXBetaMapping.m in Sources */,
+				B60B8A702552FB8200F097D1 /* DUXBetaStateChangeBroadcaster.m in Sources */,
+				B60B8BCC2552FD6D00F097D1 /* DUXBetaFlightModeWidgetModel.m in Sources */,
+				B60B8B062552FC2700F097D1 /* DUXBetaReturnToHomeAltitudeListItemWidget.m in Sources */,
+				B60B8BB62552FD5500F097D1 /* DUXBetaCompassAircraftVisionLayer.m in Sources */,
+				B60B8AF42552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidget.m in Sources */,
+				B60B8C362552FDE800F097D1 /* DUXBetaAltitudeWidgetModel.swift in Sources */,
+				B60B8BC52552FD6200F097D1 /* DUXBetaConnectionWidget.m in Sources */,
+				B60B8B162552FC3D00F097D1 /* DUXBetaTravelModeListItemWidgetModel.swift in Sources */,
+				B60B8C172552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidgetModel.m in Sources */,
+				B60B8BEB2552FD9900F097D1 /* DUXBetaGPSSignalWidgetModel.m in Sources */,
+				B60B8A1B2552FB2E00F097D1 /* DUXBetaToolbarPanelWidget.swift in Sources */,
+				B60B8C182552FDC800F097D1 /* DUXBetaRemainingFlightTimeWidget.m in Sources */,
+				B60B8B392552FC7400F097D1 /* DUXBetaMaxAltitudeListItemWidget.m in Sources */,
+				B60B8A1C2552FB2E00F097D1 /* DUXBetaListPanelWidgetStringsModel.swift in Sources */,
+				B60B8A642552FB7500F097D1 /* DUXBetaKeyManager.m in Sources */,
+				B60B8A8C2552FB9000F097D1 /* NSError+DUXBetaCustomKVO.m in Sources */,
+				B60B8AE12552FBDB00F097D1 /* DUXBetaFlatCameraModule.swift in Sources */,
+				B657A38B24E3073B009B10AA /* ObservableInMemoryKeyedStore.swift in Sources */,
+				B657A35F24E3073A009B10AA /* DUXBetaUIImageView.m in Sources */,
+				B60B8B632552FCD000F097D1 /* DUXBetaAlertLayoutController.swift in Sources */,
+				B60B8AE52552FBE700F097D1 /* DUXBetaAlertView+SystemStatus.swift in Sources */,
+				B60B8B552552FCA900F097D1 /* DUXBetaTopBarWidget.swift in Sources */,
+				B60B8C3B2552FDEF00F097D1 /* DUXBetaDistanceHomeWidget.swift in Sources */,
+				B60B8BFB2552FDA700F097D1 /* DUXBetaRadarSectionView.m in Sources */,
+				B60B8B592552FCC400F097D1 /* DUXBetaSlideView.swift in Sources */,
+				B60B8BA52552FD4500F097D1 /* DUXBetaCompassWidget.m in Sources */,
+				B60B8B782552FD2000F097D1 /* UIImage+DUXBetaAssets.m in Sources */,
+				B60B8A912552FB9000F097D1 /* NSObject+DUXBetaCustomKVO.m in Sources */,
+				B60B8BEA2552FD9900F097D1 /* DUXBetaGPSSignalWidget.m in Sources */,
+				B60B8B7B2552FD2000F097D1 /* UIFont+DUXBetaFonts.m in Sources */,
+				B60B8B9F2552FD3B00F097D1 /* DUXBetaBatteryWidgetModel.m in Sources */,
+				B60B8AC32552FBC200F097D1 /* DUXBetaSwiftTestBindingWidget.swift in Sources */,
+				B60B8A3C2552FB3E00F097D1 /* DUXBetaListItemTitleWidget.m in Sources */,
+				B60B8A532552FB5900F097D1 /* DUXBetaBaseWidgetModel.m in Sources */,
+				B60B8A1E2552FB2E00F097D1 /* DUXBetaFreeformPanelWidget.swift in Sources */,
+				B60B8B102552FC3200F097D1 /* DUXBetaMaxFlightDistanceListItemWidget.m in Sources */,
+				B60B8B4B2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidgetModel.m in Sources */,
+				B60B8B7D2552FD2000F097D1 /* NSData+DUXBetaAssets.m in Sources */,
+				B60B8A8A2552FB9000F097D1 /* DUXBetaCustomKVOObserver.m in Sources */,
+				B60B8C342552FDE800F097D1 /* DUXBetaAMSLAltitudeWidget.swift in Sources */,
+				B60B8AF12552FBFD00F097D1 /* DUXBetaEMMCStatusListItemWidgetModel.m in Sources */,
+				B60B8AD42552FBD000F097D1 /* NSDateFormatter+DUXBetaDateFormatter.m in Sources */,
+				B60B8AB92552FBB900F097D1 /* NSObject+DUXBetaSDKBind.m in Sources */,
+				B60B8C012552FDB300F097D1 /* DUXBetaRadarWidget.m in Sources */,
+				B60B8ABB2552FBB900F097D1 /* NSObject+DUXBetaCommand.m in Sources */,
+				B60B8AEA2552FBF100F097D1 /* DUXBetaSystemStatusListWidget.swift in Sources */,
+				B657A38A24E3073B009B10AA /* GlobalPreferences.swift in Sources */,
+				B60B8AFE2552FC1D00F097D1 /* DUXBetaFlightModeListItemWidget.m in Sources */,
+				B60B8B902552FD2F00F097D1 /* DUXBetaAirSenseHtmlViewController.m in Sources */,
+				B60B8A202552FB2E00F097D1 /* DUXBetaPanelWidget.swift in Sources */,
+				B60B8B4E2552FC9000F097D1 /* DUXBetaSSDStatusListItemWidget.m in Sources */,
+				B60B8ADA2552FBD000F097D1 /* UIViewController+DUXBetaHelper.swift in Sources */,
+				B60B8A1D2552FB2E00F097D1 /* DUXBetaListPanelWidgetBaseModel.swift in Sources */,
+				B60B8AD62552FBD000F097D1 /* DJIVideoPreviewer+DUXBetaImageHelper.m in Sources */,
+				B60B8C5F2552FE2B00F097D1 /* DUXBetaVideoSignalWidgetModel.m in Sources */,
+				B60B8A1F2552FB2E00F097D1 /* DUXBetaSmartListModel.swift in Sources */,
+				B60B8B3F2552FC7C00F097D1 /* DUXBetaUnitModeListItemWidgetModel.swift in Sources */,
+				B60B8C352552FDE800F097D1 /* DUXBetaAGLAltitudeWidget.swift in Sources */,
+				B60B8B5A2552FCC400F097D1 /* DUXBetaSlideAlertView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B6A2FBA224E2FC9600B4700A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B6A2FBA324E2FC9600B4700A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B6A2FBA524E2FC9600B4700A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = UXSDKCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.CoreModule.UXSDKCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6A2FBA624E2FC9600B4700A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = UXSDKCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.CoreModule.UXSDKCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6A2FB9624E2FC9600B4700A /* Build configuration list for PBXProject "UXSDKCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6A2FBA224E2FC9600B4700A /* Debug */,
+				B6A2FBA324E2FC9600B4700A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6A2FBA424E2FC9600B4700A /* Build configuration list for PBXNativeTarget "UXSDKCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6A2FBA524E2FC9600B4700A /* Debug */,
+				B6A2FBA624E2FC9600B4700A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B6A2FB9324E2FC9600B4700A /* Project object */;
+}
