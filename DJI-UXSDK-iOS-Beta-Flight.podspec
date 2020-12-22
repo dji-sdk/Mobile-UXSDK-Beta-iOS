@@ -17,4 +17,6 @@ Pod::Spec.new do |s|
   s.source_files = 'UXSDKFlight/**/*.{h,m,swift}'
   s.resource_bundle = { 'UXSDKFlightAssets' => 'UXSDKFlight/**/*.{xcassets,html,otf}' }
   s.dependency 'DJI-UXSDK-iOS-Beta-Core', '~> 0.4'
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
 end

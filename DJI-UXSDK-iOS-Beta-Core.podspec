@@ -18,4 +18,6 @@ Pod::Spec.new do |s|
   s.resource_bundle = { 'UXSDKCoreAssets' => 'UXSDKCore/**/*.{xcassets,html,otf}' }
   s.dependency 'DJI-SDK-iOS', '~> 4.14-trial1'
   s.dependency 'DJIWidget', '~> 1.6.4'
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
 end

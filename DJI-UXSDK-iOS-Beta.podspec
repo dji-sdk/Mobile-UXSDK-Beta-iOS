@@ -19,4 +19,6 @@ Pod::Spec.new do |s|
   s.dependency 'DJI-UXSDK-iOS-Beta-Flight', '0.4'
   s.dependency 'DJI-UXSDK-iOS-Beta-Accessory', '0.4'
   s.dependency 'DJI-UXSDK-iOS-Beta-Map', '0.4'
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
 end
