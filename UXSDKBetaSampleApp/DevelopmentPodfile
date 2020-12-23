@@ -1,0 +1,51 @@
+
+platform :ios, '11.0'
+
+workspace 'UXSDKBetaSampleApp.xcworkspace'
+
+def core_pods
+  use_frameworks!
+  pod 'DJI-SDK-iOS', '~> 4.14-trial1'
+  pod 'DJIWidget', '~> 1.6.4'
+end
+
+target 'DJIUXSDKBeta' do
+  project '../DJIUXSDKBeta/DJIUXSDKBeta.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKAccessory' do
+  project '../UXSDKAccessory/UXSDKAccessory.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKCore' do
+  project '../UXSDKCore/UXSDKCore.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKFlight' do
+  project '../UXSDKFlight/UXSDKFlight.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKMap' do
+  project '../UXSDKMap/UXSDKMap.xcodeproj' 
+  core_pods
+end
+
+
+target 'UXSDKBetaSampleApp' do
+  project './UXSDKBetaSampleApp.xcodeproj' 
+  core_pods
+  pod 'iOS-Color-Picker'
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |configuration|
+      target.build_settings(configuration.name)['ARCHS'] = '$(ARCHS_STANDARD)'
+    end
+  end
+end
