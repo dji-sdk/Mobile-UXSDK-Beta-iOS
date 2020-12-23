@@ -11,3 +11,4 @@ before_install:
 
 script: 
     - xcodebuild clean test -workspace UXSDKBetaSample/UXSDKBetaSample.xcworkspace -scheme UXSDKBetaSample -destination platform\=iOS\ Simulator,OS\=12.2,name\=iPad\ Pro\ \(9.7-inch\) CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
+    - bundle exec danger
