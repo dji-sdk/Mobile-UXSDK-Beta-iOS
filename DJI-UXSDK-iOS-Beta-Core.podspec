@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DJI-UXSDK-iOS-Beta-Core'
-  s.version = '0.4.0'
+  s.version = '0.4.1'
   s.license = 'MIT'
   s.summary = 'Core utilities for DJI iOS UX SDK.'
   s.homepage = 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.cocoapods_version = '>= 1.7.1'
   s.source_files = 'UXSDKCore/**/*.{h,m,swift}'
   s.resource_bundle = { 'UXSDKCoreAssets' => 'UXSDKCore/**/*.{xcassets,html,otf}' }
-  s.dependency 'DJI-SDK-iOS', '~> 4.14-trial1'
+  s.dependency 'DJI-SDK-iOS', '~> 4.14'
   s.dependency 'DJIWidget', '~> 1.6.4'
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }

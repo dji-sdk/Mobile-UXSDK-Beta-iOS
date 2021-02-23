@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DJI-UXSDK-iOS-Beta'
-  s.version = '0.4'
+  s.version = '0.4.1'
   s.license = 'MIT'
   s.summary = 'DJI iOS UX SDK'
   s.homepage = 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS'
@@ -15,10 +15,10 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO', 'DEFINES_MODULE' => 'YES'}
   s.cocoapods_version = '>= 1.7.1'
   s.source_files = 'DJIUXSDKBeta/**/*.{h,m,swift}'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Core', '0.4'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Flight', '0.4'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Accessory', '0.4'
-  s.dependency 'DJI-UXSDK-iOS-Beta-Map', '0.4'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Core', '0.4.1'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Flight', '0.4.1'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Accessory', '0.4.1'
+  s.dependency 'DJI-UXSDK-iOS-Beta-Map', '0.4.1'
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => "arm64 armv7 i386" }
 end
