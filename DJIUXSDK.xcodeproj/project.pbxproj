@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53C5A39122B4135F00430F63 /* DJIUXSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 53DF116322B2D25D0019639A /* DJIUXSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61A2E480B3F4F8545DB9FB3A /* Pods_DJIUXSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65E1F5D25E5C43500E97178 /* Pods_DJIUXSDK.framework */; };
+		9E4302A8D788B03E27796CAC /* Pods_DJIUXSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE2E6B6890F68DDB8A7280C /* Pods_DJIUXSDK.framework */; };
+		B6916A5224FFDE6B0016185A /* UXSDKVisualCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6916A5124FFDE6B0016185A /* UXSDKVisualCamera.framework */; };
+		B6916A5324FFDE6B0016185A /* UXSDKVisualCamera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6916A5124FFDE6B0016185A /* UXSDKVisualCamera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6916A5624FFDE810016185A /* UXSDKAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6916A5524FFDE810016185A /* UXSDKAccessory.framework */; };
+		B6916A5724FFDE810016185A /* UXSDKAccessory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6916A5524FFDE810016185A /* UXSDKAccessory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6A3878E24E44B9C005D8391 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A3878D24E44B9C005D8391 /* UXSDKCore.framework */; };
+		B6D19AC324EB93C400737526 /* UXSDKFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19AC224EB93C400737526 /* UXSDKFlight.framework */; };
+		B6D19ADC24EB964200737526 /* UXSDKTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19ADB24EB964200737526 /* UXSDKTraining.framework */; };
+		B6D19B8E24EB9BFC00737526 /* UXSDKMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19B8D24EB9BFC00737526 /* UXSDKMedia.framework */; };
+		B6D19C9E24ECA7D200737526 /* UXSDKCameraCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19C9D24ECA7D200737526 /* UXSDKCameraCore.framework */; };
+		B6D19E5B24ED97F500737526 /* UXSDKMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19E5A24ED97F500737526 /* UXSDKMap.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B6916A5424FFDE6C0016185A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B6916A5324FFDE6B0016185A /* UXSDKVisualCamera.framework in Embed Frameworks */,
+				B6916A5724FFDE810016185A /* UXSDKAccessory.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2243211424E6327500BD4091 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D118E924AD16090085DD4E /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22DCAFDB24898B590014E767 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24250CC721B208A400761492 /* DJIUXSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DJIUXSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AA4A800245C8B5F007CE5B1 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AA4A803245C8BDA007CE5B1 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5324B8BF22B2FF0200D0A4B6 /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = "../dji-widget-i/DJIWidget/FFmpeg/FFmpeg.framework"; sourceTree = "<group>"; };
+		535D4C30221F3EDF002C513E /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = "../../dji-widget-i/DJIWidget/FFmpeg/FFmpeg.framework"; sourceTree = "<group>"; };
+		537FE55322B72D2000DDC7C3 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		537FE55522B72D2600DDC7C3 /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		537FE55722B72D4700DDC7C3 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		537FE55922B72D5300DDC7C3 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		537FE55B22B72D5700DDC7C3 /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53DF116322B2D25D0019639A /* DJIUXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJIUXSDK.h; sourceTree = "<group>"; };
+		53DF119F22B2D25D0019639A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6451B7721D2729C3D1956212 /* Pods-DJIUXSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJIUXSDK.debug.xcconfig"; path = "Target Support Files/Pods-DJIUXSDK/Pods-DJIUXSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		7DEF5B62114976457E1F048C /* Pods-DJIUXSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DJIUXSDK.release.xcconfig"; path = "Target Support Files/Pods-DJIUXSDK/Pods-DJIUXSDK.release.xcconfig"; sourceTree = "<group>"; };
+		AC60CF3421F7C14F00825022 /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC60CF8B21F7CAAF00825022 /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADE2E6B6890F68DDB8A7280C /* Pods_DJIUXSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DJIUXSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B65E1F5D25E5C43500E97178 /* Pods_DJIUXSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DJIUXSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6916A5124FFDE6B0016185A /* UXSDKVisualCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKVisualCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6916A5524FFDE810016185A /* UXSDKAccessory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKAccessory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A3878D24E44B9C005D8391 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19AC224EB93C400737526 /* UXSDKFlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKFlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19ADB24EB964200737526 /* UXSDKTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19B8D24EB9BFC00737526 /* UXSDKMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19C9D24ECA7D200737526 /* UXSDKCameraCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCameraCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19E5A24ED97F500737526 /* UXSDKMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24250CC421B208A400761492 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D19E5B24ED97F500737526 /* UXSDKMap.framework in Frameworks */,
+				B6D19C9E24ECA7D200737526 /* UXSDKCameraCore.framework in Frameworks */,
+				B6D19B8E24EB9BFC00737526 /* UXSDKMedia.framework in Frameworks */,
+				B6916A5224FFDE6B0016185A /* UXSDKVisualCamera.framework in Frameworks */,
+				B6D19ADC24EB964200737526 /* UXSDKTraining.framework in Frameworks */,
+				B6D19AC324EB93C400737526 /* UXSDKFlight.framework in Frameworks */,
+				B6916A5624FFDE810016185A /* UXSDKAccessory.framework in Frameworks */,
+				B6A3878E24E44B9C005D8391 /* UXSDKCore.framework in Frameworks */,
+				9E4302A8D788B03E27796CAC /* Pods_DJIUXSDK.framework in Frameworks */,
+				61A2E480B3F4F8545DB9FB3A /* Pods_DJIUXSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24250CBD21B208A400761492 = {
+			isa = PBXGroup;
+			children = (
+				5324B8BF22B2FF0200D0A4B6 /* FFmpeg.framework */,
+				53DF115D22B2D25D0019639A /* DJIUXSDK */,
+				24250CC821B208A400761492 /* Products */,
+				246028A721C445060018445D /* Frameworks */,
+				9AB9BB9EDD01BC31E7AFE313 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		24250CC821B208A400761492 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24250CC721B208A400761492 /* DJIUXSDK.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		246028A721C445060018445D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B65E1F5D25E5C43500E97178 /* Pods_DJIUXSDK.framework */,
+				B6916A5524FFDE810016185A /* UXSDKAccessory.framework */,
+				B6916A5124FFDE6B0016185A /* UXSDKVisualCamera.framework */,
+				B6D19E5A24ED97F500737526 /* UXSDKMap.framework */,
+				B6D19C9D24ECA7D200737526 /* UXSDKCameraCore.framework */,
+				B6D19B8D24EB9BFC00737526 /* UXSDKMedia.framework */,
+				B6D19ADB24EB964200737526 /* UXSDKTraining.framework */,
+				B6D19AC224EB93C400737526 /* UXSDKFlight.framework */,
+				2243211424E6327500BD4091 /* UXSDKCore.framework */,
+				B6A3878D24E44B9C005D8391 /* UXSDKCore.framework */,
+				22D118E924AD16090085DD4E /* DJISDK.framework */,
+				22DCAFDB24898B590014E767 /* DJISDK.framework */,
+				3AA4A803245C8BDA007CE5B1 /* DJISDK.framework */,
+				3AA4A800245C8B5F007CE5B1 /* DJISDK.framework */,
+				537FE55B22B72D5700DDC7C3 /* DJIWidget.framework */,
+				537FE55922B72D5300DDC7C3 /* DJISDK.framework */,
+				537FE55722B72D4700DDC7C3 /* DJISDK.framework */,
+				537FE55522B72D2600DDC7C3 /* DJIWidget.framework */,
+				537FE55322B72D2000DDC7C3 /* DJISDK.framework */,
+				535D4C30221F3EDF002C513E /* FFmpeg.framework */,
+				AC60CF8B21F7CAAF00825022 /* DJIWidget.framework */,
+				AC60CF3421F7C14F00825022 /* DJIWidget.framework */,
+				ADE2E6B6890F68DDB8A7280C /* Pods_DJIUXSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53DF115D22B2D25D0019639A /* DJIUXSDK */ = {
+			isa = PBXGroup;
+			children = (
+				53DF116322B2D25D0019639A /* DJIUXSDK.h */,
+				53DF119F22B2D25D0019639A /* Info.plist */,
+			);
+			path = DJIUXSDK;
+			sourceTree = "<group>";
+		};
+		9AB9BB9EDD01BC31E7AFE313 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6451B7721D2729C3D1956212 /* Pods-DJIUXSDK.debug.xcconfig */,
+				7DEF5B62114976457E1F048C /* Pods-DJIUXSDK.release.xcconfig */,
+			);
+			name = Pods;
+			path = UXSDKBetaSampleApp/Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		24250CC221B208A400761492 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53C5A39122B4135F00430F63 /* DJIUXSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		24250CC621B208A400761492 /* DJIUXSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24250CDB21B208A400761492 /* Build configuration list for PBXNativeTarget "DJIUXSDK" */;
+			buildPhases = (
+				8601EE93C709C63D510787A9 /* [CP] Check Pods Manifest.lock */,
+				24250CC221B208A400761492 /* Headers */,
+				24250CC321B208A400761492 /* Sources */,
+				24250CC421B208A400761492 /* Frameworks */,
+				24250CC521B208A400761492 /* Resources */,
+				B6916A5424FFDE6C0016185A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DJIUXSDK;
+			productName = DJIUXSDKOS;
+			productReference = 24250CC721B208A400761492 /* DJIUXSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24250CBE21B208A400761492 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DUX;
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = DJI;
+				TargetAttributes = {
+					24250CC621B208A400761492 = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+					};
+				};
+			};
+			buildConfigurationList = 24250CC121B208A400761492 /* Build configuration list for PBXProject "DJIUXSDK" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 24250CBD21B208A400761492;
+			productRefGroup = 24250CC821B208A400761492 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24250CC621B208A400761492 /* DJIUXSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24250CC521B208A400761492 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8601EE93C709C63D510787A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DJIUXSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24250CC321B208A400761492 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		24250CD921B208A400761492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		24250CDA21B208A400761492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		24250CDC21B208A400761492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6451B7721D2729C3D1956212 /* Pods-DJIUXSDK.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/DJIUXSDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dji.DJIUXSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		24250CDD21B208A400761492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DEF5B62114976457E1F048C /* Pods-DJIUXSDK.release.xcconfig */;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/DJIUXSDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dji.DJIUXSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24250CC121B208A400761492 /* Build configuration list for PBXProject "DJIUXSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24250CD921B208A400761492 /* Debug */,
+				24250CDA21B208A400761492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24250CDB21B208A400761492 /* Build configuration list for PBXNativeTarget "DJIUXSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24250CDC21B208A400761492 /* Debug */,
+				24250CDD21B208A400761492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24250CBE21B208A400761492 /* Project object */;
+}

@@ -40,14 +40,10 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
  */
 @objcMembers open class DUXBetaToolbarPanelWidget : DUXBetaPanelWidget, DUXBetaToolbarPanelSupportProtocol {
     // MARK: - Public Variables
-    /// Is this toolbar using template icons or actual images
-    public var usingTemplates: Bool = false
     /// The icon to represet this toolbar panel in a nesting toolbar situation
     public var toolbarImage: UIImage?
     /// The name to show for this toobar panel in a nesting toolbar situation
     public var toolbarItemName: String?
-    /// The toolbar header views (icon views) for any overriding class to access
-    public var toolHeaderViews: [UIView] = [UIView]()
     /// The standard widgetSizeHint indicating the minimum size for this widget and prefered aspect ratio
     public override var widgetSizeHint : DUXBetaWidgetSizeHint {
         get { return DUXBetaWidgetSizeHint(preferredAspectRatio: (panelSize.width / panelSize.height), minimumWidth: panelSize.width, minimumHeight: panelSize.height)}
@@ -56,13 +52,9 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
     }
 
     // MARK: - Private Variables
-    fileprivate var templateOrWidgetSelected = false
     fileprivate var toolbarEdge: DUXBetaPanelVariant = .top
     fileprivate var panelSize = CGSize(width: kMinPanelWidth, height: kMinPanelHeight)
 
-    // If we init with the PanelItemTemplates, we can not allow adding via the addWidgetArray or addWidget methods
-    // Unless we create a PanelItemTemplate for each one.
-    fileprivate var widgetList : [DUXBetaBaseWidget] = [DUXBetaBaseWidget]()
     fileprivate var panelItemList: [DUXBetaToolbarPanelItemTemplate] = [DUXBetaToolbarPanelItemTemplate]()
     fileprivate var recognizerList : [ToolRecognizer] = [ToolRecognizer]()
     fileprivate var currentSelectedIndex = NSNotFound
@@ -73,8 +65,12 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
     fileprivate var toolbarIconFont: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
     
     fileprivate var scrollView = UIScrollView()
+    fileprivate var toolHeadersStackView = UIStackView()
+
     fileprivate var internalLayoutDone = false
     fileprivate var initialToolbarUIDone = false
+    fileprivate var internalSetupDone = false
+    fileprivate var internalDelayedUIUpdate = false
 
     //MARK: - Instance Methods
     //MARK: DUXBetaToolbarPanelWidget
@@ -121,6 +117,12 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
         
         self.toolbarEdge = configuration.widgetVariant
         self.toolbarDimension = configuration.toolbarDimension
+        if (view != nil) && !internalSetupDone {
+            setupUI()
+            if internalDelayedUIUpdate {
+                updateUI()
+            }
+        }
         return self
     }
 
@@ -131,8 +133,8 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      */
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.translatesAutoresizingMaskIntoConstraints = false
-        if self.isConfigured {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        if isConfigured {
             setupUI()
         }
     }
@@ -144,14 +146,10 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      * - Parameter displayWidgets: unnamed array of widgets subclassed from from DXBaseWidget.
      */
     public override func addWidgetArray(_ displayWidgets: [DUXBetaBaseWidget]) {
-        if templateOrWidgetSelected && usingTemplates {
-            assertionFailure("DUXBetaPanelWidget: panel already using DUXBetaToolbarPanelItemTemplate objects")
+        displayWidgets.forEach {
+            panelItemList.append(DUXBetaToolbarPanelItemTemplate.init(widget: $0, icon: nil, title: nil))
         }
-        usingTemplates = false
-        templateOrWidgetSelected = true // Just blind update instead of lots of state checking
-        
-        widgetList.append(contentsOf: displayWidgets)
-        self.updateUI()
+        updateUI()
     }
 
     /**
@@ -162,14 +160,9 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      * - Parameter panelTools: unnamed array of DUXBetaToolbarPanelItemTemplate items.
      */
     public func addPanelToolsArray(_ panelTools: [DUXBetaToolbarPanelItemTemplate]) {
-        if templateOrWidgetSelected && !usingTemplates {
-            assertionFailure("DUXBetaPanelWidget: panel already using widget objects")
-        }
-        usingTemplates = true
-        templateOrWidgetSelected = true // Just blind update instead of lots of state checking
 
-        self.panelItemList.append(contentsOf: panelTools)
-        self.updateUI()
+        panelItemList.append(contentsOf: panelTools)
+        updateUI()
     }
 
     /**
@@ -178,16 +171,7 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      * - Returns: Interer/NSInteger number of widgets in the toobar panel.
      */
     override public func widgetCount() -> Int {
-        var count = 0
-        if templateOrWidgetSelected {
-            if usingTemplates {
-                count = self.panelItemList.count
-            } else {
-                count = self.widgetList.count
-            }
-        }
-
-        return count
+        return panelItemList.count
     }
 
     /**
@@ -199,19 +183,8 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      *      - atIndex: The index at which to insert the widget in the toolbar array.
      */
     override public func insert(widget: DUXBetaBaseWidget, atIndex: Int) {
-        if usingTemplates {
-            assertionFailure("DUXBetaPanelWidget: inserting DUXBetaBaseWidget in DUXBetaToolbarPanelWidget when expecting DUXBetaToolbarPanelItemTemplate")
-        } else {
-            if (currentSelectedIndex != NSNotFound) && (atIndex <= currentSelectedIndex) {
-                // Inserting before out selected index. We need to massage the selection.
-                currentSelectedIndex += 1
-            }
-            usingTemplates = false
-            templateOrWidgetSelected = true
-            self.widgetList.insert(widget, at: atIndex)
-            insertToolHeaderFromWidget(widget, at: atIndex)
-            self.updateUI()
-        }
+        let widgetTemplate = DUXBetaToolbarPanelItemTemplate.init(widget: widget, icon: nil, title: nil)
+        insert(itemTemplate: widgetTemplate, atIndex: atIndex)
     }
 
     /**
@@ -224,18 +197,14 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      *      - atIndex: The index at which to insert into the toolbar array.
      */
     public func insert(itemTemplate: DUXBetaToolbarPanelItemTemplate, atIndex: Int) {
-        if usingTemplates {
-            if (currentSelectedIndex != NSNotFound) && (atIndex <= currentSelectedIndex) {
-                // Inserting before out selected index. We need to massage the selection.
-                currentSelectedIndex += 1
-            }
-            usingTemplates = true
-            templateOrWidgetSelected = true // Just blind update instead of lots of state checking
-            self.panelItemList.insert(itemTemplate, at: atIndex)
+        if (currentSelectedIndex != NSNotFound) && (atIndex <= currentSelectedIndex) {
+            // Inserting before out selected index. We need to massage the selection.
+            currentSelectedIndex += 1
+        }
+        self.panelItemList.insert(itemTemplate, at: atIndex)
+        if internalSetupDone && !internalDelayedUIUpdate {
             insertToolHeaderFromTemplate(itemTemplate, at: atIndex)
             self.updateUI()
-        } else {
-            assertionFailure("DUXBetaPanelWidget: must override insert(widget, atIndex) for panel classes")
         }
     }
 
@@ -252,7 +221,6 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
             // set to 0 if there is an element 0 left
             if currentSelectedIndex == atIndex {
                 self.removeWidgetFromToolView()
-                self.drawHilighting(selected: false, at: currentSelectedIndex)
                 
                 if currentSelectedIndex == atIndex {
                     currentSelectedIndex = NSNotFound
@@ -262,11 +230,7 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
             }
         }
         removeToolHeader(at: atIndex)
-        if usingTemplates {
-            self.panelItemList.remove(at: atIndex)
-        } else {
-            self.widgetList.remove(at: atIndex)
-        }
+        self.panelItemList.remove(at: atIndex)
         self.updateUI()
     }
 
@@ -275,12 +239,7 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
     */
     public override func removeAllWidgets() {
         self.recognizerList.removeAll()
-        if usingTemplates {
-            self.panelItemList.removeAll()
-        } else {
-            self.widgetList.removeAll()
-        }
-        
+        self.panelItemList.removeAll()
         self.removeAllToolHeaders()
         self.removeWidgetFromToolView()
         currentSelectedIndex = NSNotFound
@@ -289,13 +248,84 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
 
     //MARK: - UI Setup and Update
     func setupUI() {
+        if (internalSetupDone) { return }
+        
         self.view.backgroundColor = .uxsdk_black()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        toolHeadersStackView.translatesAutoresizingMaskIntoConstraints = false
         toolView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(scrollView)
-        self.view.addSubview(toolView)
+        view.addSubview(scrollView)
+        view.addSubview(toolView)
+        internalSetupDone = true
+
+        if toolbarEdge == .top {
+            toolHeadersStackView.axis = .horizontal
+            toolHeadersStackView.distribution = .fill
+            toolHeadersStackView.alignment = .leading
+            
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant:self.titlebarHeight).isActive = true    // This needs to be the panel title if showing.
+            scrollView.heightAnchor.constraint(equalToConstant: toolbarDimension).isActive = true  // This needs to be expandable once the final dimension is set after updateUI is called.
+            
+            
+            // Propbably add some margins in here after seeing how this looks
+            toolView.topAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+            toolView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            toolView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            toolView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            toolHeadersStackView.heightAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
+
+        } else if (toolbarEdge == .left) {
+            toolHeadersStackView.axis = .vertical
+            toolHeadersStackView.distribution = .fill
+            toolHeadersStackView.alignment = .leading
+            
+            scrollView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true    // This needs to be the panel title if showing.
+            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            scrollView.widthAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
+            scrollView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true  // This needs to be expandable once the final dimension is set after updateUI is called.
+            
+            // Propbably add some margins in here after seeing how this looks
+            toolView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true
+            toolView.leadingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
+            toolView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            toolView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            
+            toolHeadersStackView.widthAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
+        } else if (toolbarEdge == .right) {
+            toolHeadersStackView.axis = .vertical
+            toolHeadersStackView.distribution = .fill
+            toolHeadersStackView.alignment = .leading
+
+            scrollView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true    // This needs to be the panel title if showing.
+            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            scrollView.widthAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
+            scrollView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true  // This needs to be expandable once the final dimension is set after updateUI is called.
+            
+            // Propbably add some margins in here after seeing how this looks
+            toolView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true
+            toolView.trailingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+            toolView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            toolView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+ 
+            toolHeadersStackView.widthAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
+}
+
+        scrollView.addSubview(toolHeadersStackView)
+        NSLayoutConstraint.activate([
+            toolHeadersStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            toolHeadersStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            toolHeadersStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            toolHeadersStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+        ])
         
+        layoutInternals()
+        
+        if internalDelayedUIUpdate {
+            updateUI()
+        }
     }
     /**
      * The method layoutInternals is a lazy instantiation of the scrollbar location. It should normally be called only once,
@@ -313,78 +343,56 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
         titlebar.leadingAnchor.constraint(equalTo:self.view.leadingAnchor).isActive = true
         titlebar.trailingAnchor.constraint(equalTo:self.view.trailingAnchor).isActive = true
         titlebar.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-
-        // Setup constraints for the scrollView and the toolView so they are positioned correctly
-        if toolbarEdge == .top {
-            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-            scrollView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true    // This needs to be the panel title if showing.
-            scrollView.heightAnchor.constraint(equalToConstant: toolbarDimension).isActive = true  // This needs to be expandable once the final dimension is set after updateUI is called.
-            
-            // Propbably add some margins in here after seeing how this looks
-            toolView.topAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-            toolView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            toolView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-            toolView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-            
-        } else if (toolbarEdge == .left) {
-            scrollView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true    // This needs to be the panel title if showing.
-            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            scrollView.widthAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true  // This needs to be expandable once the final dimension is set after updateUI is called.
-            
-            // Propbably add some margins in here after seeing how this looks
-            toolView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true
-            toolView.leadingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-            toolView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-            toolView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-            
-        } else if (toolbarEdge == .right) {
-            scrollView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true    // This needs to be the panel title if showing.
-            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-            scrollView.widthAnchor.constraint(equalToConstant: toolbarDimension).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true  // This needs to be expandable once the final dimension is set after updateUI is called.
-            
-            // Propbably add some margins in here after seeing how this looks
-            toolView.topAnchor.constraint(equalTo:self.view.topAnchor, constant:self.titlebarHeight).isActive = true
-            toolView.trailingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
-            toolView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            toolView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        }
-
+        
         internalLayoutDone = true
     }
         
     func removeToolHeader(at: Int) {
         recognizerList.remove(at: at)
-        toolHeaderViews.remove(at: at)
+        let removeView = toolHeadersStackView.arrangedSubviews[at]
+        toolHeadersStackView.removeArrangedSubview(removeView)
     }
     
     func removeAllToolHeaders() {
         recognizerList.removeAll()
-        toolHeaderViews.removeAll()
+        let subViews = toolHeadersStackView.arrangedSubviews
+        subViews.forEach {
+            toolHeadersStackView.removeArrangedSubview($0)
+        }
     }
     
     func insertToolHeaderFromTemplate(_ toolItemTemplate: DUXBetaToolbarPanelItemTemplate, at: Int) {
-        let toolIcon = self.constructToolIcon(image: toolItemTemplate.barIcon, title: toolItemTemplate.barName)
-        toolHeaderViews.insert(toolIcon, at: at)
+        let toolIcon = DUXBetaToolHeaderView(image: toolItemTemplate.barIcon, title: toolItemTemplate.barName, labelFont: nil, height: toolbarDimension)
+        toolIcon.highlightStyle = toolItemTemplate.highlightStyle
+        toolIcon.highlightThickness = toolItemTemplate.highlightThickness
+        toolIcon.highlightColor = panelSelectionColor   // This comes from the panel configuration, not the tool template
+        
+        toolHeadersStackView.insertArrangedSubview(toolIcon, at: at)
         recognizerList.insert(ToolRecognizer(toolIconView: toolIcon, self), at: at)
-    }
-    
-    func insertToolHeaderFromWidget(_ widget: DUXBetaBaseWidget, at: Int) {
-        if let x = widget as? DUXBetaToolbarPanelSupportProtocol {
-            let toolIcon = self.constructIconFrom(widget: x)
-            toolHeaderViews.insert(toolIcon, at: at)
-            recognizerList.insert(ToolRecognizer(toolIconView: toolIcon, self), at: at)
+
+        switch self.toolbarEdge {
+            case .top:
+                toolIcon.heightAnchor.constraint(equalTo:toolHeadersStackView.heightAnchor).isActive = true
+                toolIcon.widthAnchor.constraint(equalTo:toolHeadersStackView.heightAnchor).isActive = true
+
+            case .left, .right:
+                toolIcon.heightAnchor.constraint(equalTo:toolHeadersStackView.widthAnchor).isActive = true
+                toolIcon.widthAnchor.constraint(equalTo:toolHeadersStackView.widthAnchor).isActive = true
+
+            default:
+                assertionFailure("This class does not support this bar variant /(self.variant)")
         }
-    }
+}
     
     /**
      * The updateUI method is the standard mechanism for redrawing the UI when something in the panel changes.
     */
     @objc public override func updateUI() {
-
-        self.layoutInternals()
+        if internalSetupDone == false {
+            internalDelayedUIUpdate = true
+            return
+        }
+        internalDelayedUIUpdate = false
         
         var maxWidth : CGFloat = 0.0
         var maxHeight : CGFloat = 0.0
@@ -393,63 +401,28 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
             // Part 1. Create all the tooblar items on initial setup. This will use either
             // the PanelItemTemplates or the actual widgets. This means an array should
             // be used for initial setup or we won't guess the display size right for widgets
-            if usingTemplates {
-                for toolItemTemplate in panelItemList {
-                    insertToolHeaderFromTemplate(toolItemTemplate, at: toolHeaderViews.count)
-                }
-            } else {
-                    for aWidget in widgetList {
-                        insertToolHeaderFromWidget(aWidget, at: toolHeaderViews.count)
-                }
+            for toolItemTemplate in panelItemList {
+                insertToolHeaderFromTemplate(toolItemTemplate, at: toolHeadersStackView.arrangedSubviews.count)
             }
             initialToolbarUIDone = true
         }
-        
-        if !usingTemplates {
-            // Only do this if using real widgets for the top. Otherwise we depend on the default panel size.
-            // This will need to get adjusted later
-            for aWidget in widgetList {
-                // Don't check for isHidden on the widget view. We assume if you are
-                // putting a widget in here you should be able to see it.
-                let sizeHint = aWidget.widgetSizeHint
-                if maxWidth < sizeHint.minimumWidth { maxWidth = sizeHint.minimumWidth }
-                if maxHeight < sizeHint.minimumHeight { maxHeight = sizeHint.minimumHeight }
-            }
-        }
-        
-        // Part 2, layout the created toolbar items now
-        for subView in scrollView.subviews {
-            // This works only because subviews returns a copy of the actual subview list
-            // on iOS, therefore it isn't mutating the actual subviews list.
-            subView.removeFromSuperview()
-        }
-        
-        for (index, iconView) in toolHeaderViews.enumerated() {
-            scrollView.addSubview(iconView)
-            if self.toolbarEdge == .top {
-                iconView.heightAnchor.constraint(equalTo:scrollView.heightAnchor).isActive = true
-                iconView.widthAnchor.constraint(equalTo:iconView.heightAnchor, multiplier:1.0).isActive = true
+
+        for (index, iconView) in toolHeadersStackView.arrangedSubviews.enumerated() {
+            if let iv = iconView as? DUXBetaToolHeaderView {
+                iv.selected = (index == currentSelectedIndex)
             } else {
-                iconView.widthAnchor.constraint(equalTo:scrollView.widthAnchor).isActive = true
-                iconView.heightAnchor.constraint(equalTo:iconView.widthAnchor, multiplier:1.0).isActive = true
+                // This should never happen
+                assert(false, "Non-DUXBetaToolHeaderView in toolbar headers")
             }
-            self.drawHilighting(selected: (currentSelectedIndex == index), at: index)
         }
-        
         switch self.toolbarEdge {
         case .top:
-            let contentSize = CGSize(width:self.addHorizontalToolConstraints(), height:self.toolbarDimension)
-            self.scrollView.contentSize = contentSize
-            
             panelSize.height = maxHeight + toolbarDimension + self.titlebarHeight
             panelSize.height = max(panelSize.height, kMinPanelHeight)
             panelSize.width = max(maxWidth, kMinPanelWidth)
         break
             
         case .left, .right:
-            let contentSize = CGSize(width:self.toolbarDimension, height:self.addVerticalToolConstraints())
-            self.scrollView.contentSize = contentSize
-            
             panelSize.width = max(maxWidth + toolbarDimension, kMinPanelWidth)
             panelSize.height = max(maxHeight + self.titlebarHeight, kMinPanelHeight)
         break
@@ -457,120 +430,7 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
             assertionFailure("This class does not support this bar variant /(self.variant)")
         }
 
-        self.view.heightAnchor.constraint(equalToConstant: panelSize.height).isActive = true
-        self.view.widthAnchor.constraint(equalTo: self.view.heightAnchor,  multiplier: panelSize.width/panelSize.height, constant: 0.0).isActive = true
-
-        self.view.layoutIfNeeded()
-        
-    }
-
-    //MARK: - Toolbar icon construction
-    func constructToolIcon(image: UIImage?, title: String?) -> UIView {
-        let toolIconView = UIView()
-        toolIconView.translatesAutoresizingMaskIntoConstraints = false
-        toolIconView.backgroundColor = .uxsdk_clear()
-
-        // 3 cases. image, title, image + title
-        if let image = image, let title = title {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = title
-            label.font = toolbarIconFont
-            label.textColor = .uxsdk_white()
-            label.textAlignment = .center
-
-            toolIconView.addSubview(label)
-            label.adjustsFontSizeToFitWidth = true
-            label.minimumScaleFactor = 0.5
-            label.sizeToFit()
-            let imageView = UIImageView(image: image)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            toolIconView.addSubview(imageView)
-            
-            self.removeConstraintsOn(view:imageView)
-            imageView.heightAnchor.constraint(equalTo:toolIconView.heightAnchor, multiplier: 0.70 ).isActive = true
-            imageView.widthAnchor.constraint(equalTo:toolIconView.widthAnchor, multiplier: 0.70 ).isActive = true
-            imageView.centerXAnchor.constraint(equalTo: toolIconView.centerXAnchor).isActive = true
-            
-            label.centerXAnchor.constraint(equalTo: toolIconView.centerXAnchor).isActive = true
-            label.bottomAnchor.constraint(equalTo: toolIconView.bottomAnchor, constant:-4.0).isActive = true
-
-        } else if let image = image {
-            let imageView = UIImageView(image: image)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            toolIconView.addSubview(imageView)
-            
-            self.removeConstraintsOn(view:imageView)
-            imageView.heightAnchor.constraint(equalTo:toolIconView.heightAnchor, multiplier: 0.70 ).isActive = true
-            imageView.widthAnchor.constraint(equalTo:toolIconView.widthAnchor, multiplier: 0.70 ).isActive = true
-
-            imageView.centerXAnchor.constraint(equalTo: toolIconView.centerXAnchor).isActive = true
-        } else if let title = title {
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = title
-            label.font = toolbarIconFont
-            label.textColor = .uxsdk_white()
-            label.textAlignment = .center
-               
-            toolIconView.addSubview(label)
-            label.adjustsFontSizeToFitWidth = true
-            label.minimumScaleFactor = 0.5
-            label.sizeToFit()
-            label.centerXAnchor.constraint(equalTo: toolIconView.centerXAnchor).isActive = true
-            label.centerYAnchor.constraint(equalTo: toolIconView.centerYAnchor, constant: 4.0).isActive = true
-            label.widthAnchor.constraint(equalToConstant: self.toolbarDimension).isActive = true
-
-        }
-        return toolIconView
-    }
-    
-    func constructIconFrom<T: AnyObject>(widget: T) -> UIView where T: DUXBetaToolbarPanelSupportProtocol {
-        let image = widget.toolbarItemIcon?()
-        let title = widget.toolbarItemTitle?()
-        
-        return constructToolIcon(image: image, title: title)
-    }
-
-    func addHorizontalToolConstraints() -> CGFloat {
-        var lastItem: UIView?
-        var totalWidth: CGFloat = 0.0
-        
-        for toolItem in toolHeaderViews {
-            toolItem.topAnchor.constraint(equalTo:scrollView.topAnchor).isActive = true
-            if let localLastItem = lastItem {
-                toolItem.leadingAnchor.constraint(equalTo:localLastItem.trailingAnchor).isActive = true
-                lastItem = toolItem
-                totalWidth += toolItem.bounds.size.width
-            } else {
-                toolItem.leadingAnchor.constraint(equalTo:scrollView.leadingAnchor).isActive = true
-                lastItem = toolItem
-                totalWidth += toolItem.bounds.size.width
-            }
-        }
-        
-        return totalWidth
-    }
-    
-    func addVerticalToolConstraints() -> CGFloat {
-        var lastItem: UIView?
-        var totalHeight: CGFloat = 0.0
-        
-        for toolItem in toolHeaderViews {
-            toolItem.leadingAnchor.constraint(equalTo:scrollView.leadingAnchor).isActive = true
-            
-            if let localLastItem = lastItem {
-                toolItem.topAnchor.constraint(equalTo:localLastItem.bottomAnchor).isActive = true
-                lastItem = toolItem
-                totalHeight += toolItem.bounds.size.height
-            } else {
-                toolItem.topAnchor.constraint(equalTo:scrollView.topAnchor).isActive = true
-                lastItem = toolItem
-                totalHeight += toolItem.bounds.size.height
-            }
-        }
-        
-        return totalHeight
+        view.layoutIfNeeded()
     }
 
     //MARK: - Widget selection
@@ -592,22 +452,14 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
      *
      */
    public func widgetIndex(forWidget: DUXBetaBaseWidget) -> Int {
-        for (index, element) in widgetList.enumerated() {
-            if element == forWidget {
+        for (index, element) in panelItemList.enumerated() {
+            if element.matchesWidget(forWidget) {
                 return index
             }
         }
         return NSNotFound
     }
     
-    func drawHilighting(selected: Bool, at: Int) {
-        if selected {
-            toolHeaderViews[at].backgroundColor = self.panelSelectionColor
-        } else {
-            toolHeaderViews[at].backgroundColor = .uxsdk_clear()
-        }
-    }
-
     /**
      * The selectTool method selects the tool specified in the tool array form the index passed in. If the panel is displaying
      * template based widgets, the widget will be created if it doesn't exist already.
@@ -623,50 +475,49 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
             return
         }
         
-        let usingTemplates = (self.panelItemList.count > 0)
-        
         // Remove the currently shown tool from the toolView.
         let subViewArray: [UIView] = self.toolView.subviews
         for aView in subViewArray {
             aView.removeFromSuperview()
         }
         
-        // Now set the background color for the selected tool in the toolbar
-        for headerIndex in 0..<toolHeaderViews.count {
-            drawHilighting(selected: (index == headerIndex), at: headerIndex)
-        }
-        
-        if usingTemplates {
-            let template = self.panelItemList[index]
-            if let widget = template.widget {
-                // All good, don't need to create it
-                self.insertIntoToolView(widget:widget)
-
+        // Now set the highlighted for the propper tool and disable it for others
+        for (toolHeaderIndex, iconView) in toolHeadersStackView.arrangedSubviews.enumerated() {
+            if let iv = iconView as? DUXBetaToolHeaderView {
+                iv.selected = (toolHeaderIndex == index)
             } else {
-                if let klassname = template.klassname {
-                    let aClass = NSClassFromString(klassname) as! DUXBetaBaseWidget.Type
-                    let widget = aClass.init()
-                        template.widget = widget
-                        self.insertIntoToolView(widget:widget)
-                }
-            }
- 
-            // This will clean up the old widget if we don't want to keep it alive. This MUST
-            // be done before we reset the currentSelectedIndex or we need to keep a copy of the index around
-            if currentSelectedIndex != NSNotFound {
-                let oldTemplate = self.panelItemList[currentSelectedIndex]
-                if oldTemplate.keepWidgetAlive == false {
-                    oldTemplate.widget = nil
-                }
-            }
-
-        } else {
-            if let _ = widgetList[index].view {
-                self.insertIntoToolView(widget:widgetList[index])
+                // This should never happen
+                assert(false, "Non-DUXBetaToolHeaderView in toolbar headers")
             }
         }
-        
+
+        let template = self.panelItemList[index]
+        if let widget = template.widget() {
+            self.insertIntoToolView(widget:widget)
+
+        }
+
+        // This will clean up the old widget if we don't want to keep it alive. This MUST
+        // be done before we reset the currentSelectedIndex or we need to keep a copy of the index around
+        if currentSelectedIndex != NSNotFound {
+            let oldTemplate = self.panelItemList[currentSelectedIndex]
+            oldTemplate.releaseWidgetIfNeeded()
+        }
+
         currentSelectedIndex = index
+    }
+    
+    /**
+     * The utility method selectToolFromHeader takes the header from the gesture recognizer which was tapped and selects the tool
+     * specified by the tool header item
+     */
+    public func selectToolFromHeader(headerView: UIView) {
+        for (index, toolHeaderView) in toolHeadersStackView.arrangedSubviews.enumerated() {
+            if toolHeaderView == headerView {
+                selectTool(index: index)
+                break
+            }
+        }
     }
     
     func removeWidgetFromToolView() {
@@ -704,6 +555,8 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
         let widthRatio: CGFloat = widgetView.bounds.size.width / toolView.bounds.size.width
         let heightRatio: CGFloat = widgetView.bounds.size.height / toolView.bounds.size.height
 
+        // TODO: This code still needs comprehensive testing and a complete test plan. Develomental testing appears to show
+        // it working correctly. This probably could probably be refactored into a smaller routines
         if (widthRatio <= 1.0) && (heightRatio <= 1.0) {
             // widget is entirely smaller than the tool area. Already centered but height and width need to be set because
             // we just added it to the subview. It may have been added before and removed, so it's proportions are correct,
@@ -734,24 +587,6 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
         }
         
     }
-        
-
-    //MARK: KVO support for hiding/showing of toolbar items and/or widgets
-    // DUXBetaToobarPanelWidget does nto current support hiding/showing tools. There are technical questions about
-    // what is shown/hidden to control this using KVO. Do we need to have the template objects be shown/hidden?
-    /*
-    @objc public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let change = change, let keyPath = keyPath {
-            if (keyPath == "hidden") && (change[.newKey] != nil) {
-                // Now figure out if this is a toolbar item of an actual widget item which is live and possibly shown
-                if let testView = object as? UIView {
-                    
-                    self.updateUI()
-                }
-            }
-        }
-    }
-    */
 
     //MARK: Support for including toolbar panels within toolbar panels
     
@@ -765,3 +600,187 @@ fileprivate let kMinPanelHeight: CGFloat = 144.0
 
 }
 
+/**
+ * Class DUXBetaToolHeaderView is a UIView class which is used for the ToolbarPanel icons and names and selection highlighting.
+ */
+@objcMembers open class DUXBetaToolHeaderView : UIView {
+    var highlightStyle:ToolHeaderHighlightStyle = .underline {
+        didSet {
+            NSLayoutConstraint.deactivate(hilightingView.constraints)
+        }
+    }
+    var highlightColor : UIColor = .uxsdk_selectedBlue()
+    var highlightThickness : CGFloat = 3.0
+    var displayLabel: UILabel?
+    var displayIcon: UIImageView?
+    var selected: Bool = false {
+        didSet {
+            drawHilighting()
+        }
+    }
+    fileprivate var contentsView: UIView = UIView(frame:CGRect(x: 0, y: 0, width: 10, height: 10))
+    fileprivate var hilightingView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+
+    /**
+     * The init method takes the image and title. Both are optional, but at least one of the two must be supplied.
+     * The title font is set with the labelFont optional parameter. If labelFont is nil, the defult of systemFont 14.0 is used.
+     * Width or height is required. Used Height for top oriented toolbars, and width for side toolbars.
+     *
+     * - Parameter image: A UIImage to use. Optional
+     * - Parameter title: A String to use. Optional
+     * - Parameter labelFont: The UIFont used to draw the title. Optional
+     * - Parameter width: The width to use for this toolbar icon header. May be 0 if height is set.
+     * - Parameter height: The height to use for this toolbar icon header. May be 0 if width is set.
+     */
+    public init(image: UIImage?, title: String?, labelFont: UIFont?, width: CGFloat = 0, height: CGFloat = 0) {
+        super.init(frame:CGRect(x: 0, y: 0, width: 10, height: 10))
+        backgroundColor = .uxsdk_clear()
+        contentsView.translatesAutoresizingMaskIntoConstraints = false
+        hilightingView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(contentsView)
+        self.addSubview(hilightingView)
+        constructToolIcon(image: image, title: title, labelFont: labelFont, width: width, height: height)
+    }
+    
+    /**
+     * The required initWithCoder method for the class. Don't use.
+     */
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func constructToolIcon(image: UIImage?, title: String?, labelFont: UIFont?, width: CGFloat = 0, height: CGFloat = 0) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .uxsdk_clear()
+        
+        // 3 cases. image, title, image + title
+        if let title = title {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = title
+            label.numberOfLines = 1
+            label.font = labelFont ?? UIFont.systemFont(ofSize: 14.0)
+            label.textColor = .uxsdk_white()
+            label.textAlignment = .center
+            label.adjustsFontSizeToFitWidth = true
+            label.minimumScaleFactor = 0.5
+            
+            displayLabel = label
+            contentsView.addSubview(label)
+            label.sizeToFit()
+        }
+        if let image = image {
+            let imageView = UIImageView(image: image)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            displayIcon = imageView
+            contentsView.addSubview(imageView)
+        }
+        
+        // With an image title, and underline, the image should be about 42% of the height/width
+        // Title is about 20%
+        // Line is 3 points thick
+        // 72 point high image is 31.68, label is 14, gap is 6% = 4.32pt 50 points. Line is 3, line inset is 4.
+        if let imageView = displayIcon, let label = displayLabel {
+            
+            let imageRatio: CGFloat = imageView.bounds.size.width / imageView.bounds.size.height
+            imageView.heightAnchor.constraint(equalTo:self.heightAnchor, multiplier: 0.42).isActive = true
+            imageView.widthAnchor.constraint(equalTo:imageView.heightAnchor, multiplier: imageRatio).isActive = true
+            imageView.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor).isActive = true
+            imageView.topAnchor.constraint(equalTo:contentsView.topAnchor).isActive = true
+            
+            label.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant:4.0).isActive = true
+            label.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor).isActive = true
+            
+        } else if let imageView = displayIcon {
+            
+            let imageRatio: CGFloat = imageView.bounds.size.width / imageView.bounds.size.height
+            imageView.heightAnchor.constraint(equalTo:self.heightAnchor, multiplier: 0.70 ).isActive = true
+            imageView.widthAnchor.constraint(equalTo:imageView.heightAnchor, multiplier: imageRatio).isActive = true
+            
+            imageView.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor).isActive = true
+            imageView.centerYAnchor.constraint(equalTo: contentsView.centerYAnchor).isActive = true
+        } else if let label = displayLabel {
+            
+            label.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor).isActive = true
+            label.centerYAnchor.constraint(equalTo: contentsView.centerYAnchor).isActive = true
+            label.widthAnchor.constraint(equalTo: contentsView.widthAnchor, constant: 12*8.0).isActive = true
+            
+        }
+        
+        if (width == 0.0) && (height > 0.0) {
+            let ratio: CGFloat = self.bounds.size.width / self.bounds.size.height;
+            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+            self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: ratio, constant: 0.0).isActive = true
+
+        } else if (width > 0.0) && (height == 0.0) {
+            let ratio: CGFloat = self.bounds.size.height / self.bounds.size.width;
+            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+            self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: ratio, constant: 0.0).isActive = true
+        } else {
+            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+        
+        contentsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        contentsView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+
+        
+    }
+
+    open func drawHilighting() {
+        switch highlightStyle {
+            case .fill:
+                if selected {
+                    if hilightingView.constraints.count == 0 {
+                        // Not setup yet
+                        NSLayoutConstraint.activate([
+                            hilightingView.topAnchor.constraint(equalTo:self.topAnchor),
+                            hilightingView.leadingAnchor.constraint(equalTo:self.leadingAnchor),
+                            hilightingView.bottomAnchor.constraint(equalTo:self.bottomAnchor),
+                            hilightingView.trailingAnchor.constraint(equalTo:self.trailingAnchor)
+                        ])
+                        sendSubviewToBack(hilightingView)
+                    }
+                    self.hilightingView.backgroundColor = highlightColor
+                } else {
+                    self.hilightingView.backgroundColor = .uxsdk_clear()
+                }
+
+            case .underline:
+                if (selected) {
+                    if hilightingView.constraints.count == 0 {
+                        // Not setup yet
+                        NSLayoutConstraint.activate([
+                            hilightingView.bottomAnchor.constraint(equalTo:self.bottomAnchor, constant: -4.0),
+                            hilightingView.topAnchor.constraint(equalTo:hilightingView.bottomAnchor, constant: -4.0),
+                            hilightingView.leadingAnchor.constraint(equalTo:self.leadingAnchor, constant: highlightThickness),
+                            hilightingView.trailingAnchor.constraint(equalTo:self.trailingAnchor, constant: -4.0)
+                        ])
+                        sendSubviewToBack(hilightingView)
+                    }
+                    self.hilightingView.backgroundColor = highlightColor
+                } else {
+                    self.hilightingView.backgroundColor = .uxsdk_clear()
+                }
+
+            case .edges:
+                if (selected) {
+                    if hilightingView.constraints.count == 0 {
+                        // Not setup yet
+                        NSLayoutConstraint.activate([
+                            hilightingView.topAnchor.constraint(equalTo:self.topAnchor),
+                            hilightingView.leadingAnchor.constraint(equalTo:self.leadingAnchor),
+                            hilightingView.bottomAnchor.constraint(equalTo:self.bottomAnchor),
+                            hilightingView.trailingAnchor.constraint(equalTo:self.trailingAnchor)
+                        ])
+                        hilightingView.layer.borderWidth = highlightThickness
+                        sendSubviewToBack(hilightingView)
+                    }
+                    hilightingView.layer.borderColor = highlightColor.cgColor
+                } else {
+                    hilightingView.layer.borderColor = UIColor.uxsdk_clear().cgColor
+                }
+        }
+    }
+}

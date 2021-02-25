@@ -67,6 +67,7 @@ FOUNDATION_EXPORT const unsigned char UXSDKCoreVersionString[];
 #import <UXSDKCore/NSBundle+DUXBetaAssets.h>
 #import <UXSDKCore/NSData+DUXBetaAssets.h>
 #import <UXSDKCore/DJIVideoPreviewer+DUXBetaImageHelper.h>
+#import <UXSDKCore/DUXBetaLocationUtil.h>
 
 /*********************************************************************************/
 // Extensions

@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@
 //  
 
 #import "DUXBetaCompassWidget.h"
-#import "DUXBetaCompassLayer.h"
 #import "UIImage+DUXBetaAssets.h"
 #import "UIColor+DUXBetaColors.h"
 
@@ -43,25 +42,30 @@
     if (self) {
         self.compassLayer = [DUXBetaCompassLayer new];
         
-        self.compassBackgroundColor = [UIColor uxsdk_white5];
-        self.horizonColor = [UIColor uxsdk_compassWidgetHorizonColor];
-        self.borderColor = [UIColor uxsdk_darkGrayColor];
-        self.strokeColor = [UIColor uxsdk_whiteAlpha20];
+        self.compassLayer.compassBackgroundColor = [UIColor uxsdk_white5];
+        self.compassLayer.horizonColor = [UIColor uxsdk_compassWidgetHorizonColor];
+        self.compassLayer.boundsColor = [UIColor uxsdk_darkGrayColor];
+        self.compassLayer.lineColor = [UIColor uxsdk_whiteAlpha20];
+        self.compassLayer.yawColor = [UIColor uxsdk_selectedBlueColor];
+        self.compassLayer.invalidColor = [UIColor uxsdk_errorDangerColor];
+        self.compassLayer.blinkColor = [UIColor uxsdk_errorDangerColorAlpha30];
         
-        self.designSize = CGSizeMake(87, 87);
-        self.innerPadding = 6;
-        self.maskPaddingSize = 15;
-        self.notchSize = CGSizeMake(8, 6);
-        self.aircraftSize = CGSizeMake(15, 20);
-        self.visionConeSize = CGSizeMake(35, 50);
-        self.northIconSize = CGSizeMake(10, 10);
-        self.homeIconSize = CGSizeMake(15, 15);
+        self.compassLayer.designSize = CGSizeMake(87, 87);
+        self.compassLayer.innerMargin = 6;
+        self.compassLayer.maskMargin = 15;
+        self.compassLayer.notchSize = CGSizeMake(7, 7);
+        self.compassLayer.aircraftSize = CGSizeMake(14, 22);
+        self.compassLayer.gimbalYawSize = CGSizeMake(54, 65);
+        self.compassLayer.northIconSize = CGSizeMake(10, 10);
+        self.compassLayer.homeIconSize = CGSizeMake(12, 12);
+        self.compassLayer.rcIconSize = CGSizeMake(10, 10);
         
-        self.notchImage = [UIImage duxbeta_imageWithAssetNamed:@"Notch"];
-        self.aircraftImage = [UIImage duxbeta_imageWithAssetNamed:@"AircraftSymbol"];
-        self.visionConeImage = [UIImage duxbeta_imageWithAssetNamed:@"VisionCone"];
-        self.northIconImage = [UIImage duxbeta_imageWithAssetNamed:@"North"];
-        self.homeIconImage = [UIImage duxbeta_imageWithAssetNamed:@"Home"];
+        self.compassLayer.notchImage = [UIImage duxbeta_imageWithAssetNamed:@"Notch"];
+        self.compassLayer.aircraftImage = [UIImage duxbeta_imageWithAssetNamed:@"AircraftSymbol"];
+        self.compassLayer.gimbalYawImage = [UIImage duxbeta_imageWithAssetNamed:@"GimbalYaw"];
+        self.compassLayer.northImage = [UIImage duxbeta_imageWithAssetNamed:@"North"];
+        self.compassLayer.homeImage = [UIImage duxbeta_imageWithAssetNamed:@"Home"];
+        self.compassLayer.rcImage = [UIImage duxbeta_imageWithAssetNamed:@"RCLocation"];
         
         [self.view.layer addSublayer: self.compassLayer];
         self.view.clipsToBounds = NO;
@@ -81,15 +85,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    BindRKVOModel(self.widgetModel, @selector(updateUI), aircraftRoll,
-                  aircraftPitch,
-                  aircraftYaw,
-                  gimbalYawRelativeToAircraft,
+    BindRKVOModel(self.widgetModel, @selector(updateIsConnected), isProductConnected);
+    BindRKVOModel(self.widgetModel.compassState, @selector(updateUI),
+                  aircraftState.angle,
+                  aircraftState.distance,
+                  rcLocationState.angle,
+                  rcLocationState.distance,
+                  homeLocationState.angle,
+                  homeLocationState.distance,
+                  aircraftAttitude.pitch,
+                  aircraftAttitude.roll,
+                  aircraftAttitude.yaw,
+                  gimbalHeading,
                   deviceHeading,
-                  droneAngle,
-                  droneDistance,
-                  homeAngle,
-                  homeDistance);
+                  centerType);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -104,6 +113,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
     CGFloat min = MIN(self.view.frame.size.width, self.view.frame.size.height);
     if (self.view.frame.size.width < self.view.frame.size.height) {
         self.compassLayer.frame = CGRectMake(0, self.view.frame.size.height / 2 - min / 2, min, min);
@@ -113,189 +123,34 @@
     [self updateUI];
 }
 
-- (void)updateUI {
-    [self.compassLayer updateAircraftPitch:self.widgetModel.aircraftPitch];
-    [self.compassLayer updateAircraftRoll:self.widgetModel.aircraftRoll];
-    [self.compassLayer updateAircraftYaw:self.widgetModel.aircraftYaw];
-    
-    if (self.widgetModel.gimbalYawRelativeToAircraft != 0) {
-        [self.compassLayer updateGimbalYaw:self.widgetModel.gimbalYawRelativeToAircraft];
-    }
+- (void)updateIsConnected {
+    [[DUXBetaStateChangeBroadcaster instance] send:[CompassModelState productConnected:self.widgetModel.isProductConnected]];
+}
 
-    [self.compassLayer updateDeviceHeading:self.widgetModel.deviceHeading];
+- (void)updateUI {
+    [[DUXBetaStateChangeBroadcaster instance] send:[CompassModelState compassStateUpdated:self.widgetModel.compassState]];
     
-    double droneDistanceInMeters = [self.widgetModel.droneDistance measurementByConvertingToUnit: NSUnitLength.meters].doubleValue;
-    double homeDistanceInMeters = [self.widgetModel.homeDistance measurementByConvertingToUnit: NSUnitLength.meters].doubleValue;
-    
-    [self.compassLayer updateAircraftLocationUsingAngle:self.widgetModel.droneAngle andDistance:droneDistanceInMeters];
-    [self.compassLayer updateHomeLocationUsingAngle:self.widgetModel.homeAngle andDistance:homeDistanceInMeters];
+    [self.compassLayer updateCompassState:self.widgetModel.compassState];
     
     [self.view setNeedsDisplay];
 }
 
 - (DUXBetaWidgetSizeHint)widgetSizeHint {
-    DUXBetaWidgetSizeHint hint = {self.designSize.width / self.designSize.height, self.designSize.width, self.designSize.height};
+    CGSize designSize = self.compassLayer.designSize;
+    DUXBetaWidgetSizeHint hint = {designSize.width / designSize.height, designSize.width, designSize.height};
     return hint;
 }
 
-/*
- Custom Setters and Getters for Colors
- */
+@end
 
-- (void)setCompassBackgroundColor:(UIColor *)compassBackgroundColor {
-    self.compassLayer.compassBackgroundColor = compassBackgroundColor;
+@implementation CompassModelState
+
++ (instancetype)productConnected:(BOOL)isConnected {
+    return [[CompassModelState alloc] initWithKey:@"productConnected" number:@(isConnected)];
 }
 
-- (UIColor *)compassBackgroundColor {
-    return self.compassLayer.compassBackgroundColor;
-}
-
-- (void)setStrokeColor:(UIColor *)strokeColor {
-    self.compassLayer.compassStrokeColor = strokeColor;
-}
-
-- (UIColor *)strokeColor {
-    return self.compassLayer.compassStrokeColor;
-}
-
-- (void)setBorderColor:(UIColor *)borderColor {
-    self.compassLayer.compassBorderColor = borderColor;
-}
-
-- (UIColor *)borderColor {
-    return self.compassLayer.compassBorderColor;
-}
-
-- (void)setHorizonColor:(UIColor *)horizonColor {
-    self.compassLayer.horizonColor = horizonColor;
-}
-
-- (UIColor *)horizonColor {
-    return self.compassLayer.horizonColor;
-}
-
-/*
- Custom Setters and Getters for Images
- */
-- (void)setNotchImage:(UIImage *)notchImage {
-    self.compassLayer.notchImage = notchImage;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (UIImage *)notchImage {
-    return self.compassLayer.notchImage;
-}
-
-- (void)setAircraftImage:(UIImage *)aircraftImage {
-    self.compassLayer.aircraftImage = aircraftImage;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (UIImage *)aircraftImage {
-    return self.compassLayer.aircraftImage;
-}
-
-- (void)setVisionConeImage:(UIImage *)visionConeImage {
-    self.compassLayer.visionConeImage = visionConeImage;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (UIImage *)visionConeImage {
-    return self.compassLayer.visionConeImage;
-}
-
-- (void)setNorthIconImage:(UIImage *)northIconImage {
-    self.compassLayer.northIconImage = northIconImage;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (UIImage *)northIconImage {
-    return self.compassLayer.northIconImage;
-}
-
-- (void)setHomeIconImage:(UIImage *)homeIconImage {
-    self.compassLayer.homeIconImage = homeIconImage;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (UIImage *)homeIconImage {
-    return self.compassLayer.homeIconImage;
-}
-
-/*
- Custom Setters and Getters for Sizes
- */
-
-- (void)setDesignSize:(CGSize)designSize {
-    self.compassLayer.designSize = designSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGSize)designSize {
-    return self.compassLayer.designSize;
-}
-
-- (void)setInnerPadding:(CGFloat)innerPadding {
-    self.compassLayer.innerPadding = innerPadding;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGFloat)innerPadding {
-    return self.compassLayer.innerPadding;
-}
-
-- (void)setMaskPaddingSize:(CGFloat)maskPaddingSize {
-    self.compassLayer.maskPaddingSize = maskPaddingSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGFloat)maskPaddingSize {
-    return self.compassLayer.maskPaddingSize;
-}
-
-- (void)setNotchSize:(CGSize)notchSize {
-    self.compassLayer.notchSize = notchSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGSize)notchSize {
-    return self.compassLayer.notchSize;
-}
-
-- (void)setAircraftSize:(CGSize)aircraftSize {
-    self.compassLayer.aircraftSize = aircraftSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGSize)aircraftSize {
-    return self.compassLayer.aircraftSize;
-}
-
-- (void)setVisionConeSize:(CGSize)visionConeSize {
-    self.compassLayer.visionConeSize = visionConeSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGSize)visionConeSize {
-    return self.compassLayer.visionConeSize;
-}
-
-- (void)setNorthIconSize:(CGSize)northIconSize {
-    self.compassLayer.northIconSize = northIconSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGSize)northIconSize {
-    return self.compassLayer.northIconSize;
-}
-
-- (void)setHomeIconSize:(CGSize)homeIconSize {
-    self.compassLayer.homeIconSize = homeIconSize;
-    [self.compassLayer setNeedsDisplay];
-}
-
-- (CGSize)homeIconSize {
-    return self.compassLayer.homeIconSize;
++ (instancetype)compassStateUpdated:(DUXBetaCompassState *)state {
+    return [[CompassModelState alloc] initWithKey:@"compassStateUpdated" object:state];
 }
 
 @end

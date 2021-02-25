@@ -22,9 +22,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
 import UIKit
-import DJIUXSDKBeta
+import DJIUXSDK
 
 extension UIColor {
     static func borderColorPalette() -> [UIColor] {
@@ -46,23 +45,20 @@ extension UIColor {
 }
 
 class SingleWidgetViewController: UIViewController {
-
-    @IBOutlet var noWidgetSelectedLabel: UILabel!
     @IBOutlet var infoView: UIView!
-    @IBOutlet var pinchToResizeLabel: UILabel!
+    
     @IBOutlet var aspectRatioLabel: UILabel!
     @IBOutlet var currentSizeLabel: UILabel!
-    
+    @IBOutlet var pinchToResizeLabel: UILabel!
+    @IBOutlet var noWidgetSelectedLabel: UILabel!
     @IBOutlet var widgetDescriptionLabel: UILabel!
-    var showCustomizationViewButton: UIButton?
+    
+    @IBOutlet var doubleSizeButton: UIButton!
+    @IBOutlet var showCustomizationButton: UIButton!
     
     private var pinchStartHeight: CGFloat = 0.0
     private var heightConstraint: NSLayoutConstraint?
-    private var additionalControlsView: UIView?
-    
-    private var doubleSizeControlAction: ControlAction?
-    private var showCustomizationViewAction: ControlAction?
-    
+
     internal var shouldShowCustomizationView: Bool = false
     
     // MARK: Widget Setup / Teardown
@@ -90,14 +86,16 @@ class SingleWidgetViewController: UIViewController {
         widget.install(in: self)
         
         noWidgetSelectedLabel.isHidden = true
+        
         infoView.isHidden = false
-        additionalControlsView?.isHidden = false
+        doubleSizeButton.isHidden = false
         pinchToResizeLabel.isHidden = false
-        showCustomizationViewButton?.isHidden = !shouldShowCustomizationView
+        
+        showCustomizationButton.isHidden = !shouldShowCustomizationView
         
         if let rtkWidget = widget as? DUXBetaRTKWidget {
             // Show RTK Widget
-            rtkWidget.view.isHidden = false;
+            rtkWidget.view.isHidden = false
         }
         configureConstraints()
         recursivelySetBorderForView(view: widget.view, borderEnabled: true, level: 0)
@@ -108,106 +106,35 @@ class SingleWidgetViewController: UIViewController {
     
     public func setupEmptyViewHierarchy() {
         noWidgetSelectedLabel.isHidden = false
+        
         infoView.isHidden = true
-        additionalControlsView?.isHidden = true
+        doubleSizeButton.isHidden = true
         pinchToResizeLabel.isHidden = true
-        aspectRatioLabel.text = "1.0"
-        currentSizeLabel.text = "[40.0, 40.0]"
+        showCustomizationButton.isHidden = true
     }
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureControlViews()
+        
+        setupEmptyViewHierarchy()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         if let widget = widget {
-            currentSizeLabel.text = String(format: "[%.1f, %.1f]", widget.view.frame.size.width, widget.view.frame.size.height)
-        }
-        view.bringSubviewToFront(infoView)
-        view.bringSubviewToFront(pinchToResizeLabel)
-        if let v = additionalControlsView {
-            view.bringSubviewToFront(v)
+            currentSizeLabel.text = String(format: "[%.1f, %.1f]", widget.view.frame.width, widget.view.frame.height)
         }
     }
     
-    // MARK: Construct View and Constraint Hierarchy
-    
-    func configureControlViews() {
-        let doubleSizeButton = UIButton(type: .system)
-        doubleSizeButton.translatesAutoresizingMaskIntoConstraints = false
-        doubleSizeButton.setTitle("Double Size", for: .normal)
-        doubleSizeButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 25.0).isActive = true
-        doubleSizeControlAction = doubleSizeButton.duxbeta_connect(action: {
-            if let hc = self.heightConstraint {
-                hc.constant = hc.constant * 2
-                self.view.setNeedsLayout()
-            }
-        }, for: .touchUpInside)
-        
-        let showCustomizationViewButton = UIButton(type: .system)
-        showCustomizationViewButton.translatesAutoresizingMaskIntoConstraints = false
-        showCustomizationViewButton.setTitle("Show Customization", for: .normal)
-        showCustomizationViewButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 25.0).isActive = true
-        showCustomizationViewAction = showCustomizationViewButton.duxbeta_connect(action: {
-            self.showMapCustomizationView()
-        }, for: .touchUpInside)
-        self.showCustomizationViewButton = showCustomizationViewButton
-        
-        let subviews:[UIView] = [doubleSizeButton, showCustomizationViewButton]
-        let stackview = UIStackView(arrangedSubviews: subviews)
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.axis = .vertical
-        stackview.distribution = .equalSpacing
-        stackview.spacing = UIStackView.spacingUseSystem
-        stackview.isLayoutMarginsRelativeArrangement = true
-        stackview.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 5,
-                                                                     leading: 5,
-                                                                     bottom: 5,
-                                                                     trailing: 5)
-        
-        let additionalControlsView = UIView()
-        additionalControlsView.translatesAutoresizingMaskIntoConstraints = false
-        additionalControlsView.addSubview(stackview)
-        
-        let effect = UIBlurEffect(style: .regular)
-        let effectView = UIVisualEffectView(effect: effect)
-        effectView.translatesAutoresizingMaskIntoConstraints = false
-        additionalControlsView.addSubview(effectView)
-        additionalControlsView.sendSubviewToBack(effectView)
-        additionalControlsView.addConstraints([
-            effectView.leadingAnchor.constraint(equalTo: additionalControlsView.leadingAnchor),
-            effectView.trailingAnchor.constraint(equalTo: additionalControlsView.trailingAnchor),
-            effectView.topAnchor.constraint(equalTo: additionalControlsView.topAnchor),
-            effectView.bottomAnchor.constraint(equalTo: additionalControlsView.bottomAnchor),
-        ])
-
-        stackview.leadingAnchor.constraint(equalTo: additionalControlsView.leadingAnchor).isActive = true
-        stackview.trailingAnchor.constraint(equalTo: additionalControlsView.trailingAnchor).isActive = true
-        stackview.topAnchor.constraint(equalTo: additionalControlsView.topAnchor).isActive = true
-        stackview.bottomAnchor.constraint(equalTo: additionalControlsView.bottomAnchor).isActive = true
-        
-        view.addSubview(additionalControlsView)
-        view.addConstraints([
-            view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: additionalControlsView.topAnchor, constant: 10.0),
-            infoView.trailingAnchor.constraint(equalTo: additionalControlsView.leadingAnchor, constant: -8.0)
-        ])
-        
-        self.additionalControlsView = additionalControlsView
-        
-        setupEmptyViewHierarchy()
-    }
+    // MARK: Constraints Hierarchy
     
     func configureConstraints() {
         if let widget = widget {
             
             widget.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            widget.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            widget.view.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
             
             var constraint = widget.view.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: 0.95)
             constraint.priority = .required
@@ -217,11 +144,11 @@ class SingleWidgetViewController: UIViewController {
             constraint.priority = .required
             constraint.isActive = true
             
-            constraint = widget.view.centerXAnchor.constraint(lessThanOrEqualTo: self.view.centerXAnchor)
+            constraint = widget.view.centerXAnchor.constraint(lessThanOrEqualTo: view.centerXAnchor)
             constraint.priority = .required
             constraint.isActive = true
             
-            constraint = widget.view.centerYAnchor.constraint(lessThanOrEqualTo: self.view.centerYAnchor)
+            constraint = widget.view.centerYAnchor.constraint(lessThanOrEqualTo: view.centerYAnchor)
             constraint.priority = .required
             constraint.isActive = true
             
@@ -262,7 +189,7 @@ class SingleWidgetViewController: UIViewController {
     
     // MARK: Widget Customization View
     
-    func showMapCustomizationView() {
+    @IBAction func showMapCustomizationView() {
         if let mapWidget = widget as? DUXBetaMapWidget {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
             let mapCustomizationViewController = storyboard.instantiateViewController(withIdentifier: "CustomMapViewController") as! CustomMapViewController
@@ -284,6 +211,13 @@ class SingleWidgetViewController: UIViewController {
     
     // MARK: User Interaction Handlers
     
+    @IBAction func doubleSizeAction() {
+        if let hc = heightConstraint {
+            hc.constant = hc.constant * 2
+            view.setNeedsLayout()
+        }
+    }
+    
     @IBAction func handlePinch(recognizer: UIPinchGestureRecognizer) {
         if let hc = heightConstraint {
             if (recognizer.state == .began) {
@@ -295,21 +229,21 @@ class SingleWidgetViewController: UIViewController {
     }
     
     @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
-        if let nonNilWidget = widget {
-            let borderEnabled = nonNilWidget.view.layer.borderWidth == 0
-            recursivelySetBorderForView(view: nonNilWidget.view, borderEnabled: borderEnabled, level: 0)
+        if let nonNilView = widget?.view {
+            let borderEnabled = (nonNilView.layer.borderWidth == 0)
+            recursivelySetBorderForView(view: nonNilView, borderEnabled: borderEnabled, level: 0)
         }
     }
     
     func recursivelySetBorderForView(view: UIView, borderEnabled: Bool, level: Int) {
         if !view.layer.isKind(of: CATransformLayer.self) {
-                   if (borderEnabled) {
-               view.layer.borderColor = UIColor.borderColor(for: level).cgColor
-               view.layer.borderWidth = 1
-           } else {
-               view.layer.borderColor = UIColor.clear.cgColor
-               view.layer.borderWidth = 0
-           }
+            if (borderEnabled) {
+                view.layer.borderColor = UIColor.borderColor(for: level).cgColor
+                view.layer.borderWidth = 1
+            } else {
+                view.layer.borderColor = UIColor.clear.cgColor
+                view.layer.borderWidth = 0
+            }
         }
 
         for subView in view.subviews {
@@ -319,6 +253,7 @@ class SingleWidgetViewController: UIViewController {
 }
 
 extension SingleWidgetViewController: WidgetSelectionDelegate {
+    
     func widgetSelected(_ newWidget: DUXBetaBaseWidget?, shouldShowCustomizationView:Bool) {
         self.shouldShowCustomizationView = shouldShowCustomizationView
         widget = newWidget

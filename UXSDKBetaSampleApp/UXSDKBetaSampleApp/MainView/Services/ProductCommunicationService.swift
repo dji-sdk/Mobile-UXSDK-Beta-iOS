@@ -25,7 +25,7 @@
 
 import UIKit
 import DJISDK
-import DJIUXSDKBeta
+import DJIUXSDK
 
 let ProductCommunicationServiceStateDidChange = "ProductCommunicationServiceStateDidChange"
 
@@ -191,7 +191,7 @@ class ProductCommunicationService: NSObject, DJISDKManagerDelegate {
             let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
             let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject>,
             let appKey = dict["DJISDKAppKey"] as? String,
-            appKey != "YOUR DJI KEY GOES HERE"
+            appKey != "PASTE_YOUR_DJI_APP_KEY_HERE"
         else {
                 print("\n<<<ERROR: Please add DJI App Key in Info.plist after registering as developer>>>\n")
                 return

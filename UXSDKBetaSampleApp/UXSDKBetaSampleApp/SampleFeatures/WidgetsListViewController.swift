@@ -24,7 +24,7 @@
 //
 
 import UIKit
-import DJIUXSDKBeta
+import DJIUXSDK
 
 protocol WidgetSelectionDelegate: class {
     func widgetSelected(_ newWidget: DUXBetaBaseWidget?, shouldShowCustomizationView:Bool)
@@ -220,7 +220,7 @@ class WidgetsListViewController: UITableViewController {
         ("Compass Widget", false),
         ("Connection Widget", false),
         ("Distance Home Widget", false),
-        ("Distance RC Widget", false),
+        ("Distance Remote Control Widget", false),
         ("Flight Mode Widget", false),
         ("FPV Widget", false),
         ("GPS Signal Widget", false),

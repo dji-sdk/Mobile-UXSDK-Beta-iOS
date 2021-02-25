@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6422DB57E2AEA85123A796FE /* Pods_UXSDKMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C127AE7FC286283CD54ED8 /* Pods_UXSDKMedia.framework */; };
+		B60B8CFB2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CF72552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.m */; };
+		B60B8CFC2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CF82552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.m */; };
+		B60B8CFD2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CF92552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CFE2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CFA2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D122552FEFE00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D012552FEFD00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D132552FEFE00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D022552FEFD00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.m */; };
+		B60B8D142552FEFE00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D032552FEFD00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.m */; };
+		B60B8D152552FEFE00F097D1 /* DUXBetaAccessLockerControlWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D042552FEFD00F097D1 /* DUXBetaAccessLockerControlWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D162552FEFE00F097D1 /* DUXBetaAccessLockerControlWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D052552FEFD00F097D1 /* DUXBetaAccessLockerControlWidget.m */; };
+		B60B8D172552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D062552FEFD00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.m */; };
+		B60B8D182552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D072552FEFD00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.m */; };
+		B60B8D192552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D082552FEFD00F097D1 /* DUXBetaAccessLockerControlWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D1A2552FEFE00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D092552FEFD00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.m */; };
+		B60B8D1B2552FEFE00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D0A2552FEFD00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D1C2552FEFE00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D0B2552FEFD00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D1D2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D0C2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D1E2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D0D2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.m */; };
+		B60B8D1F2552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8D0E2552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.m */; };
+		B60B8D202552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D0F2552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8D212552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D102552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19AFC24EB98F500737526 /* UXSDKMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19AFA24EB98F500737526 /* UXSDKMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19B3124EB99E000737526 /* UXSDKMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D19B0324EB99DF00737526 /* UXSDKMedia.xcassets */; };
+		B6D19B6024EB9A4700737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19B5F24EB9A4700737526 /* UXSDKCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B60B8CF72552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerIndicatorWidget.m; sourceTree = "<group>"; };
+		B60B8CF82552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerIndicatorWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CF92552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerIndicatorWidget.h; sourceTree = "<group>"; };
+		B60B8CFA2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerIndicatorWidgetModel.h; sourceTree = "<group>"; };
+		B60B8D012552FEFD00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerFormatAircraftWidget.h; sourceTree = "<group>"; };
+		B60B8D022552FEFD00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerFormatAircraftWidget.m; sourceTree = "<group>"; };
+		B60B8D032552FEFD00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerChangePasswordWidget.m; sourceTree = "<group>"; };
+		B60B8D042552FEFD00F097D1 /* DUXBetaAccessLockerControlWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerControlWidget.h; sourceTree = "<group>"; };
+		B60B8D052552FEFD00F097D1 /* DUXBetaAccessLockerControlWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerControlWidget.m; sourceTree = "<group>"; };
+		B60B8D062552FEFD00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerSetPasswordWidget.m; sourceTree = "<group>"; };
+		B60B8D072552FEFD00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerEnterPasswordWidget.m; sourceTree = "<group>"; };
+		B60B8D082552FEFD00F097D1 /* DUXBetaAccessLockerControlWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerControlWidgetModel.h; sourceTree = "<group>"; };
+		B60B8D092552FEFD00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerChangeRemovePasswordWidget.m; sourceTree = "<group>"; };
+		B60B8D0A2552FEFD00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerChangeRemovePasswordWidget.h; sourceTree = "<group>"; };
+		B60B8D0B2552FEFD00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerChangePasswordWidget.h; sourceTree = "<group>"; };
+		B60B8D0C2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerRemovePasswordWidget.h; sourceTree = "<group>"; };
+		B60B8D0D2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerRemovePasswordWidget.m; sourceTree = "<group>"; };
+		B60B8D0E2552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAccessLockerControlWidgetModel.m; sourceTree = "<group>"; };
+		B60B8D0F2552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerSetPasswordWidget.h; sourceTree = "<group>"; };
+		B60B8D102552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAccessLockerEnterPasswordWidget.h; sourceTree = "<group>"; };
+		B6D19AF724EB98F500737526 /* UXSDKMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19AFA24EB98F500737526 /* UXSDKMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKMedia.h; sourceTree = "<group>"; };
+		B6D19AFB24EB98F500737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D19B0324EB99DF00737526 /* UXSDKMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UXSDKMedia.xcassets; sourceTree = "<group>"; };
+		B6D19B5F24EB9A4700737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19B6124EB9B0600737526 /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19B6324EB9B2300737526 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C127AE7FC286283CD54ED8 /* Pods_UXSDKMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UXSDKMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F66E251C99CEA6DD487954CE /* Pods-UXSDKMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKMedia.debug.xcconfig"; path = "Target Support Files/Pods-UXSDKMedia/Pods-UXSDKMedia.debug.xcconfig"; sourceTree = "<group>"; };
+		F7718FEFD9B5DDA39D20BE1A /* Pods-UXSDKMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKMedia.release.xcconfig"; path = "Target Support Files/Pods-UXSDKMedia/Pods-UXSDKMedia.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6D19AF424EB98F500737526 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D19B6024EB9A4700737526 /* UXSDKCore.framework in Frameworks */,
+				6422DB57E2AEA85123A796FE /* Pods_UXSDKMedia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B6D19AED24EB98F500737526 = {
+			isa = PBXGroup;
+			children = (
+				B6D19AF924EB98F500737526 /* UXSDKMedia */,
+				B6D19AF824EB98F500737526 /* Products */,
+				B6D19B5E24EB9A4700737526 /* Frameworks */,
+				F8B3C482DD22C62F75AC4585 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B6D19AF824EB98F500737526 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19AF724EB98F500737526 /* UXSDKMedia.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6D19AF924EB98F500737526 /* UXSDKMedia */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19B0224EB99DF00737526 /* Resources */,
+				B6D19B0424EB99DF00737526 /* Widget */,
+				B6D19AFA24EB98F500737526 /* UXSDKMedia.h */,
+				B6D19AFB24EB98F500737526 /* Info.plist */,
+			);
+			path = UXSDKMedia;
+			sourceTree = "<group>";
+		};
+		B6D19B0224EB99DF00737526 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19B0324EB99DF00737526 /* UXSDKMedia.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B6D19B0424EB99DF00737526 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19B1A24EB99DF00737526 /* AccessLockerWidget */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		B6D19B1A24EB99DF00737526 /* AccessLockerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19B1B24EB99DF00737526 /* IndicatorWidget */,
+				B6D19B2024EB99DF00737526 /* ControlWidget */,
+			);
+			path = AccessLockerWidget;
+			sourceTree = "<group>";
+		};
+		B6D19B1B24EB99DF00737526 /* IndicatorWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CF92552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.h */,
+				B60B8CF72552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.m */,
+				B60B8CFA2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.h */,
+				B60B8CF82552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.m */,
+			);
+			path = IndicatorWidget;
+			sourceTree = "<group>";
+		};
+		B6D19B2024EB99DF00737526 /* ControlWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8D0B2552FEFD00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.h */,
+				B60B8D032552FEFD00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.m */,
+				B60B8D0A2552FEFD00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.h */,
+				B60B8D092552FEFD00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.m */,
+				B60B8D042552FEFD00F097D1 /* DUXBetaAccessLockerControlWidget.h */,
+				B60B8D052552FEFD00F097D1 /* DUXBetaAccessLockerControlWidget.m */,
+				B60B8D082552FEFD00F097D1 /* DUXBetaAccessLockerControlWidgetModel.h */,
+				B60B8D0E2552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.m */,
+				B60B8D102552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.h */,
+				B60B8D072552FEFD00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.m */,
+				B60B8D012552FEFD00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.h */,
+				B60B8D022552FEFD00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.m */,
+				B60B8D0C2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.h */,
+				B60B8D0D2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.m */,
+				B60B8D0F2552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.h */,
+				B60B8D062552FEFD00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.m */,
+			);
+			path = ControlWidget;
+			sourceTree = "<group>";
+		};
+		B6D19B5E24EB9A4700737526 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19B6324EB9B2300737526 /* DJISDK.framework */,
+				B6D19B6124EB9B0600737526 /* DJIWidget.framework */,
+				B6D19B5F24EB9A4700737526 /* UXSDKCore.framework */,
+				C6C127AE7FC286283CD54ED8 /* Pods_UXSDKMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F8B3C482DD22C62F75AC4585 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F66E251C99CEA6DD487954CE /* Pods-UXSDKMedia.debug.xcconfig */,
+				F7718FEFD9B5DDA39D20BE1A /* Pods-UXSDKMedia.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../UXSDKBetaSampleApp/Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B6D19AF224EB98F500737526 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60B8D202552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.h in Headers */,
+				B60B8CFD2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.h in Headers */,
+				B60B8D1B2552FEFE00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.h in Headers */,
+				B60B8CFE2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.h in Headers */,
+				B60B8D1C2552FEFE00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.h in Headers */,
+				B60B8D212552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.h in Headers */,
+				B60B8D1D2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.h in Headers */,
+				B60B8D192552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.h in Headers */,
+				B60B8D152552FEFE00F097D1 /* DUXBetaAccessLockerControlWidget.h in Headers */,
+				B6D19AFC24EB98F500737526 /* UXSDKMedia.h in Headers */,
+				B60B8D122552FEFE00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B6D19AF624EB98F500737526 /* UXSDKMedia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D19AFF24EB98F500737526 /* Build configuration list for PBXNativeTarget "UXSDKMedia" */;
+			buildPhases = (
+				6FC5E82A4B07829406CC19BF /* [CP] Check Pods Manifest.lock */,
+				B6D19AF224EB98F500737526 /* Headers */,
+				B6D19AF324EB98F500737526 /* Sources */,
+				B6D19AF424EB98F500737526 /* Frameworks */,
+				B6D19AF524EB98F500737526 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UXSDKMedia;
+			productName = UXSDKMedia;
+			productReference = B6D19AF724EB98F500737526 /* UXSDKMedia.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6D19AEE24EB98F500737526 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Cristina Suciu";
+				TargetAttributes = {
+					B6D19AF624EB98F500737526 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = B6D19AF124EB98F500737526 /* Build configuration list for PBXProject "UXSDKMedia" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B6D19AED24EB98F500737526;
+			productRefGroup = B6D19AF824EB98F500737526 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6D19AF624EB98F500737526 /* UXSDKMedia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6D19AF524EB98F500737526 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D19B3124EB99E000737526 /* UXSDKMedia.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FC5E82A4B07829406CC19BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UXSDKMedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6D19AF324EB98F500737526 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60B8D182552FEFE00F097D1 /* DUXBetaAccessLockerEnterPasswordWidget.m in Sources */,
+				B60B8D142552FEFE00F097D1 /* DUXBetaAccessLockerChangePasswordWidget.m in Sources */,
+				B60B8D172552FEFE00F097D1 /* DUXBetaAccessLockerSetPasswordWidget.m in Sources */,
+				B60B8CFB2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidget.m in Sources */,
+				B60B8D1E2552FEFE00F097D1 /* DUXBetaAccessLockerRemovePasswordWidget.m in Sources */,
+				B60B8D1F2552FEFE00F097D1 /* DUXBetaAccessLockerControlWidgetModel.m in Sources */,
+				B60B8D1A2552FEFE00F097D1 /* DUXBetaAccessLockerChangeRemovePasswordWidget.m in Sources */,
+				B60B8D162552FEFE00F097D1 /* DUXBetaAccessLockerControlWidget.m in Sources */,
+				B60B8CFC2552FEF100F097D1 /* DUXBetaAccessLockerIndicatorWidgetModel.m in Sources */,
+				B60B8D132552FEFE00F097D1 /* DUXBetaAccessLockerFormatAircraftWidget.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B6D19AFD24EB98F500737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B6D19AFE24EB98F500737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B6D19B0024EB98F500737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F66E251C99CEA6DD487954CE /* Pods-UXSDKMedia.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UXSDKMedia",
+				);
+				INFOPLIST_FILE = UXSDKMedia/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKMedia;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6D19B0124EB98F500737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7718FEFD9B5DDA39D20BE1A /* Pods-UXSDKMedia.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UXSDKMedia",
+				);
+				INFOPLIST_FILE = UXSDKMedia/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKMedia;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6D19AF124EB98F500737526 /* Build configuration list for PBXProject "UXSDKMedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D19AFD24EB98F500737526 /* Debug */,
+				B6D19AFE24EB98F500737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D19AFF24EB98F500737526 /* Build configuration list for PBXNativeTarget "UXSDKMedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D19B0024EB98F500737526 /* Debug */,
+				B6D19B0124EB98F500737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B6D19AEE24EB98F500737526 /* Project object */;
+}

@@ -35,6 +35,13 @@ FOUNDATION_EXPORT const unsigned char UXSDKAccessoryVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <UXSDKAccessory/PublicHeader.h>
 
+
+/*********************************************************************************/
+// Beacon Widget
+/*********************************************************************************/
+#import <UXSDKAccessory/DUXBetaBeaconWidget.h>
+#import <UXSDKAccessory/DUXBetaBeaconWidgetModel.h>
+
 /*********************************************************************************/
 // RTK Enabled Widget
 /*********************************************************************************/
@@ -51,3 +58,18 @@ FOUNDATION_EXPORT const unsigned char UXSDKAccessoryVersionString[];
 // RTK Widget
 /*********************************************************************************/
 #import <UXSDKAccessory/DUXBetaRTKWidget.h>
+
+/*********************************************************************************/
+// Spotlight Widget
+/*********************************************************************************/
+#import <UXSDKAccessory/DUXBetaSpotlightIndicatorWidget.h>
+#import <UXSDKAccessory/DUXBetaSpotlightIndicatorWidgetModel.h>
+#import <UXSDKAccessory/DUXBetaSpotlightControlWidget.h>
+#import <UXSDKAccessory/DUXBetaSpotlightControlWidgetModel.h>
+
+/*********************************************************************************/
+// Speaker Widget
+/*********************************************************************************/
+#import <UXSDKAccessory/DUXBetaSpeakerControlWidget.h>
+#import <UXSDKAccessory/DUXBetaSpeakerIndicatorWidget.h>
+#import <UXSDKAccessory/DUXBetaSpeakerIndicatorWidgetModel.h>

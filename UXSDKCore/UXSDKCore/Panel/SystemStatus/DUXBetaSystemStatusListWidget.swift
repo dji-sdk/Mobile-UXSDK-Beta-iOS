@@ -29,13 +29,24 @@ import Foundation
 
 /**
  * DUXBetaSystemStatusListWidget is the ListPanel using a SmartModel to construct
- * and display a standardized system status list. This current release displays
+ * and display a standardized system status list.
+ *
+ * This current release displays
  * the following widgets:
  *
+ * - DUXBetaOverviewListItemWidget
+ * - DUXBetaReturnToHomeAltitudeListItemWidget
+ * - DUXBetaMaxAltitudeListItemWidget
+ * - DUXBetaMaxFlightDistanceListItemWidget
  * - DUXBetaFlightModeWidget
  * - DUXBetaRCStickModeListItemWidget
+ * - DUXBetaRCBatteryListItemWidget
  * - DUXBetaSDCardStatusListItemWidget
- * - DUXBetaMaxAltitudeListItemWidget
+ * - DUXBetaEMMCStatusListItemWidget
+ * - DUXBetaSSDStatusListItemWidget
+ * - DUXBetaTravelModeListItemWidget
+ * - DUXBetaNoviceModeListItemWidget
+ * - DUXBetaUnitModeListItemWidget
  *
 */
 @objc public class DUXBetaSystemStatusListWidget: DUXBetaListPanelWidget {

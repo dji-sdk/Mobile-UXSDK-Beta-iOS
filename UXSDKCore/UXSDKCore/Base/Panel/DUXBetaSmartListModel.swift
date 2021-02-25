@@ -50,6 +50,9 @@ public typealias widgetID = String
     
     fileprivate var excludeItems: [widgetID] = [widgetID]()
 
+    // TODO: Investigate. This map is for future expansion for more efficient widget lookup from identifer.
+    // fileprivate var classnameToWidgetMap: [widgetID: DUXBetaBaseWidget] = [String: DUXBetaBaseWidget]()
+
     // MARK: - Public Methods
     
     /**

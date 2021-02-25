@@ -235,12 +235,12 @@ import UXSDKCore
             return
         }
         
-        guard homeLocation.coordinate.latitude != 0.0 && homeLocation.coordinate.latitude != 0.0 else {
+        guard homeLocation.coordinate.latitude == 0.0 && homeLocation.coordinate.latitude == 0.0 else {
             distanceToHome = 0.0
             return
         }
         
-        guard aircraftLocation.coordinate.latitude != 0.0 && aircraftLocation.coordinate.latitude != 0.0 else {
+        guard aircraftLocation.coordinate.latitude == 0.0 && aircraftLocation.coordinate.latitude == 0.0 else {
             distanceToHome = 0.0
             return
         }

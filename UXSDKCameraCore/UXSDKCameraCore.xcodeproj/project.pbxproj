@@ -1,0 +1,819 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12040B55ABB12FDEDD23A250 /* Pods_UXSDKCameraCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69121FDBB5E50E385B9582BF /* Pods_UXSDKCameraCore.framework */; };
+		2259408A25DDD77400EDDA26 /* CameraConfigShutterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259408925DDD77400EDDA26 /* CameraConfigShutterWidget.swift */; };
+		2259408D25DDD7DD00EDDA26 /* CameraConfigShutterWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2259408C25DDD7DD00EDDA26 /* CameraConfigShutterWidgetModel.swift */; };
+		22F4C82725DC5B8300D5E80A /* BaseCameraConfigWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C82625DC5B8300D5E80A /* BaseCameraConfigWidget.swift */; };
+		B60B8C712552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C6D2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C722552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C6E2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C732552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C6F2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.m */; };
+		B60B8C742552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C702552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.m */; };
+		B60B8C7B2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C752552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.m */; };
+		B60B8C7C2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C762552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C7D2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C772552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C7E2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C782552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.m */; };
+		B60B8C7F2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C792552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C802552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C7A2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.m */; };
+		B60B8C912552FE6000F097D1 /* DUXBetaCaptureWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C832552FE5F00F097D1 /* DUXBetaCaptureWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C922552FE6000F097D1 /* DUXBetaShootPhotoWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C842552FE5F00F097D1 /* DUXBetaShootPhotoWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C942552FE6100F097D1 /* DUXBetaRecordVideoWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C862552FE6000F097D1 /* DUXBetaRecordVideoWidget.m */; };
+		B60B8C952552FE6100F097D1 /* DUXBetaShootPhotoWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C872552FE6000F097D1 /* DUXBetaShootPhotoWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C962552FE6100F097D1 /* DUXBetaCaptureWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C882552FE6000F097D1 /* DUXBetaCaptureWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C972552FE6100F097D1 /* DUXBetaShootPhotoWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C892552FE6000F097D1 /* DUXBetaShootPhotoWidgetModel.m */; };
+		B60B8C982552FE6100F097D1 /* DUXBetaShootPhotoWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C8A2552FE6000F097D1 /* DUXBetaShootPhotoWidget.m */; };
+		B60B8C992552FE6100F097D1 /* DUXBetaCaptureWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C8B2552FE6000F097D1 /* DUXBetaCaptureWidget.m */; };
+		B60B8C9A2552FE6100F097D1 /* DUXBetaRecordVideoWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C8C2552FE6000F097D1 /* DUXBetaRecordVideoWidgetModel.m */; };
+		B60B8C9C2552FE6100F097D1 /* DUXBetaRecordVideoWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C8E2552FE6000F097D1 /* DUXBetaRecordVideoWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C9D2552FE6100F097D1 /* DUXBetaRecordVideoWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8C8F2552FE6000F097D1 /* DUXBetaRecordVideoWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8C9E2552FE6100F097D1 /* DUXBetaCaptureWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8C902552FE6000F097D1 /* DUXBetaCaptureWidgetModel.m */; };
+		B60B8CA52552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CA12552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CA62552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CA22552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CA72552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CA32552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.m */; };
+		B60B8CA82552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CA42552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidget.m */; };
+		B60B8CAE2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CAA2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CAF2552FE7500F097D1 /* DUXBetaFocusModeWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CAB2552FE7500F097D1 /* DUXBetaFocusModeWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CB02552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CAC2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.m */; };
+		B60B8CB12552FE7500F097D1 /* DUXBetaFocusModeWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CAD2552FE7500F097D1 /* DUXBetaFocusModeWidget.m */; };
+		B60B8CBC2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CB42552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CBD2552FE8A00F097D1 /* DUXBetaGimbalPitchView.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CB52552FE8A00F097D1 /* DUXBetaGimbalPitchView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CBE2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CB62552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.m */; };
+		B60B8CBF2552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CB72552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CC02552FE8A00F097D1 /* DUXBetaGimbalPitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CB82552FE8A00F097D1 /* DUXBetaGimbalPitchView.m */; };
+		B60B8CC12552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CB92552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CC22552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CBA2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.m */; };
+		B60B8CC32552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CBB2552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.m */; };
+		B60B8CCA2552FE9300F097D1 /* DUXBetaManualFocusWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CC62552FE9300F097D1 /* DUXBetaManualFocusWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CCB2552FE9300F097D1 /* DUXBetaManualFocusWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CC72552FE9300F097D1 /* DUXBetaManualFocusWidget.m */; };
+		B60B8CCC2552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CC82552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.m */; };
+		B60B8CCD2552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CC92552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CD42552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CD02552FEA500F097D1 /* DUXBetaRecordVideoTimeWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CD52552FEA600F097D1 /* DUXBetaRecordVideoTimeWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CD12552FEA500F097D1 /* DUXBetaRecordVideoTimeWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CD62552FEA600F097D1 /* DUXBetaRecordVideoTimeWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CD22552FEA500F097D1 /* DUXBetaRecordVideoTimeWidget.m */; };
+		B60B8CD72552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CD32552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.m */; };
+		B6946E7625DE16E400EF77EA /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6946E7525DE16E400EF77EA /* UIImageView+Extension.swift */; };
+		B6D1151325B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1151125B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidgetModel.swift */; };
+		B6D1151425B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1151225B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidget.swift */; };
+		B6D19C1D24EC9C9B00737526 /* UXSDKCameraCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19C1B24EC9C9B00737526 /* UXSDKCameraCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19C5924ECA40600737526 /* DUXCameraCore.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D19C2424ECA40600737526 /* DUXCameraCore.xcassets */; };
+		B6D19C9124ECA69900737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19C9024ECA69900737526 /* UXSDKCore.framework */; };
+		B6D93C5125C9D38C00A87ED0 /* DUXBetaCaptureBaseWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D93C4D25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidget.m */; };
+		B6D93C5225C9D38C00A87ED0 /* DUXBetaCaptureBaseWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D93C4E25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidgetModel.m */; };
+		B6D93C5325C9D38C00A87ED0 /* DUXBetaCaptureBaseWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D93C4F25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D93C5425C9D38C00A87ED0 /* DUXBetaCaptureBaseWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D93C5025C9D38B00A87ED0 /* DUXBetaCaptureBaseWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D93C9A25CA53B200A87ED0 /* DUXBetaCameraPhotoState.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D93C9825CA53B200A87ED0 /* DUXBetaCameraPhotoState.h */; };
+		B6D93C9B25CA53B200A87ED0 /* DUXBetaCameraPhotoState.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D93C9925CA53B200A87ED0 /* DUXBetaCameraPhotoState.m */; };
+		B6FF0A8C25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF0A8A25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidgetModel.swift */; };
+		B6FF0A8D25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF0A8B25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidget.swift */; };
+		B6FF0A9525D7299000D3CAA5 /* DUXBetaCameraStorageState.h in Headers */ = {isa = PBXBuildFile; fileRef = B6FF0A9125D7299000D3CAA5 /* DUXBetaCameraStorageState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6FF0A9625D7299000D3CAA5 /* DUXBetaStorageModule.h in Headers */ = {isa = PBXBuildFile; fileRef = B6FF0A9225D7299000D3CAA5 /* DUXBetaStorageModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6FF0A9725D7299000D3CAA5 /* DUXBetaCameraStorageState.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FF0A9325D7299000D3CAA5 /* DUXBetaCameraStorageState.m */; };
+		B6FF0A9825D7299000D3CAA5 /* DUXBetaStorageModule.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FF0A9425D7299000D3CAA5 /* DUXBetaStorageModule.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2259408925DDD77400EDDA26 /* CameraConfigShutterWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraConfigShutterWidget.swift; sourceTree = "<group>"; };
+		2259408C25DDD7DD00EDDA26 /* CameraConfigShutterWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraConfigShutterWidgetModel.swift; sourceTree = "<group>"; };
+		22F4C82625DC5B8300D5E80A /* BaseCameraConfigWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCameraConfigWidget.swift; sourceTree = "<group>"; };
+		69121FDBB5E50E385B9582BF /* Pods_UXSDKCameraCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UXSDKCameraCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75160BAB047F6EE34102A84D /* Pods-UXSDKCameraCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKCameraCore.debug.xcconfig"; path = "Target Support Files/Pods-UXSDKCameraCore/Pods-UXSDKCameraCore.debug.xcconfig"; sourceTree = "<group>"; };
+		9794152E6EA5D79513D112D8 /* Pods-UXSDKCameraCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKCameraCore.release.xcconfig"; path = "Target Support Files/Pods-UXSDKCameraCore/Pods-UXSDKCameraCore.release.xcconfig"; sourceTree = "<group>"; };
+		B60B8C6D2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAutoExposureSwitchWidget.h; sourceTree = "<group>"; };
+		B60B8C6E2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAutoExposureSwitchWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C6F2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAutoExposureSwitchWidget.m; sourceTree = "<group>"; };
+		B60B8C702552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAutoExposureSwitchWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C752552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCameraModeSwitchWidgetStates.m; sourceTree = "<group>"; };
+		B60B8C762552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCameraModeSwitchWidgetStates.h; sourceTree = "<group>"; };
+		B60B8C772552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCameraModeSwitchWidget.h; sourceTree = "<group>"; };
+		B60B8C782552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCameraModeSwitchWidget.m; sourceTree = "<group>"; };
+		B60B8C792552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCameraModeSwitchWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C7A2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCameraModeSwitchWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C832552FE5F00F097D1 /* DUXBetaCaptureWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCaptureWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C842552FE5F00F097D1 /* DUXBetaShootPhotoWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaShootPhotoWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C862552FE6000F097D1 /* DUXBetaRecordVideoWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRecordVideoWidget.m; sourceTree = "<group>"; };
+		B60B8C872552FE6000F097D1 /* DUXBetaShootPhotoWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaShootPhotoWidget.h; sourceTree = "<group>"; };
+		B60B8C882552FE6000F097D1 /* DUXBetaCaptureWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCaptureWidget.h; sourceTree = "<group>"; };
+		B60B8C892552FE6000F097D1 /* DUXBetaShootPhotoWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaShootPhotoWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C8A2552FE6000F097D1 /* DUXBetaShootPhotoWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaShootPhotoWidget.m; sourceTree = "<group>"; };
+		B60B8C8B2552FE6000F097D1 /* DUXBetaCaptureWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCaptureWidget.m; sourceTree = "<group>"; };
+		B60B8C8C2552FE6000F097D1 /* DUXBetaRecordVideoWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRecordVideoWidgetModel.m; sourceTree = "<group>"; };
+		B60B8C8E2552FE6000F097D1 /* DUXBetaRecordVideoWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRecordVideoWidget.h; sourceTree = "<group>"; };
+		B60B8C8F2552FE6000F097D1 /* DUXBetaRecordVideoWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRecordVideoWidgetModel.h; sourceTree = "<group>"; };
+		B60B8C902552FE6000F097D1 /* DUXBetaCaptureWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCaptureWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CA12552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFocusExposureSwitchWidgetModel.h; sourceTree = "<group>"; };
+		B60B8CA22552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFocusExposureSwitchWidget.h; sourceTree = "<group>"; };
+		B60B8CA32552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFocusExposureSwitchWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CA42552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFocusExposureSwitchWidget.m; sourceTree = "<group>"; };
+		B60B8CAA2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFocusModeWidgetModel.h; sourceTree = "<group>"; };
+		B60B8CAB2552FE7500F097D1 /* DUXBetaFocusModeWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaFocusModeWidget.h; sourceTree = "<group>"; };
+		B60B8CAC2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFocusModeWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CAD2552FE7500F097D1 /* DUXBetaFocusModeWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaFocusModeWidget.m; sourceTree = "<group>"; };
+		B60B8CB42552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaGimbalPitchWidgetModel.h; sourceTree = "<group>"; };
+		B60B8CB52552FE8A00F097D1 /* DUXBetaGimbalPitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaGimbalPitchView.h; sourceTree = "<group>"; };
+		B60B8CB62552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaGimbalPitchWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CB72552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaGimbalPitchWidget.h; sourceTree = "<group>"; };
+		B60B8CB82552FE8A00F097D1 /* DUXBetaGimbalPitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaGimbalPitchView.m; sourceTree = "<group>"; };
+		B60B8CB92552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaGimbalPitchWidgetState.h; sourceTree = "<group>"; };
+		B60B8CBA2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaGimbalPitchWidgetState.m; sourceTree = "<group>"; };
+		B60B8CBB2552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaGimbalPitchWidget.m; sourceTree = "<group>"; };
+		B60B8CC62552FE9300F097D1 /* DUXBetaManualFocusWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaManualFocusWidget.h; sourceTree = "<group>"; };
+		B60B8CC72552FE9300F097D1 /* DUXBetaManualFocusWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaManualFocusWidget.m; sourceTree = "<group>"; };
+		B60B8CC82552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaManualFocusWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CC92552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaManualFocusWidgetModel.h; sourceTree = "<group>"; };
+		B60B8CD02552FEA500F097D1 /* DUXBetaRecordVideoTimeWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRecordVideoTimeWidgetModel.h; sourceTree = "<group>"; };
+		B60B8CD12552FEA500F097D1 /* DUXBetaRecordVideoTimeWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRecordVideoTimeWidget.h; sourceTree = "<group>"; };
+		B60B8CD22552FEA500F097D1 /* DUXBetaRecordVideoTimeWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRecordVideoTimeWidget.m; sourceTree = "<group>"; };
+		B60B8CD32552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRecordVideoTimeWidgetModel.m; sourceTree = "<group>"; };
+		B6946E7525DE16E400EF77EA /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		B6D1151125B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXBetaPhotoVideoSwitchWidgetModel.swift; sourceTree = "<group>"; };
+		B6D1151225B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXBetaPhotoVideoSwitchWidget.swift; sourceTree = "<group>"; };
+		B6D19C1824EC9C9B00737526 /* UXSDKCameraCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKCameraCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19C1B24EC9C9B00737526 /* UXSDKCameraCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKCameraCore.h; sourceTree = "<group>"; };
+		B6D19C1C24EC9C9B00737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D19C2424ECA40600737526 /* DUXCameraCore.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DUXCameraCore.xcassets; sourceTree = "<group>"; };
+		B6D19C9024ECA69900737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19C9224ECA6A200737526 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D93C4D25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCaptureBaseWidget.m; sourceTree = "<group>"; };
+		B6D93C4E25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCaptureBaseWidgetModel.m; sourceTree = "<group>"; };
+		B6D93C4F25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCaptureBaseWidget.h; sourceTree = "<group>"; };
+		B6D93C5025C9D38B00A87ED0 /* DUXBetaCaptureBaseWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCaptureBaseWidgetModel.h; sourceTree = "<group>"; };
+		B6D93C9825CA53B200A87ED0 /* DUXBetaCameraPhotoState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DUXBetaCameraPhotoState.h; sourceTree = "<group>"; };
+		B6D93C9925CA53B200A87ED0 /* DUXBetaCameraPhotoState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCameraPhotoState.m; sourceTree = "<group>"; };
+		B6FF0A8A25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaCameraSettingsIndicatorWidgetModel.swift; sourceTree = "<group>"; };
+		B6FF0A8B25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaCameraSettingsIndicatorWidget.swift; sourceTree = "<group>"; };
+		B6FF0A9125D7299000D3CAA5 /* DUXBetaCameraStorageState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaCameraStorageState.h; sourceTree = "<group>"; };
+		B6FF0A9225D7299000D3CAA5 /* DUXBetaStorageModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaStorageModule.h; sourceTree = "<group>"; };
+		B6FF0A9325D7299000D3CAA5 /* DUXBetaCameraStorageState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaCameraStorageState.m; sourceTree = "<group>"; };
+		B6FF0A9425D7299000D3CAA5 /* DUXBetaStorageModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaStorageModule.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6D19C1524EC9C9B00737526 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D19C9124ECA69900737526 /* UXSDKCore.framework in Frameworks */,
+				12040B55ABB12FDEDD23A250 /* Pods_UXSDKCameraCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2259408725DDD75E00EDDA26 /* CameraConfigShutterWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2259408925DDD77400EDDA26 /* CameraConfigShutterWidget.swift */,
+				2259408C25DDD7DD00EDDA26 /* CameraConfigShutterWidgetModel.swift */,
+			);
+			path = CameraConfigShutterWidget;
+			sourceTree = "<group>";
+		};
+		22F4C82525DC5B6C00D5E80A /* BaseCameraConfigWidget */ = {
+			isa = PBXGroup;
+			children = (
+				22F4C82625DC5B8300D5E80A /* BaseCameraConfigWidget.swift */,
+			);
+			path = BaseCameraConfigWidget;
+			sourceTree = "<group>";
+		};
+		B6946E7425DE16E400EF77EA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B6946E7525DE16E400EF77EA /* UIImageView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B6D1151025B129CE009976A8 /* PhotoVideoSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1151225B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidget.swift */,
+				B6D1151125B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidgetModel.swift */,
+			);
+			path = PhotoVideoSwitch;
+			sourceTree = "<group>";
+		};
+		B6D19C0E24EC9C9B00737526 = {
+			isa = PBXGroup;
+			children = (
+				B6D19C1A24EC9C9B00737526 /* UXSDKCameraCore */,
+				B6D19C1924EC9C9B00737526 /* Products */,
+				B6D19C8F24ECA69900737526 /* Frameworks */,
+				E1ECAA70945878D70AC9232C /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B6D19C1924EC9C9B00737526 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19C1824EC9C9B00737526 /* UXSDKCameraCore.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6D19C1A24EC9C9B00737526 /* UXSDKCameraCore */ = {
+			isa = PBXGroup;
+			children = (
+				B6946E7425DE16E400EF77EA /* Extension */,
+				B6FF0A8F25D7299000D3CAA5 /* Module */,
+				B6D19C2324ECA40600737526 /* Resources */,
+				B6D19C2524ECA40600737526 /* Widget */,
+				B6D19C1B24EC9C9B00737526 /* UXSDKCameraCore.h */,
+				B6D19C1C24EC9C9B00737526 /* Info.plist */,
+			);
+			path = UXSDKCameraCore;
+			sourceTree = "<group>";
+		};
+		B6D19C2324ECA40600737526 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19C2424ECA40600737526 /* DUXCameraCore.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B6D19C2524ECA40600737526 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				22F4C82525DC5B6C00D5E80A /* BaseCameraConfigWidget */,
+				2259408725DDD75E00EDDA26 /* CameraConfigShutterWidget */,
+				B6FF0A8925D7298400D3CAA5 /* CameraSettingsIndicator */,
+				B6D1151025B129CE009976A8 /* PhotoVideoSwitch */,
+				B6D19C5424ECA40600737526 /* AutoExposureWidget */,
+				B6D19C3024ECA40600737526 /* CameraModeSwitchWidget */,
+				B6D19C3724ECA40600737526 /* Capture */,
+				B6D19C4F24ECA40600737526 /* FocusExposureSwitchWidget */,
+				B6D19C2624ECA40600737526 /* FocusModeWidget */,
+				B6D19C4624ECA40600737526 /* GimbalPitchWidget */,
+				B6D19C2B24ECA40600737526 /* ManualFocusWidget */,
+				B6D19C9424ECA6FB00737526 /* RecordVideoTimeWidget */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		B6D19C2624ECA40600737526 /* FocusModeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CAB2552FE7500F097D1 /* DUXBetaFocusModeWidget.h */,
+				B60B8CAD2552FE7500F097D1 /* DUXBetaFocusModeWidget.m */,
+				B60B8CAA2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.h */,
+				B60B8CAC2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.m */,
+			);
+			path = FocusModeWidget;
+			sourceTree = "<group>";
+		};
+		B6D19C2B24ECA40600737526 /* ManualFocusWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CC62552FE9300F097D1 /* DUXBetaManualFocusWidget.h */,
+				B60B8CC72552FE9300F097D1 /* DUXBetaManualFocusWidget.m */,
+				B60B8CC92552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.h */,
+				B60B8CC82552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.m */,
+			);
+			path = ManualFocusWidget;
+			sourceTree = "<group>";
+		};
+		B6D19C3024ECA40600737526 /* CameraModeSwitchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C772552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.h */,
+				B60B8C782552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.m */,
+				B60B8C792552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.h */,
+				B60B8C7A2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.m */,
+				B60B8C762552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.h */,
+				B60B8C752552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.m */,
+			);
+			path = CameraModeSwitchWidget;
+			sourceTree = "<group>";
+		};
+		B6D19C3724ECA40600737526 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C882552FE6000F097D1 /* DUXBetaCaptureWidget.h */,
+				B60B8C8B2552FE6000F097D1 /* DUXBetaCaptureWidget.m */,
+				B60B8C832552FE5F00F097D1 /* DUXBetaCaptureWidgetModel.h */,
+				B60B8C902552FE6000F097D1 /* DUXBetaCaptureWidgetModel.m */,
+				B6D93C4C25C9D38B00A87ED0 /* Base */,
+				B6D93C4525C9D07A00A87ED0 /* RecordVideo */,
+				B6D93C4425C9D06900A87ED0 /* ShootPhoto */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		B6D19C4624ECA40600737526 /* GimbalPitchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CB52552FE8A00F097D1 /* DUXBetaGimbalPitchView.h */,
+				B60B8CB82552FE8A00F097D1 /* DUXBetaGimbalPitchView.m */,
+				B60B8CB72552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.h */,
+				B60B8CBB2552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.m */,
+				B60B8CB42552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.h */,
+				B60B8CB62552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.m */,
+				B60B8CB92552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.h */,
+				B60B8CBA2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.m */,
+			);
+			path = GimbalPitchWidget;
+			sourceTree = "<group>";
+		};
+		B6D19C4F24ECA40600737526 /* FocusExposureSwitchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CA22552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidget.h */,
+				B60B8CA42552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidget.m */,
+				B60B8CA12552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.h */,
+				B60B8CA32552FE6B00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.m */,
+			);
+			path = FocusExposureSwitchWidget;
+			sourceTree = "<group>";
+		};
+		B6D19C5424ECA40600737526 /* AutoExposureWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C6D2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.h */,
+				B60B8C6F2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.m */,
+				B60B8C6E2552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.h */,
+				B60B8C702552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.m */,
+			);
+			path = AutoExposureWidget;
+			sourceTree = "<group>";
+		};
+		B6D19C8F24ECA69900737526 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19C9224ECA6A200737526 /* DJISDK.framework */,
+				B6D19C9024ECA69900737526 /* UXSDKCore.framework */,
+				69121FDBB5E50E385B9582BF /* Pods_UXSDKCameraCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6D19C9424ECA6FB00737526 /* RecordVideoTimeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CD12552FEA500F097D1 /* DUXBetaRecordVideoTimeWidget.h */,
+				B60B8CD22552FEA500F097D1 /* DUXBetaRecordVideoTimeWidget.m */,
+				B60B8CD02552FEA500F097D1 /* DUXBetaRecordVideoTimeWidgetModel.h */,
+				B60B8CD32552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.m */,
+			);
+			path = RecordVideoTimeWidget;
+			sourceTree = "<group>";
+		};
+		B6D93C4425C9D06900A87ED0 /* ShootPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C872552FE6000F097D1 /* DUXBetaShootPhotoWidget.h */,
+				B60B8C8A2552FE6000F097D1 /* DUXBetaShootPhotoWidget.m */,
+				B60B8C842552FE5F00F097D1 /* DUXBetaShootPhotoWidgetModel.h */,
+				B60B8C892552FE6000F097D1 /* DUXBetaShootPhotoWidgetModel.m */,
+				B6D93C9825CA53B200A87ED0 /* DUXBetaCameraPhotoState.h */,
+				B6D93C9925CA53B200A87ED0 /* DUXBetaCameraPhotoState.m */,
+			);
+			path = ShootPhoto;
+			sourceTree = "<group>";
+		};
+		B6D93C4525C9D07A00A87ED0 /* RecordVideo */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8C8E2552FE6000F097D1 /* DUXBetaRecordVideoWidget.h */,
+				B60B8C862552FE6000F097D1 /* DUXBetaRecordVideoWidget.m */,
+				B60B8C8F2552FE6000F097D1 /* DUXBetaRecordVideoWidgetModel.h */,
+				B60B8C8C2552FE6000F097D1 /* DUXBetaRecordVideoWidgetModel.m */,
+			);
+			path = RecordVideo;
+			sourceTree = "<group>";
+		};
+		B6D93C4C25C9D38B00A87ED0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B6D93C4F25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidget.h */,
+				B6D93C4D25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidget.m */,
+				B6D93C5025C9D38B00A87ED0 /* DUXBetaCaptureBaseWidgetModel.h */,
+				B6D93C4E25C9D38B00A87ED0 /* DUXBetaCaptureBaseWidgetModel.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B6FF0A8925D7298400D3CAA5 /* CameraSettingsIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				B6FF0A8A25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidgetModel.swift */,
+				B6FF0A8B25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidget.swift */,
+			);
+			path = CameraSettingsIndicator;
+			sourceTree = "<group>";
+		};
+		B6FF0A8F25D7299000D3CAA5 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B6FF0A9025D7299000D3CAA5 /* Storage */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B6FF0A9025D7299000D3CAA5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B6FF0A9225D7299000D3CAA5 /* DUXBetaStorageModule.h */,
+				B6FF0A9425D7299000D3CAA5 /* DUXBetaStorageModule.m */,
+				B6FF0A9125D7299000D3CAA5 /* DUXBetaCameraStorageState.h */,
+				B6FF0A9325D7299000D3CAA5 /* DUXBetaCameraStorageState.m */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		E1ECAA70945878D70AC9232C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75160BAB047F6EE34102A84D /* Pods-UXSDKCameraCore.debug.xcconfig */,
+				9794152E6EA5D79513D112D8 /* Pods-UXSDKCameraCore.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../UXSDKBetaSampleApp/Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B6D19C1324EC9C9B00737526 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60B8CD42552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.h in Headers */,
+				B6FF0A9525D7299000D3CAA5 /* DUXBetaCameraStorageState.h in Headers */,
+				B60B8C952552FE6100F097D1 /* DUXBetaShootPhotoWidget.h in Headers */,
+				B6D93C5425C9D38C00A87ED0 /* DUXBetaCaptureBaseWidgetModel.h in Headers */,
+				B60B8C722552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.h in Headers */,
+				B6FF0A9625D7299000D3CAA5 /* DUXBetaStorageModule.h in Headers */,
+				B60B8CCD2552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.h in Headers */,
+				B60B8CA52552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.h in Headers */,
+				B6D93C5325C9D38C00A87ED0 /* DUXBetaCaptureBaseWidget.h in Headers */,
+				B60B8CBF2552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.h in Headers */,
+				B60B8C712552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.h in Headers */,
+				B60B8CC12552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.h in Headers */,
+				B60B8CCA2552FE9300F097D1 /* DUXBetaManualFocusWidget.h in Headers */,
+				B60B8CA62552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidget.h in Headers */,
+				B60B8C9D2552FE6100F097D1 /* DUXBetaRecordVideoWidgetModel.h in Headers */,
+				B60B8C7C2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.h in Headers */,
+				B60B8C962552FE6100F097D1 /* DUXBetaCaptureWidget.h in Headers */,
+				B60B8C912552FE6000F097D1 /* DUXBetaCaptureWidgetModel.h in Headers */,
+				B60B8CD52552FEA600F097D1 /* DUXBetaRecordVideoTimeWidget.h in Headers */,
+				B60B8CAE2552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.h in Headers */,
+				B60B8CBC2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.h in Headers */,
+				B60B8C7F2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.h in Headers */,
+				B60B8CAF2552FE7500F097D1 /* DUXBetaFocusModeWidget.h in Headers */,
+				B60B8C922552FE6000F097D1 /* DUXBetaShootPhotoWidgetModel.h in Headers */,
+				B60B8CBD2552FE8A00F097D1 /* DUXBetaGimbalPitchView.h in Headers */,
+				B60B8C7D2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.h in Headers */,
+				B6D93C9A25CA53B200A87ED0 /* DUXBetaCameraPhotoState.h in Headers */,
+				B6D19C1D24EC9C9B00737526 /* UXSDKCameraCore.h in Headers */,
+				B60B8C9C2552FE6100F097D1 /* DUXBetaRecordVideoWidget.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B6D19C1724EC9C9B00737526 /* UXSDKCameraCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D19C2024EC9C9B00737526 /* Build configuration list for PBXNativeTarget "UXSDKCameraCore" */;
+			buildPhases = (
+				B4ECBC3BB49FE89BF6E0DEE3 /* [CP] Check Pods Manifest.lock */,
+				B6D19C1324EC9C9B00737526 /* Headers */,
+				B6D19C1424EC9C9B00737526 /* Sources */,
+				B6D19C1524EC9C9B00737526 /* Frameworks */,
+				B6D19C1624EC9C9B00737526 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UXSDKCameraCore;
+			productName = UXSDKCameraCore;
+			productReference = B6D19C1824EC9C9B00737526 /* UXSDKCameraCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6D19C0F24EC9C9B00737526 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Cristina Suciu";
+				TargetAttributes = {
+					B6D19C1724EC9C9B00737526 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1220;
+					};
+				};
+			};
+			buildConfigurationList = B6D19C1224EC9C9B00737526 /* Build configuration list for PBXProject "UXSDKCameraCore" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B6D19C0E24EC9C9B00737526;
+			productRefGroup = B6D19C1924EC9C9B00737526 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6D19C1724EC9C9B00737526 /* UXSDKCameraCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6D19C1624EC9C9B00737526 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D19C5924ECA40600737526 /* DUXCameraCore.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B4ECBC3BB49FE89BF6E0DEE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UXSDKCameraCore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6D19C1424EC9C9B00737526 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60B8CB12552FE7500F097D1 /* DUXBetaFocusModeWidget.m in Sources */,
+				B60B8C742552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidgetModel.m in Sources */,
+				B60B8C972552FE6100F097D1 /* DUXBetaShootPhotoWidgetModel.m in Sources */,
+				B60B8CCB2552FE9300F097D1 /* DUXBetaManualFocusWidget.m in Sources */,
+				B60B8CA72552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidgetModel.m in Sources */,
+				B60B8CC22552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetState.m in Sources */,
+				B60B8C732552FE4800F097D1 /* DUXBetaAutoExposureSwitchWidget.m in Sources */,
+				B6D1151325B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidgetModel.swift in Sources */,
+				2259408A25DDD77400EDDA26 /* CameraConfigShutterWidget.swift in Sources */,
+				B60B8CA82552FE6C00F097D1 /* DUXBetaFocusExposureSwitchWidget.m in Sources */,
+				B6D1151425B12A5E009976A8 /* DUXBetaPhotoVideoSwitchWidget.swift in Sources */,
+				B60B8C942552FE6100F097D1 /* DUXBetaRecordVideoWidget.m in Sources */,
+				B60B8CD62552FEA600F097D1 /* DUXBetaRecordVideoTimeWidget.m in Sources */,
+				B6FF0A8D25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidget.swift in Sources */,
+				B60B8CCC2552FE9300F097D1 /* DUXBetaManualFocusWidgetModel.m in Sources */,
+				B6D93C9B25CA53B200A87ED0 /* DUXBetaCameraPhotoState.m in Sources */,
+				B6FF0A9825D7299000D3CAA5 /* DUXBetaStorageModule.m in Sources */,
+				22F4C82725DC5B8300D5E80A /* BaseCameraConfigWidget.swift in Sources */,
+				B60B8C802552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetModel.m in Sources */,
+				B60B8C9E2552FE6100F097D1 /* DUXBetaCaptureWidgetModel.m in Sources */,
+				B60B8CBE2552FE8A00F097D1 /* DUXBetaGimbalPitchWidgetModel.m in Sources */,
+				B6FF0A8C25D7298400D3CAA5 /* DUXBetaCameraSettingsIndicatorWidgetModel.swift in Sources */,
+				B60B8CC02552FE8A00F097D1 /* DUXBetaGimbalPitchView.m in Sources */,
+				B60B8C7B2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidgetStates.m in Sources */,
+				B60B8C982552FE6100F097D1 /* DUXBetaShootPhotoWidget.m in Sources */,
+				B60B8CC32552FE8A00F097D1 /* DUXBetaGimbalPitchWidget.m in Sources */,
+				2259408D25DDD7DD00EDDA26 /* CameraConfigShutterWidgetModel.swift in Sources */,
+				B60B8CB02552FE7500F097D1 /* DUXBetaFocusModeWidgetModel.m in Sources */,
+				B6D93C5125C9D38C00A87ED0 /* DUXBetaCaptureBaseWidget.m in Sources */,
+				B6FF0A9725D7299000D3CAA5 /* DUXBetaCameraStorageState.m in Sources */,
+				B6D93C5225C9D38C00A87ED0 /* DUXBetaCaptureBaseWidgetModel.m in Sources */,
+				B60B8C992552FE6100F097D1 /* DUXBetaCaptureWidget.m in Sources */,
+				B60B8CD72552FEA600F097D1 /* DUXBetaRecordVideoTimeWidgetModel.m in Sources */,
+				B60B8C7E2552FE5100F097D1 /* DUXBetaCameraModeSwitchWidget.m in Sources */,
+				B6946E7625DE16E400EF77EA /* UIImageView+Extension.swift in Sources */,
+				B60B8C9A2552FE6100F097D1 /* DUXBetaRecordVideoWidgetModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B6D19C1E24EC9C9B00737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B6D19C1F24EC9C9B00737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = armv7;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B6D19C2124EC9C9B00737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75160BAB047F6EE34102A84D /* Pods-UXSDKCameraCore.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = UXSDKCameraCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKCameraCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6D19C2224EC9C9B00737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9794152E6EA5D79513D112D8 /* Pods-UXSDKCameraCore.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = UXSDKCameraCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKCameraCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6D19C1224EC9C9B00737526 /* Build configuration list for PBXProject "UXSDKCameraCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D19C1E24EC9C9B00737526 /* Debug */,
+				B6D19C1F24EC9C9B00737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D19C2024EC9C9B00737526 /* Build configuration list for PBXNativeTarget "UXSDKCameraCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D19C2124EC9C9B00737526 /* Debug */,
+				B6D19C2224EC9C9B00737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B6D19C0F24EC9C9B00737526 /* Project object */;
+}

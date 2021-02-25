@@ -429,7 +429,9 @@ let kCloseBoxWidthDefault: CGFloat = 24.0
     open func updateUI() {
         assertionFailure("DUXBetaPanelWidget: must override updateUI for panel classes")
     }
-    
+
+    // TODO: This should set the height constraint to 0, not just hide the titlebar view
+    // except for the override in the list panel which needs to keep the titlebar for the back button
     /**
      * Method to call to hide the titlebar for a panel.
      */

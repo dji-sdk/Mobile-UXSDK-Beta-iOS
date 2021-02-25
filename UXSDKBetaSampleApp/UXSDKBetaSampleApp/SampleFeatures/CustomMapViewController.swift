@@ -24,7 +24,7 @@
 //
 
 import UIKit
-import DJIUXSDKBeta
+import DJIUXSDK
 import iOS_Color_Picker
 
 class CustomMapViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, FCColorPickerViewControllerDelegate {

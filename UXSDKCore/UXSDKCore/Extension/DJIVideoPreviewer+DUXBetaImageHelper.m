@@ -130,7 +130,8 @@ static dispatch_queue_t _DUXBetaSnapshotterHelperQueue;
                 workDict[@"transient"] = nil;   // Remove all transient image callbacks
             }
         });
-        // The 0.1666 seconds should support framerates up to 60fps (.0166666 seconds per frame)
+        // The 0.1666 seconds should support framerates up to 60fps (.0166666 seconds per frame) in case we ever have cameras that run that fast.
+        // TODO: Dynamically tune the frequency better to actual decoder frequency
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01666 * NSEC_PER_SEC)), _DUXBetaSnapshotterHelperQueue, ^{
             NSMutableDictionary *workDict = self.DUXBetaSnapshottersDict;
             NSMutableArray *persistent = workDict[@"persistent"];

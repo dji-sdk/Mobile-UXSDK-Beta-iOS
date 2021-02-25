@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,18 +29,44 @@
 #import <UIKit/UIKit.h>
 
 @class DUXBetaCompassLayer;
-@class DUXBetaCompassAircraftVisionLayer;
+@class DUXBetaCompassAircraftYawLayer;
 
+/// Custom view that displays the following:
+/// - True north relative to the pilot and the aircraft
+/// - Distance of the aircraft from the pilot
+/// - Position of the aircraft relative to the pilot
+/// - The aircraft's last recorded home location
 @interface DUXBetaCompassAircraftWorldLayer : CALayer
 
-@property (strong, nonatomic) UIImage *northImage;
-@property (strong, nonatomic) UIImage *homeImage;
+/// The resource for the north icon image.
+@property (nonatomic, strong) UIImage *northImage;
 
-@property (strong, nonatomic) CALayer *homeLayer;
+/// The resource for the image displayed in the center layer.
+@property (nonatomic, strong) UIImage *centerImage;
 
+/// The resource for the image displayed in the second layer.
+@property (nonatomic, strong) UIImage *secondImage;
+
+/// The background color for the aircraft icon.
+@property (nonatomic, strong) UIColor *northBackgroundColor;
+
+/// The background color for the center icon.
+@property (nonatomic, strong) UIColor *centerBackgroundColor;
+
+/// The background color for the second icon.
+@property (nonatomic, strong) UIColor *secondBackgroundColor;
+
+/// The center layer presented by this custom view.
+@property (nonatomic, strong) CALayer *centerLayer;
+
+/// The second layer presented by this custom view.
+@property (nonatomic, strong) CALayer *secondLayer;
+
+/// Weak reference to the container layer.
 @property (weak, nonatomic) DUXBetaCompassLayer *compassLayer;
 
-@property (strong, nonatomic) DUXBetaCompassAircraftVisionLayer *aircraftVisionLayer;
+/// The custom view displaying the aircraft gimbal's yaw relative to the pilot.
+@property (nonatomic, readonly) DUXBetaCompassAircraftYawLayer *aircraftYawLayer;
 
 - (void)applyDeviceHeading:(CGFloat)deviceHeading;
 

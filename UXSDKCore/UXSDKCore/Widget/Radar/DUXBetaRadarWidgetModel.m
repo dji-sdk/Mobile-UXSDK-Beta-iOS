@@ -29,12 +29,15 @@
 
 @interface DUXBetaRadarWidgetModel()
 
-@property (nonatomic, assign, readwrite) DJIVisionDetectionState *noseState;
-@property (nonatomic, assign, readwrite) DJIVisionDetectionState *tailState;
-@property (nonatomic, assign, readwrite) DJIVisionDetectionState *rightState;
-@property (nonatomic, assign, readwrite) DJIVisionDetectionState *leftState;
-@property (nonatomic, assign, readwrite) DJIVisionControlState *controlState;
+@property (nonatomic, strong, readwrite) DJIVisionDetectionState *noseState;
+@property (nonatomic, strong, readwrite) DJIVisionDetectionState *tailState;
+@property (nonatomic, strong, readwrite) DJIVisionDetectionState *rightState;
+@property (nonatomic, strong, readwrite) DJIVisionDetectionState *leftState;
+@property (nonatomic, strong, readwrite) DJIVisionControlState *controlState;
+@property (nonatomic, strong, readwrite) DJIFlightAssistantObstacleAvoidanceSensorState *avoidanceStateM300;
 
+// These value is consolidated into Undefined, Level1, Level2, Level3. Anything > Leve3 maps to level 3
+@property (nonatomic, readwrite) DJIObstacleDetectionSectorWarning  radarWarningLevel;
 @end
 
 @implementation DUXBetaRadarWidgetModel
@@ -45,7 +48,9 @@
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0 subComponent:DJIFlightControllerFlightAssistantSubComponent subComponentIndex:0 andParam:DJIFlightAssistantParamVisionDetectionRightState], rightState);
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0 subComponent:DJIFlightControllerFlightAssistantSubComponent subComponentIndex:0 andParam:DJIFlightAssistantParamVisionDetectionLeftState], leftState);
     BindSDKKey([DJIFlightControllerKey keyWithIndex:0 subComponent:DJIFlightControllerFlightAssistantSubComponent subComponentIndex:0 andParam:DJIFlightAssistantParamVisionControlState], controlState);
-    BindRKVOModel(self, @selector(update), noseState, tailState, rightState, leftState, controlState);
+    BindSDKKey([DJIFlightControllerKey keyWithIndex:0 subComponent:DJIFlightControllerFlightAssistantSubComponent subComponentIndex:0 andParam:DJIFlightAssistantParamAvoidanceState], avoidanceStateM300);
+    BindRKVOModel(self, @selector(update), noseState, tailState, rightState, leftState, controlState, avoidanceStateM300);
+    
 }
 
 - (void)inCleanup {
@@ -53,7 +58,76 @@
     UnBindRKVOModel(self);
 }
 
-- (void)update {  
-}
+- (void)update {
+    if (self.avoidanceStateM300) {
+        // TODO: Currently non-functional and always returns nil for M300. Once supported in MSDK, update.
+    } else {
+        DJIObstacleDetectionSectorWarning testLevel;
+        DJIObstacleDetectionSectorWarning sectorLevel = DJIObstacleDetectionSectorWarningInvalid;
+        if (self.noseState.detectionSectors != nil) {
+            testLevel = [self warningLevelForRadarSectors: self.noseState.detectionSectors];
+            // This test works because the testLevel can't be < DJIObstacleDetectionSectorWarningInvalid
+            if ((testLevel > DJIObstacleDetectionSectorWarningInvalid) || (testLevel < sectorLevel)) {
+                sectorLevel = testLevel;
+            }
+        }
 
+        if (self.tailState.detectionSectors != nil) {
+            testLevel = [self warningLevelForRadarSectors: self.tailState.detectionSectors];
+            // This test works because the testLevel can't be < DJIObstacleDetectionSectorWarningInvalid
+            if ((testLevel > DJIObstacleDetectionSectorWarningInvalid) || (testLevel < sectorLevel)) {
+                sectorLevel = testLevel;
+            }
+        }
+
+        if (self.leftState.detectionSectors != nil) {
+            testLevel = [self warningLevelForRadarSectors: self.leftState.detectionSectors];
+            // This test works because the testLevel can't be < DJIObstacleDetectionSectorWarningInvalid
+            if ((testLevel > DJIObstacleDetectionSectorWarningInvalid) || (testLevel < sectorLevel)) {
+                sectorLevel = testLevel;
+            }
+        }
+
+        if (self.rightState.detectionSectors != nil) {
+            testLevel = [self warningLevelForRadarSectors: self.rightState.detectionSectors];
+            // This test works because the testLevel can't be < DJIObstacleDetectionSectorWarningInvalid
+            if ((testLevel > DJIObstacleDetectionSectorWarningInvalid) || (testLevel < sectorLevel)) {
+                sectorLevel = testLevel;
+            }
+        }
+        self.radarWarningLevel = sectorLevel;
+    }
+}
+    
+- (DJIObstacleDetectionSectorWarning)warningLevelForRadarSectors:(NSArray<DJIObstacleDetectionSector *> *)sectorsArray {
+    DJIObstacleDetectionSectorWarning outLevel = DJIObstacleDetectionSectorWarningInvalid;
+    
+    for (DJIObstacleDetectionSector *sector in sectorsArray) {
+        DJIObstacleDetectionSectorWarning level = sector.warningLevel;
+        switch (level) {
+        case DJIObstacleDetectionSectorWarningUnknown:
+        case DJIObstacleDetectionSectorWarningInvalid:
+            // These will not affect the level since we already have set to invalid.
+            break;
+            
+        case DJIObstacleDetectionSectorWarningLevel1:
+        case DJIObstacleDetectionSectorWarningLevel2:
+        case DJIObstacleDetectionSectorWarningLevel3:
+            outLevel = MIN(level, (outLevel == DJIObstacleDetectionSectorWarningInvalid) ? DJIObstacleDetectionSectorWarningLevel3 : outLevel);
+            break;
+            
+        case DJIObstacleDetectionSectorWarningLevel4:
+        case DJIObstacleDetectionSectorWarningLevel5:
+        case DJIObstacleDetectionSectorWarningLevel6:
+            level = DJIObstacleDetectionSectorWarningLevel3;
+            outLevel = MIN(level, (outLevel == DJIObstacleDetectionSectorWarningInvalid) ? DJIObstacleDetectionSectorWarningLevel3 : outLevel);
+            break;
+            
+        default:
+            // Don't change the level for other cases. There should be no other cases
+            break;
+        }
+    }
+    return outLevel;
+}
 @end

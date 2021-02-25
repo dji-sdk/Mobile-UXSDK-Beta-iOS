@@ -40,6 +40,20 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
     @IBOutlet weak var bridgeIDField: UITextField!
     @IBOutlet weak var debugLogView: UITextView!
     
+    //Internal outlets, remove before release.
+    @IBOutlet weak var simulatorButton:UIButton!
+    
+    fileprivate var _isSimulatorActive: Bool = false
+    public var isSimulatorActive: Bool {
+        get {
+            return _isSimulatorActive
+        }
+        set {
+            _isSimulatorActive = newValue
+            self.simulatorButton.setTitle(_isSimulatorActive ? "Stop Simulator" : "Start Simulator", for: UIControl.State.normal)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,6 +132,20 @@ class MainViewController: UIViewController, UITextFieldDelegate, LogCenterListen
                     self.productName.text = "N/A"
                 }
             })
+            
+            if let isSimulatorActiveKey = DJIFlightControllerKey(param: DJIFlightControllerParamIsSimulatorActive) {
+                DJISDKManager.keyManager()?.startListeningForChanges(on: isSimulatorActiveKey, withListener: self, andUpdate: { (oldValue: DJIKeyedValue?, newValue : DJIKeyedValue?) in
+                    if newValue?.boolValue != nil {
+                        self.isSimulatorActive = (newValue?.boolValue)!
+                    }
+                })
+                DJISDKManager.keyManager()?.getValueFor(isSimulatorActiveKey, withCompletion: { (value:DJIKeyedValue?, error:Error?) in
+                    if value?.boolValue != nil {
+                        self.isSimulatorActive = (value?.boolValue)!
+                    }
+                })
+            }
+            
         } else {
             self.connected.text = "NO"
             self.connect.isHidden = false

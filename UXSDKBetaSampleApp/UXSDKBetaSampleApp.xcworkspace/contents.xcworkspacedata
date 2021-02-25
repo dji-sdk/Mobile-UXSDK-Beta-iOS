@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../DJIUXSDK.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKAccessory/UXSDKAccessory.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UXSDKBetaSampleApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKCameraCore/UXSDKCameraCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKCore/UXSDKCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKFlight/UXSDKFlight.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKMap/UXSDKMap.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKMedia/UXSDKMedia.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKTraining/UXSDKTraining.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../UXSDKVisualCamera/UXSDKVisualCamera.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

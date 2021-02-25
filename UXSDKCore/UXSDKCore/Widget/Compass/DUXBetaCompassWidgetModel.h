@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,32 +29,76 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ *  An enum for the center type used in the calculations
+ */
+typedef NS_ENUM(NSUInteger, DUXBetaCompassCenterType) {
+    /**
+     * The center is determined by RC location data or mobile device
+     * location data
+     */
+    DUXBetaCompassRCMobileGPS,
+    
+    /**
+     * The center is determined by the home location's data
+     */
+    DUXBetaCompassHomeGPS
+};
+
+/**
+ * Class that holds the aircraft's attitude with getters and setters
+ * for the roll, pitch and yaw of the aircraft.
+ */
+@interface DUXBetaAircraftAttitude : NSObject
+    
+// Rotation around the front-to-back axis.
+@property (nonatomic, assign) CLLocationDirection roll;
+// Rotation around the side-to-side axis.
+@property (nonatomic, assign) CLLocationDirection pitch;
+// Rotation around the vertical axis.
+@property (nonatomic, assign) CLLocationDirection yaw;
+
+@end
+
+/**
+ * Class that holds the angle and distance between the aircraft and the
+ * home/RC/Mobile device's location.
+ */
+@interface DUXBetaLocationState : NSObject
+
+// Angle/Direction as CLLocationDirection.
+@property (nonatomic, assign) CLLocationDirection angle;
+// Distance as an NSMeasurement.
+@property (nonatomic, assign) double distance;
+
+@end
+
+/**
+ * Class that defines all the properties processed by the DUXBetaCompassWidgetModel.
+ */
+@interface DUXBetaCompassState : NSObject
+
+@property (nonatomic, strong) DUXBetaLocationState *aircraftState;
+@property (nonatomic, strong, nullable) DUXBetaLocationState *rcLocationState;
+@property (nonatomic, strong, nullable) DUXBetaLocationState *homeLocationState;
+@property (nonatomic, strong) DUXBetaAircraftAttitude *aircraftAttitude;
+@property (nonatomic, assign) DUXBetaCompassCenterType centerType;
+@property (nonatomic, assign) CLLocationDirection gimbalHeading;
+@property (nonatomic, assign) CLLocationDirection deviceHeading;
+
+@end
+
+
+/**
+ * Widget Model for the DUXBetaCompassWidget used to define
+ * the underlying logic and communication.
+ */
 @interface DUXBetaCompassWidgetModel : DUXBetaBaseWidgetModel
 
+@property (nonatomic, strong, nullable) CLLocationManager *locationManager;
 @property (assign, nonatomic) CLLocationAccuracy locationManagerAccuracy;
 
-// Rotation around the front-to-back axis.
-@property (nonatomic, assign, readonly) CLLocationDirection aircraftRoll;
-// Rotation around the side-to-side axis.
-@property (nonatomic, assign, readonly) CLLocationDirection aircraftPitch;
-// Rotation around the vertical axis.
-@property (nonatomic, assign, readonly) CLLocationDirection aircraftYaw;
-// Rotation of gimbal relative to the aircraft.
-@property (nonatomic, assign, readonly) CLLocationDirection gimbalYawRelativeToAircraft;
-// Direction device is heading.
-@property (nonatomic, assign, readonly) CLLocationDirection deviceHeading;
-// Angle/Direction of drone.
-@property (nonatomic, assign, readonly) CLLocationDirection droneAngle;
-// Distance of drone.
-@property (nonatomic, readonly) NSMeasurement *droneDistance;
-// Angle/Direction of home.
-@property (nonatomic, assign, readonly) CLLocationDirection homeAngle;
-// Distance of home.
-@property (nonatomic, readonly) NSMeasurement *homeDistance;
-// Units for drone distance
-@property (nonatomic, strong) NSUnitLength *droneDistanceUnits;
-// Units for home distance
-@property (nonatomic, strong) NSUnitLength *homeDistanceUnits;
+@property (nonatomic, readonly) DUXBetaCompassState *compassState;
 
 @end
 

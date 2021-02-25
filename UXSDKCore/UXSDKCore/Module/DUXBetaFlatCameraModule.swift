@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2020 DJI
+//  Copyright © 2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -31,29 +31,64 @@ import Foundation
  * Abstraction for getting and setting camera mode and photo mode.
  */
 @objcMembers public class DUXBetaFlatCameraModule: DUXBetaBaseModule {
+    /// The computed camera mode.
+    dynamic public var currentCameraMode: DJICameraMode = .unknown
+    /// The computed camera shoot mode.
+    dynamic public var currentShootPhotoMode: DJICameraShootPhotoMode = .unknown
+    
     /// The camera mode.
     dynamic public var cameraMode: DJICameraMode = .unknown
     /// The camera flat mode.
     dynamic public var flatMode: DJIFlatCameraMode = .unknown
     /// Boolean value indicating if camera flat mode is supported.
     dynamic public var isFlatModeSupported: Bool = false
+    /// The camera shoot mode.
+    dynamic public var shootPhotoMode: DJICameraShootPhotoMode = .unknown
+    /// Index of the camera the widget model is communicating with
+    dynamic public var cameraIndex: Int = 0 {
+        willSet {
+            cleanup()
+        }
+        didSet {
+            setup()
+        }
+    }
     
     fileprivate var flatModeKey: DJICameraKey?
     fileprivate var cameraModeKey: DJICameraKey?
+    fileprivate var shootPhotoModeKey: DJICameraKey?
+    fileprivate var isFlatModeSupportedKey: DJICameraKey?
     
     /**
      * Implementation of the setup method that binds the necessary keys.
      */
     public override func setup() {
-        if let key = DJICameraKey(param: DJICameraParamMode) {
+        if let key = DJICameraKey(index: cameraIndex, andParam: DJICameraParamMode) {
+            cameraModeKey = key
             bindSDKKey(key, (\DUXBetaFlatCameraModule.cameraMode).toString)
         }
-        if let key = DJICameraKey(param: DJICameraParamFlatMode) {
+        if let key = DJICameraKey(index: cameraIndex, andParam: DJICameraParamShootPhotoMode) {
+            shootPhotoModeKey = key
+            bindSDKKey(key, (\DUXBetaFlatCameraModule.shootPhotoMode).toString)
+        }
+        if let key = DJICameraKey(index: cameraIndex, andParam: DJICameraParamFlatMode) {
+            flatModeKey = key
             bindSDKKey(key, (\DUXBetaFlatCameraModule.flatMode).toString)
         }
-        if let key = DJICameraKey(param: DJICameraParamIsFlatModeSupported) {
+        if let key = DJICameraKey(index: cameraIndex, andParam: DJICameraParamIsFlatModeSupported) {
+            isFlatModeSupportedKey = key
             bindSDKKey(key, (\DUXBetaFlatCameraModule.isFlatModeSupported).toString)
         }
+        
+        bindRKVOModel(self, #selector(updateCameraMode),
+                      (\DUXBetaFlatCameraModule.flatMode).toString,
+                      (\DUXBetaFlatCameraModule.cameraMode).toString,
+                      (\DUXBetaFlatCameraModule.isFlatModeSupported).toString)
+        
+        bindRKVOModel(self, #selector(updateShootPhotoMode),
+                      (\DUXBetaFlatCameraModule.flatMode).toString,
+                      (\DUXBetaFlatCameraModule.shootPhotoMode).toString,
+                      (\DUXBetaFlatCameraModule.isFlatModeSupported).toString)
     }
     
     /**
@@ -72,13 +107,17 @@ import Foundation
      *      - completion: Completion block called when performing a set on a key.
      */
     public func setPhotoMode(shootPhotoMode: DJICameraShootPhotoMode, withCompletion completion: @escaping DJIKeyedSetCompletionBlock) {
-        guard let flatModeKey = cameraModeKey else { return }
+        guard let flatModeKey = flatModeKey else { return }
         guard let cameraModeKey = cameraModeKey else { return }
         
         if isFlatModeSupported {
-            DJISDKManager.keyManager()?.setValue(shootPhotoMode.flatMode, for: flatModeKey, withCompletion: completion)
+            DJISDKManager.keyManager()?.setValue(NSNumber(value: shootPhotoMode.flatMode.rawValue),
+                                                 for: flatModeKey,
+                                                 withCompletion: completion)
         } else {
-            DJISDKManager.keyManager()?.setValue(shootPhotoMode, for: cameraModeKey, withCompletion: completion)
+            DJISDKManager.keyManager()?.setValue(NSNumber(value: shootPhotoMode.rawValue),
+                                                 for: cameraModeKey,
+                                                 withCompletion: completion)
         }
     }
     
@@ -90,17 +129,37 @@ import Foundation
      *      - completion: Completion block called when performing a set on a key.
      */
     public func setCameraMode(cameraMode: DJICameraMode, withCompletion completion: @escaping DJIKeyedSetCompletionBlock) {
-        guard let flatModeKey = cameraModeKey else { return }
+        guard let flatModeKey = flatModeKey else { return }
         guard let cameraModeKey = cameraModeKey else { return }
         
         if isFlatModeSupported {
             if cameraMode == .shootPhoto {
-                DJISDKManager.keyManager()?.setValue(DJIFlatCameraMode.photoSingle, for: flatModeKey, withCompletion: completion)
+                DJISDKManager.keyManager()?.setValue(NSNumber(value: DJIFlatCameraMode.photoSingle.rawValue),
+                                                     for: flatModeKey,
+                                                     withCompletion: completion)
             } else {
-                DJISDKManager.keyManager()?.setValue(DJIFlatCameraMode.videoNormal, for: flatModeKey, withCompletion: completion)
+                DJISDKManager.keyManager()?.setValue(NSNumber(value: DJIFlatCameraMode.videoNormal.rawValue),
+                                                     for: flatModeKey,
+                                                     withCompletion: completion)
             }
         } else {
-            DJISDKManager.keyManager()?.setValue(cameraMode, for: cameraModeKey, withCompletion: completion)
+            DJISDKManager.keyManager()?.setValue(NSNumber(value: cameraMode.rawValue), for: cameraModeKey, withCompletion: completion)
+        }
+    }
+    
+    @objc func updateCameraMode() {
+        if isFlatModeSupported {
+            currentCameraMode = flatMode.isPictureMode ? .shootPhoto : .recordVideo
+        } else {
+            currentCameraMode = cameraMode
+        }
+    }
+    
+    @objc func updateShootPhotoMode() {
+        if isFlatModeSupported {
+            currentShootPhotoMode = flatMode.photoShootMode
+        } else {
+            currentShootPhotoMode = shootPhotoMode
         }
     }
 }
@@ -108,7 +167,7 @@ import Foundation
 /**
  * Extension that bridges DJIFlatCameraMode to DJICameraShootPhotoMode
  */
-extension DJIFlatCameraMode {
+public extension DJIFlatCameraMode {
     
     var isPictureMode: Bool {
         return
@@ -149,7 +208,7 @@ extension DJIFlatCameraMode {
 /**
  * Extension that bridges DJICameraShootPhotoMode to DJIFlatCameraMode
  */
-extension DJICameraShootPhotoMode {
+public extension DJICameraShootPhotoMode {
     
     var flatMode: DJIFlatCameraMode {
         switch self {

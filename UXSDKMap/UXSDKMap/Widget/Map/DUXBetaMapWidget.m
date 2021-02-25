@@ -411,6 +411,7 @@ static CGSize const kDesignSize = {200.0, 200.0};
     if ([NSThread isMainThread]) {
         @synchronized (self) {
             [self.underlyingMapView removeOverlays:self.underlyingMapView.overlays];
+            // TODO: Figure out why flyzones are being duplicated
             //[self.underlyingMapView removeOverlays:self.overlayProvider.removedOverlays];
             [self.underlyingMapView addOverlays:self.overlayProvider.addedOverlays
                                           level:MKOverlayLevelAboveRoads];
@@ -421,7 +422,7 @@ static CGSize const kDesignSize = {200.0, 200.0};
         dispatch_sync(dispatch_get_main_queue(), ^{
             @synchronized (self) {
                 [self.underlyingMapView removeOverlays:self.underlyingMapView.overlays];
-
+                // TODO: Figure out why flyzones are being duplicated
                 //[self.underlyingMapView removeOverlays:self.overlayProvider.removedOverlays];
                 [self.underlyingMapView addOverlays:self.overlayProvider.addedOverlays
                                               level:MKOverlayLevelAboveRoads];

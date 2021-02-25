@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,10 @@
 #import <UIKit/UIKit.h>
 
 #import "DUXBetaCompassLayer.h"
-#import "DUXBetaCompassAircraftVisionLayer.h"
-#import "DUXBetaCompassGyroHorizonLayer.h"
-#import "DUXBetaCompassAircraftWorldLayer.h"
+#import "UIColor+DUXBetaColors.h"
+#import "DUXBetaCompassAircraftYawLayer.h"
 
 #define DEGREES_TO_RADIANS(degrees) (degrees * M_PI / 180.0)
-#define RADIANS_TO_DEGREES(radians) (radians * 180.0 / M_PI)
 
 static const CGFloat kDefaultRadiusSizeInMeters = 400; // distance in meters
 static const CGFloat kDefaultInnerRingInterDistance = 100; // distance in meters
@@ -41,24 +39,17 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
 
 @interface DUXBetaCompassLayer ()
 
+@property (strong, nonatomic) DUXBetaGimbalYawLayer *gimbalYawLayer;
 @property (strong, nonatomic) DUXBetaCompassGyroHorizonLayer *gyroHorizonLayer;
 @property (strong, nonatomic) DUXBetaCompassAircraftWorldLayer *aircraftWorldLayer;
 @property (strong, nonatomic) CALayer *notchLayer;
 @property (strong, nonatomic) CAShapeLayer *borderLayer;
 @property (strong, nonatomic) CAShapeLayer *crossHairsLayer;
 
-/**
- *   The distance in meters represented by the radius of the compass.
- */
-@property (nonatomic, assign) CGFloat radiusSize;
-@property (nonatomic, assign) CGFloat ringsInterDistance; // interval between lines, default = 100m
+@property (nonatomic, assign) CGFloat boundsOffset;
 
-@property (nonatomic, assign) CGFloat homeToRCDistance; // in meters
-@property (nonatomic, assign) CGFloat aircraftToRCDistance; // in meters
-
-@property CGFloat boundsOffset;
-@property CGFloat homeAngle;
-@property (strong, nonatomic) NSArray *innerRingDots;
+@property (nonatomic, strong) DUXBetaLocationState *homeLocationState;
+@property (nonatomic, assign) DUXBetaLocationState *aircraftLocationState;
 
 @end
 
@@ -69,36 +60,48 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.homeToRCDistance = 0;
-        self.aircraftToRCDistance = 0;
-        self.ringsInterDistance = kDefaultInnerRingInterDistance;
-        self.radiusSize = kDefaultRadiusSizeInMeters;
-        
-        self.aircraftWorldLayer = [DUXBetaCompassAircraftWorldLayer layer];
-        self.aircraftWorldLayer.zPosition = 1023;
-        self.aircraftWorldLayer.compassLayer = self;
-        self.aircraftWorldLayer.aircraftVisionLayer.compassLayer = self;
-        [self addSublayer:self.aircraftWorldLayer];
-        
-        self.gyroHorizonLayer = [DUXBetaCompassGyroHorizonLayer layer];
-        self.gyroHorizonLayer.zPosition = 1022;
-        [self addSublayer:self.gyroHorizonLayer];
-        
-        self.notchLayer = [CALayer layer];
-        self.notchLayer.zPosition = 1022;
-        [self addSublayer:self.notchLayer];
-        
-        self.crossHairsLayer = [CAShapeLayer layer];
-        self.crossHairsLayer.zPosition = 1022;
-        self.crossHairsLayer.fillColor = [UIColor clearColor].CGColor;
-        [self addSublayer:self.crossHairsLayer];
-        
-        self.borderLayer = [CAShapeLayer layer];
-        self.borderLayer.zPosition = 1021;
-        self.borderLayer.fillColor = [UIColor clearColor].CGColor;
-        [self addSublayer:self.borderLayer];
+        [self prepareLayer];
     }
     return self;
+}
+
+- (void)prepareLayer {
+    self.ringsInterDistance = kDefaultInnerRingInterDistance;
+    self.radiusSize = kDefaultRadiusSizeInMeters;
+    
+    self.aircraftWorldLayer = [DUXBetaCompassAircraftWorldLayer layer];
+    self.aircraftWorldLayer.zPosition = 1023;
+    self.aircraftWorldLayer.compassLayer = self;
+    self.aircraftWorldLayer.aircraftYawLayer.compassLayer = self;
+    self.centerImageSize = self.homeIconSize;
+    self.secondImageSize = self.rcIconSize;
+    [self addSublayer:self.aircraftWorldLayer];
+    
+    self.gyroHorizonLayer = [DUXBetaCompassGyroHorizonLayer layer];
+    self.gyroHorizonLayer.zPosition = 1022;
+    [self addSublayer:self.gyroHorizonLayer];
+    
+    self.notchLayer = [CALayer layer];
+    self.notchLayer.zPosition = 1022;
+    [self addSublayer:self.notchLayer];
+    
+    self.crossHairsLayer = [CAShapeLayer layer];
+    self.crossHairsLayer.zPosition = 1022;
+    self.crossHairsLayer.fillColor = [UIColor clearColor].CGColor;
+    [self addSublayer:self.crossHairsLayer];
+    
+    self.borderLayer = [CAShapeLayer layer];
+    self.borderLayer.zPosition = 1021;
+    self.borderLayer.fillColor = [UIColor clearColor].CGColor;
+    [self addSublayer:self.borderLayer];
+    
+    self.gimbalYawLayer = [DUXBetaGimbalYawLayer new];
+    self.gimbalYawLayer.zPosition = 1021;
+    self.gimbalYawLayer.fillColor = [UIColor clearColor].CGColor;
+    self.gimbalYawLayer.yawColor = self.yawColor;
+    self.gimbalYawLayer.blinkColor = self.blinkColor;
+    self.gimbalYawLayer.invalidColor = self.invalidColor;
+    [self addSublayer:self.gimbalYawLayer];
 }
 
 - (void)layoutSublayers {
@@ -122,6 +125,12 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(center.x - radius, center.y - radius, maxSize, maxSize)];
     self.borderLayer.path = path.CGPath;
     self.borderLayer.lineWidth = 3 * self.frame.size.width / self.designSize.width;
+    
+    maxSize = MIN(self.bounds.size.width - 2 * self.boundsOffset, self.bounds.size.height - 2 * self.boundsOffset);
+    radius = maxSize / 2.0;
+    center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    self.gimbalYawLayer.frame = CGRectMake(center.x - radius, center.y - radius, maxSize, maxSize);
+    self.gimbalYawLayer.lineWidth = 1 * self.frame.size.width / self.designSize.width;
     
     self.aircraftWorldLayer.bounds = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     self.aircraftWorldLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -169,85 +178,78 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
 /*********************************************************************************/
 #pragma mark - Update methods
 /*********************************************************************************/
-- (void)updateHomeLocationUsingAngle:(CGFloat)angle andDistance:(CGFloat)distance {
-    self.homeToRCDistance = distance;
-    self.homeAngle = angle;
+
+- (void)updateCompassState:(DUXBetaCompassState *)compassState {
+    [self updateAircraftYaw:compassState.aircraftAttitude.yaw];
+    [self updateAircraftRoll:compassState.aircraftAttitude.roll];
+    [self updateAircraftPitch:compassState.aircraftAttitude.pitch];
     
-    // This is the scaling of the relative distance in the compass.
-    CGFloat distancePercentage = distance / self.radiusSize; //
-    if (distancePercentage > 1.0) {
-        self.radiusSize *= distancePercentage;
-        distancePercentage = 1.0;
-    } else if (distancePercentage < 1.0 &&
-               self.radiusSize > kDefaultRadiusSizeInMeters &&
-               self.aircraftToRCDistance < kDefaultRadiusSizeInMeters) {
-        self.radiusSize *= distancePercentage;
-        
-        if (self.radiusSize < kDefaultRadiusSizeInMeters) {
-            self.radiusSize = kDefaultRadiusSizeInMeters;
-        }
-        
-        distancePercentage = distance / self.radiusSize;
+    if (compassState.gimbalHeading != 0) {
+        [self updateGimbalHeading:compassState.gimbalHeading];
     }
     
-    CGFloat proportionalEdgePadding = self.frame.size.width * (self.innerPadding / 2) / self.designSize.width;
-    CGFloat distancePixels = distancePercentage * ((self.frame.size.width / 2) - proportionalEdgePadding);
-    CGFloat adjustedAngle = angle - 90;
+    self.gimbalYawLayer.yaw = compassState.gimbalHeading;
     
-    CGFloat diameter = self.frame.size.width;
-    CGFloat radius = diameter / 2.0;
-    
-    float droneToCenterX = distancePixels * cos(DEGREES_TO_RADIANS(adjustedAngle));
-    float droneToCenterY = distancePixels * sin(DEGREES_TO_RADIANS(adjustedAngle));
-    float drone_cx = radius + droneToCenterX;
-    float drone_cy = droneToCenterY + diameter - radius;
+    [self updateDeviceHeading:compassState.deviceHeading];
+    [self updateAircraftLocation:compassState.aircraftState];
+        
+    if (compassState.centerType == DUXBetaCompassHomeGPS) {
+        self.centerImageSize = self.homeIconSize;
+        self.aircraftWorldLayer.centerImage = self.homeImage;
+        [self updateCenterLocation:compassState.homeLocationState];
+        
+        self.secondImageSize = self.rcIconSize;
+        self.aircraftWorldLayer.secondImage = self.rcImage;
+        [self updateSecondLocation:compassState.rcLocationState];
+    } else {
+        self.centerImageSize = self.rcIconSize;
+        self.aircraftWorldLayer.centerImage = self.rcImage;
+        [self updateCenterLocation:compassState.rcLocationState];
+        
+        self.secondImageSize = self.homeIconSize;
+        self.aircraftWorldLayer.secondImage = self.homeImage;
+        [self updateSecondLocation:compassState.homeLocationState];
+    }
+}
 
+- (void)updateAircraftLocation:(DUXBetaLocationState *)locationState {
+    self.aircraftLocationState = locationState;
+    
+    [self updateCenterLocation:self.homeLocationState];
+    
+    CGPoint newPosition = [self computePositionRelative:locationState];
     [CATransaction begin];
     [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-    self.aircraftWorldLayer.homeLayer.position = CGPointMake(drone_cx, drone_cy);
+    self.aircraftWorldLayer.aircraftYawLayer.position = newPosition;
     [CATransaction commit];
     
     [self setNeedsDisplay];
 }
 
-- (void)updateAircraftLocationUsingAngle:(CGFloat)angle andDistance:(CGFloat)distance {
-    self.aircraftToRCDistance = distance;
+- (void)updateCenterLocation:(DUXBetaLocationState *)locationState {
+    self.homeLocationState = locationState;
     
-    // This is the scaling of the relative distance in the compass.
-    CGFloat distancePercentage = distance / self.radiusSize;
-    if (distancePercentage > 1.0) {
-        self.radiusSize *= distancePercentage;
-        [self updateHomeLocationUsingAngle:self.homeAngle andDistance:self.homeToRCDistance];
-        distancePercentage = 1.0;
-    } else if (distancePercentage < 1.0 &&
-               self.radiusSize > kDefaultRadiusSizeInMeters &&
-               self.homeToRCDistance < kDefaultRadiusSizeInMeters) {
-        self.radiusSize *= distancePercentage;
-        
-        if (self.radiusSize < kDefaultRadiusSizeInMeters) {
-            self.radiusSize = kDefaultRadiusSizeInMeters;
-        }
-        [self updateHomeLocationUsingAngle:self.homeAngle andDistance:self.homeToRCDistance];
-        
-        distancePercentage = distance / self.radiusSize;
-    }
-    
-    CGFloat proportionalEdgePadding = self.frame.size.width * self.innerPadding / self.designSize.width;
-    CGFloat distancePixels = distancePercentage * ((self.frame.size.width / 2) - proportionalEdgePadding);
-    CGFloat adjustedAngle = angle - 90;
-    
-    CGFloat diameter = self.frame.size.width;
-    CGFloat radius = diameter / 2.0;
-    
-    float droneToCenterX = distancePixels * cos(DEGREES_TO_RADIANS(adjustedAngle));
-    float droneToCenterY = distancePixels * sin(DEGREES_TO_RADIANS(adjustedAngle));
-    float drone_cx = radius + droneToCenterX;
-    float drone_cy = droneToCenterY + diameter - radius;
-    
+    CGPoint newPosition = [self computePositionRelative:locationState];
+
     [CATransaction begin];
     [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-    self.aircraftWorldLayer.aircraftVisionLayer.position = CGPointMake(drone_cx, drone_cy);
+    self.aircraftWorldLayer.centerLayer.position = newPosition;
     [CATransaction commit];
+    
+    self.aircraftWorldLayer.centerLayer.hidden = (locationState == nil);
+    
+    [self setNeedsDisplay];
+}
+
+- (void)updateSecondLocation:(DUXBetaLocationState *)locationState {
+    CGPoint newPosition = [self computePositionRelative:locationState];
+
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    self.aircraftWorldLayer.secondLayer.position = newPosition;
+    [CATransaction commit];
+    
+    self.aircraftWorldLayer.secondLayer.hidden = (locationState == nil);
     
     [self setNeedsDisplay];
 }
@@ -263,12 +265,12 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
 }
 
 - (void)updateAircraftYaw:(CGFloat)yaw {
-    [self.aircraftWorldLayer.aircraftVisionLayer updateHeading:yaw];
+    [self.aircraftWorldLayer.aircraftYawLayer updateAircraftHeading:yaw];
     [self setNeedsDisplay];
 }
 
-- (void)updateGimbalYaw:(CGFloat)yaw {
-    [self.aircraftWorldLayer.aircraftVisionLayer updateGimbalYaw:yaw];
+- (void)updateGimbalHeading:(CGFloat)yaw {
+    [self.aircraftWorldLayer.aircraftYawLayer updateGimbalHeading:yaw];
     [self setNeedsDisplay];
 }
 
@@ -277,9 +279,7 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
     [self setNeedsDisplay];
 }
 
-/*
- Custom Setters and Getters for Colors
- */
+#pragma mark - Custom Setters and Getters for Colors
 
 - (void)setCompassBackgroundColor:(UIColor *)compassBackgroundColor {
     self.fillColor = compassBackgroundColor.CGColor;
@@ -289,20 +289,20 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
     return [UIColor colorWithCGColor:self.fillColor];
 }
 
-- (void)setCompassStrokeColor:(UIColor *)compassStrokeColor {
-    self.strokeColor = compassStrokeColor.CGColor;
-    self.crossHairsLayer.strokeColor = compassStrokeColor.CGColor;
+- (void)setLineColor:(UIColor *)lineColor {
+    self.strokeColor = lineColor.CGColor;
+    self.crossHairsLayer.strokeColor = lineColor.CGColor;
 }
 
-- (UIColor *)compassStrokeColor {
+- (UIColor *)lineColor {
     return [UIColor colorWithCGColor:self.strokeColor];
 }
 
-- (void)setCompassBorderColor:(UIColor *)compassBorderColor {
-    self.borderLayer.strokeColor = compassBorderColor.CGColor;
+- (void)setBoundsColor:(UIColor *)boundsColor {
+    self.borderLayer.strokeColor = boundsColor.CGColor;
 }
 
-- (UIColor *)compassBorderColor {
+- (UIColor *)boundsColor {
     return [UIColor colorWithCGColor:self.borderLayer.strokeColor];
 }
 
@@ -314,9 +314,32 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
     return [UIColor colorWithCGColor:self.gyroHorizonLayer.fillColor];
 }
 
-/*
- Custom Setters and Getters for Images
- */
+- (void)setYawColor:(UIColor *)yawColor {
+    self.gimbalYawLayer.yawColor = yawColor;
+}
+
+- (UIColor *)yawColor {
+    return self.gimbalYawLayer.yawColor;
+}
+
+- (void)setBlinkColor:(UIColor *)blinkColor {
+    self.gimbalYawLayer.blinkColor = blinkColor;
+}
+
+- (UIColor *)blinkColor {
+    return self.gimbalYawLayer.blinkColor;
+}
+
+- (void)setInvalidColor:(UIColor *)invalidColor {
+    self.gimbalYawLayer.invalidColor = invalidColor;
+}
+
+- (UIColor *)invalidColor {
+    return self.gimbalYawLayer.invalidColor;
+}
+
+# pragma mark - Custom Setters and Getters for Images
+
 - (void)setNotchImage:(UIImage *)notchImage {
     _notchImage = notchImage;
     self.notchLayer.contents = (__bridge id _Nullable)notchImage.CGImage;
@@ -329,35 +352,97 @@ static const CGFloat kDesignInnerRingSpacingInPercentage = 0.25; // in a radius 
 }
 
 - (void)setAircraftImage:(UIImage *)aircraftImage {
-    self.aircraftWorldLayer.aircraftVisionLayer.aircraftImage = aircraftImage;
+    self.aircraftWorldLayer.aircraftYawLayer.aircraftImage = aircraftImage;
 }
 
 - (UIImage *)aircraftImage {
-    return self.aircraftWorldLayer.aircraftVisionLayer.aircraftImage;
+    return self.aircraftWorldLayer.aircraftYawLayer.aircraftImage;
 }
 
-- (void)setVisionConeImage:(UIImage *)visionConeImage {
-    self.aircraftWorldLayer.aircraftVisionLayer.visionImage = visionConeImage;
+- (void)setGimbalYawImage:(UIImage *)visionConeImage {
+    self.aircraftWorldLayer.aircraftYawLayer.gimbalYawImage = visionConeImage;
 }
 
-- (UIImage *)visionConeImage {
-    return self.aircraftWorldLayer.aircraftVisionLayer.visionImage;
+- (UIImage *)gimbalYawImage {
+    return self.aircraftWorldLayer.aircraftYawLayer.gimbalYawImage;
 }
 
-- (void)setNorthIconImage:(UIImage *)northIconImage {
+- (void)setNorthImage:(UIImage *)northIconImage {
     self.aircraftWorldLayer.northImage = northIconImage;
 }
 
-- (UIImage *)northIconImage {
+- (UIImage *)northImage {
     return self.aircraftWorldLayer.northImage;
 }
 
-- (void)setHomeIconImage:(UIImage *)homeIconImage {
-    self.aircraftWorldLayer.homeImage = homeIconImage;
+# pragma mark - Custom Setters and Getters for Background Colors
+
+- (void)setNotchBackgoundColor:(UIColor *)notchBackgoundColor {
+    self.notchLayer.backgroundColor = notchBackgoundColor.CGColor;
 }
 
-- (UIImage *)homeIconImage {
-    return self.aircraftWorldLayer.homeImage;
+- (UIColor *)notchBackgoundColor {
+    return [UIColor colorWithCGColor:self.notchLayer.backgroundColor];
+}
+
+- (void)setAircraftBackgoundColor:(UIColor *)aircraftBackgoundColor {
+    self.aircraftWorldLayer.aircraftYawLayer.aircraftBackgroundColor = aircraftBackgoundColor;
+}
+
+- (UIColor *)aircraftBackgoundColor {
+    return self.aircraftWorldLayer.aircraftYawLayer.aircraftBackgroundColor;
+}
+
+- (void)setGimbalYawBackgoundColor:(UIColor *)gimbalYawBackgoundColor {
+    self.aircraftWorldLayer.aircraftYawLayer.gimbalYawBackgroundColor = gimbalYawBackgoundColor;
+}
+
+- (UIColor *)gimbalYawBackgoundColor {
+    return self.aircraftWorldLayer.aircraftYawLayer.gimbalYawBackgroundColor;
+}
+
+- (void)setNorthBackgoundColor:(UIColor *)northBackgoundColor {
+    self.aircraftWorldLayer.northBackgroundColor = northBackgoundColor;
+}
+
+- (UIColor *)northBackgoundColor {
+    return self.aircraftWorldLayer.northBackgroundColor;
+}
+
+#pragma mark - Helper Method
+
+- (CGPoint)computePositionRelative:(DUXBetaLocationState *)locationState {
+    
+    // This is the scaling of the relative distance in the compass.
+    CGFloat distancePercentage = locationState.distance / self.radiusSize;
+    if (distancePercentage > 1.0) {
+        self.radiusSize *= distancePercentage;
+        distancePercentage = 1.0;
+    } else if (distancePercentage < 1.0 &&
+               self.radiusSize > kDefaultRadiusSizeInMeters &&
+               self.self.aircraftLocationState.distance < kDefaultRadiusSizeInMeters) {
+        self.radiusSize *= distancePercentage;
+        
+        if (self.radiusSize < kDefaultRadiusSizeInMeters) {
+            self.radiusSize = kDefaultRadiusSizeInMeters;
+        }
+        
+        distancePercentage = locationState.distance / self.radiusSize;
+    }
+    
+    CGFloat proportionalEdgePadding = self.frame.size.width * (self.innerMargin / 2) / self.designSize.width;
+    CGFloat distancePixels = distancePercentage * ((self.frame.size.width / 2) - proportionalEdgePadding);
+    CGFloat adjustedAngle = locationState.angle - 90;
+    
+    CGFloat diameter = self.frame.size.width;
+    CGFloat radius = diameter / 2.0;
+    
+    float droneToCenterX = distancePixels * cos(DEGREES_TO_RADIANS(adjustedAngle));
+    float droneToCenterY = distancePixels * sin(DEGREES_TO_RADIANS(adjustedAngle));
+    float drone_cx = radius + droneToCenterX;
+    float drone_cy = droneToCenterY + diameter - radius;
+    
+    return CGPointMake(drone_cx, drone_cy);
 }
 
 @end

@@ -35,3 +35,9 @@ FOUNDATION_EXPORT const unsigned char UXSDKFlightVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <UXSDKFlight/PublicHeader.h>
 
+
+/*********************************************************************************/
+// APAS Widget
+/*********************************************************************************/
+#import <UXSDKFlight/DUXBetaAPASWidget.h>
+#import <UXSDKFlight/DUXBetaAPASWidgetModel.h>

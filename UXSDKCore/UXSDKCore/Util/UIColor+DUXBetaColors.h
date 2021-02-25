@@ -34,11 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)uxsdk_successColor;
 + (UIColor *)uxsdk_goodColor;
 + (UIColor *)uxsdk_errorDangerColor;
++ (UIColor *)uxsdk_errorDangerColorAlpha30;
 + (UIColor *)uxsdk_warningColor;
 
 + (UIColor *)uxsdk_selectedBlueColor;
 + (UIColor *)uxsdk_linkBlueColor;
-+ (UIColor *)uxsdk_compassWidgetHorizonColor;
 
 + (UIColor *)uxsdk_slideTextColor;
 
@@ -57,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)uxsdk_whiteAlpha70;
 + (UIColor *)uxsdk_whiteAlpha80;
 + (UIColor *)uxsdk_lightGrayTransparentColor;
++ (UIColor *)uxsdk_blackAlpha20;
 + (UIColor *)uxsdk_blackAlpha40;
 + (UIColor *)uxsdk_blackAlpha50;
 + (UIColor *)uxsdk_blackAlpha60;
@@ -74,6 +75,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)uxsdk_white15;
 + (UIColor *)uxsdk_white5;
 + (UIColor *)uxsdk_blackColor;
+
+// Compass colors
++ (UIColor *)uxsdk_compassWidgetHorizonColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

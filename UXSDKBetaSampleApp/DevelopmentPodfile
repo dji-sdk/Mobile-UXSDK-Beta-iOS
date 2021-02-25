@@ -34,6 +34,26 @@ target 'UXSDKMap' do
   core_pods
 end
 
+target 'UXSDKCameraCore' do
+  project '../UXSDKCameraCore/UXSDKCameraCore.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKTraining' do
+  project '../UXSDKTraining/UXSDKTraining.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKMedia' do
+  project '../UXSDKMedia/UXSDKMedia.xcodeproj' 
+  core_pods
+end
+
+target 'UXSDKVisualCamera' do
+  project '../UXSDKVisualCamera/UXSDKVisualCamera.xcodeproj' 
+  core_pods
+end
+
 
 target 'UXSDKBetaSampleApp' do
   project './UXSDKBetaSampleApp.xcodeproj' 

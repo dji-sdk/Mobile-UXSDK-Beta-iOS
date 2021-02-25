@@ -86,6 +86,7 @@
     
 }
 
+// TODO: Wrap this in the sequential queue
 - (void)registerListener:(id)listener analyticsClassName:(NSString*)analyticsClassName handler:(AnalyticsHandler)block {
 
     id<NSCopying> listenerKey = [self instanceToKey:listener];

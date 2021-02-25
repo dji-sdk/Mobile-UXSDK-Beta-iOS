@@ -56,9 +56,13 @@
 		B60B8DA42552FF9600F097D1 /* DUXBetaMapFlyZoneCircleOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8D9C2552FF9600F097D1 /* DUXBetaMapFlyZoneCircleOverlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D19D4C24ED8ECA00737526 /* UXSDKMap.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19D4A24ED8ECA00737526 /* UXSDKMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D19D8424ED8F9C00737526 /* UXSDKMap.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D19D5324ED8F9C00737526 /* UXSDKMap.xcassets */; };
+		B6D19DB224ED8FF300737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19DB124ED8FF300737526 /* UXSDKCore.framework */; };
+		BEFBB0D5BF842EC71C060C91 /* Pods_UXSDKMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE83BE86CB3F745893A3B6B /* Pods_UXSDKMap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06CF3EE34A880F5B62229C05 /* Pods-UXSDKMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKMap.debug.xcconfig"; path = "Target Support Files/Pods-UXSDKMap/Pods-UXSDKMap.debug.xcconfig"; sourceTree = "<group>"; };
+		0BB6983E471800B17FAC073D /* Pods-UXSDKMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKMap.release.xcconfig"; path = "Target Support Files/Pods-UXSDKMap/Pods-UXSDKMap.release.xcconfig"; sourceTree = "<group>"; };
 		B60B8D442552FF3500F097D1 /* DJIFlyZoneInformation+DUXBetaFlyZoneInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DJIFlyZoneInformation+DUXBetaFlyZoneInformation.m"; sourceTree = "<group>"; };
 		B60B8D452552FF3500F097D1 /* DJIFlyZoneInformation+DUXBetaFlyZoneInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DJIFlyZoneInformation+DUXBetaFlyZoneInformation.h"; sourceTree = "<group>"; };
 		B60B8D4A2552FF5200F097D1 /* NSString+DUXBetaStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DUXBetaStrings.m"; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		B6D19D4A24ED8ECA00737526 /* UXSDKMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKMap.h; sourceTree = "<group>"; };
 		B6D19D4B24ED8ECA00737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D19D5324ED8F9C00737526 /* UXSDKMap.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UXSDKMap.xcassets; sourceTree = "<group>"; };
+		B6D19DB124ED8FF300737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDE83BE86CB3F745893A3B6B /* Pods_UXSDKMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UXSDKMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,18 +123,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D19DB224ED8FF300737526 /* UXSDKCore.framework in Frameworks */,
+				BEFBB0D5BF842EC71C060C91 /* Pods_UXSDKMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CB6320125C54C480499B06E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				06CF3EE34A880F5B62229C05 /* Pods-UXSDKMap.debug.xcconfig */,
+				0BB6983E471800B17FAC073D /* Pods-UXSDKMap.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../UXSDKBetaSampleApp/Pods;
+			sourceTree = "<group>";
+		};
 		B6D19D3D24ED8ECA00737526 = {
 			isa = PBXGroup;
 			children = (
 				B6D19D4924ED8ECA00737526 /* UXSDKMap */,
 				B6D19D4824ED8ECA00737526 /* Products */,
 				B6D19DB024ED8FF300737526 /* Frameworks */,
+				9CB6320125C54C480499B06E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +210,8 @@
 		B6D19DB024ED8FF300737526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6D19DB124ED8FF300737526 /* UXSDKCore.framework */,
+				FDE83BE86CB3F745893A3B6B /* Pods_UXSDKMap.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,6 +331,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D19D4F24ED8ECA00737526 /* Build configuration list for PBXNativeTarget "UXSDKMap" */;
 			buildPhases = (
+				B3E6DA4E0AEE5B4E163CA23D /* [CP] Check Pods Manifest.lock */,
 				B6D19D4224ED8ECA00737526 /* Headers */,
 				B6D19D4324ED8ECA00737526 /* Sources */,
 				B6D19D4424ED8ECA00737526 /* Frameworks */,
@@ -366,6 +388,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B3E6DA4E0AEE5B4E163CA23D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UXSDKMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B6D19D4324ED8ECA00737526 /* Sources */ = {
@@ -521,6 +568,7 @@
 		};
 		B6D19D5024ED8ECA00737526 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06CF3EE34A880F5B62229C05 /* Pods-UXSDKMap.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -528,7 +576,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = UXSDKMap/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -548,6 +596,7 @@
 		};
 		B6D19D5124ED8ECA00737526 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BB6983E471800B17FAC073D /* Pods-UXSDKMap.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;

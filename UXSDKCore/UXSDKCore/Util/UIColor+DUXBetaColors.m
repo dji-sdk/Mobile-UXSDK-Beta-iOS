@@ -45,6 +45,10 @@
     return RGBA(255.0, 0.0, 0.0, 1.0);
 }
 
++ (UIColor *)uxsdk_errorDangerColorAlpha30 {
+    return RGBA(255.0, 0.0, 0.0, 0.3);
+}
+
 + (UIColor *)uxsdk_warningColor {
     return RGBA(255.0, 204.0, 0.0, 1.0);
 }
@@ -55,10 +59,6 @@
 
 + (UIColor *)uxsdk_linkBlueColor {
     return RGBA(61.0, 133.0, 199.0, 1.0);
-}
-
-+ (UIColor *)uxsdk_compassWidgetHorizonColor {
-    return RGBA(31.0, 163.0, 246.0, 0.4);
 }
 
 + (UIColor *)uxsdk_slideTextColor {
@@ -76,7 +76,6 @@
 + (UIColor *)uxsdk_fpvCenterPointRedColor {
     return RGBA(241, 69, 67, 1);
 }
-
 
 // Alpha whites and gray colors
 + (UIColor *)uxsdk_clearColor {
@@ -105,6 +104,10 @@
 
 + (UIColor *)uxsdk_lightGrayTransparentColor {
     return RGBA(100.0, 100.0, 100.0, 0.25);
+}
+
++ (UIColor *)uxsdk_blackAlpha20 {
+    return RGBA(0.0, 0.0, 0.0, 0.4);
 }
 
 + (UIColor *)uxsdk_blackAlpha40 {
@@ -167,6 +170,10 @@
 
 + (UIColor *)uxsdk_blackColor {
     return [UIColor blackColor];
+}
+
++ (UIColor *)uxsdk_compassWidgetHorizonColor {
+    return RGBA(31.0, 163.0, 246.0, 0.4);
 }
 
 @end

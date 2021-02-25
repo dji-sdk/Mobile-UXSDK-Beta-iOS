@@ -196,7 +196,7 @@
          panelTitleColor:[UIColor uxsdk_whiteColor]
    toolbarSelectionColor:[UIColor whiteColor]
       listSelectionColor:UITableViewCellSelectionStyleBlue
-        closeButtonImage:nil    
+        closeButtonImage:nil    // TODO: Add thee three after epic/Panels is merged with the assets
          backButtonImage:nil
    toolbarSelectionFrame:nil
             toolItemSize:CGSizeMake(64, 64) listDividerStyle:UITableViewCellSeparatorStyleSingleLine listSeparatorColor:[UIColor uxsdk_whiteColor] separatorEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];

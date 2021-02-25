@@ -101,6 +101,7 @@
     __weak DUXBetaMaxAltitudeListItemWidget *weakSelf = self;
     [self setTextChangedBlock: ^(NSString *newText) {
         NSInteger newHeight = [newText intValue];
+        // TODO: When supporting imperial units, need some slop on the maxAltitde comparison
         if ((newHeight > 0) && (newHeight != (int)self.widgetModel.maxAltitude)) {
             __strong DUXBetaMaxAltitudeListItemWidget *strongSelf = weakSelf;
             if (strongSelf) {

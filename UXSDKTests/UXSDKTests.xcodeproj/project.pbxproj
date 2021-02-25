@@ -1,0 +1,1037 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22972E9F2540D91C0099F59E /* DUXEMMCStatusListItemWidgetModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22972E9E2540D91C0099F59E /* DUXEMMCStatusListItemWidgetModelTests.swift */; };
+		22972EA82540FDD70099F59E /* DUXFPVWidgetModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169BB24F022100016185A /* DUXFPVWidgetModelTests.swift */; };
+		22972EAB2540FDF50099F59E /* DUXVisionWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B124F0220F0016185A /* DUXVisionWidgetTests.swift */; };
+		22CB23462538AF6100CED4F8 /* DUXNoviceModeListItemWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB23452538AF6100CED4F8 /* DUXNoviceModeListItemWidgetTests.swift */; };
+		22CB23502538B2E700CED4F8 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB234F2538B2E600CED4F8 /* DJISDK.framework */; };
+		22CB23512538B2E700CED4F8 /* DJISDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22CB234F2538B2E600CED4F8 /* DJISDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B691694024F021C10016185A /* DUXBetaMethodSwizzlingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B69168F724F021C00016185A /* DUXBetaMethodSwizzlingHelper.m */; };
+		B691694124F021C10016185A /* NSValue+DUXBetaNSValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B69168F924F021C00016185A /* NSValue+DUXBetaNSValue.m */; };
+		B691696224F021C10016185A /* DUXBetaMockKey.m in Sources */ = {isa = PBXBuildFile; fileRef = B691692124F021C00016185A /* DUXBetaMockKey.m */; };
+		B691696324F021C10016185A /* DUXBetaMockKeyedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B691692424F021C00016185A /* DUXBetaMockKeyedValue.m */; };
+		B691696424F021C10016185A /* DUXBetaMockKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B691692624F021C00016185A /* DUXBetaMockKeyManager.m */; };
+		B691697424F021C10016185A /* DUXBetaObservableKeyedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691693F24F021C10016185A /* DUXBetaObservableKeyedStoreTests.swift */; };
+		B691697824F021D70016185A /* DUXBetaBindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691697524F021D60016185A /* DUXBetaBindTests.swift */; };
+		B691697924F021D70016185A /* DUXBetaRuntimeMappingCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B691697624F021D60016185A /* DUXBetaRuntimeMappingCTests.m */; };
+		B691697A24F021D70016185A /* DUXBetaRuntimeMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691697724F021D70016185A /* DUXBetaRuntimeMappingTests.swift */; };
+		B691699224F021F50016185A /* DUXBetaMockFlightAssistantObstacleAvoidanceSensorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691697B24F021F40016185A /* DUXBetaMockFlightAssistantObstacleAvoidanceSensorState.swift */; };
+		B691699324F021F50016185A /* DUXBetaMockDJIFlyZoneInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691697D24F021F40016185A /* DUXBetaMockDJIFlyZoneInformation.swift */; };
+		B691699424F021F50016185A /* DUXBetaMockActiveTrackMissionOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B691697E24F021F40016185A /* DUXBetaMockActiveTrackMissionOperator.m */; };
+		B691699524F021F50016185A /* DUXBetaMockRTKState.m in Sources */ = {isa = PBXBuildFile; fileRef = B691697F24F021F40016185A /* DUXBetaMockRTKState.m */; };
+		B691699624F021F50016185A /* DUXBetaMockBatteryAggregationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691698024F021F40016185A /* DUXBetaMockBatteryAggregationState.swift */; };
+		B691699724F021F50016185A /* DUXBetaMockDJIUnlockedZoneGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691698124F021F40016185A /* DUXBetaMockDJIUnlockedZoneGroup.swift */; };
+		B691699824F021F50016185A /* DUXBetaMockTapFlyMissionOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B691698424F021F50016185A /* DUXBetaMockTapFlyMissionOperator.m */; };
+		B691699924F021F50016185A /* DUXBetaMockUserAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B691698524F021F50016185A /* DUXBetaMockUserAccountManager.m */; };
+		B691699A24F021F50016185A /* DUXBetaMockDJICustomUnlockZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691698624F021F50016185A /* DUXBetaMockDJICustomUnlockZone.swift */; };
+		B691699B24F021F50016185A /* DUXMockWarningStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691698A24F021F50016185A /* DUXMockWarningStatusItem.swift */; };
+		B691699C24F021F50016185A /* DUXBetaMockBatteryWarningRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691698B24F021F50016185A /* DUXBetaMockBatteryWarningRecord.swift */; };
+		B691699D24F021F50016185A /* DUXBetaMockAircraft.m in Sources */ = {isa = PBXBuildFile; fileRef = B691698C24F021F50016185A /* DUXBetaMockAircraft.m */; };
+		B691699E24F021F50016185A /* DUXBetaMockRTK.m in Sources */ = {isa = PBXBuildFile; fileRef = B691698E24F021F50016185A /* DUXBetaMockRTK.m */; };
+		B691699F24F021F50016185A /* DUXBetaMockFlightController.m in Sources */ = {isa = PBXBuildFile; fileRef = B691698F24F021F50016185A /* DUXBetaMockFlightController.m */; };
+		B69169A024F021F50016185A /* DUXBetaMockMissionControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B691699124F021F50016185A /* DUXBetaMockMissionControl.m */; };
+		B69169C024F022100016185A /* DUXFlightModeListItemWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A124F0220F0016185A /* DUXFlightModeListItemWidgetTests.swift */; };
+		B69169C124F022100016185A /* ReturnHomeWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A224F0220F0016185A /* ReturnHomeWidgetTests.swift */; };
+		B69169C224F022100016185A /* DUXSDCardRemainingCapacityListItemWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A324F0220F0016185A /* DUXSDCardRemainingCapacityListItemWidgetTests.swift */; };
+		B69169C324F022100016185A /* DUXVerticalVelocityWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A424F0220F0016185A /* DUXVerticalVelocityWidgetTests.swift */; };
+		B69169C424F022100016185A /* DUXFlightModeWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A624F0220F0016185A /* DUXFlightModeWidgetTests.swift */; };
+		B69169C524F022100016185A /* DUXRCStickModeListItemWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A724F0220F0016185A /* DUXRCStickModeListItemWidgetTests.swift */; };
+		B69169C624F022100016185A /* DUXCompassWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169A824F0220F0016185A /* DUXCompassWidgetTests.swift */; };
+		B69169C824F022100016185A /* DUXHorizontalVelocityWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169AA24F0220F0016185A /* DUXHorizontalVelocityWidgetTests.swift */; };
+		B69169C924F022100016185A /* DUXRemainingFlightTimeWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169AB24F0220F0016185A /* DUXRemainingFlightTimeWidgetTests.swift */; };
+		B69169CA24F022100016185A /* DUXBatteryWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169AC24F0220F0016185A /* DUXBatteryWidgetTests.swift */; };
+		B69169CB24F022100016185A /* DUXGPSSignalWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169AD24F0220F0016185A /* DUXGPSSignalWidgetTests.swift */; };
+		B69169CD24F022100016185A /* DUXTakeOffWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169AF24F0220F0016185A /* DUXTakeOffWidgetTests.swift */; };
+		B69169CE24F022100016185A /* DUXSystemStatusWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B024F0220F0016185A /* DUXSystemStatusWidgetTests.swift */; };
+		B69169D024F022100016185A /* DUXAirSenseWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B224F0220F0016185A /* DUXAirSenseWidgetTests.swift */; };
+		B69169D124F022100016185A /* DUXRTKSatelliteStatusWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B324F022100016185A /* DUXRTKSatelliteStatusWidgetTests.swift */; };
+		B69169D224F022100016185A /* DUXRCDistanceWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B424F022100016185A /* DUXRCDistanceWidgetTests.swift */; };
+		B69169D324F022100016185A /* DUXSimulatorIndicatorWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B524F022100016185A /* DUXSimulatorIndicatorWidgetTests.swift */; };
+		B69169D424F022100016185A /* DUXMaxAltitudeListItemWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B624F022100016185A /* DUXMaxAltitudeListItemWidgetTests.swift */; };
+		B69169D524F022100016185A /* RCSignalWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B724F022100016185A /* RCSignalWidgetTests.swift */; };
+		B69169D624F022100016185A /* DUXMapWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169B824F022100016185A /* DUXMapWidgetTests.swift */; };
+		B69169D724F022100016185A /* DUXFPVDecodeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169BA24F022100016185A /* DUXFPVDecodeModelTests.swift */; };
+		B69169D924F022100016185A /* DUXReturnToHomeAltitudeListItemWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169BC24F022100016185A /* DUXReturnToHomeAltitudeListItemWidgetTests.swift */; };
+		B69169DA24F022100016185A /* DUXVideoSignalWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169BD24F022100016185A /* DUXVideoSignalWidgetTests.swift */; };
+		B69169DB24F022100016185A /* DUXRTKEnabledWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69169BE24F022100016185A /* DUXRTKEnabledWidgetTests.swift */; };
+		B6960D302549AAD7005BE416 /* DUXUnitTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6960D2F2549AAD7005BE416 /* DUXUnitTypeTests.swift */; };
+		B6960D362549AB6E005BE416 /* DUXBaseWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6960D352549AB6E005BE416 /* DUXBaseWidgetTests.swift */; };
+		B6CC8B312501BF5100DF47B7 /* DistanceHomeWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC8B302501BF5100DF47B7 /* DistanceHomeWidgetTests.swift */; };
+		B6CC8B3B2502F1DE00DF47B7 /* AGLAltitudeWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC8B3A2502F1DE00DF47B7 /* AGLAltitudeWidgetTests.swift */; };
+		B6CC8B3F2502F56E00DF47B7 /* AMSLAltitudeWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CC8B3E2502F56E00DF47B7 /* AMSLAltitudeWidgetTests.swift */; };
+		B6D1165E25B95AD6009976A8 /* DUXPhotoVideoSwitchWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1165D25B95AD6009976A8 /* DUXPhotoVideoSwitchWidget.swift */; };
+		B6D1A31C24EF3F1000737526 /* UXSDKTests.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D1A31A24EF3F1000737526 /* UXSDKTests.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D1A32A24EF3F3E00737526 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D1A32924EF3F3E00737526 /* AppDelegate.m */; };
+		B6D1A32D24EF3F3E00737526 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D1A32C24EF3F3E00737526 /* SceneDelegate.m */; };
+		B6D1A33024EF3F3E00737526 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D1A32F24EF3F3E00737526 /* ViewController.m */; };
+		B6D1A33324EF3F3E00737526 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D1A33124EF3F3E00737526 /* Main.storyboard */; };
+		B6D1A33524EF3F3F00737526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D1A33424EF3F3F00737526 /* Assets.xcassets */; };
+		B6D1A33824EF3F3F00737526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D1A33624EF3F3F00737526 /* LaunchScreen.storyboard */; };
+		B6D1A33B24EF3F3F00737526 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D1A33A24EF3F3F00737526 /* main.m */; };
+		B6D1A36724EF413F00737526 /* UXSDKAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A35F24EF413F00737526 /* UXSDKAccessory.framework */; };
+		B6D1A36824EF413F00737526 /* UXSDKAccessory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A35F24EF413F00737526 /* UXSDKAccessory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A36924EF413F00737526 /* UXSDKCameraCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36024EF413F00737526 /* UXSDKCameraCore.framework */; };
+		B6D1A36A24EF413F00737526 /* UXSDKCameraCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36024EF413F00737526 /* UXSDKCameraCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A36B24EF413F00737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36124EF413F00737526 /* UXSDKCore.framework */; };
+		B6D1A36C24EF413F00737526 /* UXSDKCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36124EF413F00737526 /* UXSDKCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A36D24EF413F00737526 /* UXSDKFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36224EF413F00737526 /* UXSDKFlight.framework */; };
+		B6D1A36E24EF413F00737526 /* UXSDKFlight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36224EF413F00737526 /* UXSDKFlight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A36F24EF413F00737526 /* UXSDKMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36324EF413F00737526 /* UXSDKMap.framework */; };
+		B6D1A37024EF413F00737526 /* UXSDKMap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36324EF413F00737526 /* UXSDKMap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A37124EF413F00737526 /* UXSDKMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36424EF413F00737526 /* UXSDKMedia.framework */; };
+		B6D1A37224EF413F00737526 /* UXSDKMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36424EF413F00737526 /* UXSDKMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A37324EF413F00737526 /* UXSDKTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36524EF413F00737526 /* UXSDKTraining.framework */; };
+		B6D1A37424EF413F00737526 /* UXSDKTraining.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36524EF413F00737526 /* UXSDKTraining.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A37524EF413F00737526 /* UXSDKVisualCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36624EF413F00737526 /* UXSDKVisualCamera.framework */; };
+		B6D1A37624EF413F00737526 /* UXSDKVisualCamera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A36624EF413F00737526 /* UXSDKVisualCamera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D1A38024F01A2000737526 /* FFmpeg.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D1A37B24EF423400737526 /* FFmpeg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D8102E250912D000603139 /* VPSWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8102D250912D000603139 /* VPSWidgetTests.swift */; };
+		B6D81035250A892400603139 /* LocationWidgetTets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D81034250A892400603139 /* LocationWidgetTets.swift */; };
+		B6D8F8BC25CDDC27006BDA49 /* DUXCameraSettingsIndicatorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8F8BB25CDDC27006BDA49 /* DUXCameraSettingsIndicatorWidget.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6D1A34824EF3F7000737526 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D1A30E24EF3F1000737526 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6D1A32524EF3F3D00737526;
+			remoteInfo = UXSDKTestsHostApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B6D1A37724EF413F00737526 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B6D1A36C24EF413F00737526 /* UXSDKCore.framework in Embed Frameworks */,
+				22CB23512538B2E700CED4F8 /* DJISDK.framework in Embed Frameworks */,
+				B6D1A37024EF413F00737526 /* UXSDKMap.framework in Embed Frameworks */,
+				B6D1A37424EF413F00737526 /* UXSDKTraining.framework in Embed Frameworks */,
+				B6D1A37624EF413F00737526 /* UXSDKVisualCamera.framework in Embed Frameworks */,
+				B6D1A36A24EF413F00737526 /* UXSDKCameraCore.framework in Embed Frameworks */,
+				B6D1A36E24EF413F00737526 /* UXSDKFlight.framework in Embed Frameworks */,
+				B6D1A36824EF413F00737526 /* UXSDKAccessory.framework in Embed Frameworks */,
+				B6D1A37224EF413F00737526 /* UXSDKMedia.framework in Embed Frameworks */,
+				B6D1A38024F01A2000737526 /* FFmpeg.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		22972E9E2540D91C0099F59E /* DUXEMMCStatusListItemWidgetModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXEMMCStatusListItemWidgetModelTests.swift; sourceTree = "<group>"; };
+		22CB23452538AF6100CED4F8 /* DUXNoviceModeListItemWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXNoviceModeListItemWidgetTests.swift; sourceTree = "<group>"; };
+		22CB234F2538B2E600CED4F8 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B69168F624F021C00016185A /* NSValue+DUXBetaNSValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+DUXBetaNSValue.h"; sourceTree = "<group>"; };
+		B69168F724F021C00016185A /* DUXBetaMethodSwizzlingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMethodSwizzlingHelper.m; sourceTree = "<group>"; };
+		B69168F824F021C00016185A /* DUXBetaMethodSwizzlingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMethodSwizzlingHelper.h; sourceTree = "<group>"; };
+		B69168F924F021C00016185A /* NSValue+DUXBetaNSValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+DUXBetaNSValue.m"; sourceTree = "<group>"; };
+		B691692124F021C00016185A /* DUXBetaMockKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockKey.m; sourceTree = "<group>"; };
+		B691692224F021C00016185A /* DUXBetaMockKeyedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockKeyedValue.h; sourceTree = "<group>"; };
+		B691692324F021C00016185A /* DUXBetaMockKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockKeyManager.h; sourceTree = "<group>"; };
+		B691692424F021C00016185A /* DUXBetaMockKeyedValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockKeyedValue.m; sourceTree = "<group>"; };
+		B691692524F021C00016185A /* DUXBetaMockKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockKey.h; sourceTree = "<group>"; };
+		B691692624F021C00016185A /* DUXBetaMockKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockKeyManager.m; sourceTree = "<group>"; };
+		B691693F24F021C10016185A /* DUXBetaObservableKeyedStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaObservableKeyedStoreTests.swift; sourceTree = "<group>"; };
+		B691697524F021D60016185A /* DUXBetaBindTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaBindTests.swift; sourceTree = "<group>"; };
+		B691697624F021D60016185A /* DUXBetaRuntimeMappingCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRuntimeMappingCTests.m; sourceTree = "<group>"; };
+		B691697724F021D70016185A /* DUXBetaRuntimeMappingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaRuntimeMappingTests.swift; sourceTree = "<group>"; };
+		B691697B24F021F40016185A /* DUXBetaMockFlightAssistantObstacleAvoidanceSensorState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaMockFlightAssistantObstacleAvoidanceSensorState.swift; sourceTree = "<group>"; };
+		B691697C24F021F40016185A /* DUXBetaMockRTKState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockRTKState.h; sourceTree = "<group>"; };
+		B691697D24F021F40016185A /* DUXBetaMockDJIFlyZoneInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaMockDJIFlyZoneInformation.swift; sourceTree = "<group>"; };
+		B691697E24F021F40016185A /* DUXBetaMockActiveTrackMissionOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockActiveTrackMissionOperator.m; sourceTree = "<group>"; };
+		B691697F24F021F40016185A /* DUXBetaMockRTKState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockRTKState.m; sourceTree = "<group>"; };
+		B691698024F021F40016185A /* DUXBetaMockBatteryAggregationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaMockBatteryAggregationState.swift; sourceTree = "<group>"; };
+		B691698124F021F40016185A /* DUXBetaMockDJIUnlockedZoneGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaMockDJIUnlockedZoneGroup.swift; sourceTree = "<group>"; };
+		B691698224F021F50016185A /* DUXBetaMockActiveTrackMissionOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockActiveTrackMissionOperator.h; sourceTree = "<group>"; };
+		B691698324F021F50016185A /* DUXBetaMockAircraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockAircraft.h; sourceTree = "<group>"; };
+		B691698424F021F50016185A /* DUXBetaMockTapFlyMissionOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockTapFlyMissionOperator.m; sourceTree = "<group>"; };
+		B691698524F021F50016185A /* DUXBetaMockUserAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockUserAccountManager.m; sourceTree = "<group>"; };
+		B691698624F021F50016185A /* DUXBetaMockDJICustomUnlockZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaMockDJICustomUnlockZone.swift; sourceTree = "<group>"; };
+		B691698724F021F50016185A /* DUXBetaMockMissionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockMissionControl.h; sourceTree = "<group>"; };
+		B691698824F021F50016185A /* DUXBetaMockFlightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockFlightController.h; sourceTree = "<group>"; };
+		B691698924F021F50016185A /* DUXBetaMockUserAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockUserAccountManager.h; sourceTree = "<group>"; };
+		B691698A24F021F50016185A /* DUXMockWarningStatusItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXMockWarningStatusItem.swift; sourceTree = "<group>"; };
+		B691698B24F021F50016185A /* DUXBetaMockBatteryWarningRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaMockBatteryWarningRecord.swift; sourceTree = "<group>"; };
+		B691698C24F021F50016185A /* DUXBetaMockAircraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockAircraft.m; sourceTree = "<group>"; };
+		B691698D24F021F50016185A /* DUXBetaMockTapFlyMissionOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockTapFlyMissionOperator.h; sourceTree = "<group>"; };
+		B691698E24F021F50016185A /* DUXBetaMockRTK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockRTK.m; sourceTree = "<group>"; };
+		B691698F24F021F50016185A /* DUXBetaMockFlightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockFlightController.m; sourceTree = "<group>"; };
+		B691699024F021F50016185A /* DUXBetaMockRTK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaMockRTK.h; sourceTree = "<group>"; };
+		B691699124F021F50016185A /* DUXBetaMockMissionControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaMockMissionControl.m; sourceTree = "<group>"; };
+		B69169A124F0220F0016185A /* DUXFlightModeListItemWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXFlightModeListItemWidgetTests.swift; sourceTree = "<group>"; };
+		B69169A224F0220F0016185A /* ReturnHomeWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnHomeWidgetTests.swift; sourceTree = "<group>"; };
+		B69169A324F0220F0016185A /* DUXSDCardRemainingCapacityListItemWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXSDCardRemainingCapacityListItemWidgetTests.swift; sourceTree = "<group>"; };
+		B69169A424F0220F0016185A /* DUXVerticalVelocityWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXVerticalVelocityWidgetTests.swift; sourceTree = "<group>"; };
+		B69169A624F0220F0016185A /* DUXFlightModeWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXFlightModeWidgetTests.swift; sourceTree = "<group>"; };
+		B69169A724F0220F0016185A /* DUXRCStickModeListItemWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXRCStickModeListItemWidgetTests.swift; sourceTree = "<group>"; };
+		B69169A824F0220F0016185A /* DUXCompassWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXCompassWidgetTests.swift; sourceTree = "<group>"; };
+		B69169AA24F0220F0016185A /* DUXHorizontalVelocityWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXHorizontalVelocityWidgetTests.swift; sourceTree = "<group>"; };
+		B69169AB24F0220F0016185A /* DUXRemainingFlightTimeWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXRemainingFlightTimeWidgetTests.swift; sourceTree = "<group>"; };
+		B69169AC24F0220F0016185A /* DUXBatteryWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBatteryWidgetTests.swift; sourceTree = "<group>"; };
+		B69169AD24F0220F0016185A /* DUXGPSSignalWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXGPSSignalWidgetTests.swift; sourceTree = "<group>"; };
+		B69169AE24F0220F0016185A /* DUXAltitudeWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXAltitudeWidgetTests.swift; sourceTree = "<group>"; };
+		B69169AF24F0220F0016185A /* DUXTakeOffWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXTakeOffWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B024F0220F0016185A /* DUXSystemStatusWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXSystemStatusWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B124F0220F0016185A /* DUXVisionWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXVisionWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B224F0220F0016185A /* DUXAirSenseWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXAirSenseWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B324F022100016185A /* DUXRTKSatelliteStatusWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXRTKSatelliteStatusWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B424F022100016185A /* DUXRCDistanceWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXRCDistanceWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B524F022100016185A /* DUXSimulatorIndicatorWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXSimulatorIndicatorWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B624F022100016185A /* DUXMaxAltitudeListItemWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXMaxAltitudeListItemWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B724F022100016185A /* RCSignalWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCSignalWidgetTests.swift; sourceTree = "<group>"; };
+		B69169B824F022100016185A /* DUXMapWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXMapWidgetTests.swift; sourceTree = "<group>"; };
+		B69169BA24F022100016185A /* DUXFPVDecodeModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXFPVDecodeModelTests.swift; sourceTree = "<group>"; };
+		B69169BB24F022100016185A /* DUXFPVWidgetModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXFPVWidgetModelTests.swift; sourceTree = "<group>"; };
+		B69169BC24F022100016185A /* DUXReturnToHomeAltitudeListItemWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXReturnToHomeAltitudeListItemWidgetTests.swift; sourceTree = "<group>"; };
+		B69169BD24F022100016185A /* DUXVideoSignalWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXVideoSignalWidgetTests.swift; sourceTree = "<group>"; };
+		B69169BE24F022100016185A /* DUXRTKEnabledWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXRTKEnabledWidgetTests.swift; sourceTree = "<group>"; };
+		B6960D2F2549AAD7005BE416 /* DUXUnitTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXUnitTypeTests.swift; sourceTree = "<group>"; };
+		B6960D352549AB6E005BE416 /* DUXBaseWidgetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBaseWidgetTests.swift; sourceTree = "<group>"; };
+		B6CC8B302501BF5100DF47B7 /* DistanceHomeWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceHomeWidgetTests.swift; sourceTree = "<group>"; };
+		B6CC8B3A2502F1DE00DF47B7 /* AGLAltitudeWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGLAltitudeWidgetTests.swift; sourceTree = "<group>"; };
+		B6CC8B3E2502F56E00DF47B7 /* AMSLAltitudeWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMSLAltitudeWidgetTests.swift; sourceTree = "<group>"; };
+		B6D1165D25B95AD6009976A8 /* DUXPhotoVideoSwitchWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXPhotoVideoSwitchWidget.swift; sourceTree = "<group>"; };
+		B6D1A31724EF3F1000737526 /* UXSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A31A24EF3F1000737526 /* UXSDKTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKTests.h; sourceTree = "<group>"; };
+		B6D1A31B24EF3F1000737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D1A32624EF3F3D00737526 /* UXSDKTestsHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UXSDKTestsHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A32824EF3F3E00737526 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B6D1A32924EF3F3E00737526 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B6D1A32B24EF3F3E00737526 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		B6D1A32C24EF3F3E00737526 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		B6D1A32E24EF3F3E00737526 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B6D1A32F24EF3F3E00737526 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B6D1A33224EF3F3E00737526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B6D1A33424EF3F3F00737526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B6D1A33724EF3F3F00737526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B6D1A33924EF3F3F00737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D1A33A24EF3F3F00737526 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B6D1A34324EF3F7000737526 /* UXSDKUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UXSDKUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A34724EF3F7000737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D1A35F24EF413F00737526 /* UXSDKAccessory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKAccessory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36024EF413F00737526 /* UXSDKCameraCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCameraCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36124EF413F00737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36224EF413F00737526 /* UXSDKFlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKFlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36324EF413F00737526 /* UXSDKMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36424EF413F00737526 /* UXSDKMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36524EF413F00737526 /* UXSDKTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A36624EF413F00737526 /* UXSDKVisualCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKVisualCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D1A37824EF415600737526 /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = "../../dji-widget-i/DJIWidget/FFmpeg/FFmpeg.framework"; sourceTree = "<group>"; };
+		B6D1A37B24EF423400737526 /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = "../../dji-widget-i/DJIWidget/FFmpeg/FFmpeg.framework"; sourceTree = "<group>"; };
+		B6D1A38224F01AD800737526 /* UXSDKUnitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UXSDKUnitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		B6D8102D250912D000603139 /* VPSWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPSWidgetTests.swift; sourceTree = "<group>"; };
+		B6D81034250A892400603139 /* LocationWidgetTets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWidgetTets.swift; sourceTree = "<group>"; };
+		B6D8F8BB25CDDC27006BDA49 /* DUXCameraSettingsIndicatorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUXCameraSettingsIndicatorWidget.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6D1A31424EF3F1000737526 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D1A32324EF3F3D00737526 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D1A36B24EF413F00737526 /* UXSDKCore.framework in Frameworks */,
+				B6D1A36F24EF413F00737526 /* UXSDKMap.framework in Frameworks */,
+				B6D1A37324EF413F00737526 /* UXSDKTraining.framework in Frameworks */,
+				22CB23502538B2E700CED4F8 /* DJISDK.framework in Frameworks */,
+				B6D1A37524EF413F00737526 /* UXSDKVisualCamera.framework in Frameworks */,
+				B6D1A36924EF413F00737526 /* UXSDKCameraCore.framework in Frameworks */,
+				B6D1A36D24EF413F00737526 /* UXSDKFlight.framework in Frameworks */,
+				B6D1A36724EF413F00737526 /* UXSDKAccessory.framework in Frameworks */,
+				B6D1A37124EF413F00737526 /* UXSDKMedia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D1A34024EF3F7000737526 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B69168F524F021C00016185A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B69168F624F021C00016185A /* NSValue+DUXBetaNSValue.h */,
+				B69168F924F021C00016185A /* NSValue+DUXBetaNSValue.m */,
+				B69168F724F021C00016185A /* DUXBetaMethodSwizzlingHelper.m */,
+				B69168F824F021C00016185A /* DUXBetaMethodSwizzlingHelper.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		B69168FA24F021C00016185A /* Bind */ = {
+			isa = PBXGroup;
+			children = (
+				B691697524F021D60016185A /* DUXBetaBindTests.swift */,
+				B691697624F021D60016185A /* DUXBetaRuntimeMappingCTests.m */,
+				B691697724F021D70016185A /* DUXBetaRuntimeMappingTests.swift */,
+			);
+			path = Bind;
+			sourceTree = "<group>";
+		};
+		B69168FE24F021C00016185A /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B6960D352549AB6E005BE416 /* DUXBaseWidgetTests.swift */,
+				B69169B224F0220F0016185A /* DUXAirSenseWidgetTests.swift */,
+				B69169AE24F0220F0016185A /* DUXAltitudeWidgetTests.swift */,
+				B69169AC24F0220F0016185A /* DUXBatteryWidgetTests.swift */,
+				B69169A824F0220F0016185A /* DUXCompassWidgetTests.swift */,
+				22972E9E2540D91C0099F59E /* DUXEMMCStatusListItemWidgetModelTests.swift */,
+				B69169A124F0220F0016185A /* DUXFlightModeListItemWidgetTests.swift */,
+				B69169A624F0220F0016185A /* DUXFlightModeWidgetTests.swift */,
+				B69169AD24F0220F0016185A /* DUXGPSSignalWidgetTests.swift */,
+				B69169AA24F0220F0016185A /* DUXHorizontalVelocityWidgetTests.swift */,
+				B69169B824F022100016185A /* DUXMapWidgetTests.swift */,
+				B69169B624F022100016185A /* DUXMaxAltitudeListItemWidgetTests.swift */,
+				22CB23452538AF6100CED4F8 /* DUXNoviceModeListItemWidgetTests.swift */,
+				B69169B424F022100016185A /* DUXRCDistanceWidgetTests.swift */,
+				B69169A724F0220F0016185A /* DUXRCStickModeListItemWidgetTests.swift */,
+				B69169AB24F0220F0016185A /* DUXRemainingFlightTimeWidgetTests.swift */,
+				B69169BC24F022100016185A /* DUXReturnToHomeAltitudeListItemWidgetTests.swift */,
+				B69169BE24F022100016185A /* DUXRTKEnabledWidgetTests.swift */,
+				B69169B324F022100016185A /* DUXRTKSatelliteStatusWidgetTests.swift */,
+				B69169A324F0220F0016185A /* DUXSDCardRemainingCapacityListItemWidgetTests.swift */,
+				B69169B524F022100016185A /* DUXSimulatorIndicatorWidgetTests.swift */,
+				B69169B024F0220F0016185A /* DUXSystemStatusWidgetTests.swift */,
+				B69169AF24F0220F0016185A /* DUXTakeOffWidgetTests.swift */,
+				B69169A424F0220F0016185A /* DUXVerticalVelocityWidgetTests.swift */,
+				B69169BD24F022100016185A /* DUXVideoSignalWidgetTests.swift */,
+				B69169B124F0220F0016185A /* DUXVisionWidgetTests.swift */,
+				B69169B924F022100016185A /* FPV */,
+				B69169B724F022100016185A /* RCSignalWidgetTests.swift */,
+				B69169A224F0220F0016185A /* ReturnHomeWidgetTests.swift */,
+				B6CC8B302501BF5100DF47B7 /* DistanceHomeWidgetTests.swift */,
+				B6CC8B3A2502F1DE00DF47B7 /* AGLAltitudeWidgetTests.swift */,
+				B6CC8B3E2502F56E00DF47B7 /* AMSLAltitudeWidgetTests.swift */,
+				B6D8102D250912D000603139 /* VPSWidgetTests.swift */,
+				B6D81034250A892400603139 /* LocationWidgetTets.swift */,
+				B6960D2F2549AAD7005BE416 /* DUXUnitTypeTests.swift */,
+				B6D1165D25B95AD6009976A8 /* DUXPhotoVideoSwitchWidget.swift */,
+				B6D8F8BB25CDDC27006BDA49 /* DUXCameraSettingsIndicatorWidget.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		B691691F24F021C00016185A /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				B691692024F021C00016185A /* Key */,
+				B691692724F021C00016185A /* SDK */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		B691692024F021C00016185A /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				B691692524F021C00016185A /* DUXBetaMockKey.h */,
+				B691692124F021C00016185A /* DUXBetaMockKey.m */,
+				B691692224F021C00016185A /* DUXBetaMockKeyedValue.h */,
+				B691692424F021C00016185A /* DUXBetaMockKeyedValue.m */,
+				B691692324F021C00016185A /* DUXBetaMockKeyManager.h */,
+				B691692624F021C00016185A /* DUXBetaMockKeyManager.m */,
+			);
+			path = Key;
+			sourceTree = "<group>";
+		};
+		B691692724F021C00016185A /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				B691698224F021F50016185A /* DUXBetaMockActiveTrackMissionOperator.h */,
+				B691697E24F021F40016185A /* DUXBetaMockActiveTrackMissionOperator.m */,
+				B691698324F021F50016185A /* DUXBetaMockAircraft.h */,
+				B691698C24F021F50016185A /* DUXBetaMockAircraft.m */,
+				B691698024F021F40016185A /* DUXBetaMockBatteryAggregationState.swift */,
+				B691698B24F021F50016185A /* DUXBetaMockBatteryWarningRecord.swift */,
+				B691698624F021F50016185A /* DUXBetaMockDJICustomUnlockZone.swift */,
+				B691697D24F021F40016185A /* DUXBetaMockDJIFlyZoneInformation.swift */,
+				B691698124F021F40016185A /* DUXBetaMockDJIUnlockedZoneGroup.swift */,
+				B691697B24F021F40016185A /* DUXBetaMockFlightAssistantObstacleAvoidanceSensorState.swift */,
+				B691698824F021F50016185A /* DUXBetaMockFlightController.h */,
+				B691698F24F021F50016185A /* DUXBetaMockFlightController.m */,
+				B691698724F021F50016185A /* DUXBetaMockMissionControl.h */,
+				B691699124F021F50016185A /* DUXBetaMockMissionControl.m */,
+				B691699024F021F50016185A /* DUXBetaMockRTK.h */,
+				B691698E24F021F50016185A /* DUXBetaMockRTK.m */,
+				B691697C24F021F40016185A /* DUXBetaMockRTKState.h */,
+				B691697F24F021F40016185A /* DUXBetaMockRTKState.m */,
+				B691698D24F021F50016185A /* DUXBetaMockTapFlyMissionOperator.h */,
+				B691698424F021F50016185A /* DUXBetaMockTapFlyMissionOperator.m */,
+				B691698924F021F50016185A /* DUXBetaMockUserAccountManager.h */,
+				B691698524F021F50016185A /* DUXBetaMockUserAccountManager.m */,
+				B691698A24F021F50016185A /* DUXMockWarningStatusItem.swift */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		B69169B924F022100016185A /* FPV */ = {
+			isa = PBXGroup;
+			children = (
+				B69169BA24F022100016185A /* DUXFPVDecodeModelTests.swift */,
+				B69169BB24F022100016185A /* DUXFPVWidgetModelTests.swift */,
+			);
+			path = FPV;
+			sourceTree = "<group>";
+		};
+		B6D1A30D24EF3F1000737526 = {
+			isa = PBXGroup;
+			children = (
+				B6D1A37B24EF423400737526 /* FFmpeg.framework */,
+				B6D1A31924EF3F1000737526 /* UXSDKTests */,
+				B6D1A32724EF3F3E00737526 /* UXSDKTestsHostApp */,
+				B6D1A34424EF3F7000737526 /* UXSDKUnitTests */,
+				B6D1A31824EF3F1000737526 /* Products */,
+				B6D1A35E24EF413F00737526 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B6D1A31824EF3F1000737526 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1A31724EF3F1000737526 /* UXSDKTests.framework */,
+				B6D1A32624EF3F3D00737526 /* UXSDKTestsHostApp.app */,
+				B6D1A34324EF3F7000737526 /* UXSDKUnitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6D1A31924EF3F1000737526 /* UXSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1A31A24EF3F1000737526 /* UXSDKTests.h */,
+				B6D1A31B24EF3F1000737526 /* Info.plist */,
+			);
+			path = UXSDKTests;
+			sourceTree = "<group>";
+		};
+		B6D1A32724EF3F3E00737526 /* UXSDKTestsHostApp */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1A32824EF3F3E00737526 /* AppDelegate.h */,
+				B6D1A32924EF3F3E00737526 /* AppDelegate.m */,
+				B6D1A32B24EF3F3E00737526 /* SceneDelegate.h */,
+				B6D1A32C24EF3F3E00737526 /* SceneDelegate.m */,
+				B6D1A32E24EF3F3E00737526 /* ViewController.h */,
+				B6D1A32F24EF3F3E00737526 /* ViewController.m */,
+				B6D1A33124EF3F3E00737526 /* Main.storyboard */,
+				B6D1A33424EF3F3F00737526 /* Assets.xcassets */,
+				B6D1A33624EF3F3F00737526 /* LaunchScreen.storyboard */,
+				B6D1A33924EF3F3F00737526 /* Info.plist */,
+				B6D1A33A24EF3F3F00737526 /* main.m */,
+			);
+			path = UXSDKTestsHostApp;
+			sourceTree = "<group>";
+		};
+		B6D1A34424EF3F7000737526 /* UXSDKUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				B69168FA24F021C00016185A /* Bind */,
+				B691693F24F021C10016185A /* DUXBetaObservableKeyedStoreTests.swift */,
+				B691691F24F021C00016185A /* Mock */,
+				B69168F524F021C00016185A /* Util */,
+				B69168FE24F021C00016185A /* Widget */,
+				B6D1A34724EF3F7000737526 /* Info.plist */,
+				B6D1A38224F01AD800737526 /* UXSDKUnitTests-Bridging-Header.h */,
+			);
+			path = UXSDKUnitTests;
+			sourceTree = "<group>";
+		};
+		B6D1A35E24EF413F00737526 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22CB234F2538B2E600CED4F8 /* DJISDK.framework */,
+				B6D1A37824EF415600737526 /* FFmpeg.framework */,
+				B6D1A35F24EF413F00737526 /* UXSDKAccessory.framework */,
+				B6D1A36024EF413F00737526 /* UXSDKCameraCore.framework */,
+				B6D1A36124EF413F00737526 /* UXSDKCore.framework */,
+				B6D1A36224EF413F00737526 /* UXSDKFlight.framework */,
+				B6D1A36324EF413F00737526 /* UXSDKMap.framework */,
+				B6D1A36424EF413F00737526 /* UXSDKMedia.framework */,
+				B6D1A36524EF413F00737526 /* UXSDKTraining.framework */,
+				B6D1A36624EF413F00737526 /* UXSDKVisualCamera.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B6D1A31224EF3F1000737526 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D1A31C24EF3F1000737526 /* UXSDKTests.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B6D1A31624EF3F1000737526 /* UXSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D1A31F24EF3F1000737526 /* Build configuration list for PBXNativeTarget "UXSDKTests" */;
+			buildPhases = (
+				B6D1A31224EF3F1000737526 /* Headers */,
+				B6D1A31324EF3F1000737526 /* Sources */,
+				B6D1A31424EF3F1000737526 /* Frameworks */,
+				B6D1A31524EF3F1000737526 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UXSDKTests;
+			productName = UXSDKTests;
+			productReference = B6D1A31724EF3F1000737526 /* UXSDKTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B6D1A32524EF3F3D00737526 /* UXSDKTestsHostApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D1A33C24EF3F3F00737526 /* Build configuration list for PBXNativeTarget "UXSDKTestsHostApp" */;
+			buildPhases = (
+				B6D1A32224EF3F3D00737526 /* Sources */,
+				B6D1A32324EF3F3D00737526 /* Frameworks */,
+				B6D1A32424EF3F3D00737526 /* Resources */,
+				B6D1A37724EF413F00737526 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UXSDKTestsHostApp;
+			productName = UXSDKTestsHostApp;
+			productReference = B6D1A32624EF3F3D00737526 /* UXSDKTestsHostApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6D1A34224EF3F7000737526 /* UXSDKUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D1A34A24EF3F7000737526 /* Build configuration list for PBXNativeTarget "UXSDKUnitTests" */;
+			buildPhases = (
+				B6D1A33F24EF3F7000737526 /* Sources */,
+				B6D1A34024EF3F7000737526 /* Frameworks */,
+				B6D1A34124EF3F7000737526 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6D1A34924EF3F7000737526 /* PBXTargetDependency */,
+			);
+			name = UXSDKUnitTests;
+			productName = UXSDKUnitTests;
+			productReference = B6D1A34324EF3F7000737526 /* UXSDKUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6D1A30E24EF3F1000737526 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Cristina Suciu";
+				TargetAttributes = {
+					B6D1A31624EF3F1000737526 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+					};
+					B6D1A32524EF3F3D00737526 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+					};
+					B6D1A34224EF3F7000737526 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+						TestTargetID = B6D1A32524EF3F3D00737526;
+					};
+				};
+			};
+			buildConfigurationList = B6D1A31124EF3F1000737526 /* Build configuration list for PBXProject "UXSDKTests" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B6D1A30D24EF3F1000737526;
+			productRefGroup = B6D1A31824EF3F1000737526 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6D1A31624EF3F1000737526 /* UXSDKTests */,
+				B6D1A32524EF3F3D00737526 /* UXSDKTestsHostApp */,
+				B6D1A34224EF3F7000737526 /* UXSDKUnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6D1A31524EF3F1000737526 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D1A32424EF3F3D00737526 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D1A33824EF3F3F00737526 /* LaunchScreen.storyboard in Resources */,
+				B6D1A33524EF3F3F00737526 /* Assets.xcassets in Resources */,
+				B6D1A33324EF3F3E00737526 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D1A34124EF3F7000737526 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6D1A31324EF3F1000737526 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D1A32224EF3F3D00737526 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D1A33024EF3F3E00737526 /* ViewController.m in Sources */,
+				B6D1A32A24EF3F3E00737526 /* AppDelegate.m in Sources */,
+				B6D1A33B24EF3F3F00737526 /* main.m in Sources */,
+				B6D1A32D24EF3F3E00737526 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D1A33F24EF3F7000737526 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B691699A24F021F50016185A /* DUXBetaMockDJICustomUnlockZone.swift in Sources */,
+				B6960D362549AB6E005BE416 /* DUXBaseWidgetTests.swift in Sources */,
+				B6CC8B3B2502F1DE00DF47B7 /* AGLAltitudeWidgetTests.swift in Sources */,
+				B69169D924F022100016185A /* DUXReturnToHomeAltitudeListItemWidgetTests.swift in Sources */,
+				B691699B24F021F50016185A /* DUXMockWarningStatusItem.swift in Sources */,
+				B69169D524F022100016185A /* RCSignalWidgetTests.swift in Sources */,
+				B69169A024F021F50016185A /* DUXBetaMockMissionControl.m in Sources */,
+				B6D8102E250912D000603139 /* VPSWidgetTests.swift in Sources */,
+				B69169D424F022100016185A /* DUXMaxAltitudeListItemWidgetTests.swift in Sources */,
+				B69169CB24F022100016185A /* DUXGPSSignalWidgetTests.swift in Sources */,
+				B691699E24F021F50016185A /* DUXBetaMockRTK.m in Sources */,
+				B691699D24F021F50016185A /* DUXBetaMockAircraft.m in Sources */,
+				B691699824F021F50016185A /* DUXBetaMockTapFlyMissionOperator.m in Sources */,
+				B69169C424F022100016185A /* DUXFlightModeWidgetTests.swift in Sources */,
+				B69169C324F022100016185A /* DUXVerticalVelocityWidgetTests.swift in Sources */,
+				B69169C124F022100016185A /* ReturnHomeWidgetTests.swift in Sources */,
+				B691699724F021F50016185A /* DUXBetaMockDJIUnlockedZoneGroup.swift in Sources */,
+				B6960D302549AAD7005BE416 /* DUXUnitTypeTests.swift in Sources */,
+				B69169D024F022100016185A /* DUXAirSenseWidgetTests.swift in Sources */,
+				B69169C024F022100016185A /* DUXFlightModeListItemWidgetTests.swift in Sources */,
+				B69169C524F022100016185A /* DUXRCStickModeListItemWidgetTests.swift in Sources */,
+				B69169D124F022100016185A /* DUXRTKSatelliteStatusWidgetTests.swift in Sources */,
+				B69169D224F022100016185A /* DUXRCDistanceWidgetTests.swift in Sources */,
+				B6D81035250A892400603139 /* LocationWidgetTets.swift in Sources */,
+				B69169D724F022100016185A /* DUXFPVDecodeModelTests.swift in Sources */,
+				B691694124F021C10016185A /* NSValue+DUXBetaNSValue.m in Sources */,
+				B69169C224F022100016185A /* DUXSDCardRemainingCapacityListItemWidgetTests.swift in Sources */,
+				B691699624F021F50016185A /* DUXBetaMockBatteryAggregationState.swift in Sources */,
+				B69169C924F022100016185A /* DUXRemainingFlightTimeWidgetTests.swift in Sources */,
+				B691699524F021F50016185A /* DUXBetaMockRTKState.m in Sources */,
+				B69169CA24F022100016185A /* DUXBatteryWidgetTests.swift in Sources */,
+				22972E9F2540D91C0099F59E /* DUXEMMCStatusListItemWidgetModelTests.swift in Sources */,
+				B69169CD24F022100016185A /* DUXTakeOffWidgetTests.swift in Sources */,
+				B691694024F021C10016185A /* DUXBetaMethodSwizzlingHelper.m in Sources */,
+				B691697824F021D70016185A /* DUXBetaBindTests.swift in Sources */,
+				B69169CE24F022100016185A /* DUXSystemStatusWidgetTests.swift in Sources */,
+				B691699C24F021F50016185A /* DUXBetaMockBatteryWarningRecord.swift in Sources */,
+				B691697424F021C10016185A /* DUXBetaObservableKeyedStoreTests.swift in Sources */,
+				22972EAB2540FDF50099F59E /* DUXVisionWidgetTests.swift in Sources */,
+				B69169C624F022100016185A /* DUXCompassWidgetTests.swift in Sources */,
+				B691699924F021F50016185A /* DUXBetaMockUserAccountManager.m in Sources */,
+				B6D8F8BC25CDDC27006BDA49 /* DUXCameraSettingsIndicatorWidget.swift in Sources */,
+				22CB23462538AF6100CED4F8 /* DUXNoviceModeListItemWidgetTests.swift in Sources */,
+				B691696224F021C10016185A /* DUXBetaMockKey.m in Sources */,
+				B69169DA24F022100016185A /* DUXVideoSignalWidgetTests.swift in Sources */,
+				B691699324F021F50016185A /* DUXBetaMockDJIFlyZoneInformation.swift in Sources */,
+				B691696424F021C10016185A /* DUXBetaMockKeyManager.m in Sources */,
+				B691697A24F021D70016185A /* DUXBetaRuntimeMappingTests.swift in Sources */,
+				B69169DB24F022100016185A /* DUXRTKEnabledWidgetTests.swift in Sources */,
+				B69169D624F022100016185A /* DUXMapWidgetTests.swift in Sources */,
+				B691696324F021C10016185A /* DUXBetaMockKeyedValue.m in Sources */,
+				B6D1165E25B95AD6009976A8 /* DUXPhotoVideoSwitchWidget.swift in Sources */,
+				B691697924F021D70016185A /* DUXBetaRuntimeMappingCTests.m in Sources */,
+				B69169D324F022100016185A /* DUXSimulatorIndicatorWidgetTests.swift in Sources */,
+				22972EA82540FDD70099F59E /* DUXFPVWidgetModelTests.swift in Sources */,
+				B691699F24F021F50016185A /* DUXBetaMockFlightController.m in Sources */,
+				B691699224F021F50016185A /* DUXBetaMockFlightAssistantObstacleAvoidanceSensorState.swift in Sources */,
+				B6CC8B3F2502F56E00DF47B7 /* AMSLAltitudeWidgetTests.swift in Sources */,
+				B6CC8B312501BF5100DF47B7 /* DistanceHomeWidgetTests.swift in Sources */,
+				B69169C824F022100016185A /* DUXHorizontalVelocityWidgetTests.swift in Sources */,
+				B691699424F021F50016185A /* DUXBetaMockActiveTrackMissionOperator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6D1A34924EF3F7000737526 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6D1A32524EF3F3D00737526 /* UXSDKTestsHostApp */;
+			targetProxy = B6D1A34824EF3F7000737526 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B6D1A33124EF3F3E00737526 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6D1A33224EF3F3E00737526 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B6D1A33624EF3F3F00737526 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6D1A33724EF3F3F00737526 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B6D1A31D24EF3F1000737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B6D1A31E24EF3F1000737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B6D1A32024EF3F1000737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = UXSDKTests/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6D1A32124EF3F1000737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = UXSDKTests/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B6D1A33D24EF3F3F00737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				INFOPLIST_FILE = UXSDKTestsHostApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKTestsHostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UXSDKUnitTests/UXSDKTestsHostApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6D1A33E24EF3F3F00737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				INFOPLIST_FILE = UXSDKTestsHostApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKTestsHostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UXSDKUnitTests/UXSDKTestsHostApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B6D1A34B24EF3F7000737526 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				INFOPLIST_FILE = UXSDKUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UXSDKUnitTests/UXSDKUnitTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UXSDKTestsHostApp.app/UXSDKTestsHostApp";
+			};
+			name = Debug;
+		};
+		B6D1A34C24EF3F7000737526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38D4M22449;
+				INFOPLIST_FILE = UXSDKUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dji.UXSDK.UXSDKUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UXSDKUnitTests/UXSDKUnitTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UXSDKTestsHostApp.app/UXSDKTestsHostApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6D1A31124EF3F1000737526 /* Build configuration list for PBXProject "UXSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D1A31D24EF3F1000737526 /* Debug */,
+				B6D1A31E24EF3F1000737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D1A31F24EF3F1000737526 /* Build configuration list for PBXNativeTarget "UXSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D1A32024EF3F1000737526 /* Debug */,
+				B6D1A32124EF3F1000737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D1A33C24EF3F3F00737526 /* Build configuration list for PBXNativeTarget "UXSDKTestsHostApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D1A33D24EF3F3F00737526 /* Debug */,
+				B6D1A33E24EF3F3F00737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D1A34A24EF3F7000737526 /* Build configuration list for PBXNativeTarget "UXSDKUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D1A34B24EF3F7000737526 /* Debug */,
+				B6D1A34C24EF3F7000737526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B6D1A30E24EF3F1000737526 /* Project object */;
+}

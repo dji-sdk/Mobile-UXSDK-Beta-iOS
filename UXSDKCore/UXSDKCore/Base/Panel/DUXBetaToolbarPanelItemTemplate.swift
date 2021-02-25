@@ -27,6 +27,13 @@
 
 import Foundation
 
+@objc public enum ToolHeaderHighlightStyle : Int {
+    case underline
+    case fill
+    case edges
+}
+
+
 /**
  * The DUXBetaToolbarPanelItemTemplate allows for describing a widget to be added to a DUXBetaToolbarPanelWidget without instantiating
  * the widget beforehand. It defines the widget by classname, icon and title, and a lifetime hint called keepWidgetAlive.
@@ -39,34 +46,132 @@ import Foundation
     /// The label to apply to the tool in the toolbar
     public var barName:String?
     /// The actual widget once the widget has been instantiated for use or if it was passed in during init
-    public var widget: DUXBetaBaseWidget?
+    fileprivate var internalWidget: DUXBetaBaseWidget?
     /// Hint to keep the widget alive in memory once created, even if it is not being displayed. If false, widget releases on hide
     public let keepWidgetAlive: Bool
-    
+    public var highlightStyle: ToolHeaderHighlightStyle = .underline
+    public var highlightThickness: CGFloat = 3.0
+
     /**
-     * Initialization method taking all parameters needed to constuct the toolbar item in the future
+     * Initialization method taking all parameters needed to constuct the toolbar item in the future from a classname.
+     * Either one or both parameters icon and title can be nil, but at least one must be set.
+     * The alternative init method may be used to add an existing widget.
+     *
+     * Note: For Swift classes, the fully qualified className includes the module for the class.
      *
      * - Parameters:
      *     - className: The name of the class to use when creating the widget.
      *     - icon: The icon image to use for the tool item in the toolbar.
      *     - title: The label to apply to the tool in the toolbar.
-     *     - existingWidget: An optional existing widget to use instead of creating a new one for display.
      *     - keepWidget: The hint if the widget should be released when it is no longer displayed as the active tool.
+     *     - highliteStyle: An enum designating how to highlight the selected tool in the toolbar. Defaults to .underline if not specified in Swift.
+     *     - hightlightThickness: The thickness/width of the underline or border boundary for .underline and .edges hightlight styles. Defaults to 3 points.
      */
-    public init(className: String?, icon: UIImage?, title: String?, existingWidget: DUXBetaBaseWidget? = nil, keepWidget:Bool = true) {
+    public init(className: String, icon: UIImage?, title: String?, keepWidget:Bool = true,
+                highlightStyle: ToolHeaderHighlightStyle = .underline, highlightThickness: CGFloat = 3.0) {
 
         klassname = className
-        widget = existingWidget
+        internalWidget = nil
         barIcon = icon
         barName = title
         keepWidgetAlive = keepWidget
+        self.highlightStyle = highlightStyle
+        self.highlightThickness = highlightThickness
+
+        // At this point we have at least an icon or title or this whole thing is bad.
+        if (icon == nil) && (title == nil) {
+            // We require an icon, title or ToolbarPanelSupportProtocol on the widget to add a widget to the toolbar
+            assert(false, "ToolbarPanelItemTempate requires either a title or an icon for use with ToolbarPanelWidget")
+        }
 
         super.init()
 
-        if (klassname == nil) && (widget == nil) {
-            assertionFailure("Either classname or existingWidget must be non-nil")
+    }
+    
+    /**
+     * Initialization method taking all parameters needed to constuct the toolbar item in the future from an existing widget.
+     * Either or both parameters icon and title can be nil, if the widget implements the DUXBetaToolbarPanelSupportProtocol,
+     * otherwise icon or title must be supplied. If icon or title is supplied, it overrides any value from DUXBetaToolbarPanelSupportProtocol.
+     * The alternative init method may be used to add tool which will instantiate the tool from a classname.
+     *
+     * - Parameters:
+     *     - widget: A existing widget to use in the toolbar panel, optionally implementing DUXBetaToolbarPanelSupportProtocol.
+     *     - icon: The icon image to use for the tool item in the toolbar.
+     *     - title: The label to apply to the tool in the toolbar.
+     *     - keepWidget: The hint if the widget should be released when it is no longer displayed as the active tool.
+     *     - highliteStyle: An enum designating how to highlight the selected tool in the toolbar. Defaults to .underline if not specified in Swift.
+     *     - hightlightThickness: The thickness/width of the underline or border boundary for .underline and .edges hightlight styles. Defaults to 3 points.
+     */
+    public init(widget passedWidget: DUXBetaBaseWidget, icon: UIImage?, title: String?, keepWidget:Bool = true,
+                highlightStyle: ToolHeaderHighlightStyle = .underline, highlightThickness: CGFloat = 3.0) {
+
+        klassname = nil
+        internalWidget = passedWidget
+        keepWidgetAlive = keepWidget
+        self.highlightStyle = highlightStyle
+        self.highlightThickness = highlightThickness
+        
+        super.init()
+
+        if let _ = icon {
+            barIcon = icon
+        } else {
+            if let x = internalWidget as? DUXBetaToolbarPanelSupportProtocol {
+                barIcon = loadToolIcon(widget:x)
+            }
         }
         
+        if let _ = title {
+            barName = title
+        } else {
+            if let x = internalWidget as? DUXBetaToolbarPanelSupportProtocol {
+                barName = loadToolTitle(widget:x)
+            }
+        }
+
+        // At this point we have at least an icon or title or this whole thing is bad.
+        if (icon == nil) && (title == nil) {
+            // We require an icon, title or ToolbarPanelSupportProtocol on the widget to add a widget to the toolbar
+            assert(false, "Widget must implement DUXBetaToolbarPanelSupportProtocol for use with ToolbarPanelWidget")
+        }
+        
+    }
+    
+    func loadToolIcon<T: AnyObject>(widget: T) -> UIImage? where T: DUXBetaToolbarPanelSupportProtocol {
+        return widget.toolbarItemIcon?()
+
+    }
+    
+    func loadToolTitle<T: AnyObject>(widget: T) -> String? where T: DUXBetaToolbarPanelSupportProtocol {
+        return widget.toolbarItemTitle?()
+        
+    }
+
+    /*
+     * Test if the passed in widget matches this templates widget without creating a new widget if it doesnt exist
+     */
+    func matchesWidget(_ widget: DUXBetaBaseWidget) -> Bool {
+        return internalWidget == widget
+    }
+
+    func widget() -> DUXBetaBaseWidget? {
+        if let widget = internalWidget {
+            return widget
+        }
+        
+        // It has not been created yet, so make it from the klassname
+        if let klassname = klassname {
+            let aClass = NSClassFromString(klassname) as! DUXBetaBaseWidget.Type
+            internalWidget = aClass.init()
+        }
+        
+        return internalWidget
+    }
+    
+    func releaseWidgetIfNeeded() {
+        if (keepWidgetAlive == false) && (klassname != nil) {
+            internalWidget = nil
+        }
     }
 }
 
@@ -109,14 +214,8 @@ class ToolRecognizer : NSObject {
     }
     
     @IBAction func changeTool() {
-        if let unwrappedPanel = self.panel {
-            for (index, theView) in unwrappedPanel.toolHeaderViews.enumerated() {
-                if theView == self.iconView {
-                    // Do a blind select, selectTool will be smart and reject it if already showing
-                    unwrappedPanel.selectTool(index:index)
-                }
-            
-            }
+        if let unwrappedPanel = self.panel, let iconView = iconView {
+            unwrappedPanel.selectToolFromHeader(headerView: iconView)
         }
     }
 }

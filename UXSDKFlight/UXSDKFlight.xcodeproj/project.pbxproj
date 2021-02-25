@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B286FB45B8EF507F8A662AE6 /* Pods_UXSDKFlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 147670096680F0E2300FE48D /* Pods_UXSDKFlight.framework */; };
+		B60B8CDD2552FEB800F097D1 /* DUXBetaAPASWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CD92552FEB800F097D1 /* DUXBetaAPASWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CDE2552FEB800F097D1 /* DUXBetaAPASWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CDA2552FEB800F097D1 /* DUXBetaAPASWidgetModel.m */; };
+		B60B8CDF2552FEB800F097D1 /* DUXBetaAPASWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8CDB2552FEB800F097D1 /* DUXBetaAPASWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8CE02552FEB800F097D1 /* DUXBetaAPASWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CDC2552FEB800F097D1 /* DUXBetaAPASWidget.m */; };
 		B60B8CE52552FEC200F097D1 /* DUXBetaTakeOffWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CE32552FEC200F097D1 /* DUXBetaTakeOffWidget.swift */; };
 		B60B8CE62552FEC200F097D1 /* DUXBetaTakeOffWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CE42552FEC200F097D1 /* DUXBetaTakeOffWidgetModel.swift */; };
 		B60B8CEA2552FECB00F097D1 /* DUXBetaReturnHomeWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CE82552FECB00F097D1 /* DUXBetaReturnHomeWidgetModel.swift */; };
 		B60B8CEB2552FECB00F097D1 /* DUXBetaReturnHomeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60B8CE92552FECB00F097D1 /* DUXBetaReturnHomeWidget.swift */; };
 		B6D19AA824EB916E00737526 /* UXSDKFlight.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19AA624EB916E00737526 /* UXSDKFlight.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19ABC24EB921B00737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19ABB24EB921B00737526 /* UXSDKCore.framework */; };
 		B6D19AC524EB951200737526 /* UXSDKFlight.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D19AC424EB951200737526 /* UXSDKFlight.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		147670096680F0E2300FE48D /* Pods_UXSDKFlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UXSDKFlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AF48F48DA250B0E8ABD56ED /* Pods-UXSDKFlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKFlight.debug.xcconfig"; path = "Target Support Files/Pods-UXSDKFlight/Pods-UXSDKFlight.debug.xcconfig"; sourceTree = "<group>"; };
+		B60B8CD92552FEB800F097D1 /* DUXBetaAPASWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAPASWidgetModel.h; sourceTree = "<group>"; };
+		B60B8CDA2552FEB800F097D1 /* DUXBetaAPASWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAPASWidgetModel.m; sourceTree = "<group>"; };
+		B60B8CDB2552FEB800F097D1 /* DUXBetaAPASWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaAPASWidget.h; sourceTree = "<group>"; };
+		B60B8CDC2552FEB800F097D1 /* DUXBetaAPASWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaAPASWidget.m; sourceTree = "<group>"; };
 		B60B8CE32552FEC200F097D1 /* DUXBetaTakeOffWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaTakeOffWidget.swift; sourceTree = "<group>"; };
 		B60B8CE42552FEC200F097D1 /* DUXBetaTakeOffWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaTakeOffWidgetModel.swift; sourceTree = "<group>"; };
 		B60B8CE82552FECB00F097D1 /* DUXBetaReturnHomeWidgetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DUXBetaReturnHomeWidgetModel.swift; sourceTree = "<group>"; };
@@ -23,7 +35,10 @@
 		B6D19AA324EB916E00737526 /* UXSDKFlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKFlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D19AA624EB916E00737526 /* UXSDKFlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKFlight.h; sourceTree = "<group>"; };
 		B6D19AA724EB916E00737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D19ABB24EB921B00737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D19ABD24EB926100737526 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D19AC424EB951200737526 /* UXSDKFlight.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UXSDKFlight.xcassets; sourceTree = "<group>"; };
+		F47BDDF9D1C9594F21B5DE4E /* Pods-UXSDKFlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKFlight.release.xcconfig"; path = "Target Support Files/Pods-UXSDKFlight/Pods-UXSDKFlight.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D19ABC24EB921B00737526 /* UXSDKCore.framework in Frameworks */,
+				B286FB45B8EF507F8A662AE6 /* Pods_UXSDKFlight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +60,7 @@
 				B6D19AA524EB916E00737526 /* UXSDKFlight */,
 				B6D19AA424EB916E00737526 /* Products */,
 				B6D19ABA24EB921B00737526 /* Frameworks */,
+				FDF30F5B4A211BE075263E37 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +86,7 @@
 		B6D19AAE24EB91EE00737526 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				B6D19C8624ECA45000737526 /* APASWidget */,
 				B6D19AAF24EB91EE00737526 /* TakeOffWidget */,
 				B6D19AB224EB91EE00737526 /* ReturnHomeWidget */,
 			);
@@ -103,8 +122,32 @@
 		B6D19ABA24EB921B00737526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6D19ABD24EB926100737526 /* DJISDK.framework */,
+				B6D19ABB24EB921B00737526 /* UXSDKCore.framework */,
+				147670096680F0E2300FE48D /* Pods_UXSDKFlight.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6D19C8624ECA45000737526 /* APASWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8CDB2552FEB800F097D1 /* DUXBetaAPASWidget.h */,
+				B60B8CDC2552FEB800F097D1 /* DUXBetaAPASWidget.m */,
+				B60B8CD92552FEB800F097D1 /* DUXBetaAPASWidgetModel.h */,
+				B60B8CDA2552FEB800F097D1 /* DUXBetaAPASWidgetModel.m */,
+			);
+			path = APASWidget;
+			sourceTree = "<group>";
+		};
+		FDF30F5B4A211BE075263E37 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2AF48F48DA250B0E8ABD56ED /* Pods-UXSDKFlight.debug.xcconfig */,
+				F47BDDF9D1C9594F21B5DE4E /* Pods-UXSDKFlight.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../UXSDKBetaSampleApp/Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,7 +157,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60B8CDF2552FEB800F097D1 /* DUXBetaAPASWidget.h in Headers */,
 				B6D19AA824EB916E00737526 /* UXSDKFlight.h in Headers */,
+				B60B8CDD2552FEB800F097D1 /* DUXBetaAPASWidgetModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +170,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D19AAB24EB916E00737526 /* Build configuration list for PBXNativeTarget "UXSDKFlight" */;
 			buildPhases = (
+				93A487B398AC929D9A7A7901 /* [CP] Check Pods Manifest.lock */,
 				B6D19A9E24EB916E00737526 /* Headers */,
 				B6D19A9F24EB916E00737526 /* Sources */,
 				B6D19AA024EB916E00737526 /* Frameworks */,
@@ -183,6 +229,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		93A487B398AC929D9A7A7901 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UXSDKFlight-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B6D19A9F24EB916E00737526 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -190,8 +261,10 @@
 			files = (
 				B60B8CEB2552FECB00F097D1 /* DUXBetaReturnHomeWidget.swift in Sources */,
 				B60B8CE52552FEC200F097D1 /* DUXBetaTakeOffWidget.swift in Sources */,
+				B60B8CE02552FEB800F097D1 /* DUXBetaAPASWidget.m in Sources */,
 				B60B8CEA2552FECB00F097D1 /* DUXBetaReturnHomeWidgetModel.swift in Sources */,
 				B60B8CE62552FEC200F097D1 /* DUXBetaTakeOffWidgetModel.swift in Sources */,
+				B60B8CDE2552FEB800F097D1 /* DUXBetaAPASWidgetModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +395,7 @@
 		};
 		B6D19AAC24EB916E00737526 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AF48F48DA250B0E8ABD56ED /* Pods-UXSDKFlight.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -330,7 +404,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = UXSDKFlight/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -351,6 +425,7 @@
 		};
 		B6D19AAD24EB916E00737526 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F47BDDF9D1C9594F21B5DE4E /* Pods-UXSDKFlight.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;

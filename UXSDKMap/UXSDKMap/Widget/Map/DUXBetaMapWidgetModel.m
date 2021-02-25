@@ -55,6 +55,8 @@
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamAircraftLocation],aircraftLocation);
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamHomeLocation],homeLocation);
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamIsHomeLocationSet],isHomeLocationSet);
+    //TODO Add this once we figure out our communication system for UXSDK
+    //[DUXBetaKey keyWithParam:DUXBetaParamUserAccountState]
 }
 
 - (void)inCleanup {

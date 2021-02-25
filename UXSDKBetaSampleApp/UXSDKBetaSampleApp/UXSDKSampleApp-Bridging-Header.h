@@ -22,3 +22,7 @@
 //  SOFTWARE.
 //
 
+#import <DJIUXSDK/DJIUXSDK.h>
+
+//Remove before release
+#import "InternalFeaturesHeader.h"

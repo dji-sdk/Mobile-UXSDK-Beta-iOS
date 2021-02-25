@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,22 +27,19 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+/// Custom view that displayes the attitude of the aircraft.
 @interface DUXBetaCompassGyroHorizonLayer : CAShapeLayer
 
-/**
- *  The pitch angle measured in degrees to be indcated in the view.
- */
+/// The pitch angle measured in degrees to be indicated in the view.
 @property (nonatomic, assign) CGFloat pitch;
 
-/**
- *  The roll angle measured in degrees to be indicated in the view.
- */
+/// The roll angle measured in degrees to be indicated in the view.
 @property (nonatomic, assign) CGFloat roll;
 
 /**
  *  Updates both pitch and roll in a single redraw.
  *
- *  @param pitch The pitch angle measured in degrees
+ *  @param pitch The pitch angle measured in degrees.
  *  @param roll  The roll angle measured in degrees.
  */
 - (void)updatePitch:(CGFloat)pitch roll:(CGFloat)roll;

@@ -70,7 +70,7 @@
     }
     
     BindRKVOModel(self, @selector(updateEncodeType), cameraName)
-    BindRKVOModel(self, @selector(updateContentRect), cameraName, photoRatio, flatCameraModule.cameraMode, flatCameraModule.flatMode);
+    BindRKVOModel(self, @selector(updateContentRect), cameraName, photoRatio, flatCameraModule.currentCameraMode);
     BindRKVOModel(self, @selector(updateAircraftModel), aircraftModel);
 }
 

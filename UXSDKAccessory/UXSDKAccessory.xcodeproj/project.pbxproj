@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F4201F54C76C8EA0D011D00 /* Pods_UXSDKAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DE787D8C38DCD9E3C8A0B2 /* Pods_UXSDKAccessory.framework */; };
 		B60B8DAA2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8DA62553005000F097D1 /* DUXBetaRTKSatelliteStatusWidget.m */; };
 		B60B8DAB2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8DA72553005000F097D1 /* DUXBetaRTKSatelliteStatusWidgetModel.m */; };
 		B60B8DAC2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8DA82553005000F097D1 /* DUXBetaRTKSatelliteStatusWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,8 +18,54 @@
 		B60B8DB52553005B00F097D1 /* DUXBetaRTKEnabledWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8DB12553005B00F097D1 /* DUXBetaRTKEnabledWidgetModel.m */; };
 		B60B8DB82553006700F097D1 /* DUXBetaRTKWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8DB62553006700F097D1 /* DUXBetaRTKWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B60B8DB92553006700F097D1 /* DUXBetaRTKWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8DB72553006700F097D1 /* DUXBetaRTKWidget.m */; };
+		B60B8DBE2553007300F097D1 /* DUXBetaBeaconWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8DBA2553007300F097D1 /* DUXBetaBeaconWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B60B8DBF2553007300F097D1 /* DUXBetaBeaconWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8DBB2553007300F097D1 /* DUXBetaBeaconWidget.m */; };
+		B60B8DC02553007300F097D1 /* DUXBetaBeaconWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60B8DBC2553007300F097D1 /* DUXBetaBeaconWidgetModel.m */; };
+		B60B8DC12553007300F097D1 /* DUXBetaBeaconWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B60B8DBD2553007300F097D1 /* DUXBetaBeaconWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6D19E6E24ED9DB300737526 /* UXSDKAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E6C24ED9DB300737526 /* UXSDKAccessory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EB924ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E7624ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.m */; };
+		B6D19EBA24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E7724ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.m */; };
+		B6D19EBB24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E7824ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EBC24ED9EAB00737526 /* DUXBetaSpotlightControlWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E7924ED9EAB00737526 /* DUXBetaSpotlightControlWidget.m */; };
+		B6D19EBD24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E7A24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EBE24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E7B24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EBF24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E7C24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.m */; };
+		B6D19EC024ED9EAB00737526 /* DUXBetaSpotlightControlWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E7D24ED9EAB00737526 /* DUXBetaSpotlightControlWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EC124ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E8124ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.m */; };
+		B6D19EC224ED9EAB00737526 /* DUXBetaSpeakerUploadSession.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E8224ED9EAB00737526 /* DUXBetaSpeakerUploadSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EC324ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E8324ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EC424ED9EAB00737526 /* DUXBetaSpeakerMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E8424ED9EAB00737526 /* DUXBetaSpeakerMediaModel.m */; };
+		B6D19EC524ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E8524ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.m */; };
+		B6D19EC624ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E8624ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EC724ED9EAB00737526 /* DUXBetaSpeakerUploadSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E8724ED9EAB00737526 /* DUXBetaSpeakerUploadSession.m */; };
+		B6D19EC824ED9EAB00737526 /* DUXBetaSpeakerMediaModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E8824ED9EAB00737526 /* DUXBetaSpeakerMediaModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EC924ED9EAB00737526 /* DUXBetaSpeakerControlWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E8924ED9EAB00737526 /* DUXBetaSpeakerControlWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EDC24ED9EAB00737526 /* DUXBetaSpeakerControlWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19E9D24ED9EAB00737526 /* DUXBetaSpeakerControlWidget.m */; };
+		B6D19EDD24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19E9F24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EDE24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EA024ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19EDF24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EA124ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.m */; };
+		B6D19EE024ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EA224ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.m */; };
 		B6D19EEF24ED9EAB00737526 /* UXSDKAccessory.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D19EB624ED9EAB00737526 /* UXSDKAccessory.xcassets */; };
+		B6D19F0224ED9F1700737526 /* DUXBetaSpeakerRecordButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF024ED9F1600737526 /* DUXBetaSpeakerRecordButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0324ED9F1700737526 /* DUXBetaSpeakerVolumeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF124ED9F1600737526 /* DUXBetaSpeakerVolumeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0424ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF224ED9F1600737526 /* DUXBetaSpeakerBroadcastTypeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0524ED9F1700737526 /* DUXBetaSpeakerBottomBar.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF324ED9F1600737526 /* DUXBetaSpeakerBottomBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0624ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF424ED9F1600737526 /* DUXBetaSpeakerRecordAudioView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0724ED9F1700737526 /* DUXBetaSpeakerMemoryListView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF524ED9F1600737526 /* DUXBetaSpeakerMemoryListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0824ED9F1700737526 /* DUXBetaSpeakerRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF624ED9F1600737526 /* DUXBetaSpeakerRecordButton.m */; };
+		B6D19F0924ED9F1700737526 /* DUXBetaSpeakerVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF724ED9F1600737526 /* DUXBetaSpeakerVolumeView.m */; };
+		B6D19F0A24ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF824ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.m */; };
+		B6D19F0B24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF924ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0C24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFA24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.m */; };
+		B6D19F0D24ED9F1700737526 /* DUXBetaSpeakerProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EFB24ED9F1700737526 /* DUXBetaSpeakerProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F0E24ED9F1700737526 /* DUXBetaSpeakerMemoryListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFC24ED9F1700737526 /* DUXBetaSpeakerMemoryListView.m */; };
+		B6D19F0F24ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFD24ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.m */; };
+		B6D19F1024ED9F1700737526 /* DUXBetaSpeakerUploadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EFE24ED9F1700737526 /* DUXBetaSpeakerUploadingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D19F1124ED9F1700737526 /* DUXBetaSpeakerBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFF24ED9F1700737526 /* DUXBetaSpeakerBottomBar.m */; };
+		B6D19F1224ED9F1700737526 /* DUXBetaSpeakerUploadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0024ED9F1700737526 /* DUXBetaSpeakerUploadingView.m */; };
+		B6D19F1324ED9F1700737526 /* DUXBetaSpeakerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0124ED9F1700737526 /* DUXBetaSpeakerProgressView.m */; };
+		B6D19F1624EDA01D00737526 /* UXSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19F1524EDA01D00737526 /* UXSDKCore.framework */; };
+		B6D19F1724EDA01D00737526 /* UXSDKCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D19F1524EDA01D00737526 /* UXSDKCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +75,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B6D19F1724EDA01D00737526 /* UXSDKCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,6 +83,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		23DE787D8C38DCD9E3C8A0B2 /* Pods_UXSDKAccessory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UXSDKAccessory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F38834128573618431CDF47 /* Pods-UXSDKAccessory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKAccessory.release.xcconfig"; path = "Target Support Files/Pods-UXSDKAccessory/Pods-UXSDKAccessory.release.xcconfig"; sourceTree = "<group>"; };
 		B60B8DA62553005000F097D1 /* DUXBetaRTKSatelliteStatusWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRTKSatelliteStatusWidget.m; sourceTree = "<group>"; };
 		B60B8DA72553005000F097D1 /* DUXBetaRTKSatelliteStatusWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRTKSatelliteStatusWidgetModel.m; sourceTree = "<group>"; };
 		B60B8DA82553005000F097D1 /* DUXBetaRTKSatelliteStatusWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRTKSatelliteStatusWidget.h; sourceTree = "<group>"; };
@@ -45,10 +95,56 @@
 		B60B8DB12553005B00F097D1 /* DUXBetaRTKEnabledWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRTKEnabledWidgetModel.m; sourceTree = "<group>"; };
 		B60B8DB62553006700F097D1 /* DUXBetaRTKWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaRTKWidget.h; sourceTree = "<group>"; };
 		B60B8DB72553006700F097D1 /* DUXBetaRTKWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaRTKWidget.m; sourceTree = "<group>"; };
+		B60B8DBA2553007300F097D1 /* DUXBetaBeaconWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBeaconWidget.h; sourceTree = "<group>"; };
+		B60B8DBB2553007300F097D1 /* DUXBetaBeaconWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBeaconWidget.m; sourceTree = "<group>"; };
+		B60B8DBC2553007300F097D1 /* DUXBetaBeaconWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaBeaconWidgetModel.m; sourceTree = "<group>"; };
+		B60B8DBD2553007300F097D1 /* DUXBetaBeaconWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaBeaconWidgetModel.h; sourceTree = "<group>"; };
 		B6D19E6924ED9DB300737526 /* UXSDKAccessory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UXSDKAccessory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D19E6C24ED9DB300737526 /* UXSDKAccessory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UXSDKAccessory.h; sourceTree = "<group>"; };
 		B6D19E6D24ED9DB300737526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D19E7624ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpotlightIndicatorWidgetModel.m; sourceTree = "<group>"; };
+		B6D19E7724ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpotlightIndicatorWidget.m; sourceTree = "<group>"; };
+		B6D19E7824ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpotlightControlWidgetModel.h; sourceTree = "<group>"; };
+		B6D19E7924ED9EAB00737526 /* DUXBetaSpotlightControlWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpotlightControlWidget.m; sourceTree = "<group>"; };
+		B6D19E7A24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpotlightIndicatorWidgetModel.h; sourceTree = "<group>"; };
+		B6D19E7B24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpotlightIndicatorWidget.h; sourceTree = "<group>"; };
+		B6D19E7C24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpotlightControlWidgetModel.m; sourceTree = "<group>"; };
+		B6D19E7D24ED9EAB00737526 /* DUXBetaSpotlightControlWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpotlightControlWidget.h; sourceTree = "<group>"; };
+		B6D19E8124ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerMediaListSyncer.m; sourceTree = "<group>"; };
+		B6D19E8224ED9EAB00737526 /* DUXBetaSpeakerUploadSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerUploadSession.h; sourceTree = "<group>"; };
+		B6D19E8324ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerUploadSessionManager.h; sourceTree = "<group>"; };
+		B6D19E8424ED9EAB00737526 /* DUXBetaSpeakerMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerMediaModel.m; sourceTree = "<group>"; };
+		B6D19E8524ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerUploadSessionManager.m; sourceTree = "<group>"; };
+		B6D19E8624ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerMediaListSyncer.h; sourceTree = "<group>"; };
+		B6D19E8724ED9EAB00737526 /* DUXBetaSpeakerUploadSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerUploadSession.m; sourceTree = "<group>"; };
+		B6D19E8824ED9EAB00737526 /* DUXBetaSpeakerMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerMediaModel.h; sourceTree = "<group>"; };
+		B6D19E8924ED9EAB00737526 /* DUXBetaSpeakerControlWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerControlWidget.h; sourceTree = "<group>"; };
+		B6D19E9D24ED9EAB00737526 /* DUXBetaSpeakerControlWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerControlWidget.m; sourceTree = "<group>"; };
+		B6D19E9F24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerIndicatorWidget.h; sourceTree = "<group>"; };
+		B6D19EA024ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerIndicatorWidgetModel.h; sourceTree = "<group>"; };
+		B6D19EA124ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerIndicatorWidget.m; sourceTree = "<group>"; };
+		B6D19EA224ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerIndicatorWidgetModel.m; sourceTree = "<group>"; };
 		B6D19EB624ED9EAB00737526 /* UXSDKAccessory.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UXSDKAccessory.xcassets; sourceTree = "<group>"; };
+		B6D19EF024ED9F1600737526 /* DUXBetaSpeakerRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerRecordButton.h; sourceTree = "<group>"; };
+		B6D19EF124ED9F1600737526 /* DUXBetaSpeakerVolumeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerVolumeView.h; sourceTree = "<group>"; };
+		B6D19EF224ED9F1600737526 /* DUXBetaSpeakerBroadcastTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerBroadcastTypeView.h; sourceTree = "<group>"; };
+		B6D19EF324ED9F1600737526 /* DUXBetaSpeakerBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerBottomBar.h; sourceTree = "<group>"; };
+		B6D19EF424ED9F1600737526 /* DUXBetaSpeakerRecordAudioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerRecordAudioView.h; sourceTree = "<group>"; };
+		B6D19EF524ED9F1600737526 /* DUXBetaSpeakerMemoryListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerMemoryListView.h; sourceTree = "<group>"; };
+		B6D19EF624ED9F1600737526 /* DUXBetaSpeakerRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerRecordButton.m; sourceTree = "<group>"; };
+		B6D19EF724ED9F1600737526 /* DUXBetaSpeakerVolumeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerVolumeView.m; sourceTree = "<group>"; };
+		B6D19EF824ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerRecordAudioView.m; sourceTree = "<group>"; };
+		B6D19EF924ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerPlaylistTableViewCell.h; sourceTree = "<group>"; };
+		B6D19EFA24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerPlaylistTableViewCell.m; sourceTree = "<group>"; };
+		B6D19EFB24ED9F1700737526 /* DUXBetaSpeakerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerProgressView.h; sourceTree = "<group>"; };
+		B6D19EFC24ED9F1700737526 /* DUXBetaSpeakerMemoryListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerMemoryListView.m; sourceTree = "<group>"; };
+		B6D19EFD24ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerBroadcastTypeView.m; sourceTree = "<group>"; };
+		B6D19EFE24ED9F1700737526 /* DUXBetaSpeakerUploadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUXBetaSpeakerUploadingView.h; sourceTree = "<group>"; };
+		B6D19EFF24ED9F1700737526 /* DUXBetaSpeakerBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerBottomBar.m; sourceTree = "<group>"; };
+		B6D19F0024ED9F1700737526 /* DUXBetaSpeakerUploadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerUploadingView.m; sourceTree = "<group>"; };
+		B6D19F0124ED9F1700737526 /* DUXBetaSpeakerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUXBetaSpeakerProgressView.m; sourceTree = "<group>"; };
+		B6D19F1524EDA01D00737526 /* UXSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD46A4539640E9C953F55C8F /* Pods-UXSDKAccessory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UXSDKAccessory.debug.xcconfig"; path = "Target Support Files/Pods-UXSDKAccessory/Pods-UXSDKAccessory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,18 +152,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D19F1624EDA01D00737526 /* UXSDKCore.framework in Frameworks */,
+				8F4201F54C76C8EA0D011D00 /* Pods_UXSDKAccessory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8DB1AE8C7D5627F2C73381B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD46A4539640E9C953F55C8F /* Pods-UXSDKAccessory.debug.xcconfig */,
+				4F38834128573618431CDF47 /* Pods-UXSDKAccessory.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../UXSDKBetaSampleApp/Pods;
+			sourceTree = "<group>";
+		};
 		B6D19E5F24ED9DB300737526 = {
 			isa = PBXGroup;
 			children = (
 				B6D19E6B24ED9DB300737526 /* UXSDKAccessory */,
 				B6D19E6A24ED9DB300737526 /* Products */,
 				B6D19F1424EDA01D00737526 /* Frameworks */,
+				A8DB1AE8C7D5627F2C73381B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,9 +202,98 @@
 		B6D19E7424ED9EAB00737526 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				B6D19E7524ED9EAB00737526 /* Spotlight */,
+				B6D19E7E24ED9EAB00737526 /* Speaker */,
 				B6D19EA324ED9EAB00737526 /* RTK */,
+				B6D19EB024ED9EAB00737526 /* Beacon */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		B6D19E7524ED9EAB00737526 /* Spotlight */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19E7D24ED9EAB00737526 /* DUXBetaSpotlightControlWidget.h */,
+				B6D19E7924ED9EAB00737526 /* DUXBetaSpotlightControlWidget.m */,
+				B6D19E7B24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.h */,
+				B6D19E7724ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.m */,
+				B6D19E7824ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.h */,
+				B6D19E7C24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.m */,
+				B6D19E7A24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.h */,
+				B6D19E7624ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.m */,
+			);
+			path = Spotlight;
+			sourceTree = "<group>";
+		};
+		B6D19E7E24ED9EAB00737526 /* Speaker */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19E7F24ED9EAB00737526 /* SpeakerControlWidget */,
+				B6D19E9E24ED9EAB00737526 /* SpeakerIndicatorWidget */,
+			);
+			path = Speaker;
+			sourceTree = "<group>";
+		};
+		B6D19E7F24ED9EAB00737526 /* SpeakerControlWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19E8924ED9EAB00737526 /* DUXBetaSpeakerControlWidget.h */,
+				B6D19E9D24ED9EAB00737526 /* DUXBetaSpeakerControlWidget.m */,
+				B6D19E8024ED9EAB00737526 /* UploadSyncing */,
+				B6D19E8A24ED9EAB00737526 /* UIComponents */,
+			);
+			path = SpeakerControlWidget;
+			sourceTree = "<group>";
+		};
+		B6D19E8024ED9EAB00737526 /* UploadSyncing */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19E8824ED9EAB00737526 /* DUXBetaSpeakerMediaModel.h */,
+				B6D19E8424ED9EAB00737526 /* DUXBetaSpeakerMediaModel.m */,
+				B6D19E8624ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.h */,
+				B6D19E8124ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.m */,
+				B6D19E8224ED9EAB00737526 /* DUXBetaSpeakerUploadSession.h */,
+				B6D19E8724ED9EAB00737526 /* DUXBetaSpeakerUploadSession.m */,
+				B6D19E8324ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.h */,
+				B6D19E8524ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.m */,
+			);
+			path = UploadSyncing;
+			sourceTree = "<group>";
+		};
+		B6D19E8A24ED9EAB00737526 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19EF324ED9F1600737526 /* DUXBetaSpeakerBottomBar.h */,
+				B6D19EFF24ED9F1700737526 /* DUXBetaSpeakerBottomBar.m */,
+				B6D19EF224ED9F1600737526 /* DUXBetaSpeakerBroadcastTypeView.h */,
+				B6D19EFD24ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.m */,
+				B6D19EF524ED9F1600737526 /* DUXBetaSpeakerMemoryListView.h */,
+				B6D19EFC24ED9F1700737526 /* DUXBetaSpeakerMemoryListView.m */,
+				B6D19EF924ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.h */,
+				B6D19EFA24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.m */,
+				B6D19EFB24ED9F1700737526 /* DUXBetaSpeakerProgressView.h */,
+				B6D19F0124ED9F1700737526 /* DUXBetaSpeakerProgressView.m */,
+				B6D19EF424ED9F1600737526 /* DUXBetaSpeakerRecordAudioView.h */,
+				B6D19EF824ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.m */,
+				B6D19EF024ED9F1600737526 /* DUXBetaSpeakerRecordButton.h */,
+				B6D19EF624ED9F1600737526 /* DUXBetaSpeakerRecordButton.m */,
+				B6D19EFE24ED9F1700737526 /* DUXBetaSpeakerUploadingView.h */,
+				B6D19F0024ED9F1700737526 /* DUXBetaSpeakerUploadingView.m */,
+				B6D19EF124ED9F1600737526 /* DUXBetaSpeakerVolumeView.h */,
+				B6D19EF724ED9F1600737526 /* DUXBetaSpeakerVolumeView.m */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		B6D19E9E24ED9EAB00737526 /* SpeakerIndicatorWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19E9F24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.h */,
+				B6D19EA124ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.m */,
+				B6D19EA024ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.h */,
+				B6D19EA224ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.m */,
+			);
+			path = SpeakerIndicatorWidget;
 			sourceTree = "<group>";
 		};
 		B6D19EA324ED9EAB00737526 /* RTK */ = {
@@ -131,6 +329,17 @@
 			path = RTKEnabled;
 			sourceTree = "<group>";
 		};
+		B6D19EB024ED9EAB00737526 /* Beacon */ = {
+			isa = PBXGroup;
+			children = (
+				B60B8DBA2553007300F097D1 /* DUXBetaBeaconWidget.h */,
+				B60B8DBB2553007300F097D1 /* DUXBetaBeaconWidget.m */,
+				B60B8DBD2553007300F097D1 /* DUXBetaBeaconWidgetModel.h */,
+				B60B8DBC2553007300F097D1 /* DUXBetaBeaconWidgetModel.m */,
+			);
+			path = Beacon;
+			sourceTree = "<group>";
+		};
 		B6D19EB524ED9EAB00737526 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +351,8 @@
 		B6D19F1424EDA01D00737526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6D19F1524EDA01D00737526 /* UXSDKCore.framework */,
+				23DE787D8C38DCD9E3C8A0B2 /* Pods_UXSDKAccessory.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,10 +364,32 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60B8DBE2553007300F097D1 /* DUXBetaBeaconWidget.h in Headers */,
 				B60B8DB42553005B00F097D1 /* DUXBetaRTKEnabledWidget.h in Headers */,
+				B6D19EBD24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.h in Headers */,
+				B6D19EC824ED9EAB00737526 /* DUXBetaSpeakerMediaModel.h in Headers */,
+				B6D19EBB24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.h in Headers */,
+				B6D19F1024ED9F1700737526 /* DUXBetaSpeakerUploadingView.h in Headers */,
+				B6D19F0524ED9F1700737526 /* DUXBetaSpeakerBottomBar.h in Headers */,
+				B6D19F0B24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.h in Headers */,
+				B6D19F0724ED9F1700737526 /* DUXBetaSpeakerMemoryListView.h in Headers */,
+				B6D19EC024ED9EAB00737526 /* DUXBetaSpotlightControlWidget.h in Headers */,
+				B60B8DC12553007300F097D1 /* DUXBetaBeaconWidgetModel.h in Headers */,
+				B6D19EDE24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.h in Headers */,
+				B6D19EDD24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.h in Headers */,
 				B6D19E6E24ED9DB300737526 /* UXSDKAccessory.h in Headers */,
+				B6D19EC224ED9EAB00737526 /* DUXBetaSpeakerUploadSession.h in Headers */,
+				B6D19F0D24ED9F1700737526 /* DUXBetaSpeakerProgressView.h in Headers */,
+				B6D19F0224ED9F1700737526 /* DUXBetaSpeakerRecordButton.h in Headers */,
 				B60B8DAD2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidgetModel.h in Headers */,
+				B6D19F0324ED9F1700737526 /* DUXBetaSpeakerVolumeView.h in Headers */,
+				B6D19F0624ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.h in Headers */,
+				B6D19EC924ED9EAB00737526 /* DUXBetaSpeakerControlWidget.h in Headers */,
+				B6D19EC624ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.h in Headers */,
+				B6D19F0424ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.h in Headers */,
+				B6D19EC324ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.h in Headers */,
 				B60B8DB22553005B00F097D1 /* DUXBetaRTKEnabledWidgetModel.h in Headers */,
+				B6D19EBE24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.h in Headers */,
 				B60B8DB82553006700F097D1 /* DUXBetaRTKWidget.h in Headers */,
 				B60B8DAC2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidget.h in Headers */,
 			);
@@ -169,6 +402,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D19E7124ED9DB300737526 /* Build configuration list for PBXNativeTarget "UXSDKAccessory" */;
 			buildPhases = (
+				0BBF267ECB12B537791DC5C9 /* [CP] Check Pods Manifest.lock */,
 				B6D19E6424ED9DB300737526 /* Headers */,
 				B6D19E6524ED9DB300737526 /* Sources */,
 				B6D19E6624ED9DB300737526 /* Frameworks */,
@@ -227,16 +461,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0BBF267ECB12B537791DC5C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UXSDKAccessory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B6D19E6524ED9DB300737526 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60B8DC02553007300F097D1 /* DUXBetaBeaconWidgetModel.m in Sources */,
+				B6D19EBF24ED9EAB00737526 /* DUXBetaSpotlightControlWidgetModel.m in Sources */,
 				B60B8DB32553005B00F097D1 /* DUXBetaRTKEnabledWidget.m in Sources */,
+				B6D19F0A24ED9F1700737526 /* DUXBetaSpeakerRecordAudioView.m in Sources */,
+				B6D19EDF24ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidget.m in Sources */,
+				B6D19F0824ED9F1700737526 /* DUXBetaSpeakerRecordButton.m in Sources */,
 				B60B8DAB2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidgetModel.m in Sources */,
+				B6D19EC724ED9EAB00737526 /* DUXBetaSpeakerUploadSession.m in Sources */,
+				B6D19EC524ED9EAB00737526 /* DUXBetaSpeakerUploadSessionManager.m in Sources */,
+				B6D19EC124ED9EAB00737526 /* DUXBetaSpeakerMediaListSyncer.m in Sources */,
+				B6D19EC424ED9EAB00737526 /* DUXBetaSpeakerMediaModel.m in Sources */,
+				B6D19F1124ED9F1700737526 /* DUXBetaSpeakerBottomBar.m in Sources */,
+				B6D19F0F24ED9F1700737526 /* DUXBetaSpeakerBroadcastTypeView.m in Sources */,
+				B6D19F0E24ED9F1700737526 /* DUXBetaSpeakerMemoryListView.m in Sources */,
+				B6D19EBC24ED9EAB00737526 /* DUXBetaSpotlightControlWidget.m in Sources */,
+				B6D19F0C24ED9F1700737526 /* DUXBetaSpeakerPlaylistTableViewCell.m in Sources */,
 				B60B8DB52553005B00F097D1 /* DUXBetaRTKEnabledWidgetModel.m in Sources */,
+				B6D19F1324ED9F1700737526 /* DUXBetaSpeakerProgressView.m in Sources */,
+				B60B8DBF2553007300F097D1 /* DUXBetaBeaconWidget.m in Sources */,
+				B6D19F0924ED9F1700737526 /* DUXBetaSpeakerVolumeView.m in Sources */,
+				B6D19EBA24ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidget.m in Sources */,
+				B6D19EB924ED9EAB00737526 /* DUXBetaSpotlightIndicatorWidgetModel.m in Sources */,
 				B60B8DAA2553005100F097D1 /* DUXBetaRTKSatelliteStatusWidget.m in Sources */,
+				B6D19EE024ED9EAB00737526 /* DUXBetaSpeakerIndicatorWidgetModel.m in Sources */,
+				B6D19EDC24ED9EAB00737526 /* DUXBetaSpeakerControlWidget.m in Sources */,
 				B60B8DB92553006700F097D1 /* DUXBetaRTKWidget.m in Sources */,
+				B6D19F1224ED9F1700737526 /* DUXBetaSpeakerUploadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +644,7 @@
 		};
 		B6D19E7224ED9DB300737526 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD46A4539640E9C953F55C8F /* Pods-UXSDKAccessory.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -370,7 +652,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = UXSDKAccessory/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -390,6 +672,7 @@
 		};
 		B6D19E7324ED9DB300737526 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F38834128573618431CDF47 /* Pods-UXSDKAccessory.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;

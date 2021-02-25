@@ -120,9 +120,7 @@ static NSString *const kDisabledRTKMessage = @"Real-Time Kinematic positioning i
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    CGFloat widgetHeights = self.stackView.bounds.size.height;
-    
+        
     BindRKVOModel(self.rtkSatelliteStatusWidget.widgetModel, @selector(updateSatelliteStatusVisibility), rtkEnabled, isProductConnected);
     [[DUXBetaStateChangeBroadcaster instance] registerListener:self analyticsClassName:@"GPSSignalUIState" handler:^(DUXBetaStateChangeBaseData * _Nonnull analyticsData) {
         [self showWidgetIfSupported];

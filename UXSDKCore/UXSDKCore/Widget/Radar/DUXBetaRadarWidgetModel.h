@@ -31,12 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DUXBetaRadarWidgetModel : DUXBetaBaseWidgetModel
 
-@property (nonatomic, assign, readonly) DJIVisionDetectionState *noseState;
-@property (nonatomic, assign, readonly) DJIVisionDetectionState *tailState;
-@property (nonatomic, assign, readonly) DJIVisionDetectionState *rightState;
-@property (nonatomic, assign, readonly) DJIVisionDetectionState *leftState;
-@property (nonatomic, assign, readonly) DJIVisionControlState *controlState;
-
+@property (nonatomic, readonly) DJIVisionDetectionState *noseState;
+@property (nonatomic, readonly) DJIVisionDetectionState *tailState;
+@property (nonatomic, readonly) DJIVisionDetectionState *rightState;
+@property (nonatomic, readonly) DJIVisionDetectionState *leftState;
+@property (nonatomic, readonly) DJIVisionControlState *controlState;
+@property (nonatomic, readonly) DJIFlightAssistantObstacleAvoidanceSensorState *avoidanceStateM300;
+@property (nonatomic, readonly) DJIObstacleDetectionSectorWarning  radarWarningLevel;
 @end
 
 NS_ASSUME_NONNULL_END

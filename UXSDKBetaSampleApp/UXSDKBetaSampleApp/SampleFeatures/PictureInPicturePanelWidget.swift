@@ -27,7 +27,7 @@
 
 import Foundation
 import UIKit
-import DJIUXSDKBeta
+import DJIUXSDK
 
 /**
  * The PictureInPicturePanelWidget is a subclass of DUXBetaFreeformPanelWidget which implements a picture in picture panel. (Technically this is a widget

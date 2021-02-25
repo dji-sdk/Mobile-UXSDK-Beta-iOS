@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,6 @@
 #import "DUXBetaCompassGyroHorizonLayer.h"
 
 #define DEGREES_TO_RADIANS(degrees) (degrees * M_PI / 180.0)
-#define RADIANS_TO_DEGREES(radians) (radians * 180.0 / M_PI)
 
 @implementation DUXBetaCompassGyroHorizonLayer
 

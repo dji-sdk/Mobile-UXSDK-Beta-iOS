@@ -4,7 +4,7 @@
 //
 //  MIT License
 //  
-//  Copyright © 2018-2020 DJI
+//  Copyright © 2018-2021 DJI
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,75 +27,35 @@
 
 #import "DUXBetaCompassWidgetModel.h"
 #import <UXSDKCore/UXSDKCore-Swift.h>
+#import "DUXBetaLocationUtil.h"
 
 @interface DUXBetaCompassWidgetModel() <CLLocationManagerDelegate>
 
-@property (strong, nonatomic) CLLocationManager *locationManager;
-
 @property (nonatomic, assign) BOOL stickToNorth;
-
-@property (nonatomic) DJISDKVector3D *aircraftAttitude;
-@property (nonatomic) DJIGimbalAttitude gimbalAttitude;
-@property (nonatomic) DJIRCGPSData rcGPSData;
-
-@property (nonatomic) CLLocation *homeLocation;
-@property (nonatomic) CLLocation *rcLocation;
-@property (nonatomic) CLLocation *aircraftLocation;
-@property (nonatomic) CLLocation *deviceLocation;
-
-@property (nonatomic, assign, readwrite) CLLocationDirection deviceHeading;
-
-@property (nonatomic, assign) CLLocationDirection aircraftRoll;
-@property (nonatomic, assign) CLLocationDirection aircraftPitch;
+@property (nonatomic, assign) DJIRCGPSData rcGPSData;
+@property (nonatomic, strong) DJISDKVector3D *aircraftAttitude;
+@property (nonatomic, assign) DJIGimbalAttitude gimbalAttitude;
 @property (nonatomic, assign) CLLocationDirection aircraftYaw;
-
-@property (nonatomic, assign) CLLocationDirection gimbalYaw;
+@property (nonatomic, assign) CLLocationDirection aircraftRoll;
+@property (nonatomic, assign) CLLocationDirection deviceHeading;
+@property (nonatomic, assign) CLLocationDirection aircraftPitch;
 @property (nonatomic, assign) CLLocationDirection gimbalYawRelativeToAircraft;
 
-@property (nonatomic, assign) CLLocationDirection droneAngle;
-@property (nonatomic, strong) NSMeasurement *droneDistance;
+@property (nonatomic, strong) CLLocation *homeLocation;
+@property (nonatomic, strong) CLLocation *rcOrDeviceLocation;
+@property (nonatomic, strong) CLLocation *aircraftLocation;
 
-@property (nonatomic, assign) CLLocationDirection homeAngle;
-@property (nonatomic, strong) NSMeasurement *homeDistance;
-
-@property (nonatomic, strong) DUXBetaUnitTypeModule         *unitModule;
+@property (nonatomic, strong, readwrite) DUXBetaCompassState *compassState;
 
 @end
 
 @implementation DUXBetaCompassWidgetModel
 
-@synthesize droneDistanceUnits = _droneDistanceUnits;
-@synthesize homeDistanceUnits = _homeDistanceUnits;
-
 - (instancetype)init {
     self = [super init];
     if (self) {
+        [self setupModelState];
         [self setupLocationManager];
-        
-        _homeLocation = nil;
-        _rcLocation = nil;
-        _aircraftLocation = nil;
-        _deviceLocation = nil;
-        
-        _deviceHeading = 0;
-        
-        _aircraftRoll = 0;
-        _aircraftPitch = 0;
-        _aircraftYaw = 0;
-        
-        _gimbalYaw = 0;
-        _gimbalYawRelativeToAircraft = 0;
-        
-        _droneAngle = 0;
-        _homeAngle = 0;
-        
-        if (self.unitModule.unitType == DUXBetaMeasureUnitTypeMetric) {
-            _droneDistance = [[NSMeasurement alloc] initWithDoubleValue:0 unit: NSUnitLength.meters];
-            _homeDistance = [[NSMeasurement alloc] initWithDoubleValue:0 unit: NSUnitLength.meters];
-        } else {
-            _droneDistance = [[NSMeasurement alloc] initWithDoubleValue:0 unit: NSUnitLength.feet];
-            _homeDistance = [[NSMeasurement alloc] initWithDoubleValue:0 unit: NSUnitLength.feet];
-        }
     }
     return self;
 }
@@ -120,6 +80,10 @@
     self.locationManagerAccuracy = kCLLocationAccuracyBestForNavigation;
 }
 
+- (void)setupModelState {
+    self.compassState = [[DUXBetaCompassState alloc] init];
+}
+
 - (void)inSetup {
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamAttitude], aircraftAttitude);
     BindSDKKey([DJIGimbalKey keyWithParam:DJIGimbalParamAttitudeInDegrees], gimbalAttitude);
@@ -128,7 +92,14 @@
     BindSDKKey([DJIFlightControllerKey keyWithParam:DJIFlightControllerParamAircraftLocation], aircraftLocation);
     BindSDKKey([DJIRemoteControllerKey keyWithParam:DJIRemoteControllerParamGPSData], rcGPSData);
 
-    BindRKVOModel(self, @selector(updateStates), aircraftAttitude, gimbalAttitude, gimbalYawRelativeToAircraft, homeLocation, aircraftLocation, rcGPSData);
+    BindRKVOModel(self, @selector(updateStates),
+                  rcOrDeviceLocation,
+                  aircraftAttitude,
+                  gimbalAttitude,
+                  gimbalYawRelativeToAircraft,
+                  homeLocation,
+                  aircraftLocation,
+                  rcGPSData);
 }
 
 - (void)inCleanup {
@@ -136,24 +107,46 @@
     UnBindRKVOModel(self);
 }
 
+- (CLLocation *)centerLocation {
+    return (self.compassState.centerType == DUXBetaCompassHomeGPS ? self.homeLocation : self.rcOrDeviceLocation);
+}
+
 - (void)updateStates {
-    self.aircraftYaw = self.aircraftAttitude.z;
-    self.aircraftPitch = self.aircraftAttitude.y;
-    self.aircraftRoll = self.aircraftAttitude.x;
-    self.gimbalYaw = self.gimbalAttitude.yaw;
+    self.compassState.aircraftAttitude.yaw = self.aircraftAttitude.z;
+    self.compassState.aircraftAttitude.roll = self.aircraftAttitude.x;
+    self.compassState.aircraftAttitude.pitch = self.aircraftAttitude.y;
+    
+    self.compassState.gimbalHeading = self.gimbalYawRelativeToAircraft;
     
     if (self.rcGPSData.isValid) {
-        self.rcLocation = [[CLLocation alloc] initWithLatitude:self.rcGPSData.location.latitude longitude:self.rcGPSData.location.longitude];
+        [self.locationManager stopUpdatingLocation];
+        
+        self.compassState.centerType = DUXBetaCompassRCMobileGPS;
+        _rcOrDeviceLocation = [[CLLocation alloc] initWithLatitude:self.rcGPSData.location.latitude longitude:self.rcGPSData.location.longitude];
     }
     
-    self.droneAngle = [self angleOfDrone];
-    self.homeAngle = [self angleOfHome];
+    // Compute aircraft location
+    self.compassState.aircraftState = [DUXBetaLocationState new];
+    self.compassState.aircraftState.angle = [DUXBetaLocationUtil angleBetween:self.centerLocation andLocation:self.aircraftLocation];
+    self.compassState.aircraftState.distance = [DUXBetaLocationUtil distanceInMeters:self.centerLocation andLocation:self.aircraftLocation];
     
-    NSMeasurement *droneDistance = [[NSMeasurement alloc] initWithDoubleValue:[self droneToPilotDistanceInMeters] unit: NSUnitLength.meters];
-    NSMeasurement *homeDistance = [[NSMeasurement alloc] initWithDoubleValue:[self homeToPilotDistanceInMeters] unit: NSUnitLength.meters];
+    // Compute home location
+    if (self.homeLocation) {
+        self.compassState.homeLocationState = [DUXBetaLocationState new];
+        self.compassState.homeLocationState.angle = [DUXBetaLocationUtil angleBetween:self.centerLocation andLocation:self.homeLocation];
+        self.compassState.homeLocationState.distance = [DUXBetaLocationUtil distanceInMeters:self.centerLocation andLocation:self.homeLocation];
+    } else {
+        self.compassState.homeLocationState = nil;
+    }
     
-    self.droneDistance = [droneDistance measurementByConvertingToUnit: self.droneDistanceUnits];
-    self.homeDistance = [homeDistance measurementByConvertingToUnit: self.homeDistanceUnits];
+    // Compute rc/mobileGPS location
+    if (self.rcOrDeviceLocation) {
+        self.compassState.rcLocationState = [DUXBetaLocationState new];
+        self.compassState.rcLocationState.angle = [DUXBetaLocationUtil angleBetween:self.centerLocation andLocation:self.rcOrDeviceLocation];
+        self.compassState.rcLocationState.distance = [DUXBetaLocationUtil distanceInMeters:self.centerLocation andLocation:self.rcOrDeviceLocation];
+    } else {
+        self.compassState.rcLocationState = nil;
+    }
 }
 
 - (void)dealloc {
@@ -178,7 +171,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if ([locations count] > 0) {
-        self.deviceLocation = [locations lastObject];
+        self.compassState.centerType = DUXBetaCompassRCMobileGPS;
+        self.rcOrDeviceLocation = [locations lastObject];
     }
 }
 
@@ -186,140 +180,43 @@
     if (newHeading.headingAccuracy < 0) { return; }
     
     if (self.stickToNorth == NO) {
-        self.deviceHeading = newHeading.magneticHeading;
+        self.compassState.deviceHeading = newHeading.magneticHeading;
     }
-    self.deviceHeading = newHeading.magneticHeading;
+    self.compassState.deviceHeading = newHeading.magneticHeading;
 }
 
 - (void)deviceOrientationDidChange {
     self.locationManager.headingOrientation = (CLDeviceOrientation)[[UIDevice currentDevice] orientation];
 }
 
-/*********************************************************************************/
-#pragma mark - Calculation Methods
-/*********************************************************************************/
+@end
 
-#define IsGPSValid(__location__) (CLLocationCoordinate2DIsValid(__location__) && !(fabs(__location__.latitude) < 1e-6 && fabs(__location__.longitude) < 1e-6))
 
-- (CLLocationDirection)angleOfDrone {
-    CLLocation *myLocation = self.rcLocation != nil ? self.rcLocation : self.deviceLocation;
-    
-    if (myLocation == nil) { return 0; }
-    
-    CLLocationCoordinate2D myCoordinate = myLocation.coordinate;
-    CLLocationCoordinate2D droneCoordinate = self.aircraftLocation.coordinate;
-    
-    if (CLLocationCoordinate2DIsValid(myCoordinate) && CLLocationCoordinate2DIsValid(droneCoordinate)) {
-        CLLocation *location1 = [[CLLocation alloc] initWithLatitude:myCoordinate.latitude longitude:myCoordinate.longitude];
-        CLLocation *location2 = [[CLLocation alloc] initWithLatitude:droneCoordinate.latitude longitude:droneCoordinate.longitude];
-        CLLocation *location3 = [[CLLocation alloc] initWithLatitude:droneCoordinate.latitude longitude:myCoordinate.longitude];
-        
-        double dist1 = [location1 distanceFromLocation:location2];
-        double dist2 = [location1 distanceFromLocation:location3];
-        
-        if (dist1 == 0) { return 0; }
-        
-        double ans = acos(dist2/dist1);
-        if (myCoordinate.latitude <= droneCoordinate.latitude) {
-            if (myCoordinate.longitude > droneCoordinate.longitude) {
-                ans = 2 * M_PI - ans;
-            }
-        } else {
-            ans = myCoordinate.longitude >= droneCoordinate.longitude ? M_PI + ans: M_PI - ans;
-        }
-        return ans*180.0/M_PI;
+#pragma mark - DUXBetaCompassState
+
+@implementation DUXBetaCompassState
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.centerType = DUXBetaCompassHomeGPS;
+        self.aircraftAttitude = [DUXBetaAircraftAttitude new];
     }
-    return 0;
+    return self;
 }
 
-- (CLLocationDirection)angleOfHome {
-    CLLocation *myLocation = self.rcLocation != nil ? self.rcLocation : self.deviceLocation;
-    
-    if (myLocation == nil) { return 0; }
-    
-    CLLocationCoordinate2D myCoordinate = myLocation.coordinate;
-    CLLocationCoordinate2D homeCoordinate = self.homeLocation.coordinate;
-    
-    if (CLLocationCoordinate2DIsValid(myCoordinate) && CLLocationCoordinate2DIsValid(homeCoordinate)) {
-        CLLocation *location1 = [[CLLocation alloc] initWithLatitude:myCoordinate.latitude longitude:myCoordinate.longitude];
-        CLLocation *location2 = [[CLLocation alloc] initWithLatitude:homeCoordinate.latitude longitude:homeCoordinate.longitude];
-        CLLocation *location3 = [[CLLocation alloc] initWithLatitude:homeCoordinate.latitude longitude:myCoordinate.longitude];
-        
-        double dist1 = [location1 distanceFromLocation:location2];
-        double dist2 = [location1 distanceFromLocation:location3];
-        
-        if (dist1 == 0) { return 0; }
-        
-        double ans = acos(dist2/dist1);
-        if (myCoordinate.latitude <= homeCoordinate.latitude) {
-            if (myCoordinate.longitude > homeCoordinate.longitude)  {
-                ans = 2 * M_PI - ans;
-            }
-        } else {
-            ans = myCoordinate.longitude >= homeCoordinate.longitude ? M_PI + ans: M_PI - ans;
-        }
-        return ans * 180.0 / M_PI;
-    }
-    return 0;
-}
+@end
 
-- (double)droneToPilotDistanceInMeters {
-    CLLocation *myLocation = self.rcLocation != nil ? self.rcLocation : self.deviceLocation;
-    
-    if (myLocation == nil) { return 0; }
-    
-    CGFloat distance = 0;
-    if (self.aircraftLocation) {
-        if (IsGPSValid(myLocation.coordinate)) {
-            CLLocation *location = [[CLLocation alloc] initWithLatitude:myLocation.coordinate.latitude longitude:myLocation.coordinate.longitude];
-            distance = [location distanceFromLocation:self.aircraftLocation];
-        }
-    }
-    return distance;
-}
 
-- (double)homeToPilotDistanceInMeters {
-    CLLocation *myLocation = self.rcLocation != nil ? self.rcLocation : self.deviceLocation;
-    
-    if (myLocation == nil) { return 0; }
-    
-    CLLocationCoordinate2D myCoordinate = myLocation.coordinate;
-    if (CLLocationCoordinate2DIsValid(myCoordinate) && CLLocationCoordinate2DIsValid(self.homeLocation.coordinate)) {
-        CLLocation *location1 = [[CLLocation alloc] initWithLatitude:myCoordinate.latitude longitude:myCoordinate.longitude];
-        CLLocation *location2 = [[CLLocation alloc] initWithLatitude:self.homeLocation.coordinate.latitude longitude:self.homeLocation.coordinate.longitude];
-        return [location1 distanceFromLocation:location2];
-    }
-    return 0;
-}
+#pragma mark - DUXBetaAircraftAttitude
 
-- (NSUnitLength *)droneDistanceUnits {
-    if (_droneDistanceUnits) {
-        return _droneDistanceUnits;
-    } else if (self.unitModule.unitType == DUXBetaMeasureUnitTypeMetric) {
-        return NSUnitLength.meters;
-    } else {
-        return NSUnitLength.feet;
-    }
-}
+@implementation DUXBetaAircraftAttitude
 
-- (NSUnitLength *)homeDistanceUnits {
-    if (_homeDistanceUnits) {
-        return _homeDistanceUnits;
-    } else if (self.unitModule.unitType == DUXBetaMeasureUnitTypeMetric) {
-        return NSUnitLength.meters;
-    } else {
-        return NSUnitLength.feet;
-    }
-}
+@end
 
-- (void)setDroneDistanceUnits:(NSUnitLength *)droneDistanceUnits {
-    _droneDistanceUnits = droneDistanceUnits;
-    [self updateStates];
-}
 
-- (void)setHomeDistanceUnits:(NSUnitLength *)homeDistanceUnits {
-    _homeDistanceUnits = homeDistanceUnits;
-    [self updateStates];
-}
+#pragma mark - DUXBetaLocationState
+
+@implementation DUXBetaLocationState
 
 @end

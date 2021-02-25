@@ -722,7 +722,7 @@ let kDesignHeighthHint: CGFloat = 300.0
                 if let hasDetailList = protocolWidget.hasDetailList, hasDetailList() {
                     if let sublistType = protocolWidget.detailListType?() {
                         if (sublistType == .selectOne) || (sublistType == .selectOneAndReturn) {
-
+                            //TODO: Alow widget to set title.
                             let _ = listRootViewControler()?.panelTitle ?? ""
                             let _ = protocolWidget.selectionUpdate ?? nil
 
@@ -1008,7 +1008,7 @@ class DUXBetaWidgetCell : UITableViewCell {
         widget.view.centerYAnchor.constraint(equalTo:backView.centerYAnchor).isActive = true
         widget.view.leadingAnchor.constraint(equalTo:backView.leadingAnchor).isActive = true
         widget.view.widthAnchor.constraint(equalTo:backView.widthAnchor).isActive = true
-
+        // TODO: Debug why addding a height anchor causes the entire cell height to collapse.
         if forceAspect {
             widget.view.heightAnchor.constraint(equalTo:widget.view.widthAnchor, multiplier:1.0/sizeHint.preferredAspectRatio).isActive = true
         } else {

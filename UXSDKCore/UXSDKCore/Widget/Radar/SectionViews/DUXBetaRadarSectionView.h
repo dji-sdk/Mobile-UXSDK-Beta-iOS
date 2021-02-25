@@ -33,8 +33,22 @@
 
 - (UIImage *)sectorImageForLevel:(DJIObstacleDetectionSectorWarning)level andSectorIndex:(int)index;
 
-@property (strong, nonatomic) NSArray<DJIObstacleDetectionSector *> *sectors;
-@property (assign, nonatomic) float obstacleDistanceInMeters;
-@property (readonly, nonatomic) DJIVisionSensorPosition position;
+@property (nonatomic, strong) NSArray<DJIObstacleDetectionSector *> *sectors;
+@property (nonatomic, assign) float obstacleDistanceInMeters;
+@property (nonatomic, readonly) DJIVisionSensorPosition position;
+// The distance from the inner edge of the radar wedge to positon the obstacle distance from
+@property (nonatomic) CGFloat distanceOffset;
+@property (nonatomic, strong) UIFont *distanceFont;
+@property (strong, nonatomic) UILabel *distanceLabel;
+@property (strong, nonatomic) UIImageView *arrow;
 
+@property (weak, nonatomic) NSDictionary<NSString *, UIImage *>  *customizedRadarSections;
+@property (nonatomic, retain) UIColor   *distanceTextColor;
+@property (nonatomic, retain) UIColor   *distanceTextBackgroundColor;
+@property (nonatomic, retain) UIFont    *distanceTextFont;
+@property (nonatomic, retain) UIColor   *distanceArrowImageBackground;
+
+@property (nonatomic, readonly) CGSize contentSize;
+
+- (void)updateCustomImages;
 @end

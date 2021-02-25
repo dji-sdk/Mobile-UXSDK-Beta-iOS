@@ -44,16 +44,16 @@ import Foundation
 */
 @objcMembers public class DUXBetaTopBarWidget: DUXBetaBarPanelWidget {
     
-    let systemStatusWidget = DUXBetaSystemStatusWidget()
-    let flightModeWidget = DUXBetaFlightModeWidget()
-    let simulatorIndicatorWidget = DUXBetaSimulatorIndicatorWidget()
-    let airSenseWidget = DUXBetaAirSenseWidget()
-    let gpsSignalWidget = DUXBetaGPSSignalWidget()
-    let visionWidget = DUXBetaVisionWidget()
-    let remoteControllerSignalWidget = DUXBetaRemoteControllerSignalWidget()
-    let videoSignalWidget = DUXBetaVideoSignalWidget()
-    let batteryWidget = DUXBetaBatteryWidget()
-    let connectionWidget = DUXBetaConnectionWidget()
+    public let systemStatusWidget = DUXBetaSystemStatusWidget()
+    public let flightModeWidget = DUXBetaFlightModeWidget()
+    public let simulatorIndicatorWidget = DUXBetaSimulatorIndicatorWidget()
+    public let airSenseWidget = DUXBetaAirSenseWidget()
+    public let gpsSignalWidget = DUXBetaGPSSignalWidget()
+    public let visionWidget = DUXBetaVisionWidget()
+    public let remoteControllerSignalWidget = DUXBetaRemoteControllerSignalWidget()
+    public let videoSignalWidget = DUXBetaVideoSignalWidget()
+    public let batteryWidget = DUXBetaBatteryWidget()
+    public let connectionWidget = DUXBetaConnectionWidget()
     
     /**
      * Override of the standard viewdDidLoad method.

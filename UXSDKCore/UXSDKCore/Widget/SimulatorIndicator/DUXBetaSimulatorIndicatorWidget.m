@@ -125,7 +125,7 @@
     // Bind widget to customization updates
     BindRKVOModel(self.widgetModel, @selector(sendSimulatorStatus), isSimulatorActive);
     BindRKVOModel(self.widgetModel, @selector(sendProductConnected), isProductConnected);
-    BindRKVOModel(self, @selector(updateUI), imageMapping, tintColorMapping, backgroundColor);
+    BindRKVOModel(self, @selector(updateUI), backgroundColor);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -144,6 +144,7 @@
 - (void)setImage:(UIImage *)image forState:(DUXBetaSimulatorIndicatorState)state {
     self.imageMapping[@(state)] = image;
     [self updateMinImageDimensions];
+    [self updateUI];
 }
 
 - (UIImage *)getImageForState:(DUXBetaSimulatorIndicatorState)state {
@@ -152,6 +153,7 @@
 
 - (void)setTintColor:(UIColor *)color forState:(DUXBetaSimulatorIndicatorState)state {
     self.tintColorMapping[@(state)] = color;
+    [self updateUI];
 }
 
 - (UIColor *)getTintColorForState:(DUXBetaSimulatorIndicatorState)state {

@@ -26,12 +26,10 @@
 //  
 
 #import "DUXBetaSingleAngleRadarSectionView.h"
+#import "DUXBetaRadarWidget.h"
 #import "UIImage+DUXBetaAssets.h"
 
 @interface DUXBetaSingleAngleRadarSectionView ()
-
-@property (strong, nonatomic) UIImageView *arrow;
-@property (strong, nonatomic) UILabel *distanceLabel;
 
 @end
 
@@ -40,12 +38,7 @@
 - (instancetype)initWithSensorPosition:(DJIVisionSensorPosition)position {
     self = [super initWithSensorPosition:position];
     if (self) {
-        _arrow = [[UIImageView alloc] initWithImage:[UIImage duxbeta_imageWithAssetNamed:@"ArrowImage"]];
-        _distanceLabel = [UILabel new];
-        _distanceLabel.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:.40];
-        _distanceLabel.textColor = [UIColor whiteColor];
-        _distanceLabel.adjustsFontSizeToFitWidth = YES;
-        _distanceLabel.text = @"0.0M";
+        self.arrow = [[UIImageView alloc] initWithImage:[UIImage duxbeta_imageWithAssetNamed:@"ArrowImage"]];
         [self setupConstraints];
     }
     return self;
@@ -54,12 +47,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _arrow = [[UIImageView alloc] initWithImage:[UIImage duxbeta_imageWithAssetNamed:@"ArrowImage"]];
-        _distanceLabel = [UILabel new];
-        _distanceLabel.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:.40];
-        _distanceLabel.textColor = [UIColor whiteColor];
-        _distanceLabel.adjustsFontSizeToFitWidth = YES;
-        _distanceLabel.text = @"0.0M";
+        self.arrow = [[UIImageView alloc] initWithImage:[UIImage duxbeta_imageWithAssetNamed:@"ArrowImage"]];
         [self setupConstraints];
     }
     return self;
@@ -80,7 +68,6 @@
             obstacleDistanceInMeters = 0.0;
             self.hidden = YES;
         }
-        self.distanceLabel.text = [NSString stringWithFormat:@"%.1fM",obstacleDistanceInMeters];
         [super setObstacleDistanceInMeters:obstacleDistanceInMeters];
     }
 }
@@ -117,13 +104,37 @@
     self.distanceLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.distanceLabel];
     [self.distanceLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
-    [self.distanceLabel.widthAnchor constraintEqualToConstant:40].active = YES;
+    // Use the intrinsic size since we only need the edge.
+ //   [self.distanceLabel.widthAnchor constraintEqualToConstant:40].active = YES;
     [self.distanceLabel.heightAnchor constraintEqualToConstant:16].active = YES;
     if (self.position == DJIVisionSensorPositionLeft) {
         [self.distanceLabel.leadingAnchor constraintEqualToAnchor:self.arrow.trailingAnchor constant:10].active = YES;
     } else {
         [self.distanceLabel.trailingAnchor constraintEqualToAnchor:self.arrow.leadingAnchor constant:-10].active = YES;
     }
+}
+
+#pragma mark - Customizations
+
+- (void)setDistanceArrowImageBackground:(UIColor*)arrowBackgroundColor {
+    self.distanceArrowImageBackground = arrowBackgroundColor;
+    self.arrow.backgroundColor = arrowBackgroundColor;
+}
+
+
+- (void)updateCustomImages {
+    UIImage *workImage = nil;
+    
+    [super updateCustomImages];
+
+    if (self.customizedRadarSections) {
+        workImage = self.customizedRadarSections[DUXRadarWidgetArrow];
+    }
+    
+    if (workImage == nil) {
+        workImage = [UIImage duxbeta_imageWithAssetNamed:@"ArrowImage"];
+    }
+    self.arrow.image = workImage;
 }
 
 @end

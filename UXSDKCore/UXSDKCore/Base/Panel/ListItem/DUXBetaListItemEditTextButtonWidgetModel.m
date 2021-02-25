@@ -40,6 +40,8 @@
 
 @implementation DUXBetaListItemEditTextButtonWidgetModel
 
+// TODO: Flesh this out to handle more than just numeric fields eventually
+// Right now this code in the model is unused.
 - (void)currentKey:(DJIKey*)key rangeKey:(DJIKey *)rangeKey enabledKey:(DJIKey *)enabledKey rangeStringFormat:(NSString*)rangeStringFmt iconName:(NSString*) iconName {
     self.keyForField = key;
     self.rangeKey = rangeKey;
