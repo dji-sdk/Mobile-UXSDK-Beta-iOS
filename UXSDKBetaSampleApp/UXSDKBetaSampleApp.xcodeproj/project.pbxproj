@@ -148,6 +148,7 @@
 		530DAD0D21E534C200E32774 /* UXSDKBetaSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				632D035A26A578D1000300B4 /* Resources */,
 				3A9775522489D47200E54E26 /* SampleFeatures */,
 				3A9775512489D45100E54E26 /* MainView */,
 				530DAD0E21E534C200E32774 /* AppDelegate.swift */,
@@ -202,6 +203,13 @@
 				530DADA121E574DB00E32774 /* ProductCommunicationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		632D035A26A578D1000300B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B69F5940244FDFD2009D101A /* Customizations */ = {

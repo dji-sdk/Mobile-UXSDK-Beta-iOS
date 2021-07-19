@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DJI-UXSDK-iOS-Beta-Core'
-  s.version = '0.4.1'
+  s.version = '0.4.2'
   s.license = 'MIT'
   s.summary = 'Core utilities for DJI iOS UX SDK.'
   s.homepage = 'https://github.com/dji-sdk/Mobile-UXSDK-Beta-iOS'

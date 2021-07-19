@@ -29,6 +29,7 @@
 #import "DUXBetaFPVDecodeAdapter.h"
 #import <DJIWidget/DJIVideoPreviewer.h>
 #import <UXSDKCore/UXSDKCore-Swift.h>
+#import "DJIDecodeImageCalibrateControlLogic.h"
 
 #define IS_FLOAT_EQUAL(a, b) (fabs(a - b) < 0.0005)
 
@@ -38,6 +39,8 @@
 
 @property (nonatomic, strong) DUXBetaFPVDecodeModel *decodeModel;
 
+@property (nonatomic) DJIDecodeImageCalibrateControlLogic *calibrateLogic;
+
 @end
 
 @implementation DUXBetaFPVDecodeAdapter
@@ -46,6 +49,7 @@
     self = [super init];
     if (self) {
         _videoPreviewer = [DJIVideoPreviewer instance];
+        _calibrateLogic = [[DJIDecodeImageCalibrateControlLogic alloc] init];
     }
     return self;
 }
@@ -54,11 +58,18 @@
     _videoFeed = videoFeed;
     
     [self modelSetup];
-    
+
+    DJIBaseProduct *product = [DJISDKManager product];
+    if (product && [product isKindOfClass:[DJIAircraft class]]) {
+        DJIAircraft *aircraft = (DJIAircraft *)product;
+        self.calibrateLogic.cameraName = aircraft.camera.displayName;
+    }
+
     //Start the videoPreviewer
     self.videoPreviewer.type = DJIVideoPreviewerTypeAutoAdapt;
     self.videoPreviewer.enableHardwareDecode = YES;
     [self.videoPreviewer start];
+    self.videoPreviewer.calibrateDelegate = self.calibrateLogic;
     
     //Setup delegates
     [[DJISDKManager videoFeeder] addVideoFeedSourceListener:self];
