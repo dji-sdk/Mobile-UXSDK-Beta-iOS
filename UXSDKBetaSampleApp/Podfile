@@ -5,7 +5,7 @@ target 'UXSDKBetaSampleApp' do
   use_frameworks!
 
   pod 'iOS-Color-Picker'
-  pod 'DJI-UXSDK-iOS-Beta', '0.4.1'
+  pod 'DJI-UXSDK-iOS-Beta', '0.4.2'
 
 end
 
