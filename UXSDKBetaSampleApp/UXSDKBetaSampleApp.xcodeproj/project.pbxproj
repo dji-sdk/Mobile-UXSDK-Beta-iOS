@@ -21,6 +21,7 @@
 		530DADA221E574DB00E32774 /* LogCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAD9F21E574DA00E32774 /* LogCenter.swift */; };
 		530DADA321E574DB00E32774 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DADA021E574DB00E32774 /* LogEntry.swift */; };
 		530DADA421E574DB00E32774 /* ProductCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DADA121E574DB00E32774 /* ProductCommunicationService.swift */; };
+		632D03A926A6FD0A000300B4 /* DistortionResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 632D03A826A6FD0A000300B4 /* DistortionResource.bundle */; };
 		AC60CF9B21F7F0F900825022 /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC60CF9A21F7F0F900825022 /* CustomSplitViewController.swift */; };
 		B69F5942244FDFF3009D101A /* FPVCustomizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F5941244FDFF3009D101A /* FPVCustomizations.swift */; };
 		B6F8A65C24C0BACB005FC695 /* UIControl+DUXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F8A65B24C0BACB005FC695 /* UIControl+DUXHelpers.swift */; };
@@ -57,6 +58,7 @@
 		530DADA021E574DB00E32774 /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		530DADA121E574DB00E32774 /* ProductCommunicationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationService.swift; sourceTree = "<group>"; };
 		530DADB921E6738600E32774 /* UXSDKSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UXSDKSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		632D03A826A6FD0A000300B4 /* DistortionResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DistortionResource.bundle; sourceTree = "<group>"; };
 		AC60CF7721F7C6EC00825022 /* DJISDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJISDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC60CF9A21F7F0F900825022 /* CustomSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
 		B649D19A2592871700236ED0 /* UXSDKAccessory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UXSDKAccessory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,7 @@
 		632D035A26A578D1000300B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				632D03A826A6FD0A000300B4 /* DistortionResource.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632D03A926A6FD0A000300B4 /* DistortionResource.bundle in Resources */,
 				3A2E65FC24904E2300BFC6E5 /* Main.storyboard in Resources */,
 				530DAD1921E534C400E32774 /* LaunchScreen.storyboard in Resources */,
 				530DAD1621E534C400E32774 /* Assets.xcassets in Resources */,
